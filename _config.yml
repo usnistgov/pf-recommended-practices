@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: PF Best Practices Guide
+title: PF Recommended Practices Guide
 author: PFHub members
 copyright: "2024"
 logo: pfhub-logo.jpg
@@ -22,7 +22,7 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/mythreyiramesh/pf-best-practices  # Online location of your book
+  url: https://github.com/mythreyiramesh/pf-recommended-practices  # Online location of your book
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
@@ -30,3 +30,13 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - amsmath
+
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

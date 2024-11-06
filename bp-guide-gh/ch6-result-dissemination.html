@@ -1,0 +1,602 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Result Dissemination &#8212; PF Best Practices Guide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bp-guide-gh/ch6-result-dissemination';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Markdown Files" href="../defaults/markdown.html" />
+    <link rel="prev" title="Problem Set-Up" href="ch5-problem-setup.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/pfhub-logo.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/pfhub-logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Phase Field Method Recommended Practices
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Importing GH Wiki</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ch1-model-formulation.html">Model Formulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch2-numerical-implementation.html">Numerical Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch3-data-generation-and-curation.html">Data Generation and Curation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4-software-development.html">Software Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch5-problem-setup.html">Problem Set-Up</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Result Dissemination</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Default Pages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../defaults/markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../defaults/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../defaults/notebooks.html">Content with notebooks</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mythreyiramesh/pf-best-practices" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mythreyiramesh/pf-best-practices/issues/new?title=Issue%20on%20page%20%2Fbp-guide-gh/ch6-result-dissemination.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/bp-guide-gh/ch6-result-dissemination.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Result Dissemination</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-practices-for-postprocessing-and-plotting">Recommended Practices for Postprocessing and Plotting:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#present-dimensional-results-whenever-possible">Present dimensional results whenever possible</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-plots-and-figures-that-clearly-illustrate-your-data">Make plots and figures that clearly illustrate your data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automate-postprocessing-and-plot-generation">Automate postprocessing and plot generation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-practices-for-papers">Recommended Practices for Papers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#provide-all-of-the-information-needed-for-someone-else-to-reproduce-your-results">Provide all of the information needed for someone else to reproduce your results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clearly-state-all-assumptions">Clearly state all assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#include-key-verification-results">Include key verification results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#share-your-input-file-output-data-and-or-codes">Share your input file, output data, and/or codes</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="result-dissemination">
+<h1>Result Dissemination<a class="headerlink" href="#result-dissemination" title="Permalink to this heading">#</a></h1>
+<p>Mike Tonks, Damien Tourret, Katsuyo Thornton, Jon Guyer</p>
+<p>How you present and disseminate your results is also a critical aspect of applying the phase-field method. Here, we provide recommended practices on disseminating your results.</p>
+<section id="recommended-practices-for-postprocessing-and-plotting">
+<h2>Recommended Practices for Postprocessing and Plotting:<a class="headerlink" href="#recommended-practices-for-postprocessing-and-plotting" title="Permalink to this heading">#</a></h2>
+<section id="present-dimensional-results-whenever-possible">
+<h3>Present dimensional results whenever possible<a class="headerlink" href="#present-dimensional-results-whenever-possible" title="Permalink to this heading">#</a></h3>
+<p>The phase-field method is inherently dimensional, meaning that each of its model parameters have specific dimensions in terms of length, time, energy, etc. These values vary for different materials and systems, based on material properties such as free energies, diffusivities, interfacial energies, and so on. However, it is a common practice to nondimensionalize a model to simplify the numerical solution. Nondimensionalization has also been used to avoid the need to have accurate material properties for a specific material system. In those cases, results are qualitative at best and are not material specific.</p>
+<p>It is recommended to present material-specific results using dimensional properties. Therefore, if you nondimensionalize your model, <strong>always</strong> dimensionalize your results before plotting if at all possible. Quantitative, material specific results are always higher impact than qualitative results.</p>
+<p>Presenting a dimensionless model with dimensional properties should be used as a sanity check that the dimensions and parameters are consistent. For that matter, even dimensional models are usually coded in a way that does not actually incorporate units in a self-consistent way, so careful balancing of equations is important. If your simulation framework supports dimensional units, you should use them.</p>
+</section>
+<section id="make-plots-and-figures-that-clearly-illustrate-your-data">
+<h3>Make plots and figures that clearly illustrate your data<a class="headerlink" href="#make-plots-and-figures-that-clearly-illustrate-your-data" title="Permalink to this heading">#</a></h3>
+<p>Well-constructed figures can greatly enhance the presentation of your data. There many general guidelines and recommendations that should be followed. Rather that reproduce them all here, we link to several valuable resources that provide great recommendations:</p>
+<ul class="simple">
+<li><p>Video 7: Incorporating Illustrations from <a class="reference external" href="https://sites.psu.edu/scientificwriting/tutorial-reports/">Writing as an Engineer or Scientist</a>.</p></li>
+<li><p><a class="reference external" href="https://www.nature.com/documents/natrev-artworkguide_PS.pdf">Nature reference</a> about making good figures with excellent suggestions.</p></li>
+<li><p><a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1002/adma.201102518">A Brief Guide to Designing Effective Figures for the Scientific Paper</a>.</p></li>
+</ul>
+<p>Figures can be broadly divided into two main categories, visualization of the actual simulation results and plots of postprocessed data extracted from the results.
+To create images of phase field simulation results, you need post-processing visualization software. There are a number of powerful tools for visualizing simulation results, including:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.paraview.org/">ParaView - open source</a></p></li>
+<li><p><a class="reference external" href="https://pyvista.org/">PyVista - open source</a></p></li>
+<li><p><a class="reference external" href="https://visit-dav.github.io/visit-website/index.html">VisIt - open source</a></p></li>
+<li><p><a class="reference external" href="https://www.originlab.com/origin">Origin – commercial</a></p></li>
+</ul>
+<p>These tools read in common data formats, and so your code needs to be able to output results in a supported format. <a class="reference external" href="https://docs.vtk.org/en/latest/design_documents/VTKFileFormats.html">VTK formats</a> are supported by all of these tools.</p>
+<p>To create plots of postprocessed data, the data is typically outputted directly from your simulation tool or from visualization software in formats like “.csv”. You need tools that can read in these data and then generate various types of plots. We recommend tools that allow scripts (as we discuss more, below); such tools include:</p>
+<ul class="simple">
+<li><p>Python, using <a class="reference external" href="https://matplotlib.org/">matplotlib</a> for plotting and <a class="reference external" href="https://pandas.pydata.org/">pandas</a> for csv reading. <a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> is a useful tool as well.</p></li>
+<li><p><a class="reference external" href="https://www.mathworks.com/help/matlab/creating_plots/types-of-matlab-plots.html">MATLAB</a></p></li>
+<li><p><a class="reference external" href="http://www.gnuplot.info/">GNUPlot</a></p></li>
+</ul>
+<p>You should also carefully consider the color scheme used in your plots. For example, some color schemes work for color blind viewers while others do not. For more information about choosing a color scheme for your figure, see Fig. 6 from <a class="reference external" href="https://www.nature.com/articles/s41467-020-19160-7">The misuse of colour in science communication</a>.</p>
+</section>
+<section id="automate-postprocessing-and-plot-generation">
+<h3>Automate postprocessing and plot generation<a class="headerlink" href="#automate-postprocessing-and-plot-generation" title="Permalink to this heading">#</a></h3>
+<p>When preparing results for dissemination, whether for a presentation, report, or paper, you will often find things that need to be changed and therefore must regenerate figures and plots. This is a normal part of research. However, the work required to regenerate figures and plots can be significantly reduced using automated scripts or a well-defined and documented reproducible protocol. The goal is to reduce the amount of “manual” operations to a minimum. Consider a paper you wrote a year or more ago; how readily could you regenerate its figures?</p>
+<p>Creating an image that is clear and provides all of the information needed for a typical publication in vizualization tools can often be a time-consuming process. Luckily, they often have ways of saving a given configuration that can then be reloaded to quickly generate a similar image. In Paraview, this is done by saving and loading the state.</p>
+<p>For plots of postprocessed, data is often outputted from research codes and then plotted using software. Plots can be generated and then edited manually or scripts can be used that define all aspects of the plot. The use of scripts may make the time it takes to create the plot the first time slightly longer but will reduce the time to regenerate the plots to almost zero. Scripts also ensure that your plots have a consistent look when regenerated.</p>
+</section>
+</section>
+<section id="recommended-practices-for-papers">
+<h2>Recommended Practices for Papers<a class="headerlink" href="#recommended-practices-for-papers" title="Permalink to this heading">#</a></h2>
+<section id="provide-all-of-the-information-needed-for-someone-else-to-reproduce-your-results">
+<h3>Provide all of the information needed for someone else to reproduce your results<a class="headerlink" href="#provide-all-of-the-information-needed-for-someone-else-to-reproduce-your-results" title="Permalink to this heading">#</a></h3>
+<p>A critical aspect of scientific publication is the reproduction of results by other researchers. For papers using the phase-field method, that means you need to provide enough information that the reader could reproduce your results. It can be helpful to put yourself in the shoes of your readers; if you come back to this work in a few years, how readily could you perform these simulations again? This information does not have to be provided in the main body of the paper, but can be in appendices or supplemental information. The provided information should include:</p>
+<ul class="simple">
+<li><p>The value used for every parameter in the model. Even if the values are given in one of your references, you should still provide the values in your paper.</p></li>
+<li><p>The domain dimension and size</p></li>
+<li><p>Initial conditions and boundary conditions</p></li>
+<li><p>Other conditions used for each simulation, including temperature and length of time.</p></li>
+<li><p>The discretization scheme, including types of spatial and temporal discretization and spatial discretization spacing and time step size.</p></li>
+</ul>
+<p>Even if using a proprietary simulation tool, the input files should be published as the ultimate source of how a simulation was performed. There are potentially multiple levels that may impact reproducibility:</p>
+<ol class="arabic simple">
+<li><p>The parameter file(s), configuration file(s), or driver script(s) for the specific simulation.</p></li>
+<li><p>The environment variables and batch script(s) used to initiate a series of simulations.</p></li>
+<li><p>The HPC scheduler configuration file.</p></li>
+</ol>
+<p>GUI configuration is particularly challenging from a reproducibility standpoint, but even command-line arguments that affect the simulation are undesirable unless they are captured (and published) in the next highest level of configuration/script/driver. <strong>[note: Some of this may better belong in, or cross-reference to, <a class="reference internal" href="ch4-software-development.html"><span class="doc std std-doc">Software-Development</span></a>.]</strong></p>
+</section>
+<section id="clearly-state-all-assumptions">
+<h3>Clearly state all assumptions<a class="headerlink" href="#clearly-state-all-assumptions" title="Permalink to this heading">#</a></h3>
+<p>All models are generated by making assumptions and approximations. You should state every assumption and approximation made in the formulation of the model and why they were made. This includes any assumptions involved in equations you have taken from the literature. It is impossible for a reader to understand the strengths and weaknesses of your model without knowing the assumptions and approximations.</p>
+</section>
+<section id="include-key-verification-results">
+<h3>Include key verification results<a class="headerlink" href="#include-key-verification-results" title="Permalink to this heading">#</a></h3>
+<p>It is natural to present large simulation results that capture complex behaviors that occur in nature. However, it can often be difficult to assess how well a model is performing in such large simulation results because the behavior is so complex. Therefore, when presenting phase-field model/simulation results, it is important to validate/verify the accuracy of the model and its implementation by simulating simple problems that more clearly demonstrate the accuracy of the model/code. Such simple problems may have known analytical solutions, against which the simulated results can be compared for verification (see <span class="xref myst">Code Verification</span>]). Key results from such studies should be shared along with the main simulation results in a repository or in a supplementary document of the associated publication.</p>
+</section>
+<section id="share-your-input-file-output-data-and-or-codes">
+<h3>Share your input file, output data, and/or codes<a class="headerlink" href="#share-your-input-file-output-data-and-or-codes" title="Permalink to this heading">#</a></h3>
+<p>The best practice is to share key output data and input files where it is findable and accessible in a manner that the data is interoperable and reusable (FAIR); see <a class="reference internal" href="ch3-data-generation-and-curation.html"><span class="doc std std-doc">Data-Generation-and-Curation</span></a>. For projects funded by federal agencies, your data management plan may also require you to publish your data associated with your publication. There are several public repositories to which your data/files can be uploaded and shared, which are described in <a class="reference internal" href="ch3-data-generation-and-curation.html"><span class="doc std std-doc">Data-Generation-and-Curation</span></a>. The data should be accompanied by key metadata, including information about the software used to generate the output and the associated publication. The publication should also be associated with the shared data via DOI. If the codes are not publicly available, it is also encouraged that they are shared as well.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./bp-guide-gh"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ch5-problem-setup.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Problem Set-Up</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../defaults/markdown.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Markdown Files</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-practices-for-postprocessing-and-plotting">Recommended Practices for Postprocessing and Plotting:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#present-dimensional-results-whenever-possible">Present dimensional results whenever possible</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-plots-and-figures-that-clearly-illustrate-your-data">Make plots and figures that clearly illustrate your data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automate-postprocessing-and-plot-generation">Automate postprocessing and plot generation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-practices-for-papers">Recommended Practices for Papers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#provide-all-of-the-information-needed-for-someone-else-to-reproduce-your-results">Provide all of the information needed for someone else to reproduce your results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clearly-state-all-assumptions">Clearly state all assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#include-key-verification-results">Include key verification results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#share-your-input-file-output-data-and-or-codes">Share your input file, output data, and/or codes</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PFHub members
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

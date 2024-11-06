@@ -1,0 +1,1086 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Generation and Curation &#8212; PF Best Practices Guide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bp-guide-gh/ch3-data-generation-and-curation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Software Development" href="ch4-software-development.html" />
+    <link rel="prev" title="Numerical Implementation" href="ch2-numerical-implementation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/pfhub-logo.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/pfhub-logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Phase Field Method Recommended Practices
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Importing GH Wiki</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ch1-model-formulation.html">Model Formulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch2-numerical-implementation.html">Numerical Implementation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Generation and Curation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch4-software-development.html">Software Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch5-problem-setup.html">Problem Set-Up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch6-result-dissemination.html">Result Dissemination</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Default Pages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../defaults/markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../defaults/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../defaults/notebooks.html">Content with notebooks</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mythreyiramesh/pf-best-practices" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mythreyiramesh/pf-best-practices/issues/new?title=Issue%20on%20page%20%2Fbp-guide-gh/ch3-data-generation-and-curation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/bp-guide-gh/ch3-data-generation-and-curation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Generation and Curation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideas">Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-want-to-structure-the-sections">How do we want to structure the sections?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#old-version">Old version</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fair-data">FAIR Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#findable">Findable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accessible">Accessible</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interoperable">Interoperable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reusable">Reusable</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zenodo">Zenodo</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-examples">Metadata Examples</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-files">Metadata Files</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-data-schemas">Structured Data Schemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-phase-field-schema">Towards a Phase-Field Schema</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-generation-and-curation">
+<h1>Data Generation and Curation<a class="headerlink" href="#data-generation-and-curation" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><em><a class="reference external" href="https://www.nist.gov/people/trevor-keller">Trevor Keller</a>, NIST</em>, <a class="reference external" href="https://github.com/tkphd">&#64;tkphd</a></p></li>
+<li><p><em><a class="reference external" href="https://www.nist.gov/people/daniel-wheeler">Daniel Wheeler</a>, NIST</em>, <a class="reference external" href="https://github.com/wd15">&#64;wd15</a></p></li>
+<li><p><em><a class="reference external" href="https://ca.linkedin.com/in/damien-pinto-4748387b">Damien Pinto</a>, McGill</em>, <a class="reference external" href="https://github.com/DamienPinto">&#64;DamienPinto</a></p></li>
+</ul>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Look at lit on data and see how this is implemented</p></li>
+<li><p>Generation and dissemination</p></li>
+</ul>
+</section>
+<section id="ideas">
+<h2>Ideas<a class="headerlink" href="#ideas" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Data formats</p></li>
+<li><p>FAIR</p></li>
+<li><p>Metadata (hierarchical data standards (look for current versions))</p></li>
+<li><p>What standards exist</p></li>
+<li><p>One or two examples of phase field data stored currently</p>
+<ul>
+<li><p>Use an existing</p></li>
+<li><p>Create our own example</p></li>
+</ul>
+</li>
+<li><p>Practical choices for storing data (figshare, zenodo, dryad, MDF)</p></li>
+<li><p>Deciding what data to keep</p>
+<ul>
+<li><p>What data to store when publishing</p></li>
+<li><p>What is supplementary material versus store versus leave on hard drive</p></li>
+</ul>
+</li>
+<li><p>Lit review, good citations</p></li>
+<li><p>minting DOIs for the data</p></li>
+<li><p>might include simulatioin execution and logging</p>
+<ul>
+<li><p>how frequently to store data</p></li>
+<li><p>how to store</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="how-do-we-want-to-structure-the-sections">
+<h2>How do we want to structure the sections?<a class="headerlink" href="#how-do-we-want-to-structure-the-sections" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Intro (Daniel)</p></li>
+</ol>
+<ul class="simple">
+<li><p>What is data?</p></li>
+<li><p>What is metadata?</p></li>
+<li><p>Why do we need curate data?</p></li>
+<li><p>What is the motivation for this document?</p>
+<ul>
+<li><p>What should the reader get out of this document</p></li>
+<li><p>Why is this useful</p></li>
+</ul>
+</li>
+<li><p>Create a distinction between software, data, and post-processed results</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Data Generation (Trevor)</p></li>
+</ol>
+<ul class="simple">
+<li><p>HPC</p></li>
+<li><p>file systems</p></li>
+<li><p>data formats</p>
+<ul>
+<li><p>formats not to use (e.g., don’t use serialization that depends on the version of the code that reads and writes because code changes)</p></li>
+<li><p>don’t use pickles</p></li>
+</ul>
+</li>
+<li><p>restarts</p></li>
+<li><p>data frequency</p></li>
+<li><p>post-processing -&gt; refer to other document for this</p></li>
+<li><p>precision</p></li>
+<li><p>importance of folder structure</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Data Curation (Trevor)</p></li>
+</ol>
+<ul class="simple">
+<li><p>Why is curating data important?</p></li>
+<li><p>Why do we need to store our data</p></li>
+<li><p>What formats can we use</p></li>
+<li><p>Is my data too large, data sizes</p></li>
+<li><p>What is useful for third party / subsequent users</p></li>
+<li><p>How might the data be used for AI or something else</p></li>
+<li><p>Could a reviewer make use of your curated data</p></li>
+<li><p>Storing post-processed data and raw data and which to store or keep</p></li>
+<li><p>Minting DOIs for your software when publishing a paper</p></li>
+<li><p>FAIR</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Metadata standards (Daniel)</p></li>
+</ol>
+<ul class="simple">
+<li><p>Why do we need to keep some metadata beyond the data</p></li>
+<li><p>Zoo of things like data dictionaries, ontologies</p>
+<ul>
+<li><p>however, these are not well developed for our use case</p></li>
+</ul>
+</li>
+<li><p>For example, you curate on Zenodo</p></li>
+<li><p>what extra data should you include</p>
+<ul>
+<li><p>how to describe the data files</p></li>
+<li><p>how to maintain some minimalist info about the simulation that generated the run</p></li>
+<li><p>When, why and how I ran this simulation</p></li>
+<li><p>What software</p></li>
+<li><p>Give example of a yaml file with 10 flat fields</p></li>
+</ul>
+</li>
+<li><p>The future should be better in this regard. People actively working to improve this issue.</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>Examples</p></li>
+</ol>
+<ul class="simple">
+<li><p>Practical examples (Trevor)</p></li>
+<li><p>Using Zenodo for a PFHub record to store data and metadata</p>
+<ul>
+<li><p>Relatively rich metadata scheme</p></li>
+</ul>
+</li>
+<li><p>Simulation from scratch (Damien)</p>
+<ul>
+<li><p>data generation</p>
+<ul>
+<li><p>folder structure</p></li>
+<li><p>HPC issues with data</p></li>
+<li><p>capture process / descriptive parameters for the data that
+are useful for subsequent ML practitioners that use the data</p></li>
+</ul>
+</li>
+<li><p>ML / store data</p></li>
+<li><p>Narrative of what gets stored to disk</p></li>
+<li><p>Decisions of what to keep and how frequently to save data</p></li>
+<li><p>Auxiliary metadata decisions</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p>Summary (Daniel)</p></li>
+<li><p>Biblio (Daniel)</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="old-version">
+<h2>Old version<a class="headerlink" href="#old-version" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Save the data from your published work as much as possible, with meta data</p></li>
+<li><p>Save the inputs used to produce the results from all your published work</p></li>
+</ul>
+<section id="fair-data">
+<h3>FAIR Data<a class="headerlink" href="#fair-data" title="Permalink to this heading">#</a></h3>
+<p>We discussed the <a class="reference external" href="https://www.go-fair.org/fair-principles/">FAIR Principles</a> at <a class="reference external" href="https://doi.org/10.5281/zenodo.7254581">CHiMaD Phase-Field XIII</a>:</p>
+<section id="findable">
+<h4>Findable<a class="headerlink" href="#findable" title="Permalink to this heading">#</a></h4>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> (Meta)data are assigned a globally unique and persistent identifier</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Data are described with rich metadata (defined by R1 below)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Metadata clearly and explicitly include the identifier of the data they describe</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> (Meta)data are registered or indexed in a searchable resource</p></li>
+</ul>
+</section>
+<section id="accessible">
+<h4>Accessible<a class="headerlink" href="#accessible" title="Permalink to this heading">#</a></h4>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> (Meta)data are retrievable by their identifier using a standardized
+communications protocol</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The protocol is open, free, and universally implementable</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The protocol allows for an authentication and authorisation procedure,
+where necessary</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Metadata are accessible, even when the data are no longer available</p></li>
+</ul>
+</section>
+<section id="interoperable">
+<h4>Interoperable<a class="headerlink" href="#interoperable" title="Permalink to this heading">#</a></h4>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> (Meta)data use a formal, accessible, shared, and broadly applicable language
+for knowledge representation.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> (Meta)data use vocabularies that follow FAIR principles</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> (Meta)data include qualified references to other (meta)data</p></li>
+</ul>
+</section>
+<section id="reusable">
+<h4>Reusable<a class="headerlink" href="#reusable" title="Permalink to this heading">#</a></h4>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> (Meta)data are richly described with a plurality of accurate and relevant attributes</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> (Meta)data are released with a clear and accessible data usage license</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> (Meta)data are associated with detailed provenance</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> (Meta)data meet domain-relevant community standards</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="zenodo">
+<h3>Zenodo<a class="headerlink" href="#zenodo" title="Permalink to this heading">#</a></h3>
+<p>Historically, <a class="reference external" href="https://pages.nist.gov/pfhub">PFHub</a> has accepted datasets linked from any host on the Web.
+At this time, we recommend using <a class="reference external" href="https://zenodo.org">Zenodo</a> to host your benchmark data. Why? <em>It’s not “just” a shared folder.</em></p>
+<ul class="simple">
+<li><p>Guided prompts to describe what you’re uploading</p></li>
+<li><p>DOI is automatically assigned to your dataset</p></li>
+<li><p>Basic metadata exported in multiple formats</p></li>
+<li><p>Browser-based viewers for CSV, Markdown, PDF, images, videos</p></li>
+</ul>
+<section id="metadata-examples">
+<h4>Metadata Examples<a class="headerlink" href="#metadata-examples" title="Permalink to this heading">#</a></h4>
+<p>Zenodo gives you the option to import a repository directly from GitHub. The original <a class="reference external" href="https://doi.org/10.5281/zenodo.6540105">FAIR Phase-field talk</a> was “uploaded” this way, producing the following record. While basic authorship information was captured, this tells an interested person or machine nothing meaningful about the dataset.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org/&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://doi.org/10.5281/zenodo.6540105&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SoftwareSourceCode&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tkphd/fair-phase-field-data: CHiMaD Phase-field XIII&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FAIR Principles for Phase-Field Practitioners&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v0.1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://doi.org/10.5281/zenodo.6540105&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/record/6540105&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;datePublished&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-05-11&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;creator&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&quot;givenName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trevor&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;familyName&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;Keller&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;affiliation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIST&quot;</span><span class="p">}],</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;codeRepository&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/tkphd/fair-phase-field-data/tree/v0.1.0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <em>strongly</em> preferred method is to upload files directly. The following record represents an upload for <a class="reference external" href="https://doi.org/10.5281/zenodo.1124941">Benchmark 1b using HiPerC</a>. I would consider this metadata <em><strong>rich!</strong></em></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org/&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://doi.org/10.5281/zenodo.1124941&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;hiperc-gpu-cuda-spinodal&quot;</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Solution to the CHiMaD Phase Field benchmark problem on spinodal decomposition using CUDA, with a 9-point discrete Laplacian stencil&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://doi.org/10.5281/zenodo.1124941&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://creativecommons.org/licenses/by/4.0/legalcode&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/record/1124941&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;datePublished&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2017-12-21&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;creator&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://orcid.org/0000-0002-2920-8302&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&quot;givenName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trevor&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;familyName&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;Keller&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;affiliation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIST&quot;</span><span class="p">}],</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;phase-field&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pfhub&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;chimad&quot;</span><span class="p">],</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;sameAs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://doi.org/10.6084/m9.figshare.5715103.v2&quot;</span><span class="p">],</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/free-energy-9pt.csv&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&quot;encodingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;csv&quot;</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0000000.png&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&quot;encodingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0100000.png&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&quot;encodingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0200000.png&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&quot;encodingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="metadata-files">
+<h4>Metadata Files<a class="headerlink" href="#metadata-files" title="Permalink to this heading">#</a></h4>
+<p>After uploading the HiPerC simulation data, I also registered it with PFHub using <code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code>. This file tells the website-generating machinery what to do with the dataset, and provides additional information about the resources required to perform the simulation.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">benchmark</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1b</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1&#39;</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run_time</span>
+<span class="w">  </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sim_time</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;200000&#39;</span>
+<span class="w">    </span><span class="nt">wall_time</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;7464&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory_usage</span>
+<span class="w">  </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KB</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;308224&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">free energy data</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/free-energy-9pt.csv</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microstructure at t=0</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">image</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal-000000.png</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microstructure at t=100,000</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">image</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal-100000.png</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microstructure at t=200,000</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">image</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal-200000.png</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">author</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trevor.keller@nist.gov</span>
+<span class="w">    </span><span class="nt">first</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Trevor</span>
+<span class="w">    </span><span class="nt">github_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tkphd</span>
+<span class="w">    </span><span class="nt">last</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Keller</span>
+<span class="w">  </span><span class="nt">hardware</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">acc_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu</span>
+<span class="w">    </span><span class="nt">clock_rate</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1.48&#39;</span>
+<span class="w">    </span><span class="nt">cores</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1792&#39;</span>
+<span class="w">    </span><span class="nt">cpu_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_64</span>
+<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">parallel_model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">threaded</span>
+<span class="w">  </span><span class="nt">implementation</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">repo</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/usnistgov/hiperc</span>
+<span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">b25b14acda7c5aef565cdbcfc88f2df3412dcc46</span>
+<span class="w">  </span><span class="nt">simulation_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hiperc_cuda</span>
+<span class="w">  </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HiPerC spinodal decomposition result using CUDA on a Tesla P100</span>
+<span class="w">  </span><span class="nt">timestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18 December, 2017</span>
+</pre></div>
+</div>
+<p>This file is not part of my dataset: it resides in the <a class="reference external" href="https://github.com/usnistgov/pfhub">PFHub repository on GitHub</a>. Furthermore, since the structure of this file specifically suits PFHub, it is of no use at all to other software, websites, or researchers.</p>
+</section>
+</section>
+<section id="structured-data-schemas">
+<h3>Structured Data Schemas<a class="headerlink" href="#structured-data-schemas" title="Permalink to this heading">#</a></h3>
+<p>In the Zenodo metadata above, note the <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> fields: <a class="reference external" href="https://www.schema.org">Schema.org</a> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Data_model">structured data schema</a> <em>and controlled vocabulary</em> for describing things on the Internet. How is this useful?</p>
+<p>Consider the <a class="reference external" href="https://codemeta.github.io">CodeMeta</a> project. It creates metadata files for software projects using <a class="reference external" href="https://www.schema.org">Schema.org</a> building blocks. There’s even a handy <a class="reference external" href="https://codemeta.github.io/codemeta-generator/">CodeMeta Generator</a>! If you maintain a phase-field software framework, you can (and should!) use it to document your code in a standards-compliant, machine-readable format. This improves interoperability and reusability!</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://doi.org/10.5063/schema/codemeta-2.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SoftwareSourceCode&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://spdx.org/licenses/CC-PDDC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;codeRepository&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;git+https://github.com/usnistgov/hiperc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2017-08-07&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dateModified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-03-04&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;downloadUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/usnistgov/hiperc/releases/tag/v1.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;issueTracker&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/usnistgov/hiperc/issues&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HiPerC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;High-Performance Computing in C and CUDA&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;applicationCategory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;phase-field&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;developmentStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inactive&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;programmingLanguage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CUDA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;OpenCL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;OpenMP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;TBB&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://orcid.org/my-orcid?orcid=0000-0002-2920-8302&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;givenName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trevor&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;familyName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Keller&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trevor.keller@nist.gov&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;affiliation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIST&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>That’s nice! But what about our datasets? Shouldn’t the <a class="reference external" href="https://pages.nist.gov/pfhub">PFHub</a> metadata “describing” a dataset live alongside that data?</p>
+<section id="towards-a-phase-field-schema">
+<h4>Towards a Phase-Field Schema<a class="headerlink" href="#towards-a-phase-field-schema" title="Permalink to this heading">#</a></h4>
+<p>We are working to build a phase-field schema (or schemas) using <a class="reference external" href="https://www.schema.org">Schema.org</a> and the <a class="reference external" href="https://github.com/openschemas/schemaorg">schemaorg</a> Python library. The work-alike port of <code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code> looks like the following.</p>
+<blockquote>
+<div><p><em>N.B.:</em> We’re going to deploy a generator similar to CodeMeta’s so you won’t have to write this!</p>
+</div></blockquote>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.schema.org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataCatalog&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;affiliation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Materials Science and Engineering Division&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Material Measurement Laboratory&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PostalAddress&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;addressCountry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;addressLocality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gaithersburg&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;addressRegion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Maryland&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;postalCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20899&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;streetAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;100 Bureau Drive&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIST&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;National Institute of Standards and Technology&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U.S. Department of Commerce&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.nist.gov&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trevor.keller@nist.gov&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;familyName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Keller&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;givenName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trevor&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tkphd&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;sameAs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://orcid.org/0000-0002-2920-8302&quot;</span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;affiliation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Materials Science and Engineering Division&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Material Measurement Laboratory&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PostalAddress&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;addressCountry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;addressLocality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gaithersburg&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;addressRegion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Maryland&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;postalCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20899&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;streetAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;100 Bureau Drive&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIST&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;National Institute of Standards and Technology&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U.S. Department of Commerce&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.nist.gov&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daniel.wheeler@nist.gov&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;familyName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wheeler&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;givenName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Daniel&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wd15&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;sameAs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://orcid.org/0000-0002-2653-7418&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;dataset&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;parallel_nodes&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cpu_architecture&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;amd64&quot;</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;parallel_cores&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;parallel_gpus&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gpu_architecture&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nvidia&quot;</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gpu_cores&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6144</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wall_time&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;unitCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SEC&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;unitText&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">384</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;memory_usage&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;unitCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;E63&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;unitText&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mebibyte&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1835</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;irl&quot;</span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/free_energy_1.csv&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;free energy&quot;</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/solid_fraction_1.csv&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;solid fraction&quot;</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/free_energy_2.csv&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;free energy&quot;</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/solid_fraction_2.csv&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;solid fraction&quot;</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/free_energy_3.csv&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;free energy&quot;</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/solid_fraction_3.csv&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;solid fraction&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;output&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-10-25T19:25:02+00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A fake dataset for Benchmark 8a unprepared using FiPy by @tkphd &amp; @wd15&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;isBasedOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SoftwareSourceCode&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;codeRepository&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/tkphd/fake-pfhub-bm8a&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fake benchmark 8a upload with FiPy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;runtimePlatform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fipy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;targetProduct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9df6603e&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;isPartOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Series&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Homogeneous Nucleation&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pages.nist.gov/pfhub/benchmarks/benchmark8.ipynb&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;phase-field&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;benchmarks&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;pfhub&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;fipy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;homogeneous-nucleation&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.nist.gov/open/license#software&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<!-- links -->
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./bp-guide-gh"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ch2-numerical-implementation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Numerical Implementation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ch4-software-development.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Software Development</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideas">Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-want-to-structure-the-sections">How do we want to structure the sections?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#old-version">Old version</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fair-data">FAIR Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#findable">Findable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accessible">Accessible</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interoperable">Interoperable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reusable">Reusable</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zenodo">Zenodo</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-examples">Metadata Examples</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-files">Metadata Files</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-data-schemas">Structured Data Schemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-phase-field-schema">Towards a Phase-Field Schema</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PFHub members
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

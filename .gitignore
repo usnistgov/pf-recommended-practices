@@ -1,0 +1,9 @@
+*/.DS_Store
+.DS_Store
+.idea
+*.log
+tmp/
+*.ipynb_checkpoints/
+.auctex-auto/
+logo.png
+/_build/

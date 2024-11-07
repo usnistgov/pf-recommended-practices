@@ -1,68 +1,65 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Problem Set-Up &#8212; PF Best Practices Guide</title>
+    <title>Problem Set-Up &#8212; Phase Field Method Recommended Practices</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'bp-guide-gh/ch5-problem-setup';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -70,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Software Development" href="ch4-software-development.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -77,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -101,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -109,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -131,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -143,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/pfhub-logo.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/pfhub-logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/pfhub-logo.jpg" class="logo__image only-light" alt="Phase Field Method Recommended Practices - Home"/>
+    <img src="../_static/pfhub-logo.jpg" class="logo__image only-dark pst-js-only" alt="Phase Field Method Recommended Practices - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -187,7 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -196,14 +206,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -226,7 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/mythreyiramesh/pf-best-practices" target="_blank"
+      <li><a href="https://github.com/usnistgov/pf-recommended-practices" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -243,7 +253,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/mythreyiramesh/pf-best-practices/issues/new?title=Issue%20on%20page%20%2Fbp-guide-gh/ch5-problem-setup.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/usnistgov/pf-recommended-practices/issues/new?title=Issue%20on%20page%20%2Fbp-guide-gh/ch5-problem-setup.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,26 +335,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -392,53 +396,53 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="problem-set-up">
-<h1>Problem Set-Up<a class="headerlink" href="#problem-set-up" title="Permalink to this heading">#</a></h1>
+  <section id="problem-set-up">
+<h1>Problem Set-Up<a class="headerlink" href="#problem-set-up" title="Link to this heading">#</a></h1>
 <p>Larry Aagesen (<a class="reference external" href="https://github.com/laagesen">&#64;laagesen</a>), David Montiel, Sourabh Kadambi (<a class="reference external" href="https://github.com/sourabhkadambi">&#64;sourabhkadambi</a>), Sudipta Biswas (<a class="reference external" href="https://github.com/SudiptaBiswas">&#64;SudiptaBiswas</a>)</p>
 <p>After the phase-field model formulation is developed, implemented in code, and verified, it can be set up to solve the scientific/engineering problem of interest. The purpose of this page is to give guidance on some of the important considerations when setting up your code to solve your specific problem, organized in the following sections:</p>
-<p><span class="xref myst">Spatial dimension (1D vs. 2D vs. 3D)</span></p>
-<p><span class="xref myst">Initial conditions</span></p>
-<p><span class="xref myst">Boundary conditions</span></p>
-<p><span class="xref myst">Interface width</span></p>
-<p><span class="xref myst">Convergence</span></p>
-<p><span class="xref myst">Impact of orientation</span></p>
-<p><span class="xref myst">Kinetics and how long to run</span></p>
+<p><a class="reference internal" href="#spatial-dimension"><span class="xref myst">Spatial dimension (1D vs. 2D vs. 3D)</span></a></p>
+<p><a class="reference internal" href="#initial-conditions"><span class="xref myst">Initial conditions</span></a></p>
+<p><a class="reference internal" href="#boundary-conditions"><span class="xref myst">Boundary conditions</span></a></p>
+<p><a class="reference internal" href="#interface-width"><span class="xref myst">Interface width</span></a></p>
+<p><a class="reference internal" href="#convergence-studies"><span class="xref myst">Convergence</span></a></p>
+<p><a class="reference internal" href="#impact-of-orientation"><span class="xref myst">Impact of orientation</span></a></p>
+<p><a class="reference internal" href="#kinetics-and-how-long-to-run"><span class="xref myst">Kinetics and how long to run</span></a></p>
 <section id="spatial-dimension">
-<h2>Spatial Dimension<a class="headerlink" href="#spatial-dimension" title="Permalink to this heading">#</a></h2>
+<h2>Spatial Dimension<a class="headerlink" href="#spatial-dimension" title="Link to this heading">#</a></h2>
 <p>In setting up a phase-field simulation, it is important to understand the role of spatial dimensions in the physics governing the problem, and how that might impact the simulation results and its interpretation. This is particularly important if simulations are being performed in reduced dimensions compared to the actual dimension of the problem, which is a common practice employed to reduce the computational costs.</p>
 <p>It is likely that the physical behavior of a certain phenomenon might scale differently in 1D, 2D and 3D. This could be related to the physical processes in the bulk regions of the system or at the interfacial regions or both.
 For instance, the amount of interfacial region relative to the bulk phase region differs in 1D, 2D and 3D, and also governs many physical aspects of material behavior.</p>
 <p>Therefore, it is important to determine how reduced dimensionality might affect predictions or comparison of simulation results with reality. In certain situations, on the other hand, it might be appropriate to setup the problem in reduced dimensions of 1D or 2D due to the inherent symmetry or directionality in the problem. Moreover, for simple microstructure geometries, it might be possible to setup the model in cylindrical or spherical coordinates, which can allow the simplicity of 1D computations while also capturing 2D and 3D behavior of the model accurately.</p>
 <section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
-<p>To demonstrate a case where simulation outcomes can significantly differ in different dimensions, we consider the <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark8.ipynb/#Part-%28a%29">single seed case</a> of the <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0927025621000963?via%3Dihub">homogeneous nucleation</a> benchmark problem. A simple phase-field model with a single non-conserved order parameter describes an isothermal pure substance with one liquid phase (order parameter = <span class="math notranslate nohighlight">\(0\)</span>) and one solid phase (order parameter = <span class="math notranslate nohighlight">\(1\)</span>). The nucleation driving force for the solid phase is <span class="math notranslate nohighlight">\(\Delta f=\sqrt2/30\)</span>. The free energy of the diffuse interface is <span class="math notranslate nohighlight">\(\gamma = 1/3\sqrt2\)</span>.</p>
-<p>We consider a seed nucleus of <span class="math notranslate nohighlight">\(7.5\)</span> unit radius in 2D and 3D. The 2D simulation domain is of size <span class="math notranslate nohighlight">\(100\times100\)</span>, and the 3D simulation domain is of size <span class="math notranslate nohighlight">\(40 \times 40 \times 40\)</span>. The nucleus is centered at <span class="math notranslate nohighlight">\(x=y=z=0\)</span>. Uniform mesh of element size <span class="math notranslate nohighlight">\(\Delta x = 0.09765\)</span> is used. Neumann boundary conditions, given by the zero normal-derivative of the order parameter, are applied on all domain boundaries. The figure below shows the starting geometry of the nucleus in 2D (left) and 3D (right).</p>
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<p>To demonstrate a case where simulation outcomes can significantly differ in different dimensions, we consider the <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark8.ipynb/#Part-%28a%29">single seed case</a> of the <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0927025621000963?via%3Dihub">homogeneous nucleation</a> benchmark problem. A simple phase-field model with a single non-conserved order parameter describes an isothermal pure substance with one liquid phase (order parameter = $0$) and one solid phase (order parameter = $1$). The nucleation driving force for the solid phase is $\Delta f=\sqrt2/30$. The free energy of the diffuse interface is $\gamma = 1/3\sqrt2$.</p>
+<p>We consider a seed nucleus of $7.5$ unit radius in 2D and 3D. The 2D simulation domain is of size $100\times100$, and the 3D simulation domain is of size $40 \times 40 \times 40$. The nucleus is centered at $x=y=z=0$. Uniform mesh of element size $\Delta x = 0.09765$ is used. Neumann boundary conditions, given by the zero normal-derivative of the order parameter, are applied on all domain boundaries. The figure below shows the starting geometry of the nucleus in 2D (left) and 3D (right).</p>
 <img width="285" alt="2D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557138-054247d9-3c68-4eff-9234-3a2e00fa6b42.png">
 <img width="288.5" alt="3D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557199-85fb0c6a-bc75-440d-95c5-a21e467d8a66.png">
 <p>The time evolution of the order parameter, given by the Allen-Cahn equation, was solved using the MOOSE framework. Details of the numerical method can be found in <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0927025621000963?via%3Dihub">Wu et al. (2021)</a>.
-The simulations results of nucleus evolution are shown in the figures below: (left) order parameter profile measured radially from the center of domain at different evolution times; (right) radius as a function of evolution time. We see that the seed of same starting radius <span class="math notranslate nohighlight">\(r_\circ = 7.5\)</span> units evolves starkly differently in 2D and 3D. While the nucleus grows in 2D, it shrinks and dissolves in 3D.</p>
+The simulations results of nucleus evolution are shown in the figures below: (left) order parameter profile measured radially from the center of domain at different evolution times; (right) radius as a function of evolution time. We see that the seed of same starting radius $r_\circ = 7.5$ units evolves starkly differently in 2D and 3D. While the nucleus grows in 2D, it shrinks and dissolves in 3D.</p>
 <img width="430.5" alt="nucleusOP_evol_2D_vs_3D" src="https://user-images.githubusercontent.com/74273633/197558441-1a1c6a0c-f682-45a5-88ca-2ea94c714a7d.png">
 <img width="430.5" alt="radius_evol_2D_vs_3D" src="https://user-images.githubusercontent.com/74273633/197557432-b5a6e8f2-9c8f-4649-9607-b43b687c55a0.png">
 <br/><br/>
-<p>The role of dimensionality in homogeneous nucleation can be understood from the classical nucleation theory where the solid-liquid interface is modeled as a mathematically sharp interface. The interface is a 1D line in a 2D system and a 2D plane in a 3D system. The free energy of the nucleus particle <span class="math notranslate nohighlight">\(\Delta G(r)\)</span> is a balance between the energy cost in forming the interface, and the energy released due to the driving force in forming the bulk particle. For a 2D system, <span class="math notranslate nohighlight">\(\Delta G(r) = 2\pi r\gamma - \pi r^2 \Delta f\)</span>. For a 3D system, <span class="math notranslate nohighlight">\(\Delta G(r) = 4 \pi r^2 \gamma - (4 \pi /3) r^3 \Delta f\)</span>.  When the rate of change of free energy with respect to particle size is negative, the particle is favored to grow; otherwise it will shrink and dissolve. By setting <span class="math notranslate nohighlight">\(d \Delta G / d r = 0\)</span>, we obtain the critical radius as <span class="math notranslate nohighlight">\(r_c = \gamma/ \Delta f\)</span> in 2D and <span class="math notranslate nohighlight">\(r_c = 2\gamma/ \Delta f\)</span> in 3D.</p>
-<p>We can now apply the above sharp-interface analysis to our diffuse interface approximation in the phase-field model. For the given model parameters, we obtain <span class="math notranslate nohighlight">\(r_c = 5\)</span> units in 2D and <span class="math notranslate nohighlight">\(r_c = 10\)</span> units in 3D. In our simulation setup of <span class="math notranslate nohighlight">\(r_\circ = 7.5\)</span> units, <span class="math notranslate nohighlight">\(r_\circ\)</span> <span class="math notranslate nohighlight">\(&gt;\)</span> <span class="math notranslate nohighlight">\(r_c\)</span> in 2D, but <span class="math notranslate nohighlight">\(r_\circ &lt; r_c\)</span> in 3D. Therefore, the nucleus is favored to grow in 2D but shrinks in 3D as observed in the simulations.</p>
+<p>The role of dimensionality in homogeneous nucleation can be understood from the classical nucleation theory where the solid-liquid interface is modeled as a mathematically sharp interface. The interface is a 1D line in a 2D system and a 2D plane in a 3D system. The free energy of the nucleus particle $\Delta G(r)$ is a balance between the energy cost in forming the interface, and the energy released due to the driving force in forming the bulk particle. For a 2D system, $\Delta G(r) = 2\pi r\gamma - \pi r^2 \Delta f$. For a 3D system, $\Delta G(r) = 4 \pi r^2 \gamma - (4 \pi /3) r^3 \Delta f$.  When the rate of change of free energy with respect to particle size is negative, the particle is favored to grow; otherwise it will shrink and dissolve. By setting $d \Delta G / d r = 0$, we obtain the critical radius as $r_c = \gamma/ \Delta f$ in 2D and $r_c = 2\gamma/ \Delta f$ in 3D.</p>
+<p>We can now apply the above sharp-interface analysis to our diffuse interface approximation in the phase-field model. For the given model parameters, we obtain $r_c = 5$ units in 2D and $r_c = 10$ units in 3D. In our simulation setup of $r_\circ = 7.5$ units, $r_\circ$ $&gt;$ $r_c$ in 2D, but $r_\circ &lt; r_c$ in 3D. Therefore, the nucleus is favored to grow in 2D but shrinks in 3D as observed in the simulations.</p>
 <img width="433" alt="radius_2D" src="https://user-images.githubusercontent.com/74273633/197557534-6ef5cf54-658b-43e4-b83a-f74cad29f2cf.png">
 <img width="433" alt="radius_3D" src="https://user-images.githubusercontent.com/74273633/197557613-2f2dfc84-39e3-4b14-a530-fab4238e7b85.png">
-<p>The dependence on dimensionality is further illustrated by considering cases where the initial radius is close to the critical radius: <span class="math notranslate nohighlight">\(r_\circ = 0.99 r_c\)</span>, <span class="math notranslate nohighlight">\(r_\circ = r_c\)</span> and <span class="math notranslate nohighlight">\(r_\circ = 1.01 r_c\)</span>. The simulation results of radius evolution are shown above for 2D (left) and 3D (right). As expected from the the classical homogeneous nucleation theory, the sub-critical nucleus with <span class="math notranslate nohighlight">\(r_\circ = 0.99 r_c\)</span> shrinks and the super-critical nucleus with <span class="math notranslate nohighlight">\(r_\circ = 1.01 r_c\)</span> grows.</p>
-<p>Since the nucleus in the phase-field model is a diffuse-interface approximation of the classical sharp interface nucleus, <span class="math notranslate nohighlight">\(r_\circ = r_c\)</span> is fairly close to an unstable equilibrium. Ideally, the radius would remain constant with time. However, since the system is unstable, small numerical errors accumulate with time, eventually leading to growth or shrinkage of the nucleus. During initial time steps, the interface profile is expected to undergo some changes from the starting profile due to equilibration. While the <span class="math notranslate nohighlight">\(tanh\)</span> function is a common choice for the initial condition of the interface, it is an exact solution only for a planar interface, representative of a 1D scenario.</p>
+<p>The dependence on dimensionality is further illustrated by considering cases where the initial radius is close to the critical radius: $r_\circ = 0.99 r_c$, $r_\circ = r_c$ and $r_\circ = 1.01 r_c$. The simulation results of radius evolution are shown above for 2D (left) and 3D (right). As expected from the the classical homogeneous nucleation theory, the sub-critical nucleus with $r_\circ = 0.99 r_c$ shrinks and the super-critical nucleus with $r_\circ = 1.01 r_c$ grows.</p>
+<p>Since the nucleus in the phase-field model is a diffuse-interface approximation of the classical sharp interface nucleus, $r_\circ = r_c$ is fairly close to an unstable equilibrium. Ideally, the radius would remain constant with time. However, since the system is unstable, small numerical errors accumulate with time, eventually leading to growth or shrinkage of the nucleus. During initial time steps, the interface profile is expected to undergo some changes from the starting profile due to equilibration. While the $tanh$ function is a common choice for the initial condition of the interface, it is an exact solution only for a planar interface, representative of a 1D scenario.</p>
 </section>
 </section>
 <section id="initial-conditions">
-<h2>Initial conditions<a class="headerlink" href="#initial-conditions" title="Permalink to this heading">#</a></h2>
+<h2>Initial conditions<a class="headerlink" href="#initial-conditions" title="Link to this heading">#</a></h2>
 <p>For simulations of the evolution of two or more phases, it is important to anticipate the expected equilibrium state of the system given the initial conditions. To do this, one needs the phase diagram as determined by the bulk contribution of the free energy density.</p>
-<p>For example, in simulating phase separation following spinodal decomposition, it is common to define the initial state of the order parameter as a spatially uniform field with an added small ‘noisy’ perturbation with small amplitude. However, this order parameter must be within the spinodal region of the phase diagram, i.e., the region where spontaneous decomposition leads to a decrease in the free energy. Below we show two instances that demonstrate that choosing different values for the baseline order parameter, <span class="math notranslate nohighlight">\(c_{0,base}\)</span>, and the same initial perturbation term, <span class="math notranslate nohighlight">\(\xi(\vec{r})\)</span>, for the initial conditions of leads to different dynamics.</p>
+<p>For example, in simulating phase separation following spinodal decomposition, it is common to define the initial state of the order parameter as a spatially uniform field with an added small ‘noisy’ perturbation with small amplitude. However, this order parameter must be within the spinodal region of the phase diagram, i.e., the region where spontaneous decomposition leads to a decrease in the free energy. Below we show two instances that demonstrate that choosing different values for the baseline order parameter, $c_{0,base}$, and the same initial perturbation term, $\xi(\vec{r})$, for the initial conditions of leads to different dynamics.</p>
 <p><img alt="c0_0p15" src="https://github.com/usnistgov/pfhub/assets/16142451/e2d2ddca-9aa9-4c78-a0b1-2148ef2ed577" />
 <img alt="c0_0p45" src="https://github.com/usnistgov/pfhub/assets/16142451/8580071f-e29b-4b2a-8aa4-b0902e1610cf" /></p>
 </section>
 <section id="boundary-conditions">
-<h2>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this heading">#</a></h2>
+<h2>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading">#</a></h2>
 <p>Boundary conditions (BC) are required to solve for the governing equations in all phase field simulations. In general, every field must have a defined BC at every boundary of the system. The three most common types of boundary conditions (BC) for phase field simulation are:</p>
 <ul class="simple">
 <li><p>Dirichlet BC: The value of a field is specified at the boundary. This type of boundary condition is useful whenever we want to impose a value to an order parameter or field at one or more boundaries. Some common examples include setting a constant value for temperature to simulate a heat reservoir, or setting a constant value for a solid/liquid order parameter to indicate a fixed phase beyond the confines of the system.</p></li>
@@ -446,65 +450,65 @@ The simulations results of nucleus evolution are shown in the figures below: (le
 <li><p>Periodic BCs: The value of the field in a boundary with periodic BC matches the value from the opposite boundary. These type of BCs are useful to simulate periodic domains, but also to minimize boundary effects. since the system does not interact with borders.</p></li>
 </ul>
 <section id="try-different-boundary-conditions-and-check-their-impact">
-<h3>Try different boundary conditions and check their impact<a class="headerlink" href="#try-different-boundary-conditions-and-check-their-impact" title="Permalink to this heading">#</a></h3>
-<p>We used the results from Benchmark <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(a)-Square-periodic">Problem 1a</a> and <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux">Problem 1b</a> to analyze the effect of boundary conditions. In addition, we solved for Cahn-Hilliard dynamics under the same initial condition and simulation parameters as problem 1 but using mixed boundary conditions, i.e., different boundary conditions for each boundary. We compare the results for each case at simulation time <em>t</em> = 1000. The simulations were carried out in the PRISMS-PF framework using a uniform square mesh with <span class="math notranslate nohighlight">\(N_x = N_y = 128\)</span> linear elements and a time step, <span class="math notranslate nohighlight">\(\Delta t\)</span> = 0.005. The results are shown in the figure below.</p>
+<h3>Try different boundary conditions and check their impact<a class="headerlink" href="#try-different-boundary-conditions-and-check-their-impact" title="Link to this heading">#</a></h3>
+<p>We used the results from Benchmark <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(a)-Square-periodic">Problem 1a</a> and <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux">Problem 1b</a> to analyze the effect of boundary conditions. In addition, we solved for Cahn-Hilliard dynamics under the same initial condition and simulation parameters as problem 1 but using mixed boundary conditions, i.e., different boundary conditions for each boundary. We compare the results for each case at simulation time <em>t</em> = 1000. The simulations were carried out in the PRISMS-PF framework using a uniform square mesh with $N_x = N_y = 128$ linear elements and a time step, $\Delta t$ = 0.005. The results are shown in the figure below.</p>
 <p><img alt="BCs_white" src="https://user-images.githubusercontent.com/16142451/197867529-25d4ab7e-1a69-45f8-8fee-5b2ff3284db4.png" /></p>
-<p>As can be seen in the figure above, for periodic boundary boundaries the <span class="math notranslate nohighlight">\(\alpha\)</span> - <span class="math notranslate nohighlight">\(\beta\)</span> domains are <strong>continuous</strong> on opposite sides of the system. For No-flux boundaries, the <span class="math notranslate nohighlight">\(\alpha\)</span> - <span class="math notranslate nohighlight">\(\beta\)</span> interfaces are <strong>normal</strong> to the boundary. For Dirichlet boundaries (bottom boundary of the right panel), the value of <em>c</em> is <strong>fixed</strong> along the boundary.</p>
+<p>As can be seen in the figure above, for periodic boundary boundaries the $\alpha$ - $\beta$ domains are <strong>continuous</strong> on opposite sides of the system. For No-flux boundaries, the $\alpha$ - $\beta$ interfaces are <strong>normal</strong> to the boundary. For Dirichlet boundaries (bottom boundary of the right panel), the value of <em>c</em> is <strong>fixed</strong> along the boundary.</p>
 </section>
 </section>
 <section id="interface-width">
-<h2>Interface width<a class="headerlink" href="#interface-width" title="Permalink to this heading">#</a></h2>
+<h2>Interface width<a class="headerlink" href="#interface-width" title="Link to this heading">#</a></h2>
 <p>Phase-field modeling is a diffuse interface approach, meaning that interfaces are represented by a smooth variation of one or more order parameters across the interface. The width of the interface is a function of the model parameters and the interface width is determined by model parameter choices. In some cases, an analytical expression is available that relates interface width to phase-field model parameters (such as free energy barrier height and gradient energy coefficient, which also impact the interfacial energy). In other cases, no analytical solution is available and the interface width must be approximated or determined numerically based on parameter choices. Such details are specific to the formulation being used.</p>
 <p>Once the relationship between model parameters and interface width is understood, an appropriate selection of interface width needs to be made (while maintaining the correct interfacial energy for the system being studied). In some cases, the interface width in the phase-field model can be chosen to match the actual physical width of the interface being studied (such typically sub-nanometer). However, resolving a physically realistic interface width requires a sub-nanometer grid/mesh (grid/mesh convergence is described further in the next section). Using a physically realistic interface width often makes it computationally unfeasible to simulate systems large enough to be statistically representative. Therefore, in many cases an interfacial width that is much larger than the the physical width of an interface is used. In these cases, a careful balance between computational efficiency and model accuracy is needed; the interface width should be chosen to be small enough that the physics of the system are accurately represented, while maintaining adequate computational performance. A useful rule of thumb as a starting point is that the interface width should be at least an order of magnitude smaller than the smallest microstructural feature size of interest. Starting from this guideline, simulations of microstructural evolution with varying interface widths can be run to ensure that the choice of interface width does not affect the simulation results. A small test problem may be useful for testing convergence with respect to interface width; for example a shrinking circular grain embedded in another grain may be used for testing convergence of a grain growth model with respect to interface width, rather starting with large, costly simulations of hundreds of grains.</p>
 </section>
 <section id="convergence-studies">
-<h2>Convergence studies<a class="headerlink" href="#convergence-studies" title="Permalink to this heading">#</a></h2>
+<h2>Convergence studies<a class="headerlink" href="#convergence-studies" title="Link to this heading">#</a></h2>
 <section id="carry-out-grid-mesh-convergence-study-after-you-have-finalized-your-interfacial-width">
-<h3>Carry out grid/mesh convergence study AFTER you have finalized your interfacial width.<a class="headerlink" href="#carry-out-grid-mesh-convergence-study-after-you-have-finalized-your-interfacial-width" title="Permalink to this heading">#</a></h3>
+<h3>Carry out grid/mesh convergence study AFTER you have finalized your interfacial width.<a class="headerlink" href="#carry-out-grid-mesh-convergence-study-after-you-have-finalized-your-interfacial-width" title="Link to this heading">#</a></h3>
 <p>As an example of a mesh convergence study, we can consider <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/">Benchmark Problem 1</a> from the Phase-Field Community Hub. In this problem, which models spinodal decomposition using the Cahn-Hilliard equation, the width of the diffuse interface is 4.47, as defined by the Cahn-Hilliard equation and physical parameters in the problem statement. Given this interface width, we need to ensure there are a sufficient number of grid points (for finite difference schemes) or mesh elements (for finite element or finite volume schemes) through the diffuse interface to adequately resolve the variation of the composition order parameter.</p>
-<p>In <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux">Problem 1b</a>, a square domain with dimensions <span class="math notranslate nohighlight">\(200 \times 200\)</span> and no-flux boundary conditions is considered. An example of a mesh convergence study for this problem using the MOOSE framework phase-field module (a finite element code) is described. The <span class="math notranslate nohighlight">\(200 \times 200\)</span> domain is discretized using increasing numbers of elements <span class="math notranslate nohighlight">\(N_x\)</span> in the <span class="math notranslate nohighlight">\(x\)</span> direction and <span class="math notranslate nohighlight">\(N_y\)</span> in the <span class="math notranslate nohighlight">\(y\)</span> direction, maintaining <span class="math notranslate nohighlight">\(N_x = N_y\)</span> for square elements (using linear Lagrange shape functions). The simulations with varying numbers of elements are run until a significant amount of microstructural evolution has occurred. We need to increase the number of elements until the microstructure at a fixed time no longer changes with further increases in the number of elements; at this point the simulation is converged with respect to the mesh resolution.</p>
-<p>The simulation initial conditions and the microstructures at <span class="math notranslate nohighlight">\(t = 10,000\)</span> are shown in the figure below.</p>
+<p>In <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux">Problem 1b</a>, a square domain with dimensions $200 \times 200$ and no-flux boundary conditions is considered. An example of a mesh convergence study for this problem using the MOOSE framework phase-field module (a finite element code) is described. The $200 \times 200$ domain is discretized using increasing numbers of elements $N_x$ in the $x$ direction and $N_y$ in the $y$ direction, maintaining $N_x = N_y$ for square elements (using linear Lagrange shape functions). The simulations with varying numbers of elements are run until a significant amount of microstructural evolution has occurred. We need to increase the number of elements until the microstructure at a fixed time no longer changes with further increases in the number of elements; at this point the simulation is converged with respect to the mesh resolution.</p>
+<p>The simulation initial conditions and the microstructures at $t = 10,000$ are shown in the figure below.</p>
 <img width="711" alt="Screen Shot 2022-10-25 at 3 25 26 PM" src="https://user-images.githubusercontent.com/3810555/197874871-82d8d1c7-75a7-4d73-bd0c-98ec294e41a5.png">
-<p>As the number of elements in each direction is increased from 40 to 80 to 160, changes in the microstructure are observed. However, once the number of elements increases to 320, no further changes are observed in the microstructure. Therefore, the problem is converged with respect to mesh resolution at <span class="math notranslate nohighlight">\(N_x = N_y = 160\)</span>. For this number of elements, each element has size <span class="math notranslate nohighlight">\(\Delta x = \Delta y\)</span> = 200 / 160 = 1.25. Therefore, the number of elements through the diffuse interface width is 4.47 / 1.25 = 3.6. Practical experience in the phase-field community has shown that somewhere between 3 to 5 elements through the interface are usually required to obtain mesh convergence; however, the appropriate resolution is problem-specific, and convergence should be tested for the specific physics and parameters at hand.</p>
+<p>As the number of elements in each direction is increased from 40 to 80 to 160, changes in the microstructure are observed. However, once the number of elements increases to 320, no further changes are observed in the microstructure. Therefore, the problem is converged with respect to mesh resolution at $N_x = N_y = 160$. For this number of elements, each element has size $\Delta x = \Delta y$ = 200 / 160 = 1.25. Therefore, the number of elements through the diffuse interface width is 4.47 / 1.25 = 3.6. Practical experience in the phase-field community has shown that somewhere between 3 to 5 elements through the interface are usually required to obtain mesh convergence; however, the appropriate resolution is problem-specific, and convergence should be tested for the specific physics and parameters at hand.</p>
 </section>
 <section id="carry-out-time-step-convergence-studies-try-higher-order-schemes-adaptive-time-stepping-etc-for-explicit-time-integration-know-your-stability-limit">
-<h3>Carry out time step convergence studies. Try higher-order schemes, adaptive time stepping, etc. For explicit time integration, know your stability limit.<a class="headerlink" href="#carry-out-time-step-convergence-studies-try-higher-order-schemes-adaptive-time-stepping-etc-for-explicit-time-integration-know-your-stability-limit" title="Permalink to this heading">#</a></h3>
-<p>For codes that use explicit time integration, there is a maximum value of the time step beyond which the solution becomes numerically unstable. This stability limit can be determined by the Courant–Friedrichs–Lewy (CFL) condition and, in general, it strongly depends on the order of the spatial derivatives. Below we show the simulation results of <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux">Benchmark Problem 1b</a> using time step values slightly below and slightly above the stability limit. We employed a forward Euler time-integration scheme and spatially discretized the system using <span class="math notranslate nohighlight">\(128 \times 128\)</span> first order elements. The simulations were performed in the PRISMS-PF framework. The left panel of the figure below shows a snapshot of the concentration at time <span class="math notranslate nohighlight">\(t=33\)</span>, which was obtained using a stable time step of <span class="math notranslate nohighlight">\(\Delta t=0.015\)</span>. If the time step is increased to <span class="math notranslate nohighlight">\(\Delta t=0.016\)</span>, the time step goes above the stability limit. The right panel shows the concentration at time <span class="math notranslate nohighlight">\(t \simeq 32.39\)</span> for <span class="math notranslate nohighlight">\(\Delta t=0.016\)</span> and features a numerical instability that appears near the bottom boundary. After only four time steps the amplification of this instability caused the simulation to fail.</p>
+<h3>Carry out time step convergence studies. Try higher-order schemes, adaptive time stepping, etc. For explicit time integration, know your stability limit.<a class="headerlink" href="#carry-out-time-step-convergence-studies-try-higher-order-schemes-adaptive-time-stepping-etc-for-explicit-time-integration-know-your-stability-limit" title="Link to this heading">#</a></h3>
+<p>For codes that use explicit time integration, there is a maximum value of the time step beyond which the solution becomes numerically unstable. This stability limit can be determined by the Courant–Friedrichs–Lewy (CFL) condition and, in general, it strongly depends on the order of the spatial derivatives. Below we show the simulation results of <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux">Benchmark Problem 1b</a> using time step values slightly below and slightly above the stability limit. We employed a forward Euler time-integration scheme and spatially discretized the system using $128 \times 128$ first order elements. The simulations were performed in the PRISMS-PF framework. The left panel of the figure below shows a snapshot of the concentration at time $t=33$, which was obtained using a stable time step of $\Delta t=0.015$. If the time step is increased to $\Delta t=0.016$, the time step goes above the stability limit. The right panel shows the concentration at time $t \simeq 32.39$ for $\Delta t=0.016$ and features a numerical instability that appears near the bottom boundary. After only four time steps the amplification of this instability caused the simulation to fail.</p>
 <img width="650" alt="stability_limit" src="https://user-images.githubusercontent.com/16142451/197867610-c7344bee-90e8-4a35-a989-bab3597bc621.png">
-<p>Codes that use implicit time stepping schemes may have fewer restrictions with respect to stability as time step size is increased, depending on the problem. However, discretization error still occurs in implicit schemes and increases with the size of the time step taken. Therefore, a convergence study should be carried out to ensure that the size of the time step does not affect the simulation results. As an example, we can again consider <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/">Benchmark Problem 1</a> from the Phase-Field Community Hub. <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux">Problem 1b</a> was solved with the phase-field module from the MOOSE framework using <span class="math notranslate nohighlight">\(N_x = N_y = 160\)</span>. The results are shown below. The microstructure at <span class="math notranslate nohighlight">\(t = 1000\)</span> remains the same for <span class="math notranslate nohighlight">\(\Delta t = 0.1\)</span>, <span class="math notranslate nohighlight">\(\Delta t = 0.25\)</span>, and <span class="math notranslate nohighlight">\(\Delta t = 0.5\)</span>. Some differences in the microstructure are observed at <span class="math notranslate nohighlight">\(\Delta t = 1\)</span>, and further differences become apparent at <span class="math notranslate nohighlight">\(\Delta t = 4\)</span>. In practice, it is recommended to start with a given time step and gradually decrease it until no changes are apparent with further decreases in time step size.</p>
+<p>Codes that use implicit time stepping schemes may have fewer restrictions with respect to stability as time step size is increased, depending on the problem. However, discretization error still occurs in implicit schemes and increases with the size of the time step taken. Therefore, a convergence study should be carried out to ensure that the size of the time step does not affect the simulation results. As an example, we can again consider <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/">Benchmark Problem 1</a> from the Phase-Field Community Hub. <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux">Problem 1b</a> was solved with the phase-field module from the MOOSE framework using $N_x = N_y = 160$. The results are shown below. The microstructure at $t = 1000$ remains the same for $\Delta t = 0.1$, $\Delta t = 0.25$, and $\Delta t = 0.5$. Some differences in the microstructure are observed at $\Delta t = 1$, and further differences become apparent at $\Delta t = 4$. In practice, it is recommended to start with a given time step and gradually decrease it until no changes are apparent with further decreases in time step size.</p>
 <p><img alt="Screen Shot 2022-10-24 at 9 43 26 PM" src="https://user-images.githubusercontent.com/3810555/197662555-124119a2-0bad-4bd4-a4c9-e5f684adad26.png" /></p>
 <p>Adaptive time stepping can be useful to increase the time step size during time periods in the simulation where there are fewer microstructural changes, particularly for codes that use implicit time stepping schemes. However, convergence must still be checked for the parameters of the time stepping scheme being used. An example is the IterationAdaptiveDt time stepping scheme used in the MOOSE framework. This scheme attempts to increase or decrease the time step to keep the solver using a certain number of nonlinear iterations (controlled by the parameter <code class="docutils literal notranslate"><span class="pre">optimal_iterations</span></code>), within a window or plus or minus the parameter <code class="docutils literal notranslate"><span class="pre">iteration_window</span></code>. Higher values of <code class="docutils literal notranslate"><span class="pre">optimal_iterations</span></code> parameter result in higher time steps, and with that comes the risk of discretization error changing simulation results. As shown in the following, for <a class="reference external" href="https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux">Problem 1b</a>, <code class="docutils literal notranslate"><span class="pre">optimal_iterations</span></code> values of 6 or 8 gave results consistent with the converged time step of 0.5, but when <code class="docutils literal notranslate"><span class="pre">optimal_iterations</span></code> was significantly increased to 15, changes in the microstructure resulted.</p>
 <p><img alt="Screen Shot 2022-10-24 at 10 17 37 PM" src="https://user-images.githubusercontent.com/3810555/197666881-21d25d59-1781-4a52-9505-d02735d4a5b4.png" /></p>
 </section>
 </section>
 <section id="impact-of-orientation">
-<h2>Impact of Orientation<a class="headerlink" href="#impact-of-orientation" title="Permalink to this heading">#</a></h2>
+<h2>Impact of Orientation<a class="headerlink" href="#impact-of-orientation" title="Link to this heading">#</a></h2>
 <p>Oftentimes, the results of the phase field simulations are sensitive to the orientation and alignment of the key microstructural features with the mesh/grid points. To demonstrate this we pick a simple solidification problem with dendritic structure formation. In this case, we utilize the solidification <a class="reference external" href="https://github.com/idaholab/moose/blob/next/modules/phase_field/examples/anisotropic_interfaces/snow.i">example</a> from the MOOSE-based phase field module. This example problem can quickly demonstrate dendritic structure formation including the formation of secondary dendritic arms in a computationally cost-effective manner. Here, we use 4-fold symmetry of the structure and vary the reference angles to misorient the dendritic arms with respect to the mesh. Dendritic structures corresponding to 0 and 45 degree reference angle is presented below:</p>
 <img width="400" alt="Screen Shot 2022-10-24 at 2 45 09 PM" src="https://user-images.githubusercontent.com/9493686/197635776-f71f35cc-fb98-49f8-bdb1-7b42cd32b421.png">
 <img width="400" alt="Screen Shot 2022-10-24 at 2 45 28 PM" src="https://user-images.githubusercontent.com/9493686/197635791-41d1b86d-409d-414a-9d1f-53eb4fc9d71c.png">
-<p>It is noteworthy that the shape of the dendrite varies with orientation (as observed by the difference in the dendrite center). For better comparison, we rotate the <span class="math notranslate nohighlight">\(45^o\)</span> dendrite to align the primary dendrite arms with the reference orientation dendrite:</p>
+<p>It is noteworthy that the shape of the dendrite varies with orientation (as observed by the difference in the dendrite center). For better comparison, we rotate the $45^o$ dendrite to align the primary dendrite arms with the reference orientation dendrite:</p>
 <img width="500" alt="Screen Shot 2022-10-25 at 1 11 29 PM" src="https://user-images.githubusercontent.com/9493686/197872890-9b0717ab-6140-4f9d-a327-e33ba39acb95.png">
 <p>This highlights the slight differences between the dendrite shapes, especially the center and the secondary dendritic arms. Additionally, the growth rate of the solid also varies with orientation as observed by the change in solid area fraction over time:</p>
 <img width="500" alt="Screen Shot 2022-10-25 at 1 03 55 PM" src="https://user-images.githubusercontent.com/9493686/197870821-940d7ffa-65dc-4a22-ba4c-cc7ec349c7a1.png">
-<p>Thus, it is important to evaluate the effect of orientation on the results by misaligning the grids. Furthermore, these effects are influenced by the discretization of the mesh. Hence, it is important to ensure that the mesh is refined enough to properly resolve the interfaces (if necessary, run a mesh convergence study). For more information about strategies to simulate multiple dendrites with varying orientation, please refer to examples by Biswas et al. <span class="xref myst">[1]</span>, Warren et al. <span class="xref myst">[2]</span>, Dorr et al. <span class="xref myst">[3]</span>, Ofori-Opoku et al. <span class="xref myst">[4]</span>, and Pusztai et al. <span class="xref myst">[5]</span>, among others.</p>
+<p>Thus, it is important to evaluate the effect of orientation on the results by misaligning the grids. Furthermore, these effects are influenced by the discretization of the mesh. Hence, it is important to ensure that the mesh is refined enough to properly resolve the interfaces (if necessary, run a mesh convergence study). For more information about strategies to simulate multiple dendrites with varying orientation, please refer to examples by Biswas et al. <a class="reference internal" href="#1"><span class="xref myst">[1]</span></a>, Warren et al. <a class="reference internal" href="#2"><span class="xref myst">[2]</span></a>, Dorr et al. <a class="reference internal" href="#3"><span class="xref myst">[3]</span></a>, Ofori-Opoku et al. <a class="reference internal" href="#4"><span class="xref myst">[4]</span></a>, and Pusztai et al. <a class="reference internal" href="#5"><span class="xref myst">[5]</span></a>, among others.</p>
 </section>
 <section id="kinetics-and-how-long-to-run">
-<h2>Kinetics and how long to run<a class="headerlink" href="#kinetics-and-how-long-to-run" title="Permalink to this heading">#</a></h2>
-<p>The amount of time the simulation should be run depends on the science or engineering question to be answered, and on the system being studied. For many classic phase-field problems such as grain growth and coarsening, a characteristic feature size of the system increases with time, and the progress of microstructural evolution slows as the characteristic feature size increases. For example, in grain growth, at long times the mean grain diameter <span class="math notranslate nohighlight">\(D\)</span> increases with time as <span class="math notranslate nohighlight">\(D \propto t^{1/2}\)</span>. Another example is coarsening of spherical particles in a matrix; for sufficiently low volume fraction of particles in a matrix where solute is transported by diffusion, the mean particle radius <span class="math notranslate nohighlight">\(R\)</span> increases with time as <span class="math notranslate nohighlight">\(R \propto t^{1/3}\)</span>.</p>
+<h2>Kinetics and how long to run<a class="headerlink" href="#kinetics-and-how-long-to-run" title="Link to this heading">#</a></h2>
+<p>The amount of time the simulation should be run depends on the science or engineering question to be answered, and on the system being studied. For many classic phase-field problems such as grain growth and coarsening, a characteristic feature size of the system increases with time, and the progress of microstructural evolution slows as the characteristic feature size increases. For example, in grain growth, at long times the mean grain diameter $D$ increases with time as $D \propto t^{1/2}$. Another example is coarsening of spherical particles in a matrix; for sufficiently low volume fraction of particles in a matrix where solute is transported by diffusion, the mean particle radius $R$ increases with time as $R \propto t^{1/3}$.</p>
 <p>It is also useful to be aware that the system may reach a metastable or stable equilibrium state with respect to system energy, in which case no further microstructural evolution will occur for increasing simulation time. In the grain growth example, if the system evolves to a single grain, stable equilbrium has been reached. If the system evolves to a two-grain configuration with a flat grain boundary between the grains, it has reached a metastable equilibrium; the system could still lower it energy by removing the grain boundary, but in that configuration, there is no kinetic driving force to remove it from the metastable state. To monitor for such possibilities, it is useful for the simulation to periodically output the total free energy of the system; a stable or metastable equilibrium state is indicated by a constant free energy with respect to time.</p>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <p><a id="1">[1]</a>
-Biswas et al., “Solidification and grain formation in alloys: a 2D application of the grand-potential-based phase-field approach”, Modelling and Simulation in Materials Science and Engineering, 30 (2022) 025013. <a class="reference external" href="https://doi.org/10.1088/1361-651X/ac46dc">https://doi.org/10.1088/1361-651X/ac46dc</a></p>
+Biswas et al., “Solidification and grain formation in alloys: a 2D application of the grand-potential-based phase-field approach”, Modelling and Simulation in Materials Science and Engineering, 30 (2022) 025013. https://doi.org/10.1088/1361-651X/ac46dc</p>
 <p><a id="2">[2]</a>
-Warren et al., “Extending phase field models of solidification to polycrystalline materials”, Acta Materialia 51 (2003) 6035–6058. <a class="reference external" href="https://doi.org/10.1016/S1359-6454(03)00388-4">https://doi.org/10.1016/S1359-6454(03)00388-4</a></p>
+Warren et al., “Extending phase field models of solidification to polycrystalline materials”, Acta Materialia 51 (2003) 6035–6058. https://doi.org/10.1016/S1359-6454(03)00388-4</p>
 <p><a id="3">[3]</a>
-Dorr et al., “A numerical algorithm for the solution of a phase-field model of polycrystalline materials”, Journal of Computational Physics 229 (2010) 626–641. <a class="reference external" href="https://doi.org/10.1016/j.jcp.2009.09.041">https://doi.org/10.1016/j.jcp.2009.09.041</a></p>
+Dorr et al., “A numerical algorithm for the solution of a phase-field model of polycrystalline materials”, Journal of Computational Physics 229 (2010) 626–641. https://doi.org/10.1016/j.jcp.2009.09.041</p>
 <p><a id="4">[4]</a>
-Ofori-Opuku et al., “A quantitative multi-phase field model of polycrystalline alloy solidification”, Acta Materialia 58 (2010) 2155-2164. <a class="reference external" href="https://doi.org/10.1016/j.actamat.2009.12.001">https://doi.org/10.1016/j.actamat.2009.12.001</a></p>
+Ofori-Opuku et al., “A quantitative multi-phase field model of polycrystalline alloy solidification”, Acta Materialia 58 (2010) 2155-2164. https://doi.org/10.1016/j.actamat.2009.12.001</p>
 <p><a id="5">[5]</a>
-Pusztai et al., “Phase-field approach to polycrystalline solidification including heterogeneous and homogeneous nucleation”, Journal of Physics: Condensed Matter 20 (2008) 404205. <a class="reference external" href="https://doi.org/10.1088/0953-8984/20/40/404205">https://doi.org/10.1088/0953-8984/20/40/404205</a></p>
+Pusztai et al., “Phase-field approach to polycrystalline solidification including heterogeneous and homogeneous nucleation”, Journal of Physics: Condensed Matter 20 (2008) 404205. https://doi.org/10.1088/0953-8984/20/40/404205</p>
 </section>
 </section>
 
@@ -533,11 +537,10 @@ Pusztai et al., “Phase-field approach to polycrystalline solidification includ
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="ch4-software-development.html"
@@ -557,17 +560,16 @@ Pusztai et al., “Phase-field approach to polycrystalline solidification includ
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -607,13 +609,14 @@ Pusztai et al., “Phase-field approach to polycrystalline solidification includ
   <div class="footer-item">
     
 <p class="component-author">
-By PFHub members
+By PFHub Workshop Community
 </p>
 
   </div>
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -640,8 +643,8 @@ By PFHub members
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

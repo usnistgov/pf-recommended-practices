@@ -4,55 +4,54 @@
 - *[Daniel Wheeler](https://www.nist.gov/people/daniel-wheeler), NIST*, [@wd15]
 - *[Damien Pinto](https://ca.linkedin.com/in/damien-pinto-4748387b), McGill*, [@DamienPinto]
 
-
 ## Overview
 
- - Look at lit on data and see how this is implemented
-  - Generation and dissemination
-  
+- Look at lit on data and see how this is implemented
+- Generation and dissemination
+
 ## Ideas
 
- - Data formats
- - FAIR
- - Metadata (hierarchical data standards (look for current versions)) 
- - What standards exist
- - One or two examples of phase field data stored currently
-   - Use an existing 
-   - Create our own example
- - Practical choices for storing data (figshare, zenodo, dryad, MDF)
- - Deciding what data to keep
-   - What data to store when publishing 
-   - What is supplementary material versus store versus leave on hard drive
- - Lit review, good citations
- - minting DOIs for the data
- - might include simulatioin execution and logging
-   - how frequently to store data
-   - how to store 
- 
+- Data formats
+- FAIR
+- Metadata (hierarchical data standards (look for current versions))
+- What standards exist
+- One or two examples of phase field data stored currently
+  - Use an existing
+  - Create our own example
+- Practical choices for storing data (figshare, zenodo, dryad, MDF)
+- Deciding what data to keep
+  - What data to store when publishing
+  - What is supplementary material versus store versus leave on hard drive
+- Lit review, good citations
+- minting DOIs for the data
+- might include simulatioin execution and logging
+  - how frequently to store data
+  - how to store
+
 ## How do we want to structure the sections?
 
- 1. Intro (Daniel)
+1. Intro (Daniel)
    - What is data?
    - What is metadata?
    - Why do we need curate data?
    - What is the motivation for this document?
      - What should the reader get out of this document
-     - Why is this useful  
+     - Why is this useful
    - Create a distinction between software, data, and post-processed results
- 
- 2. Data Generation (Trevor)
+
+2. Data Generation (Trevor)
    - HPC
    - file systems
    - data formats
-       - formats not to use (e.g., don't use serialization that depends on the version of the code that reads and writes because code changes)
-       - don't use pickles
+     - formats not to use (e.g., don't use serialization that depends on the version of the code that reads and writes because code changes)
+     - don't use pickles
    - restarts
    - data frequency
    - post-processing -> refer to other document for this
    - precision
    - importance of folder structure
- 
- 3. Data Curation (Trevor)
+
+3. Data Curation (Trevor)
    - Why is curating data important?
    - Why do we need to store our data
    - What formats can we use
@@ -63,8 +62,8 @@
    - Storing post-processed data and raw data and which to store or keep
    - Minting DOIs for your software when publishing a paper
    - FAIR
- 
- 4. Metadata standards (Daniel)
+
+4. Metadata standards (Daniel)
    - Why do we need to keep some metadata beyond the data
    - Zoo of things like data dictionaries, ontologies
      - however, these are not well developed for our use case
@@ -76,27 +75,26 @@
      - What software
      - Give example of a yaml file with 10 flat fields
    - The future should be better in this regard. People actively working to improve this issue.
- 
- 5. Examples
+
+5. Examples
    - Practical examples (Trevor)
    - Using Zenodo for a PFHub record to store data and metadata
      - Relatively rich metadata scheme
-  
+
    - Simulation from scratch (Damien)
      - data generation
        - folder structure
        - HPC issues with data
        - capture process / descriptive parameters for the data that
          are useful for subsequent ML practitioners that use the data
-     - ML / store data 
+     - ML / store data
      - Narrative of what gets stored to disk
      - Decisions of what to keep and how frequently to save data
      - Auxiliary metadata decisions
-   
-   
+
  6. Summary (Daniel)
  7. Biblio (Daniel)
- 
+
 ---
 
 ## Old version
@@ -155,20 +153,20 @@ Zenodo gives you the option to import a repository directly from GitHub. The ori
 ```json
 {
   "@context": "https://schema.org/",
-  "@id": "https://doi.org/10.5281/zenodo.6540105", 
-  "@type": "SoftwareSourceCode", 
+  "@id": "https://doi.org/10.5281/zenodo.6540105",
+  "@type": "SoftwareSourceCode",
   "name": "tkphd/fair-phase-field-data: CHiMaD Phase-field XIII",
-  "description": "FAIR Principles for Phase-Field Practitioners", 
+  "description": "FAIR Principles for Phase-Field Practitioners",
   "version": "v0.1.0",
-  "license": "", 
-  "identifier": "https://doi.org/10.5281/zenodo.6540105", 
-  "url": "https://zenodo.org/record/6540105", 
-  "datePublished": "2022-05-11", 
+  "license": "",
+  "identifier": "https://doi.org/10.5281/zenodo.6540105",
+  "url": "https://zenodo.org/record/6540105",
+  "datePublished": "2022-05-11",
   "creator": [{
-      "@type": "Person", 
+      "@type": "Person",
       "givenName": "Trevor",
       "familyName":  "Keller",
-      "affiliation": "NIST"}], 
+      "affiliation": "NIST"}],
   "codeRepository": "https://github.com/tkphd/fair-phase-field-data/tree/v0.1.0"
 }
 ```
@@ -177,40 +175,40 @@ The *strongly* preferred method is to upload files directly. The following recor
 
 ```json
 {
-  "@context": "https://schema.org/", 
-  "@id": "https://doi.org/10.5281/zenodo.1124941", 
-  "@type": "Dataset", 
+  "@context": "https://schema.org/",
+  "@id": "https://doi.org/10.5281/zenodo.1124941",
+  "@type": "Dataset",
   "name": "hiperc-gpu-cuda-spinodal"
-  "description": "Solution to the CHiMaD Phase Field benchmark problem on spinodal decomposition using CUDA, with a 9-point discrete Laplacian stencil", 
-  "identifier": "https://doi.org/10.5281/zenodo.1124941", 
-  "license": "https://creativecommons.org/licenses/by/4.0/legalcode", 
-  "url": "https://zenodo.org/record/1124941", 
-  "datePublished": "2017-12-21", 
+  "description": "Solution to the CHiMaD Phase Field benchmark problem on spinodal decomposition using CUDA, with a 9-point discrete Laplacian stencil",
+  "identifier": "https://doi.org/10.5281/zenodo.1124941",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "url": "https://zenodo.org/record/1124941",
+  "datePublished": "2017-12-21",
   "creator": [{
-      "@type": "Person", 
-      "@id": "https://orcid.org/0000-0002-2920-8302", 
+      "@type": "Person",
+      "@id": "https://orcid.org/0000-0002-2920-8302",
       "givenName": "Trevor",
       "familyName":  "Keller",
-      "affiliation": "NIST"}], 
-  "keywords": ["phase-field", "pfhub", "chimad"], 
-  "sameAs": ["https://doi.org/10.6084/m9.figshare.5715103.v2"], 
+      "affiliation": "NIST"}],
+  "keywords": ["phase-field", "pfhub", "chimad"],
+  "sameAs": ["https://doi.org/10.6084/m9.figshare.5715103.v2"],
   "distribution": [
     {
       "@type": "DataDownload",
-      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/free-energy-9pt.csv", 
+      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/free-energy-9pt.csv",
       "encodingFormat": "csv"
     }, {
       "@type": "DataDownload",
-      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0000000.png", 
+      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0000000.png",
       "encodingFormat": "png"
     }, {
       "@type": "DataDownload",
-      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0100000.png", 
-      "encodingFormat": "png" 
+      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0100000.png",
+      "encodingFormat": "png"
     }, {
       "@type": "DataDownload",
-      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0200000.png", 
-      "encodingFormat": "png" 
+      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0200000.png",
+      "encodingFormat": "png"
     }]
 }
 ```

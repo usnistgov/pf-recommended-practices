@@ -42,6 +42,13 @@ jobs:
         shell: bash
         run: touch "pf-recommended-practices/_build/html/.nojekyll"
 
+      # Upload the book's HTML as an artifact
+      # Not used for pages.nist.gov; here for examination of build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "_build/html"
+
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
         env:

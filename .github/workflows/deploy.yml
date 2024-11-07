@@ -18,12 +18,9 @@ concurrency:
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
-    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-    permissions:
-      pages: write
-      id-token: write
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Install dependencies
       - name: Set up Python 3.11
@@ -40,13 +37,10 @@ jobs:
         run: |
           jupyter-book build pf-recommended-practices
 
-      # Upload the book's HTML as an artifact
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: "_build/html"
-
-      # Deploy the book's HTML to GitHub Pages
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: nist-pages
+          FOLDER: "pf-recommended-practices/_build/html"
+          GITHUB_TOKEN: ${{ github.token }}

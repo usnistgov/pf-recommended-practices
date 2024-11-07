@@ -60,6 +60,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'bp-guide-gh/ch2-numerical-implementation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -427,7 +429,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="numerical-implementation">
+  <section class="tex2jax_ignore mathjax_ignore" id="numerical-implementation">
 <h1>Numerical Implementation<a class="headerlink" href="#numerical-implementation" title="Link to this heading">#</a></h1>
 <p>When writing your own phase-field simulation code or when choosing among existing codes, the numerical implementation of the model is an important consideration. This section of Phase-Field Recommended Practices Guide is split into two subsections – one focused on choosing appropriate numerical methods and one focused on choosing whether to code your own solvers or use existing libraries (and how to choose between existing libraries). Although these subsections are presented sequentially, these choices are more iterative than sequential. For example, you may start out deciding that a certain set of numerical methods are promising, but then switch to others after considering the availability of libraries.</p>
 <section id="choosing-an-appropriate-collection-of-numerical-methods">
@@ -567,7 +569,7 @@ Time integration is an active area of research across the phase-field, applied m
 <h4>Explicit vs. Implicit Methods<a class="headerlink" href="#explicit-vs-implicit-methods" title="Link to this heading">#</a></h4>
 <p>In explicit methods, the solution at a future time step is only a function of previous time steps.
 By comparison, for implicit methods, the solution at a future time step is a function of the future and previous time steps.
-Forward Euler, for example, has the form $(u^{n+1} - u^n) / \Delta t = f(u^n)$, and Backward Euler has the form $(u^{n+1} - u^n) / \Delta t = f(u^{n+1})$.
+Forward Euler, for example, has the form <span class="math notranslate nohighlight">\((u^{n+1} - u^n) / \Delta t = f(u^n)\)</span>, and Backward Euler has the form <span class="math notranslate nohighlight">\((u^{n+1} - u^n) / \Delta t = f(u^{n+1})\)</span>.
 Broadly, we can summarize the strengths (+) and weaknesses (-) as follows:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -609,14 +611,14 @@ The BE method can be a prototype for various flavors of implicit Runge-Kutta met
 <p><strong>Time step cost and size:</strong>
 Due to the need to solve a (non-)linear system of equations, one time step of an implicit method can be orders of magnitude more expensive than one time step of an explicit method.
 If iterative solvers are employed, the cost of each step will also vary with the overall conditioning of the system from one time step to the next.</p>
-<p>However, it is well-known that explicit solvers often have strict requirements for the stable time step size (e.g., $\Delta t \propto \Delta x^2$ for FE discretization of heat equation).
+<p>However, it is well-known that explicit solvers often have strict requirements for the stable time step size (e.g., <span class="math notranslate nohighlight">\(\Delta t \propto \Delta x^2\)</span> for FE discretization of heat equation).
 By comparison, most implicit methods are either unconditionally stable or have much wider stability regions
 For a given time interval and similar order of accuracy, an explicit method will usually take many more time steps than an implicit method, which can increase the accumulated roundoff error (this will depend on the particular schemes).
 Also, if the increase in stable step size is large enough, the implicit method may end up requiring less walltime to solve the entire model.</p>
 <p><strong>Memory usage:</strong>
 Explicit and implicit schemes can have different requirements on the amount of RAM that is needed for the same overall problem size.
-If we consider the FE and BE methods, both can be implemented with two vectors: one for $u^n$ and one for $u^{n+1}$.
-For the explicit method, this places no restrictions on the resulting solver algorithm: you can solve for $u^{n+1}$ and then either copy it to $u^n$ or swap the associated pointers in the code.
+If we consider the FE and BE methods, both can be implemented with two vectors: one for <span class="math notranslate nohighlight">\(u^n\)</span> and one for <span class="math notranslate nohighlight">\(u^{n+1}\)</span>.
+For the explicit method, this places no restrictions on the resulting solver algorithm: you can solve for <span class="math notranslate nohighlight">\(u^{n+1}\)</span> and then either copy it to <span class="math notranslate nohighlight">\(u^n\)</span> or swap the associated pointers in the code.
 However, economizing memory in the implicit scheme limits your method to classical iterative methods like Newton-Gauss-Seidel, which may not offer satisfactory performance in your overall code.
 More powerful solvers like Newton-Krylov methods will require more memory, but will allow the implicit method to converge quickly.</p>
 <p>While not universally true, this leads to a rule of thumb that for equal numbers of stages or steps, an explicit scheme will require less memory than an implicit scheme.
@@ -674,90 +676,94 @@ For example, SUNDIALS provides a set of linear and nonlinear solvers that are al
 <p>The need for (non)linear solvers in a given code will depend on the equations you are solving and your choices of spatiotemporal discretizations.
 As a simple example, we can consider incremental changes to a 1D Allen-Cahn-type model for a driven phase transformation (i.e., a simplified form of BM3).
 For a spatial discretization with centered finite differences and time integration by Forward Euler, the equation at each point of the mesh will be of the form</p>
-<p>$$
-\phi_i^{n+1} = \phi_i^n + \Delta t ( \phi_{i+1}^n - 2 \phi_i^n + \phi_{i-1}^n - g’(\phi_i^n) - Q p’(\phi_i^n) )
-$$</p>
-<p>where $n$ corresponds to the time step of the solution, $i$ corresponds to the grid points, $\Delta t$ is the time step, $Q$ is the driving force, and $g’$ and $p’$ are the derivatives of the double-well and interpolation function, respectively.
-Note that we assume values of 1 for mobility, $\kappa / \Delta x^2$, and the well height.
-All of the quantities on the right-hand side are known: we can evaluate each $\phi_i^{n+1}$ directly without needing to perform any linear or nonlinear solvers.
+<div class="math notranslate nohighlight">
+\[
+\phi_i^{n+1} = \phi_i^n + \Delta t ( \phi_{i+1}^n - 2 \phi_i^n + \phi_{i-1}^n - g'(\phi_i^n) - Q p'(\phi_i^n) )
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> corresponds to the time step of the solution, <span class="math notranslate nohighlight">\(i\)</span> corresponds to the grid points, <span class="math notranslate nohighlight">\(\Delta t\)</span> is the time step, <span class="math notranslate nohighlight">\(Q\)</span> is the driving force, and <span class="math notranslate nohighlight">\(g'\)</span> and <span class="math notranslate nohighlight">\(p'\)</span> are the derivatives of the double-well and interpolation function, respectively.
+Note that we assume values of 1 for mobility, <span class="math notranslate nohighlight">\(\kappa / \Delta x^2\)</span>, and the well height.
+All of the quantities on the right-hand side are known: we can evaluate each <span class="math notranslate nohighlight">\(\phi_i^{n+1}\)</span> directly without needing to perform any linear or nonlinear solvers.
 This is sometimes referred to as “linearization through explicit time stepping.”</p>
-<p>A common approach to improve time step stability of a PFM is to employ a convex split of the governing equations where we decompose the nonlinear terms as $g(\phi) = g_+ (\phi) + g_- (\phi)$ and $p(\phi) = p_+ (\phi) + p_- (\phi)$, where $+$ indicates the purely convex portion of the function and $-$ is the remaining (presumably concave) portion.
+<p>A common approach to improve time step stability of a PFM is to employ a convex split of the governing equations where we decompose the nonlinear terms as <span class="math notranslate nohighlight">\(g(\phi) = g_+ (\phi) + g_- (\phi)\)</span> and <span class="math notranslate nohighlight">\(p(\phi) = p_+ (\phi) + p_- (\phi)\)</span>, where <span class="math notranslate nohighlight">\(+\)</span> indicates the purely convex portion of the function and <span class="math notranslate nohighlight">\(-\)</span> is the remaining (presumably concave) portion.
 Typically, we solve this convex-split approach by ImEx methods such as Forward-Backward Euler:</p>
-<p>$$
-\phi_i^{n+1} - \Delta t ( \phi_{i+1}^{n+1} - 2\phi_i^{n+1} + \phi_{i-1}^{n+1} - g_+’(\phi_i^{n+1}) - Qp_+’(\phi_i^{n+1}) ) = \phi_i^n - \Delta t ( g_-‘(\phi_i^n) + Qp_-‘(\phi_i^n) )
-$$</p>
-<p>This system of equations is now semi-implicit in nature, but we can form the convex split such that the left-hand side is fully linear, e.g., $g_+(\phi) = a \phi^2$ for $g(\phi) = \phi^2 (1-\phi)^2$.
-As a result, we need a linear solver for this scheme (such as a tridiagonal LU decomposition) to obtain ${\phi^{n+1}}$, but no nonlinear solver.
+<div class="math notranslate nohighlight">
+\[
+\phi_i^{n+1} - \Delta t ( \phi_{i+1}^{n+1} - 2\phi_i^{n+1} + \phi_{i-1}^{n+1} - g_+'(\phi_i^{n+1}) - Qp_+'(\phi_i^{n+1}) ) = \phi_i^n - \Delta t ( g_-'(\phi_i^n) + Qp_-'(\phi_i^n) )
+\]</div>
+<p>This system of equations is now semi-implicit in nature, but we can form the convex split such that the left-hand side is fully linear, e.g., <span class="math notranslate nohighlight">\(g_+(\phi) = a \phi^2\)</span> for <span class="math notranslate nohighlight">\(g(\phi) = \phi^2 (1-\phi)^2\)</span>.
+As a result, we need a linear solver for this scheme (such as a tridiagonal LU decomposition) to obtain <span class="math notranslate nohighlight">\(\{\phi^{n+1}\}\)</span>, but no nonlinear solver.
 We can use larger time step sizes than with Forward Euler, but we can easily “break” the system so that we don’t observe a monotonic decrease in free energy.</p>
 <p>Lastly, we may choose to discretize this system by the Backward Euler method:</p>
-<p>$$
-\phi_i^{n+1} - \Delta t (\phi_{i+1}^{n+1} - 2\phi_i^{n+1} + \phi_{i-1}^{n+1} - g’(\phi_i^{n+1}) - Qp’(\phi_i^{n+1})  = \phi_i^n
-$$</p>
+<div class="math notranslate nohighlight">
+\[
+\phi_i^{n+1} - \Delta t (\phi_{i+1}^{n+1} - 2\phi_i^{n+1} + \phi_{i-1}^{n+1} - g'(\phi_i^{n+1}) - Qp'(\phi_i^{n+1})  = \phi_i^n
+\]</div>
 <p>The left-hand side is now fully implicit and nonlinear.
 We will need to perform a nonlinear solve at each time step, and this may or may not require the solution of additional linear systems.</p>
 </section>
 <section id="types-of-nonlinear-solvers">
 <h4>Types of Nonlinear Solvers<a class="headerlink" href="#types-of-nonlinear-solvers" title="Link to this heading">#</a></h4>
-<p>Two of the most common types of nonlinear methods you will encounter are <strong>fixed-point methods</strong>, which solve problems of the form $G(u) = u$, and <strong>root finding methods</strong>, which solve problems of the form $F(u) = 0$.
-We can usually convert fixed-point problems to root-finding problems by letting $F(u) = G(u) - u$, but the reverse conversion may not be as well-behaved and will be problem dependent.
+<p>Two of the most common types of nonlinear methods you will encounter are <strong>fixed-point methods</strong>, which solve problems of the form <span class="math notranslate nohighlight">\(G(u) = u\)</span>, and <strong>root finding methods</strong>, which solve problems of the form <span class="math notranslate nohighlight">\(F(u) = 0\)</span>.
+We can usually convert fixed-point problems to root-finding problems by letting <span class="math notranslate nohighlight">\(F(u) = G(u) - u\)</span>, but the reverse conversion may not be as well-behaved and will be problem dependent.
 These methods have some similarities in underlying concepts, but the resulting algorithms and implementation can vastly differ.</p>
 <p>While not discussed here, another important class of nonlinear methods is Full Approximation Scheme (FAS) multigrid solvers.
-In FAS, we obtain solutions of the system $A(u) = f$ by relaxing the residual and its error on progressively coarsened grids, after which we interpolate a set of corrections onto the finer grid levels.
-Depending on the forms of $A(u)$ and $f$, this method can look like a fixed-point or root-finding method that can be applied to a wide range of systems, although the implementation can be quite complex.</p>
+In FAS, we obtain solutions of the system <span class="math notranslate nohighlight">\(A(u) = f\)</span> by relaxing the residual and its error on progressively coarsened grids, after which we interpolate a set of corrections onto the finer grid levels.
+Depending on the forms of <span class="math notranslate nohighlight">\(A(u)\)</span> and <span class="math notranslate nohighlight">\(f\)</span>, this method can look like a fixed-point or root-finding method that can be applied to a wide range of systems, although the implementation can be quite complex.</p>
 <p><strong>Fixed-Point Methods:</strong> A basic fixed-point method will often adopt the following approach:</p>
 <ol class="arabic simple">
-<li><p>For the current guess of $u$, compute the nonlinear function, $G(u)$</p></li>
-<li><p>Calculate a new guess by $\tilde{u} = G(u)$</p></li>
-<li><p>Converged if $||u - \tilde{u}|| &lt; tol$</p></li>
-<li><p>Assign $u = \tilde{u}$</p></li>
+<li><p>For the current guess of <span class="math notranslate nohighlight">\(u\)</span>, compute the nonlinear function, <span class="math notranslate nohighlight">\(G(u)\)</span></p></li>
+<li><p>Calculate a new guess by <span class="math notranslate nohighlight">\(\tilde{u} = G(u)\)</span></p></li>
+<li><p>Converged if <span class="math notranslate nohighlight">\(||u - \tilde{u}|| &lt; tol\)</span></p></li>
+<li><p>Assign <span class="math notranslate nohighlight">\(u = \tilde{u}\)</span></p></li>
 <li><p>If not converged, go to (1)</p></li>
 </ol>
 <p>This is often referred to as functional iteration or Picard iteration.
 <strong>While simple to implement, this basic scheme may converge slowly or fail to converge at all.</strong>
-There are schemes to accelerate the convergence of the series (e.g., Anderson Mixing, Aitken’s Delta-Squared Method), or we can linearize the nonlinear function about $\tilde{u}$ as $G(\tilde{u}) \approx G(u) + \mathbf{J} (\tilde{u} - u)$, where $\mathbf{J} = \nabla G(u)$ is the Jacobian matrix of the nonlinear system.
+There are schemes to accelerate the convergence of the series (e.g., Anderson Mixing, Aitken’s Delta-Squared Method), or we can linearize the nonlinear function about <span class="math notranslate nohighlight">\(\tilde{u}\)</span> as <span class="math notranslate nohighlight">\(G(\tilde{u}) \approx G(u) + \mathbf{J} (\tilde{u} - u)\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{J} = \nabla G(u)\)</span> is the Jacobian matrix of the nonlinear system.
 The resulting <strong>linearized fixed-point method</strong> is then of the form:</p>
 <ol class="arabic simple">
-<li><p>For the current guess of $u$, compute the nonlinear function, $G(u)$</p></li>
-<li><p>Solve the linear system $(\mathbf{I} - \mathbf{J})\tilde{u} = G(u) - \mathbf{J}u$</p></li>
-<li><p>Converged if $||u - \tilde{u}|| &lt; tol$</p></li>
-<li><p>Assign $u = \tilde{u}$</p></li>
+<li><p>For the current guess of <span class="math notranslate nohighlight">\(u\)</span>, compute the nonlinear function, <span class="math notranslate nohighlight">\(G(u)\)</span></p></li>
+<li><p>Solve the linear system <span class="math notranslate nohighlight">\((\mathbf{I} - \mathbf{J})\tilde{u} = G(u) - \mathbf{J}u\)</span></p></li>
+<li><p>Converged if <span class="math notranslate nohighlight">\(||u - \tilde{u}|| &lt; tol\)</span></p></li>
+<li><p>Assign <span class="math notranslate nohighlight">\(u = \tilde{u}\)</span></p></li>
 <li><p>If not converged, go to (1)</p></li>
 </ol>
-<p>As a note, we may not need to explicitly assemble $\mathbf{J}$, or the associated linear solver in step (2) might arise “naturally” in the governing equations.
+<p>As a note, we may not need to explicitly assemble <span class="math notranslate nohighlight">\(\mathbf{J}\)</span>, or the associated linear solver in step (2) might arise “naturally” in the governing equations.
 For example, a pointwise Jacobi-type fixed-point iteration for the fully-implicit 1D Allen-Cahn example can be written as</p>
-<p>$$
-\tilde{\phi_i}^{n+1} = \frac{\phi_i^n + \Delta t (\phi_{i+1}^{n+1} + \phi_{i-1}^{n+1} - g’(\phi_i^{n+1}) + g’’(\phi_i^{n+1})\phi_i^{n+1} - Q p’(\phi_i^{n+1}) + Q p’’(\phi_i^{n+1}) \phi_i^{n+1} )}{1 + 2 \Delta t + \Delta t ( g’’(\phi_i^{n+1}) + Q p’’(\phi_i^{n+1}) )}
-$$</p>
-<p>where $g’’$ and $p’’$ are second derivatives of the respective functions.
-This combines steps (1) and (2) into a single process as we sweep over the entire mesh to evaluate ${\tilde{\phi}^{n+1}}$.</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\phi_i}^{n+1} = \frac{\phi_i^n + \Delta t (\phi_{i+1}^{n+1} + \phi_{i-1}^{n+1} - g'(\phi_i^{n+1}) + g''(\phi_i^{n+1})\phi_i^{n+1} - Q p'(\phi_i^{n+1}) + Q p''(\phi_i^{n+1}) \phi_i^{n+1} )}{1 + 2 \Delta t + \Delta t ( g''(\phi_i^{n+1}) + Q p''(\phi_i^{n+1}) )}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(g''\)</span> and <span class="math notranslate nohighlight">\(p''\)</span> are second derivatives of the respective functions.
+This combines steps (1) and (2) into a single process as we sweep over the entire mesh to evaluate <span class="math notranslate nohighlight">\(\{\tilde{\phi}^{n+1}\}\)</span>.</p>
 <p><strong>Root-Finding Methods:</strong> In many cases, a root-finding method will often adopt some sort of Newton-type method where we linearize the function through a Taylor expansion, obtain a correction to the solution, and then iterate until convergence.
 For example, the classic <strong>Newton-Raphson method</strong> can be written as:</p>
 <ol class="arabic simple">
-<li><p>For the current guess of $u$, calculate $F(u)$ and its Jacobian matrix $\mathbf{J}$</p></li>
-<li><p>Correct the solution by solving the linear system $\delta u = - \mathbf{J}^{-1} F(u)$</p></li>
-<li><p>Converged if $||\delta u|| &lt; tol$</p></li>
-<li><p>Assemble the next guess as $\tilde{u} = u + \delta u$</p></li>
-<li><p>Assign $u = \tilde{u}$</p></li>
+<li><p>For the current guess of <span class="math notranslate nohighlight">\(u\)</span>, calculate <span class="math notranslate nohighlight">\(F(u)\)</span> and its Jacobian matrix <span class="math notranslate nohighlight">\(\mathbf{J}\)</span></p></li>
+<li><p>Correct the solution by solving the linear system <span class="math notranslate nohighlight">\(\delta u = - \mathbf{J}^{-1} F(u)\)</span></p></li>
+<li><p>Converged if <span class="math notranslate nohighlight">\(||\delta u|| &lt; tol\)</span></p></li>
+<li><p>Assemble the next guess as <span class="math notranslate nohighlight">\(\tilde{u} = u + \delta u\)</span></p></li>
+<li><p>Assign <span class="math notranslate nohighlight">\(u = \tilde{u}\)</span></p></li>
 <li><p>If not converged, go to (1)</p></li>
 </ol>
-<p>Immediately, we can recognize a similarity between the Newton-Raphson approach and the linearized fixed-point iteration: both perform a linearization about the current value of the function for a guess of $u$ and solve a linear system to obtain the next guess.
+<p>Immediately, we can recognize a similarity between the Newton-Raphson approach and the linearized fixed-point iteration: both perform a linearization about the current value of the function for a guess of <span class="math notranslate nohighlight">\(u\)</span> and solve a linear system to obtain the next guess.
 (Note: this is part of why we say that fixed-point solutions can be obtained through an equivalent root-finding method.)</p>
-<p>Assembling $\mathbf{J}$ and solving the linear system for $\delta u$ can be exceptionally expensive.
+<p>Assembling <span class="math notranslate nohighlight">\(\mathbf{J}\)</span> and solving the linear system for <span class="math notranslate nohighlight">\(\delta u\)</span> can be exceptionally expensive.
 However, if <em>iterative linear solvers</em> are employed, a few iterations of the linear method can significantly reduce the residual of the nonlinear system.
 This leads to the formation of an <strong>inexact Newton method</strong>:</p>
 <ol class="arabic simple">
-<li><p>For the current guess of $u$, calculate $F(u)$ and its Jacobian matrix $\mathbf{J}$</p></li>
-<li><p>Perform $k$ iterations of an iterative linear solver to approximately solve $\mathbf{J} \delta u = - F(u)$</p></li>
-<li><p>Converged if $||\delta u|| &lt; tol$</p></li>
-<li><p>Assemble the next guess as $\tilde{u} = u + \delta u$</p></li>
-<li><p>Assign $u = \tilde{u}$</p></li>
+<li><p>For the current guess of <span class="math notranslate nohighlight">\(u\)</span>, calculate <span class="math notranslate nohighlight">\(F(u)\)</span> and its Jacobian matrix <span class="math notranslate nohighlight">\(\mathbf{J}\)</span></p></li>
+<li><p>Perform <span class="math notranslate nohighlight">\(k\)</span> iterations of an iterative linear solver to approximately solve <span class="math notranslate nohighlight">\(\mathbf{J} \delta u = - F(u)\)</span></p></li>
+<li><p>Converged if <span class="math notranslate nohighlight">\(||\delta u|| &lt; tol\)</span></p></li>
+<li><p>Assemble the next guess as <span class="math notranslate nohighlight">\(\tilde{u} = u + \delta u\)</span></p></li>
+<li><p>Assign <span class="math notranslate nohighlight">\(u = \tilde{u}\)</span></p></li>
 <li><p>If not converged, go to (1)</p></li>
 </ol>
-<p>We may make further modifications to this algorithm to potentially improve performance, such as only evaluating $\mathbf{J}$ every few iterations.
-If we employ Krylov methods for step (2), we do not necessarily need to form the Jacobian and instead only need to evaluate matrix-vector products $\mathbf{J} \delta u$.
+<p>We may make further modifications to this algorithm to potentially improve performance, such as only evaluating <span class="math notranslate nohighlight">\(\mathbf{J}\)</span> every few iterations.
+If we employ Krylov methods for step (2), we do not necessarily need to form the Jacobian and instead only need to evaluate matrix-vector products <span class="math notranslate nohighlight">\(\mathbf{J} \delta u\)</span>.
 This leads to the popular and powerful <strong>Jacobian-Free Newton-Krylov (JFNK) method</strong>, which is employed by many community codes and software libraries.
 Also common are <strong>Newton-Multigrid methods</strong>, where a few multigrid iterations are performed in step (2).
-We may further try to “globalize” the solution by combining the inexact Newton method with a line-search method to find an optimal decrease in the residual, usually under the condition $||F(u + \alpha \delta u)|| &lt; ||F(u)||$ with $\alpha$ between 0 and 1.</p>
+We may further try to “globalize” the solution by combining the inexact Newton method with a line-search method to find an optimal decrease in the residual, usually under the condition <span class="math notranslate nohighlight">\(||F(u + \alpha \delta u)|| &lt; ||F(u)||\)</span> with <span class="math notranslate nohighlight">\(\alpha\)</span> between 0 and 1.</p>
 <p>If we examine the pointwise Jacobi scheme for the fully-implicit Allen-Cahn, we see that this is essentially an inexact Newton method that does one inner iteration of Jacobi relaxation at each outer Newton iteration.
 Thus, we can see that there are some general similarities between these broad classes of nonlinear methods.
 <strong>However, it is rare that the resulting algorithms are exactly equivalent to each other, and it can be nontrivial to switch from a fixed-point to a root-finding solver.</strong></p>
@@ -772,8 +778,8 @@ The scalability of sparse direct solvers will depend on the particular method an
 For millions or billions of unknowns across large numbers of CPUs or GPUs, iterative solvers are often necessary.
 Here, a wide range of options exists; in particular, relaxation, multigrid, and Krylov methods all parallelize well and have been employed in a variety of community codes and numerical libraries.</p>
 <p>Some of the simplest iterative methods are stationary relaxation methods such as the Jacobi, Gauss-Seidel, and (Symmetric) Successive Over-Relaxation methods.
-Classically, these are derived by splitting the Jacobian matrix as $J = D - E - F$, where $D$ is the diagonal, $-E$ is the purely lower triangular portion, and $-F$ is the purely upper triangular portion.
-Depending on how we manipulate $D$, $E$, and $F$, we obtain the above methods or their symmetric variants; however, <strong>we may not need to directly form the Jacobian or its submatrices</strong>, as we observed in the above Allen-Cahn example.
+Classically, these are derived by splitting the Jacobian matrix as <span class="math notranslate nohighlight">\(J = D - E - F\)</span>, where <span class="math notranslate nohighlight">\(D\)</span> is the diagonal, <span class="math notranslate nohighlight">\(-E\)</span> is the purely lower triangular portion, and <span class="math notranslate nohighlight">\(-F\)</span> is the purely upper triangular portion.
+Depending on how we manipulate <span class="math notranslate nohighlight">\(D\)</span>, <span class="math notranslate nohighlight">\(E\)</span>, and <span class="math notranslate nohighlight">\(F\)</span>, we obtain the above methods or their symmetric variants; however, <strong>we may not need to directly form the Jacobian or its submatrices</strong>, as we observed in the above Allen-Cahn example.
 <strong>The simplicity and low memory requirements of relaxation methods make them attractive methods, but they often converge slowly.</strong>
 The convergence can be improved by employing multigrid methods: <strong>Geometric Multigrid methods converge rapidly by applying relaxation methods</strong> on multiple levels of structured grids and are popular solvers for a wide range of problems.</p>
 <p>Krylov methods (e.g. Conjugate Gradient, GMRES, BiCGSTAB, TFQMR) are a powerful family of linear solvers that form a subspace from a linear operator (such as the Jacobian) and the residual vectors of the system (this is a very simplified explanation).
@@ -782,8 +788,8 @@ This Jacobian-vector product is typically evaluated in either a functional form 
 These methods can, therefore, be <strong>straightforward to implement, even with intricate linear functions</strong>.
 However, <strong>convergence is strongly dependent on the condition number of the operator matrix.</strong></p>
 <p>The performance of Krylov methods can be improved through <strong>preconditioning</strong>.
-Here, we form an approximation to the overall Jacobian matrix, $\mathbf{M} \approx \mathbf{J}$.
-Depending on the exact method, we will then find solutions to some linear system of the residual, e.g., $\mathbf{M} z = r$, at certain points of the algorithm.
+Here, we form an approximation to the overall Jacobian matrix, <span class="math notranslate nohighlight">\(\mathbf{M} \approx \mathbf{J}\)</span>.
+Depending on the exact method, we will then find solutions to some linear system of the residual, e.g., <span class="math notranslate nohighlight">\(\mathbf{M} z = r\)</span>, at certain points of the algorithm.
 If done correctly, the computational time and the number of iterations to reach the desired tolerance will decrease.
 The preconditioner, therefore, needs to (1) be easy to form and assemble, (2) be easy to solve and apply, and (3) should capture the essential physics of the system.
 <strong>Designing preconditioners is problem-dependent and can have a huge impact on the overall model performance</strong>.

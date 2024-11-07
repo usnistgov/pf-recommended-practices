@@ -60,6 +60,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'bp-guide-gh/ch1-model-formulation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -409,7 +411,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="model-formulation">
+  <section class="tex2jax_ignore mathjax_ignore" id="model-formulation">
 <h1>Model Formulation<a class="headerlink" href="#model-formulation" title="Link to this heading">#</a></h1>
 <p>Nana Ofori-Opuku, Jim Warren, Pierre-Clement Simon</p>
 <ul class="simple">
@@ -424,14 +426,18 @@
 <section id="general-considerations-on-the-formulation-of-phase-field-models">
 <h2>General Considerations on the formulation of phase field models<a class="headerlink" href="#general-considerations-on-the-formulation-of-phase-field-models" title="Link to this heading">#</a></h2>
 <p>Phase field models are, quite generally,  extensions of classical non-equilibrium thermodynamics. There are quite a few treatments of this in the literature.  Here we will follow formulations similar to those developed by Sekerka and Bi in “Interfaces for the Twenty-First Century.” <span id="id1">[<a class="reference internal" href="#id8" title="Zhiqiang Bi and Robert F. Sekerka. Phase-field model of solidification of a binary alloy. Physica A: Statistical Mechanics and its Applications, 261(1):95–106, December 1998. URL: https://www.sciencedirect.com/science/article/pii/S0378437198003641 (visited on 2024-09-05), doi:10.1016/S0378-4371(98)00364-1.">BS98</a>]</span> In that spirit, we will start with a very general formulation, including hydrodynamics, and then simplify the problem.  For those interested in starting with a simple model, you can skip over much of the initial formulation and jump to the section on the further reduction of the problem.</p>
-<p>In thermodynamics one usually starts from consideration of the internal energy $E$, where $E=E(S,V,M_i)$, and $S$ is the entropy, $V$ is the volume and $M_i$ is the mass of species $i$. If we decide we don’t want to consider elasticity we can divide through by the volume and compute the bulk energy density $e=e(s,\rho_i)$, with $\rho_i=M_i/V$, and similarly $s=S/V$. It is then usually postulated that in addition to the thermodynamic variables there are any number of <em>phase fields</em> $\phi_j$ and the internal energy density is written</p>
-<p>$$e=e(s,\rho_i,\phi_j).$$</p>
-<p>Here we are going to consider a single phase field $\phi$ that distinguishes between two phases (could be liquid-solid, could be solid-gas, etc.) and postulate that the total entropy of a system of volume $V$ can be written as</p>
-<p>$$S = \int s^{NC} dV,$$</p>
+<p>In thermodynamics one usually starts from consideration of the internal energy <span class="math notranslate nohighlight">\(E\)</span>, where <span class="math notranslate nohighlight">\(E=E(S,V,M_i)\)</span>, and <span class="math notranslate nohighlight">\(S\)</span> is the entropy, <span class="math notranslate nohighlight">\(V\)</span> is the volume and <span class="math notranslate nohighlight">\(M_i\)</span> is the mass of species <span class="math notranslate nohighlight">\(i\)</span>. If we decide we don’t want to consider elasticity we can divide through by the volume and compute the bulk energy density <span class="math notranslate nohighlight">\(e=e(s,\rho_i)\)</span>, with <span class="math notranslate nohighlight">\(\rho_i=M_i/V\)</span>, and similarly <span class="math notranslate nohighlight">\(s=S/V\)</span>. It is then usually postulated that in addition to the thermodynamic variables there are any number of <em>phase fields</em> <span class="math notranslate nohighlight">\(\phi_j\)</span> and the internal energy density is written</p>
+<div class="math notranslate nohighlight">
+\[e=e(s,\rho_i,\phi_j).\]</div>
+<p>Here we are going to consider a single phase field <span class="math notranslate nohighlight">\(\phi\)</span> that distinguishes between two phases (could be liquid-solid, could be solid-gas, etc.) and postulate that the total entropy of a system of volume <span class="math notranslate nohighlight">\(V\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[S = \int s^{NC} dV,\]</div>
 <p>where</p>
-<p>$$s^{NC}=s-\frac{\epsilon^2}{2}|\nabla\phi|^2-\sum_i \frac{\alpha_i^2}{2}|\nabla\rho_i|^2.$$</p>
-<p>Here the superscript $NC$ is meant to indicate that this is a non-classical definition of the entropy density $s$.   We have chosen the simplest possible forms of the non-classical extensions (that is, simple square-gradient penalties). The entropy density is itself a function, of course,</p>
-<p>$$s=s(e,\rho_i,\phi).$$</p>
+<div class="math notranslate nohighlight">
+\[s^{NC}=s-\frac{\epsilon^2}{2}|\nabla\phi|^2-\sum_i \frac{\alpha_i^2}{2}|\nabla\rho_i|^2.\]</div>
+<p>Here the superscript <span class="math notranslate nohighlight">\(NC\)</span> is meant to indicate that this is a non-classical definition of the entropy density <span class="math notranslate nohighlight">\(s\)</span>.   We have chosen the simplest possible forms of the non-classical extensions (that is, simple square-gradient penalties). The entropy density is itself a function, of course,</p>
+<div class="math notranslate nohighlight">
+\[s=s(e,\rho_i,\phi).\]</div>
 <p>To close the deal we now need to work our way through the various continuum-versions of the laws of nature.</p>
 <section id="evolution-equations">
 <h3>Evolution equations<a class="headerlink" href="#evolution-equations" title="Link to this heading">#</a></h3>
@@ -447,115 +453,155 @@
 <section id="mass">
 <h3>Mass<a class="headerlink" href="#mass" title="Link to this heading">#</a></h3>
 <p>The first idea is that we need to specify a flux of particles</p>
-<p>$${\bf J}_i=\rho_i \left({\bf v}_i-{\bf v}\right),$$</p>
-<p>where ${\bf v}_i$ is the velocity of the particles of species $i$.  In general we want to work in a center-of-mass frame</p>
-<p>$${\bf v}=\frac{\sum_i \rho_i {\bf v}_i}{\sum_i \rho_i}.$$</p>
-<p>Notice that this implies (by construction) that $\sum_i {\bf J}_i=0$.</p>
+<div class="math notranslate nohighlight">
+\[{\bf J}_i=\rho_i \left({\bf v}_i-{\bf v}\right),\]</div>
+<p>where <span class="math notranslate nohighlight">\({\bf v}_i\)</span> is the velocity of the particles of species <span class="math notranslate nohighlight">\(i\)</span>.  In general we want to work in a center-of-mass frame</p>
+<div class="math notranslate nohighlight">
+\[{\bf v}=\frac{\sum_i \rho_i {\bf v}_i}{\sum_i \rho_i}.\]</div>
+<p>Notice that this implies (by construction) that <span class="math notranslate nohighlight">\(\sum_i {\bf J}_i=0\)</span>.</p>
 <p>The law of conservation of mass can be simply written as</p>
-<p>$$\frac{\partial \rho_i}{\partial t}+\nabla\cdot(\rho_i {\bf v}_i)=0.$$</p>
-<p>Then we use the definition of ${\bf J}_i$ to rewrite that as</p>
-<p>$$\frac{\partial \rho_i}{\partial t}+ \nabla\cdot\left({\bf J}_i+\rho_i{\bf v}\right)=0.$$</p>
-<p>Note that if we sum this equation over $i$, we get the continuity equation</p>
-<p>$$\frac{\partial \rho}{\partial t}+ \nabla\cdot\left(\rho{\bf v}\right)=0.$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho_i}{\partial t}+\nabla\cdot(\rho_i {\bf v}_i)=0.\]</div>
+<p>Then we use the definition of <span class="math notranslate nohighlight">\({\bf J}_i\)</span> to rewrite that as</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho_i}{\partial t}+ \nabla\cdot\left({\bf J}_i+\rho_i{\bf v}\right)=0.\]</div>
+<p>Note that if we sum this equation over <span class="math notranslate nohighlight">\(i\)</span>, we get the continuity equation</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho}{\partial t}+ \nabla\cdot\left(\rho{\bf v}\right)=0.\]</div>
 <p>At this point is is common to introduce the notation</p>
-<p>$$\frac{D}{Dt}=\frac{\partial}{\partial t}+{\bf v}\cdot\nabla,$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{D}{Dt}=\frac{\partial}{\partial t}+{\bf v}\cdot\nabla,\]</div>
 <p>the “Lagrangian derivative” or “material derivative”.  The we can write the mass conservation equation as</p>
-<p>$$\frac{D \rho_i}{Dt}+ \nabla\cdot{\bf J}_i+\rho_i\nabla\cdot{\bf v}=0.$$</p>
-<p>If the system in incompressible (a common assumption, although we’d have to abandon that if we want to consider gasses), then $\nabla\cdot{\bf v}=0$ and we can write</p>
-<p>$$\frac{D \rho_i}{Dt}+ \nabla\cdot{\bf J}_i=0.$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{D \rho_i}{Dt}+ \nabla\cdot{\bf J}_i+\rho_i\nabla\cdot{\bf v}=0.\]</div>
+<p>If the system in incompressible (a common assumption, although we’d have to abandon that if we want to consider gasses), then <span class="math notranslate nohighlight">\(\nabla\cdot{\bf v}=0\)</span> and we can write</p>
+<div class="math notranslate nohighlight">
+\[\frac{D \rho_i}{Dt}+ \nabla\cdot{\bf J}_i=0.\]</div>
 </section>
 <section id="momentum">
 <h3>Momentum<a class="headerlink" href="#momentum" title="Link to this heading">#</a></h3>
 <p>The law of conservation of momentum (Newton’s second Law) for a system without body forces (like gravity) can be written</p>
-<p>$$\frac{\partial\rho {\bf v}}{\partial t}+\nabla\cdot\left( \rho {\bf v}\otimes{\bf v}-\sigma\right)=0,$$</p>
-<p>where $\sigma$ is the stress tensor.  Using continuity and incompressibility as assumptions we get</p>
-<p>$$\rho\frac{D{\bf v}}{Dt}=\nabla\cdot\sigma.$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial\rho {\bf v}}{\partial t}+\nabla\cdot\left( \rho {\bf v}\otimes{\bf v}-\sigma\right)=0,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma\)</span> is the stress tensor.  Using continuity and incompressibility as assumptions we get</p>
+<div class="math notranslate nohighlight">
+\[\rho\frac{D{\bf v}}{Dt}=\nabla\cdot\sigma.\]</div>
 </section>
 <section id="energy">
 <h3>Energy<a class="headerlink" href="#energy" title="Link to this heading">#</a></h3>
-<p>Our final conservation expression is for energy.  Just like the equation for momentum and mass, we start with a continuity form, and assume a flux of internal energy ${\bf J}_e$, and distinguish between the total energy density $e_T$, the internal energy density $e$ and the kinetic energy density $e_k=e_T-e= \frac{1}{2}\rho v^2$ and write</p>
-<p>$$\frac{\partial e_T}{\partial t}+\nabla\cdot\left(e_T{\bf v}+{\bf J}_e\right)=0.$$</p>
+<p>Our final conservation expression is for energy.  Just like the equation for momentum and mass, we start with a continuity form, and assume a flux of internal energy <span class="math notranslate nohighlight">\({\bf J}_e\)</span>, and distinguish between the total energy density <span class="math notranslate nohighlight">\(e_T\)</span>, the internal energy density <span class="math notranslate nohighlight">\(e\)</span> and the kinetic energy density <span class="math notranslate nohighlight">\(e_k=e_T-e= \frac{1}{2}\rho v^2\)</span> and write</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial e_T}{\partial t}+\nabla\cdot\left(e_T{\bf v}+{\bf J}_e\right)=0.\]</div>
 <p>We can then use the momentum equation as well as the mass continuity equation (along with incompressibility) to arrive at</p>
-<p>$$\frac{D e}{D t}+\nabla\cdot{\bf J}_e=\nabla{\bf v}:\sigma.$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{D e}{D t}+\nabla\cdot{\bf J}_e=\nabla{\bf v}:\sigma.\]</div>
 </section>
 <section id="first-law-of-thermodynamics">
 <h3>First Law of Thermodynamics<a class="headerlink" href="#first-law-of-thermodynamics" title="Link to this heading">#</a></h3>
 <p>We now write down the laws of thermodynamics for the densities.</p>
-<p>$$e=Ts-p+\sum_i\rho_i\mu_i,$$</p>
-<p>where $p$ is the hydrostatic pressure,</p>
-<p>$$p=-\frac{1}{3}{\mathrm{Tr}}\sigma,$$</p>
-<p>and $\mu_i$ and $T$ are defined as derivatives of $e$ through the expression</p>
-<p>$$de=Tds+\sum_i\mu_i d\rho_i+\frac{\partial e}{\partial\phi}d\phi.$$</p>
+<div class="math notranslate nohighlight">
+\[e=Ts-p+\sum_i\rho_i\mu_i,\]</div>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> is the hydrostatic pressure,</p>
+<div class="math notranslate nohighlight">
+\[p=-\frac{1}{3}{\mathrm{Tr}}\sigma,\]</div>
+<p>and <span class="math notranslate nohighlight">\(\mu_i\)</span> and <span class="math notranslate nohighlight">\(T\)</span> are defined as derivatives of <span class="math notranslate nohighlight">\(e\)</span> through the expression</p>
+<div class="math notranslate nohighlight">
+\[de=Tds+\sum_i\mu_i d\rho_i+\frac{\partial e}{\partial\phi}d\phi.\]</div>
 <p>Of course, given where we’re headed, let’s rewrite this as</p>
-<p>$$ds=\frac{1}{T}de-\sum_i\frac{\mu_i}{T}d\rho_i+\frac{\partial s}{\partial \phi}d\phi.$$</p>
+<div class="math notranslate nohighlight">
+\[ds=\frac{1}{T}de-\sum_i\frac{\mu_i}{T}d\rho_i+\frac{\partial s}{\partial \phi}d\phi.\]</div>
 </section>
 <section id="second-law">
 <h3>Second Law<a class="headerlink" href="#second-law" title="Link to this heading">#</a></h3>
 <p>We have chosen the entropy to “extend” non-classically, as it is the star actor in the second law of thermodynamics, so we can write the entropy production (which must be positive) as</p>
-<p>$$S^{\mathrm{prod}}=\frac{dS}{dt}+\int {\bf J}_s\cdot d{\bf A}\ge0,$$</p>
-<p>where ${\bf J}_s$ is the flux of entropy.  We can compute (for an incompressible system)</p>
-<p>$$S^{\mathrm{prod}}=\int \left[\sum_i -\left(\frac{\mu_i}{T}\right)^{NC}\frac{D\rho_i}{Dt}+S_\phi\frac{D\phi}{Dt}+\frac{1}{T}\frac{De}{Dt}\right]dV+\int \left[{\bf J}_s-\sum_i \alpha_i^2\nabla\rho_i\frac{D\rho_i}{Dt}-\epsilon^2\nabla\phi\frac{D\phi}{Dt}\right]\cdot d{\bf A},$$</p>
+<div class="math notranslate nohighlight">
+\[S^{\mathrm{prod}}=\frac{dS}{dt}+\int {\bf J}_s\cdot d{\bf A}\ge0,\]</div>
+<p>where <span class="math notranslate nohighlight">\({\bf J}_s\)</span> is the flux of entropy.  We can compute (for an incompressible system)</p>
+<div class="math notranslate nohighlight">
+\[S^{\mathrm{prod}}=\int \left[\sum_i -\left(\frac{\mu_i}{T}\right)^{NC}\frac{D\rho_i}{Dt}+S_\phi\frac{D\phi}{Dt}+\frac{1}{T}\frac{De}{Dt}\right]dV+\int \left[{\bf J}_s-\sum_i \alpha_i^2\nabla\rho_i\frac{D\rho_i}{Dt}-\epsilon^2\nabla\phi\frac{D\phi}{Dt}\right]\cdot d{\bf A},\]</div>
 <p>where we have introduced</p>
-<p>$$-\left(\frac{\mu_i}{T}\right)^{NC}=\frac{\partial s}{\partial \rho_i}+\alpha_i\nabla^2\rho_i,$$</p>
+<div class="math notranslate nohighlight">
+\[-\left(\frac{\mu_i}{T}\right)^{NC}=\frac{\partial s}{\partial \rho_i}+\alpha_i\nabla^2\rho_i,\]</div>
 <p>and</p>
-<p>$$S_\phi=\frac{\partial s}{\partial\phi}+\epsilon^2\nabla^2\phi.$$</p>
+<div class="math notranslate nohighlight">
+\[S_\phi=\frac{\partial s}{\partial\phi}+\epsilon^2\nabla^2\phi.\]</div>
 <p>At this point we can insert the equations of motion we got from our conservation laws and do <em>a lot</em> of algebra, which we leave as an amusing exercise for the reader.  We eventually find that</p>
-<p>$$S^{\mathrm{prod}}=\int \left[-\sum_i\nabla\left(\frac{\mu_i}{T}\right)^{NC}\cdot{\bf J_i}+S_\phi\frac{D\phi}{Dt}+\nabla \frac{1}{T}\cdot{\bf J}_e+\frac{1}{T} {\bf Y}:\nabla {\bf v}\right]dV,$$</p>
+<div class="math notranslate nohighlight">
+\[S^{\mathrm{prod}}=\int \left[-\sum_i\nabla\left(\frac{\mu_i}{T}\right)^{NC}\cdot{\bf J_i}+S_\phi\frac{D\phi}{Dt}+\nabla \frac{1}{T}\cdot{\bf J}_e+\frac{1}{T} {\bf Y}:\nabla {\bf v}\right]dV,\]</div>
 <p>and</p>
-<p>$${\bf J}_s=s^{NC}{\bf v} + \frac{1}{T}{\bf J}_e-\sum_i \left(\frac{\mu_i}{T}\right)^{NC}{\bf J}_i+\sum_i \alpha_i^2\frac{D\rho_i}{Dt}\nabla\rho_i+\epsilon^2\frac{D\phi}{Dt}\nabla\phi.$$</p>
-<p>It is worth noting that this form for ${\bf J}_s$ eliminates the explicit surface terms from the entropy production. We have also introduced the tensor ${\bf Y}$ which is rather a complicated beast (it came from all those integrations by parts which we have skipped in this presentation), and has the form</p>
-<p>$$\frac{{\bf Y}}{T}=\frac{\sigma}{T}+\sum \alpha_i^2\nabla\rho_i\otimes\nabla\rho_i+\epsilon^2\nabla\phi\otimes\nabla\phi+\left(\frac{p}{T}-\sum_i \alpha_i^2\rho_i\nabla^2\rho_i-\sum_i\frac{\alpha_i^2}{2}|\nabla\rho_i|^2-\frac{\epsilon^2}{2}|\nabla\phi|^2\right){\bf I},$$</p>
-<p>where $\bf I$ is the identity tensor.</p>
+<div class="math notranslate nohighlight">
+\[{\bf J}_s=s^{NC}{\bf v} + \frac{1}{T}{\bf J}_e-\sum_i \left(\frac{\mu_i}{T}\right)^{NC}{\bf J}_i+\sum_i \alpha_i^2\frac{D\rho_i}{Dt}\nabla\rho_i+\epsilon^2\frac{D\phi}{Dt}\nabla\phi.\]</div>
+<p>It is worth noting that this form for <span class="math notranslate nohighlight">\({\bf J}_s\)</span> eliminates the explicit surface terms from the entropy production. We have also introduced the tensor <span class="math notranslate nohighlight">\({\bf Y}\)</span> which is rather a complicated beast (it came from all those integrations by parts which we have skipped in this presentation), and has the form</p>
+<div class="math notranslate nohighlight">
+\[\frac{{\bf Y}}{T}=\frac{\sigma}{T}+\sum \alpha_i^2\nabla\rho_i\otimes\nabla\rho_i+\epsilon^2\nabla\phi\otimes\nabla\phi+\left(\frac{p}{T}-\sum_i \alpha_i^2\rho_i\nabla^2\rho_i-\sum_i\frac{\alpha_i^2}{2}|\nabla\rho_i|^2-\frac{\epsilon^2}{2}|\nabla\phi|^2\right){\bf I},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bf I\)</span> is the identity tensor.</p>
 </section>
 <section id="constitutive-equations-and-evolution-equations">
 <h3>Constitutive Equations and Evolution Equations<a class="headerlink" href="#constitutive-equations-and-evolution-equations" title="Link to this heading">#</a></h3>
-<p>After all this work we can now find constitutive equations.  Inspection of the final expression for $S^{\mathrm{prod}}$, suggests a that we can guarantee it be positive definite (which is required from the second law) by assuming</p>
-<p>$${\bf J}_i= -M_i\nabla\left(\frac{\mu_i}{T}\right)^{NC},$$</p>
-<p>$${\bf J}_e=M_T\nabla\frac{1}{T},$$</p>
-<p>$${\bf Y} = \eta \left(\nabla{\bf v}+(\nabla{\bf v})^T\right),$$</p>
-<p>$$\frac{D\phi}{Dt}=M_\phi S_\phi,$$</p>
-<p>where we have introduced mobilities and the viscosity $\eta$. It should be emphasized that we could have assumed all sorts of “cross-couplings” between the various fluxes here, but instead we have made the simplest assumptions. Inserting these into our equations of motion, we (at last!) arrive at general evolution equations</p>
-<p>$$\frac{D e}{D t}=-M_T\nabla^2\frac{1}{T}+\nabla{\bf v}:\sigma,$$</p>
-<p>$$\frac{D \rho_i}{D t}=\nabla\cdot M_i\nabla\left(-\frac{\partial s}{\partial \rho_i}-\alpha_i^2 \nabla^2\rho_i\right)$$</p>
-<p>$$\frac{D\phi}{Dt}=M_\phi\left(\frac{\partial s}{\partial\phi}+\epsilon^2\nabla^2\phi\right).$$</p>
-<p>$$\frac{\sigma}{T}=\frac{\eta}{T}\left(\nabla{\bf v}+(\nabla{\bf v})^T\right)-\sum_i \alpha_i^2\nabla\rho_i\otimes\nabla\rho_i+\epsilon^2\nabla\phi\otimes\nabla\phi-\left(\frac{p}{T}-\sum \alpha_i^2\rho_i\nabla^2\rho_i-\sum\frac{\alpha_i^2}{2}|\nabla\rho_i|^2-\frac{\epsilon^2}{2}|\nabla\phi|^2\right){\bf I},$$</p>
+<p>After all this work we can now find constitutive equations.  Inspection of the final expression for <span class="math notranslate nohighlight">\(S^{\mathrm{prod}}\)</span>, suggests a that we can guarantee it be positive definite (which is required from the second law) by assuming</p>
+<div class="math notranslate nohighlight">
+\[{\bf J}_i= -M_i\nabla\left(\frac{\mu_i}{T}\right)^{NC},\]</div>
+<div class="math notranslate nohighlight">
+\[{\bf J}_e=M_T\nabla\frac{1}{T},\]</div>
+<div class="math notranslate nohighlight">
+\[{\bf Y} = \eta \left(\nabla{\bf v}+(\nabla{\bf v})^T\right),\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{D\phi}{Dt}=M_\phi S_\phi,\]</div>
+<p>where we have introduced mobilities and the viscosity <span class="math notranslate nohighlight">\(\eta\)</span>. It should be emphasized that we could have assumed all sorts of “cross-couplings” between the various fluxes here, but instead we have made the simplest assumptions. Inserting these into our equations of motion, we (at last!) arrive at general evolution equations</p>
+<div class="math notranslate nohighlight">
+\[\frac{D e}{D t}=-M_T\nabla^2\frac{1}{T}+\nabla{\bf v}:\sigma,\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{D \rho_i}{D t}=\nabla\cdot M_i\nabla\left(-\frac{\partial s}{\partial \rho_i}-\alpha_i^2 \nabla^2\rho_i\right)\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{D\phi}{Dt}=M_\phi\left(\frac{\partial s}{\partial\phi}+\epsilon^2\nabla^2\phi\right).\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\sigma}{T}=\frac{\eta}{T}\left(\nabla{\bf v}+(\nabla{\bf v})^T\right)-\sum_i \alpha_i^2\nabla\rho_i\otimes\nabla\rho_i+\epsilon^2\nabla\phi\otimes\nabla\phi-\left(\frac{p}{T}-\sum \alpha_i^2\rho_i\nabla^2\rho_i-\sum\frac{\alpha_i^2}{2}|\nabla\rho_i|^2-\frac{\epsilon^2}{2}|\nabla\phi|^2\right){\bf I},\]</div>
 <p>with</p>
-<p>$$\rho\frac{D{\bf v}}{Dt}=\nabla\cdot\sigma.$$</p>
+<div class="math notranslate nohighlight">
+\[\rho\frac{D{\bf v}}{Dt}=\nabla\cdot\sigma.\]</div>
 </section>
 <section id="further-reduction-of-the-problem">
 <h3>Further reduction of the problem<a class="headerlink" href="#further-reduction-of-the-problem" title="Link to this heading">#</a></h3>
-<p>We have presented the derivation of equations of evolution for an incompressible, two-phase, multicomponent system.  Most phase field treatments ignore the velocity terms, but for pedagogical purposes we have retained all of the terms that arise from flow (for an incompressible system). These terms should not just be tossed away without careful consideration of the system of interest! Nonetheless, now that we have taken care to show how these terms arise, and also, for careful readers, how to extend this approach to multiple phases and additional gradient corrections, we will proceed with some more simplifications for a less complex system.  For those who are interested in solid state systems that can creep, the work of Mishin, Warren, Sekerka, and Boettinger (2013) <span id="id5">[<a class="reference internal" href="#id11" title="Y. Mishin, J. A. Warren, R. F. Sekerka, and W. J. Boettinger. Irreversible thermodynamics of creep in crystalline solids. Physical Review B, 88(18):184303, November 2013. URL: https://link.aps.org/doi/10.1103/PhysRevB.88.184303 (visited on 2024-09-05), doi:10.1103/PhysRevB.88.184303.">MWSB13</a>]</span> extends this framework.  Here we eliminate the ${\bf v}$ equations by fiat, assuming that only diffusion controls the evolution of the system, which is often reasonable in microgravity situations.  We can also go further, and consider an isothermal system. Then we have</p>
-<p>$$\frac{\partial \rho_i}{\partial t}=\nabla\cdot M_i\nabla\left(-\frac{\partial s}{\partial \rho_i}-\alpha^2_i\nabla^2\rho_i\right),$$</p>
-<p>$$\frac{\partial\phi}{\partial t}=M_\phi\left(\frac{\partial s}{\partial\phi}+\epsilon^2\nabla^2\phi\right).$$</p>
+<p>We have presented the derivation of equations of evolution for an incompressible, two-phase, multicomponent system.  Most phase field treatments ignore the velocity terms, but for pedagogical purposes we have retained all of the terms that arise from flow (for an incompressible system). These terms should not just be tossed away without careful consideration of the system of interest! Nonetheless, now that we have taken care to show how these terms arise, and also, for careful readers, how to extend this approach to multiple phases and additional gradient corrections, we will proceed with some more simplifications for a less complex system.  For those who are interested in solid state systems that can creep, the work of Mishin, Warren, Sekerka, and Boettinger (2013) <span id="id5">[<a class="reference internal" href="#id11" title="Y. Mishin, J. A. Warren, R. F. Sekerka, and W. J. Boettinger. Irreversible thermodynamics of creep in crystalline solids. Physical Review B, 88(18):184303, November 2013. URL: https://link.aps.org/doi/10.1103/PhysRevB.88.184303 (visited on 2024-09-05), doi:10.1103/PhysRevB.88.184303.">MWSB13</a>]</span> extends this framework.  Here we eliminate the <span class="math notranslate nohighlight">\({\bf v}\)</span> equations by fiat, assuming that only diffusion controls the evolution of the system, which is often reasonable in microgravity situations.  We can also go further, and consider an isothermal system. Then we have</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho_i}{\partial t}=\nabla\cdot M_i\nabla\left(-\frac{\partial s}{\partial \rho_i}-\alpha^2_i\nabla^2\rho_i\right),\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial\phi}{\partial t}=M_\phi\left(\frac{\partial s}{\partial\phi}+\epsilon^2\nabla^2\phi\right).\]</div>
 <p>This system of equations should be adequate to describe a diffusion-controlled multicomponent, isothermal, two-phase system.  One could, of course, retain thermal diffusion, add more phases, retain the velocity terms and more!</p>
 </section>
 </section>
 <section id="clearly-define-the-equations-parameters-initial-conditions-and-boundary-conditions">
 <h2>Clearly define the equations, parameters, initial conditions, and boundary conditions<a class="headerlink" href="#clearly-define-the-equations-parameters-initial-conditions-and-boundary-conditions" title="Link to this heading">#</a></h2>
-<p>Now that we have specified that we wish to consider, a diffusion-controlled multicomponent, isothermal, two-phase system. We still need to decide on the specifics of the system, and, in particular, the thermodynamic state functions that detail how the energy or entropy vary.  All of the variables need to be clearly defined, and ideally should be either parameters that can be traced to thermodynamic variables or other physical constraints.  As noted, we wish to consider an isothermal system, and so we can use a Legendre transformation to replace $s$ in the above expressions with the Helmholtz free energy $f=e-Ts$.</p>
-<p>$$\frac{\partial \rho_i}{\partial t}=\nabla\cdot M_i\nabla\left(\frac{1}{T}\frac{\partial f}{\partial \rho_i}-\alpha^2_i\nabla^2\rho_i\right)$$</p>
-<p>$$\frac{\partial\phi}{\partial t}=M_\phi\left(-\frac{1}{T}\frac{\partial f}{\partial\phi}+\epsilon^2\nabla^2\phi\right).$$</p>
-<p>Additionally, we will now only consider only a two component systems, so we only have species $\rho_1$ and $\rho_2$. Note that the total density $\rho=\rho_1+\rho_2$ is a constant (for an incompressible system).   We could formulate the problem in terms of these variables or we can move to a concentration $c_1=\rho_1/(\rho_1+\rho_2)$.  Clearly $c_1+c_2=1$, so we only have one independent variable. In this case we can pick $c_1$ or $c_2$ as the independent variable and label it $c$.  As the reader can see, these types of exercises are highly non-trivial, require substantial care, and need to be done with rigor to understand the host of approximations and assumptions that can be made (at a minimum here we have ignored elasticity, different molar volumes for the species, and other issues are external fields, and there will be more to come!). We move to a concentration picture and <em>redefine</em> the mobilities, $\alpha$, and $\epsilon$ in such a way that the following expressions hold:</p>
-<p>$$\frac{\partial c}{\partial t}=\nabla\cdot M_i\nabla\left(\frac{\partial f}{\partial c}-\alpha^2\nabla^2c\right)$$</p>
-<p>$$\frac{\partial\phi}{\partial t}=M_\phi\left(\epsilon^2\nabla^2\phi-\frac{\partial f}{\partial\phi}\right).$$</p>
+<p>Now that we have specified that we wish to consider, a diffusion-controlled multicomponent, isothermal, two-phase system. We still need to decide on the specifics of the system, and, in particular, the thermodynamic state functions that detail how the energy or entropy vary.  All of the variables need to be clearly defined, and ideally should be either parameters that can be traced to thermodynamic variables or other physical constraints.  As noted, we wish to consider an isothermal system, and so we can use a Legendre transformation to replace <span class="math notranslate nohighlight">\(s\)</span> in the above expressions with the Helmholtz free energy <span class="math notranslate nohighlight">\(f=e-Ts\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho_i}{\partial t}=\nabla\cdot M_i\nabla\left(\frac{1}{T}\frac{\partial f}{\partial \rho_i}-\alpha^2_i\nabla^2\rho_i\right)\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial\phi}{\partial t}=M_\phi\left(-\frac{1}{T}\frac{\partial f}{\partial\phi}+\epsilon^2\nabla^2\phi\right).\]</div>
+<p>Additionally, we will now only consider only a two component systems, so we only have species <span class="math notranslate nohighlight">\(\rho_1\)</span> and <span class="math notranslate nohighlight">\(\rho_2\)</span>. Note that the total density <span class="math notranslate nohighlight">\(\rho=\rho_1+\rho_2\)</span> is a constant (for an incompressible system).   We could formulate the problem in terms of these variables or we can move to a concentration <span class="math notranslate nohighlight">\(c_1=\rho_1/(\rho_1+\rho_2)\)</span>.  Clearly <span class="math notranslate nohighlight">\(c_1+c_2=1\)</span>, so we only have one independent variable. In this case we can pick <span class="math notranslate nohighlight">\(c_1\)</span> or <span class="math notranslate nohighlight">\(c_2\)</span> as the independent variable and label it <span class="math notranslate nohighlight">\(c\)</span>.  As the reader can see, these types of exercises are highly non-trivial, require substantial care, and need to be done with rigor to understand the host of approximations and assumptions that can be made (at a minimum here we have ignored elasticity, different molar volumes for the species, and other issues are external fields, and there will be more to come!). We move to a concentration picture and <em>redefine</em> the mobilities, <span class="math notranslate nohighlight">\(\alpha\)</span>, and <span class="math notranslate nohighlight">\(\epsilon\)</span> in such a way that the following expressions hold:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial c}{\partial t}=\nabla\cdot M_i\nabla\left(\frac{\partial f}{\partial c}-\alpha^2\nabla^2c\right)\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial\phi}{\partial t}=M_\phi\left(\epsilon^2\nabla^2\phi-\frac{\partial f}{\partial\phi}\right).\]</div>
 <section id="state-function">
 <h3>State function<a class="headerlink" href="#state-function" title="Link to this heading">#</a></h3>
-<p>We now need to specify $f(c,T,\phi)$.  Note that we have retained the $T$ dependence here, even though we are considering an isothermal system. Isothermal does not mean temperature independent! Additionally, in the expressions just above we “absorbed” $T$ into some of the coefficients.  These parameters can depend on $T$, but often the dependencies are unknown or should only be included if the phenomena under consideration demand such an inclusion. In the interest of pedagogy, we recapitulate one approach to modeling a liquid-solid binary alloy, although the details are less important that understanding that a specific choice of state function has to come from <em>somewhere</em>. Following the treatment in the Annual Reviews of Materials Research (2001) by Boettinger, Warren, Beckerman and Karma <span id="id6">[<a class="reference internal" href="#id12" title="W. J. Boettinger, J. A. Warren, C. Beckermann, and A. Karma. Phase-Field Simulation of Solidification. Annual Review of Materials Research, 32(1):163–194, August 2002. URL: https://www.annualreviews.org/doi/10.1146/annurev.matsci.32.101901.155803 (visited on 2024-09-05), doi:10.1146/annurev.matsci.32.101901.155803.">BWBK02</a>]</span> we note that the free energy can be determined through a multi-step process where the two components are called $A$ and $B$ respectively:</p>
+<p>We now need to specify <span class="math notranslate nohighlight">\(f(c,T,\phi)\)</span>.  Note that we have retained the <span class="math notranslate nohighlight">\(T\)</span> dependence here, even though we are considering an isothermal system. Isothermal does not mean temperature independent! Additionally, in the expressions just above we “absorbed” <span class="math notranslate nohighlight">\(T\)</span> into some of the coefficients.  These parameters can depend on <span class="math notranslate nohighlight">\(T\)</span>, but often the dependencies are unknown or should only be included if the phenomena under consideration demand such an inclusion. In the interest of pedagogy, we recapitulate one approach to modeling a liquid-solid binary alloy, although the details are less important that understanding that a specific choice of state function has to come from <em>somewhere</em>. Following the treatment in the Annual Reviews of Materials Research (2001) by Boettinger, Warren, Beckerman and Karma <span id="id6">[<a class="reference internal" href="#id12" title="W. J. Boettinger, J. A. Warren, C. Beckermann, and A. Karma. Phase-Field Simulation of Solidification. Annual Review of Materials Research, 32(1):163–194, August 2002. URL: https://www.annualreviews.org/doi/10.1146/annurev.matsci.32.101901.155803 (visited on 2024-09-05), doi:10.1146/annurev.matsci.32.101901.155803.">BWBK02</a>]</span> we note that the free energy can be determined through a multi-step process where the two components are called <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> respectively:</p>
 <section id="step-1">
 <h4>Step 1<a class="headerlink" href="#step-1" title="Link to this heading">#</a></h4>
-<p>Start with the ordinary free energy of the pure components as liquid and solid phases, $f_L^A(T)$, $f_L^B(T)$, $f_S^A(T)$, $f_S^B(T)$. They are functions of temperature only.</p>
+<p>Start with the ordinary free energy of the pure components as liquid and solid phases, <span class="math notranslate nohighlight">\(f_L^A(T)\)</span>, <span class="math notranslate nohighlight">\(f_L^B(T)\)</span>, <span class="math notranslate nohighlight">\(f_S^A(T)\)</span>, <span class="math notranslate nohighlight">\(f_S^B(T)\)</span>. They are functions of temperature only.</p>
 </section>
 <section id="step-2">
 <h4>Step 2<a class="headerlink" href="#step-2" title="Link to this heading">#</a></h4>
 <p>Form a function that represents both liquid and solid for pure A</p>
-<p>$$f^A(\phi,T)=(1-p(\phi))f^A_S+p(\phi)f^A_L+W^Ag(\phi).$$</p>
-<p>This function combines the free energies of the liquid and solid with the interpolating function $p(\phi)$ and adds an energy hump, $W^Ag(\phi)$, between them. A similar expression can be obtained for component B. Note that $g(\phi)$ has minima at $\phi=0$ and $\phi=1$ with a maximum at $\phi=0.5$ while $p(0)=0$, $p(1)=1$ and $p’=0$ when $\phi=0$ or $\phi=1$.  A popular choice for these functions is $p(\phi)=\phi^3(10-15\phi+6\phi^2)$ and $g(\phi)=\phi^2(1-\phi)^2$.  Note also the $\partial p/\partial\phi=30g(\phi)$ by construction.</p>
+<div class="math notranslate nohighlight">
+\[f^A(\phi,T)=(1-p(\phi))f^A_S+p(\phi)f^A_L+W^Ag(\phi).\]</div>
+<p>This function combines the free energies of the liquid and solid with the interpolating function <span class="math notranslate nohighlight">\(p(\phi)\)</span> and adds an energy hump, <span class="math notranslate nohighlight">\(W^Ag(\phi)\)</span>, between them. A similar expression can be obtained for component B. Note that <span class="math notranslate nohighlight">\(g(\phi)\)</span> has minima at <span class="math notranslate nohighlight">\(\phi=0\)</span> and <span class="math notranslate nohighlight">\(\phi=1\)</span> with a maximum at <span class="math notranslate nohighlight">\(\phi=0.5\)</span> while <span class="math notranslate nohighlight">\(p(0)=0\)</span>, <span class="math notranslate nohighlight">\(p(1)=1\)</span> and <span class="math notranslate nohighlight">\(p'=0\)</span> when <span class="math notranslate nohighlight">\(\phi=0\)</span> or <span class="math notranslate nohighlight">\(\phi=1\)</span>.  A popular choice for these functions is <span class="math notranslate nohighlight">\(p(\phi)=\phi^3(10-15\phi+6\phi^2)\)</span> and <span class="math notranslate nohighlight">\(g(\phi)=\\phi^2(1-\phi)^2\)</span>.  Note also the <span class="math notranslate nohighlight">\(\partial p/\partial\phi=30g(\phi)\)</span> by construction.</p>
 </section>
 <section id="step-3">
 <h4>Step 3<a class="headerlink" href="#step-3" title="Link to this heading">#</a></h4>
-<p>Form the function, $f(\phi,c,T)$, that represents (for example) a regular solution of A and B,</p>
-<p>$$f(\phi,c,T)=(1-c)f^A(\phi)+cf^B(\phi) +RT((1-c)\ln(1-c)+c\ln c)+c(1-c)\left[\Omega_S(1-p(\phi))+\Omega_L p(\phi)\right],$$</p>
-<p>where $\Omega_L$ and $\Omega_S$ are the regular solution parameters of the liquid and solid that again are combined with the interpolating function $p(\phi)$. The gas constant R needs to be chosen with the correct normalization so that RT has units of energy per unit volume.</p>
+<p>Form the function, <span class="math notranslate nohighlight">\(f(\phi,c,T)\)</span>, that represents (for example) a regular solution of A and B,</p>
+<div class="math notranslate nohighlight">
+\[f(\phi,c,T)=(1-c)f^A(\phi)+cf^B(\phi) +RT((1-c)\ln(1-c)+c\ln c)+c(1-c)\left[\Omega_S(1-p(\phi))+\Omega_L p(\phi)\right],\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Omega_L\)</span> and <span class="math notranslate nohighlight">\(\Omega_S\)</span> are the regular solution parameters of the liquid and solid that again are combined with the interpolating function <span class="math notranslate nohighlight">\(p(\phi)\)</span>. The gas constant R needs to be chosen with the correct normalization so that RT has units of energy per unit volume.</p>
 <p>With this specific choice of a regular solution free energy we at last have fully specified a system and its evolution!</p>
 </section>
 </section>
@@ -565,10 +611,12 @@
 <p>Regardless of the explicit functional choices for the state function, the most important point made above is that the phase field method requires an explicit choice for this function.  Once we have selected it, the equations derived above detail the evolution of the phase, composition, temperature, etc.  Here we chose only to consider phase and composition, with temperature as a parameter. Having fully specified the state function, the next question is really about practical issues around a specific simulation. What are the boundary conditions? What are the relevant length scales.  Here is a list of issues:</p>
 <section id="complete-dimensional-analysis-and-understanding-relevant-scales-state-the-reference-frame">
 <h3>Complete dimensional analysis and understanding relevant scales; state the reference frame<a class="headerlink" href="#complete-dimensional-analysis-and-understanding-relevant-scales-state-the-reference-frame" title="Link to this heading">#</a></h3>
-<p>There are any number of dimensionless parameters that can be found in these models.  Understanding their relative role is beyond the scope of this best practice guide, but constructing these numbers is straightforward and essential. Usually before attempting to solve the equations, it is useful to “scale” the equations, thereby reducing the total number of parameter in the problem.  In general we can always rescale space and time to eliminate two parameters.  For example, a natural unit for length $\ell$ might be defined in terms of a scale of the free energy density $\bar f$</p>
-<p>$$\ell^2=\frac{\epsilon^2}{\bar f}.$$</p>
-<p>Using this definition of $\ell$ we can then get a time scale $\tau$ as</p>
-<p>$$\tau=\frac{1}{M_\phi\bar f}.$$</p>
+<p>There are any number of dimensionless parameters that can be found in these models.  Understanding their relative role is beyond the scope of this best practice guide, but constructing these numbers is straightforward and essential. Usually before attempting to solve the equations, it is useful to “scale” the equations, thereby reducing the total number of parameter in the problem.  In general we can always rescale space and time to eliminate two parameters.  For example, a natural unit for length <span class="math notranslate nohighlight">\(\ell\)</span> might be defined in terms of a scale of the free energy density <span class="math notranslate nohighlight">\(\bar f\)</span></p>
+<div class="math notranslate nohighlight">
+\[\ell^2=\frac{\epsilon^2}{\bar f}.\]</div>
+<p>Using this definition of <span class="math notranslate nohighlight">\(\ell\)</span> we can then get a time scale <span class="math notranslate nohighlight">\(\tau\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\tau=\frac{1}{M_\phi\bar f}.\]</div>
 <p>Using these units will eliminate two parameters that need to explored when seeking solutions.</p>
 </section>
 <section id="plot-your-state-functions-before-implementing-them-in-code">
@@ -577,7 +625,7 @@
 </section>
 <section id="consider-the-impact-of-interpolation-functions-barrier-functions-etc">
 <h3>Consider the impact of interpolation functions, barrier functions, etc.<a class="headerlink" href="#consider-the-impact-of-interpolation-functions-barrier-functions-etc" title="Link to this heading">#</a></h3>
-<p>We chose specific forms for our interpolation function $p$ and the barrier function $g$.  These were not arbitrary choices, but nonetheless, they are hardly the only choices we could have made, just relatively popular.  All such choices can result in simulation regions where “surprises” can occur, often due to insufficient spatiotemporal resolution.</p>
+<p>We chose specific forms for our interpolation function <span class="math notranslate nohighlight">\(p\)</span> and the barrier function <span class="math notranslate nohighlight">\(g\)</span>.  These were not arbitrary choices, but nonetheless, they are hardly the only choices we could have made, just relatively popular.  All such choices can result in simulation regions where “surprises” can occur, often due to insufficient spatiotemporal resolution.</p>
 </section>
 <section id="consider-every-boundary-term-and-make-sure-you-arent-eliminating-important-terms-check-the-fluxes">
 <h3>Consider every boundary term and make sure you aren’t eliminating important terms. Check the fluxes<a class="headerlink" href="#consider-every-boundary-term-and-make-sure-you-arent-eliminating-important-terms-check-the-fluxes" title="Link to this heading">#</a></h3>

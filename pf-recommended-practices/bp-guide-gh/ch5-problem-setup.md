@@ -198,7 +198,7 @@ and a time step, $\Delta t$ = 0.005. The results are shown in the figure below.
 
 As can be seen in the figure above, for periodic boundary boundaries the
 $\alpha$ - $\beta$ domains are **continuous** on opposite sides of the
-system. For No-flux boundaries, the $\alpha$ - $\beta$ interfaces are
+system. For no-flux boundaries, the $\alpha$ - $\beta$ interfaces are
 **normal** to the boundary. For Dirichlet boundaries (bottom boundary of the
 right panel), the value of _c_ is **fixed** along the boundary.
 

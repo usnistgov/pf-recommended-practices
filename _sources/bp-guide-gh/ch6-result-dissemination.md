@@ -2,7 +2,7 @@
 
 Mike Tonks, Damien Tourret, Katsuyo Thornton, Jon Guyer
 
-How you present and disseminate your results is also a critical aspect of applying the phase-field method. Here, we provide recommended practices on disseminating your results.
+How you present and disseminate your results is another critical aspect of applying the phase-field method. Here, we provide recommended practices on disseminating your results.
 
 ## Recommended Practices for Postprocessing and Plotting:
 

@@ -4,484 +4,305 @@
 - *[Daniel Wheeler](https://www.nist.gov/people/daniel-wheeler), NIST*, [@wd15]
 - *[Damien Pinto](https://ca.linkedin.com/in/damien-pinto-4748387b), McGill*, [@DamienPinto]
 
+# Data Generation and Curation
 
 ## Overview
 
- - Look at lit on data and see how this is implemented
-  - Generation and dissemination
-  
-## Ideas
+Phase field models are characterized by a form of PDE related to an
+Eulerian free boundary problem and defined by a diffuse
+interface. Phase field models for practical applications require
+sufficient high fidelity to resolve both the macro length scale
+related to the application and the micro length scales associated with
+the free boundary. This requires extensive computationally resources
+and generates large volumes of raw field data. This data consists of
+field variables defined frequently across a domain or an interpolation
+function with many Gauss points. Typically, data is stored at
+sufficient temporal frequency to reconstruct the evolution of the
+field variables.
 
- - Data formats
- - FAIR
- - Metadata (hierarchical data standards (look for current versions)) 
- - What standards exist
- - One or two examples of phase field data stored currently
-   - Use an existing 
-   - Create our own example
- - Practical choices for storing data (figshare, zenodo, dryad, MDF)
- - Deciding what data to keep
-   - What data to store when publishing 
-   - What is supplementary material versus store versus leave on hard drive
- - Lit review, good citations
- - minting DOIs for the data
- - might include simulatioin execution and logging
-   - how frequently to store data
-   - how to store 
- 
-## How do we want to structure the sections?
+In recent years there have been efforts to embed phase field models
+into ICME-based materials design workflows. However, to leverage
+relevant phase field resources for these workflows a systematic
+approach is required for archiving and accessing data. Furthermore, it
+is often difficult for downstream researchers to find and access raw
+or minimally processed data from phase field studies, before the
+post-processing steps and final publication. In this document, we will
+provide motivation, guidance and a template for packaging and
+publishing FAIR data from phase field studies as well as managing
+unpublished raw data. Following the protocols outlined in this guide
+will provide downstream researchers with an enhanced capability to use
+phase field as part of larger ICME workflows and, in particular, data
+intensive usages such as AI surrogate models. This guide is not a
+complete guide about scientific data, but more of a though provoker so
+phase field practitioners are aware of the fundamental issues before
+embarking on a phase field study.
 
- 1. Intro (Daniel)
-   - What is data?
-   - What is metadata?
-   - Why do we need curate data?
-   - What is the motivation for this document?
-     - What should the reader get out of this document
-     - Why is this useful  
-   - Create a distinction between software, data, and post-processed results
- 
- 2. Data Generation (Trevor)
-   - HPC
-   - file systems
-   - data formats
-       - formats not to use (e.g., don't use serialization that depends on the version of the code that reads and writes because code changes)
-       - don't use pickles
-   - restarts
-   - data frequency
-   - post-processing -> refer to other document for this
-   - precision
-   - importance of folder structure
- 
- 3. Data Curation (Trevor)
-   - Why is curating data important?
-   - Why do we need to store our data
-   - What formats can we use
-   - Is my data too large, data sizes
-   - What is useful for third party / subsequent users
-   - How might the data be used for AI or something else
-   - Could a reviewer make use of your curated data
-   - Storing post-processed data and raw data and which to store or keep
-   - Minting DOIs for your software when publishing a paper
-   - FAIR
- 
- 4. Metadata standards (Daniel)
-   - Why do we need to keep some metadata beyond the data
-   - Zoo of things like data dictionaries, ontologies
-     - however, these are not well developed for our use case
-   - For example, you curate on Zenodo
-   - what extra data should you include
-     - how to describe the data files
-     - how to maintain some minimalist info about the simulation that generated the run
-     - When, why and how I ran this simulation
-     - What software
-     - Give example of a yaml file with 10 flat fields
-   - The future should be better in this regard. People actively working to improve this issue.
- 
- 5. Examples
-   - Practical examples (Trevor)
-   - Using Zenodo for a PFHub record to store data and metadata
-     - Relatively rich metadata scheme
-  
-   - Simulation from scratch (Damien)
-     - data generation
-       - folder structure
-       - HPC issues with data
-       - capture process / descriptive parameters for the data that
-         are useful for subsequent ML practitioners that use the data
-     - ML / store data 
-     - Narrative of what gets stored to disk
-     - Decisions of what to keep and how frequently to save data
-     - Auxiliary metadata decisions
-   
-   
- 6. Summary (Daniel)
- 7. Biblio (Daniel)
- 
+
+## Definitions
+
+It is beneficial for the reader to be clear regarding the main
+concepts of FAIR data management when applied to phase field
+studies. Broadly speaking, **FAIR data management** encompasses the
+curation of simulation workflows (including the software, data inputs
+and data outputs) for subsequent researchers or even machine
+agents. **FAIR data** concepts have been well explained elsewhere, see
+[X, Y, Z].  A **scientific workflow** is generally conceptualized as a
+graph of connected actions with various inputs and outputs. Some of
+the nodes in a workflow may not be entirely automated and require
+human agent inputs, which can increase the complexity of workflow
+curation. Workflow nodes include the pre and post-processing steps for
+phase field simulation workflows. In this guide, the **raw and
+post-processed** data is considered to be different from the
+**metadata**, which describes the simulation and associated
+workflow. The **raw data** is generated by the simulation as it is
+running and often consists of field data. The **post-processed data**
+consists of derived quantities and images generated using the **raw
+data**. The **software** used the for the simulation generally refers
+to the phase field code used to run the simulation directly and is
+part of the larger **computational environment**. The **code** might
+also refer to **software**, but the distinction is that the **code**
+may have been modified by the researcher and might include **input
+files** to the **software application**. Although software and code
+can be considered as data, the curation process involves different
+tools and practices. See the [Software Development] section of the
+best practices guide for a more detailed discussion of software and
+code curation.
+
+```mermaid
 ---
-
-## Old version
-
-- Save the data from your published work as much as possible, with meta data
-- Save the inputs used to produce the results from all your published work
-
-### FAIR Data
-
-We discussed the [FAIR Principles] at [CHiMaD Phase-Field XIII][fair-phase-field]:
-
-#### Findable
-
-- [ ] (Meta)data are assigned a globally unique and persistent identifier
-- [ ] Data are described with rich metadata (defined by R1 below)
-- [ ] Metadata clearly and explicitly include the identifier of the data they describe
-- [ ] (Meta)data are registered or indexed in a searchable resource
-
-#### Accessible
-
-- [ ] (Meta)data are retrievable by their identifier using a standardized
-   communications protocol
-   - [ ] The protocol is open, free, and universally implementable
-   - [ ] The protocol allows for an authentication and authorisation procedure,
-         where necessary
-- [ ] Metadata are accessible, even when the data are no longer available
-
-#### Interoperable
-
-- [ ] (Meta)data use a formal, accessible, shared, and broadly applicable language
-      for knowledge representation.
-- [ ] (Meta)data use vocabularies that follow FAIR principles
-- [ ] (Meta)data include qualified references to other (meta)data
-
-#### Reusable
-
-- [ ] (Meta)data are richly described with a plurality of accurate and relevant attributes
-   - [ ] (Meta)data are released with a clear and accessible data usage license
-   - [ ] (Meta)data are associated with detailed provenance
-   - [ ] (Meta)data meet domain-relevant community standards
-
-### Zenodo
-
-Historically, [PFHub] has accepted datasets linked from any host on the Web.
-At this time, we recommend using [Zenodo] to host your benchmark data. Why? *It's not "just" a shared folder.*
-
-* Guided prompts to describe what you're uploading
-* DOI is automatically assigned to your dataset
-* Basic metadata exported in multiple formats
-* Browser-based viewers for CSV, Markdown, PDF, images, videos
-
-#### Metadata Examples
-
-Zenodo gives you the option to import a repository directly from GitHub. The original [FAIR Phase-field talk](https://doi.org/10.5281/zenodo.6540105) was "uploaded" this way, producing the following record. While basic authorship information was captured, this tells an interested person or machine nothing meaningful about the dataset.
-
-```json
-{
-  "@context": "https://schema.org/",
-  "@id": "https://doi.org/10.5281/zenodo.6540105", 
-  "@type": "SoftwareSourceCode", 
-  "name": "tkphd/fair-phase-field-data: CHiMaD Phase-field XIII",
-  "description": "FAIR Principles for Phase-Field Practitioners", 
-  "version": "v0.1.0",
-  "license": "", 
-  "identifier": "https://doi.org/10.5281/zenodo.6540105", 
-  "url": "https://zenodo.org/record/6540105", 
-  "datePublished": "2022-05-11", 
-  "creator": [{
-      "@type": "Person", 
-      "givenName": "Trevor",
-      "familyName":  "Keller",
-      "affiliation": "NIST"}], 
-  "codeRepository": "https://github.com/tkphd/fair-phase-field-data/tree/v0.1.0"
-}
-```
-
-The *strongly* preferred method is to upload files directly. The following record represents an upload for [Benchmark 1b using HiPerC](https://doi.org/10.5281/zenodo.1124941). I would consider this metadata ***rich!***
-
-```json
-{
-  "@context": "https://schema.org/", 
-  "@id": "https://doi.org/10.5281/zenodo.1124941", 
-  "@type": "Dataset", 
-  "name": "hiperc-gpu-cuda-spinodal"
-  "description": "Solution to the CHiMaD Phase Field benchmark problem on spinodal decomposition using CUDA, with a 9-point discrete Laplacian stencil", 
-  "identifier": "https://doi.org/10.5281/zenodo.1124941", 
-  "license": "https://creativecommons.org/licenses/by/4.0/legalcode", 
-  "url": "https://zenodo.org/record/1124941", 
-  "datePublished": "2017-12-21", 
-  "creator": [{
-      "@type": "Person", 
-      "@id": "https://orcid.org/0000-0002-2920-8302", 
-      "givenName": "Trevor",
-      "familyName":  "Keller",
-      "affiliation": "NIST"}], 
-  "keywords": ["phase-field", "pfhub", "chimad"], 
-  "sameAs": ["https://doi.org/10.6084/m9.figshare.5715103.v2"], 
-  "distribution": [
-    {
-      "@type": "DataDownload",
-      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/free-energy-9pt.csv", 
-      "encodingFormat": "csv"
-    }, {
-      "@type": "DataDownload",
-      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0000000.png", 
-      "encodingFormat": "png"
-    }, {
-      "@type": "DataDownload",
-      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0100000.png", 
-      "encodingFormat": "png" 
-    }, {
-      "@type": "DataDownload",
-      "contentUrl": "https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0200000.png", 
-      "encodingFormat": "png" 
-    }]
-}
-```
-
-#### Metadata Files
-
-After uploading the HiPerC simulation data, I also registered it with PFHub using `meta.yaml`. This file tells the website-generating machinery what to do with the dataset, and provides additional information about the resources required to perform the simulation.
-
-```yaml
+title: A Phase Field Workflow
 ---
-benchmark:
-  id: 1b
-  version: '1'
-data:
-- name: run_time
-  values:
-  - sim_time: '200000'
-    wall_time: '7464'
-- name: memory_usage
-  values:
-  - unit: KB
-    value: '308224'
-- description: free energy data
-  url: https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/free-energy-9pt.csv
-- description: microstructure at t=0
-  type: image
-  url: https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal-000000.png
-- description: microstructure at t=100,000
-  type: image
-  url: https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal-100000.png
-- description: microstructure at t=200,000
-  type: image
-  url: https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal-200000.png
-metadata:
-  author:
-    email: trevor.keller@nist.gov
-    first: Trevor
-    github_id: tkphd
-    last: Keller
-  hardware:
-    acc_architecture: gpu
-    clock_rate: '1.48'
-    cores: '1792'
-    cpu_architecture: x86_64
-    nodes: 1
-    parallel_model: threaded
-  implementation:
-    repo:
-      url: https://github.com/usnistgov/hiperc
-      version: b25b14acda7c5aef565cdbcfc88f2df3412dcc46
-  simulation_name: hiperc_cuda
-  summary: HiPerC spinodal decomposition result using CUDA on a Tesla P100
-  timestamp: 18 December, 2017
+flowchart TD
+    id1(Input Files\nParameters)
+    id1.1(Code)
+    id2(Computational\nEnvironment)
+    id2.5[[Pre-processing,\ne.g. CALPHAD or Meshing]]
+    id2.7([Pro-processed Data])
+	id3[[Phase Field Simulation]]
+	id3.5([Scratch Data])
+	id4([Raw Field Data])
+	id5[[Post-processing\ne.g. Data Visualization]]
+	id6([Post-processed Data\ne.g. Derivied Quantities, Images])
+	id1-->id2.5
+	id1-->id5
+	id2.5-->id2.7-->id3
+	id2.5-->id3
+	id1-->id3
+	id1.1-->id3
+	id2-->id3
+	id3-->id4-->id5-->id6
+	id3-->id3.5-->id3
+	id2-->id2.5
+	id2-->id5
 ```
 
-This file is not part of my dataset: it resides in the [PFHub repository on GitHub]. Furthermore, since the structure of this file specifically suits PFHub, it is of no use at all to other software, websites, or researchers.
+## Data Generation
 
-### Structured Data Schemas
+Let's first draw the distinction between data generation and data
+curation. Data generation involves writing raw data to disk during the
+simulation execution and generating post-processed data from that raw
+data. Data curation involves packaging the generated data objects from
+a phase field workflow or study along with sufficient provenance
+metadata into a FAIR research object for consumption by subsequent
+scientific studies.
 
-In the Zenodo metadata above, note the `@context` fields: [Schema.org] is a [structured data schema] *and controlled vocabulary* for describing things on the Internet. How is this useful?
+When performing a phase field simulation, one must be cognizant of
+several factors pertaining to data generation. Generally speaking, the
+considerations can be defined as follow,
 
-Consider the [CodeMeta] project. It creates metadata files for software projects using [Schema.org] building blocks. There's even a handy [CodeMeta Generator]! If you maintain a phase-field software framework, you can (and should!) use it to document your code in a standards-compliant, machine-readable format. This improves interoperability and reusability!
+- choosing data to generate (and then curate),
+- file formats,
+- file system hierarchy,
+- restarts and recovering from crashes
+- data generation  and workflow tools, and
+- HPC environments and writing to disk in parallel.
 
-```json
-{
-    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
-    "@type": "SoftwareSourceCode",
-    "license": "https://spdx.org/licenses/CC-PDDC",
-    "codeRepository": "git+https://github.com/usnistgov/hiperc",
-    "dateCreated": "2017-08-07",
-    "dateModified": "2019-03-04",
-    "downloadUrl": "https://github.com/usnistgov/hiperc/releases/tag/v1.0",
-    "issueTracker": "https://github.com/usnistgov/hiperc/issues",
-    "name": "HiPerC",
-    "version": "1.0.0",
-    "description": "High-Performance Computing in C and CUDA",
-    "applicationCategory": "phase-field",
-    "developmentStatus": "inactive",
-    "programmingLanguage": ["C", "CUDA", "OpenCL", "OpenMP", "TBB"],
-    "author": [
-        {
-            "@type": "Person",
-            "@id": "https://orcid.org/my-orcid?orcid=0000-0002-2920-8302",
-            "givenName": "Trevor",
-            "familyName": "Keller",
-            "email": "trevor.keller@nist.gov",
-            "affiliation": {
-                "@type": "Organization",
-                "name": "NIST"
-            }
-        }
-    ]
-}
-```
+These considerations are often conflicting, require trial and error to
+determine the best approach and are highly specific to the
+requirements of the workflow and post-processing. However, there are
+some general guidelines that will be outlined below.
 
-That's nice! But what about our datasets? Shouldn't the [PFHub] metadata "describing" a dataset live alongside that data?
+### Choosing data to generate
 
-#### Towards a Phase-Field Schema
+Selecting the appropriate data to write to disk during the simulation
+largely depends on the requirements such as post-processing or
+debugging. However, it is good practice to consider future uses of the
+data for future work such as subsequent researchers trying to reuse
+the workflow or even reviewers. Lack of forethought in saving data
+could hinder the data curation of the eventual curation of the data
+research object. This step should be considered independently from
+restarts. The data required to reconstruct derived quantities or the
+evolution of field data will not be the same as the data required to
+restart a simulation.
 
-We are working to build a phase-field schema (or schemas) using [Schema.org] and the [schemaorg] Python library. The work-alike port of `meta.yaml` looks like the following.
+Another aspect of saving data to disk is the frequency off the disk
+writes. This choice can often impact the performance of a simulation
+as the simulation might have to wait on the disk before continuing the
+computation. A method to avoid this is to use a separate thread that
+runs concurrently to write the data (in the same process), see
+[Stackflow
+Question](https://stackoverflow.com/questions/1014113/efficient-way-to-save-data-to-disk-while-running-a-computationally-intensive-tas). In
+fact many practitioners overlook optimizing this part of aspect of
+phase field codes
+[ref](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0202410). Generally,
+when writing data it is best to do single large write to disk as
+opposed to multiple small writes. In practice this could involve
+caching multiple field variables across multiple print steps as a
+single data blob to an HDF5 file. However, there is a trade off
+between simulation performance and memory usage as well as latency and
+communication overhead when considering parallel simulations.
 
-> *N.B.:* We're going to deploy a generator similar to CodeMeta's so you won't have to write this!
+https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0202410
+https://dl.acm.org/doi/abs/10.1145/1713072.1713079
 
-```json
-{
-    "@context": "https://www.schema.org",
-    "@type": "DataCatalog",
-    "author": [
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "GovernmentOrganization",
-                "name": "Materials Science and Engineering Division",
-                "parentOrganization": {
-                    "@type": "GovernmentOrganization",
-                    "name": "Material Measurement Laboratory",
-                    "parentOrganization": {
-                        "@type": "GovernmentOrganization",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "addressCountry": "US",
-                            "addressLocality": "Gaithersburg",
-                            "addressRegion": "Maryland",
-                            "postalCode": "20899",
-                            "streetAddress": "100 Bureau Drive"
-                        },
-                        "identifier": "NIST",
-                        "name": "National Institute of Standards and Technology",
-                        "parentOrganization": "U.S. Department of Commerce",
-                        "url": "https://www.nist.gov"
-                    }
-                }
-            },
-            "email": "trevor.keller@nist.gov",
-            "familyName": "Keller",
-            "givenName": "Trevor",
-            "identifier": "tkphd",
-            "sameAs": "https://orcid.org/0000-0002-2920-8302"
-        }, {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "GovernmentOrganization",
-                "name": "Materials Science and Engineering Division",
-                "parentOrganization": {
-                    "@type": "GovernmentOrganization",
-                    "name": "Material Measurement Laboratory",
-                    "parentOrganization": {
-                        "@type": "GovernmentOrganization",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "addressCountry": "US",
-                            "addressLocality": "Gaithersburg",
-                            "addressRegion": "Maryland",
-                            "postalCode": "20899",
-                            "streetAddress": "100 Bureau Drive"
-                        },
-                        "identifier": "NIST",
-                        "name": "National Institute of Standards and Technology",
-                        "parentOrganization": "U.S. Department of Commerce",
-                        "url": "https://www.nist.gov"
-                    }
-                }
-            },
-            "email": "daniel.wheeler@nist.gov",
-            "familyName": "Wheeler",
-            "givenName": "Daniel",
-            "identifier": "wd15",
-            "sameAs": "https://orcid.org/0000-0002-2653-7418"
-        }
-    ],
-    "dataset": [
-        {
-            "@type": "Dataset",
-            "distribution": [
-                {
-                    "@type": "PropertyValue",
-                    "name": "parallel_nodes",
-                    "value": 1
-                }, {
-                    "@type": "PropertyValue",
-                    "name": "cpu_architecture",
-                    "value": "amd64"
-                }, {
-                    "@type": "PropertyValue",
-                    "name": "parallel_cores",
-                    "value": 12
-                }, {
-                    "@type": "PropertyValue",
-                    "name": "parallel_gpus",
-                    "value": 1
-                }, {
-                    "@type": "PropertyValue",
-                    "name": "gpu_architecture",
-                    "value": "nvidia"
-                }, {
-                    "@type": "PropertyValue",
-                    "name": "gpu_cores",
-                    "value": 6144
-                }, {
-                    "@type": "PropertyValue",
-                    "name": "wall_time",
-                    "unitCode": "SEC",
-                    "unitText": "s",
-                    "value": 384
-                }, {
-                    "@type": "PropertyValue",
-                    "name": "memory_usage",
-                    "unitCode": "E63",
-                    "unitText": "mebibyte",
-                    "value": 1835
-                }
-            ],
-            "name": "irl"
-        }, {
-            "@type": "Dataset",
-            "distribution": [
-                {
-                    "@type": "DataDownload",
-                    "contentUrl": "8a/free_energy_1.csv",
-                    "name": "free energy"
-                }, {
-                    "@type": "DataDownload",
-                    "contentUrl": "8a/solid_fraction_1.csv",
-                    "name": "solid fraction"
-                }, {
-                    "@type": "DataDownload",
-                    "contentUrl": "8a/free_energy_2.csv",
-                    "name": "free energy"
-                }, {
-                    "@type": "DataDownload",
-                    "contentUrl": "8a/solid_fraction_2.csv",
-                    "name": "solid fraction"
-                }, {
-                    "@type": "DataDownload",
-                    "contentUrl": "8a/free_energy_3.csv",
-                    "name": "free energy"
-                }, {
-                    "@type": "DataDownload",
-                    "contentUrl": "8a/solid_fraction_3.csv",
-                    "name": "solid fraction"
-                }
-            ],
-            "name": "output"
-        }
-    ],
-    "dateCreated": "2022-10-25T19:25:02+00:00",
-    "description": "A fake dataset for Benchmark 8a unprepared using FiPy by @tkphd & @wd15",
-    "isBasedOn": {
-        "@type": "SoftwareSourceCode",
-        "codeRepository": "https://github.com/tkphd/fake-pfhub-bm8a",
-        "description": "Fake benchmark 8a upload with FiPy",
-        "runtimePlatform": "fipy",
-        "targetProduct": "amd64",
-        "version": "9df6603e"
-    },
-    "isPartOf": {
-        "@type": "Series",
-        "identifier": "8a",
-        "name": "Homogeneous Nucleation",
-        "url": "https://pages.nist.gov/pfhub/benchmarks/benchmark8.ipynb"
-    },
-    "keywords": [
-        "phase-field",
-        "benchmarks",
-        "pfhub",
-        "fipy",
-        "homogeneous-nucleation"
-    ],
-    "license": "https://www.nist.gov/open/license#software"
-}
-```
+### File formats
+
+In general, when running phase field simulations, the user is limited
+to the file format that the software supports. For example, if the
+research is using PRISMS-PF the default data format is VTK and there
+is no reason to seek an alternative. If an alternative file format is
+required then the researcher could code a C++ function to write data
+in an alternative format to VTK such as NetCDF.
+
+As a general rule it is best to choose file formats that work with the
+tools already in use and / or that your colleagues are using. There
+are other considerations to be aware of though. Human readable formats
+such as CSV and JSON are often useful for small medium data sets (such
+as derived quantities) as some metadata can be embedded alongside the
+raw data resulting in a FAIRer data product than standard binary
+formats. Some binary file formats also support metadata and might be
+more useful for final data curation of a phase field study even if not
+used during the research process. One main benefit of using binary
+data (beyond saving disk space) is the ability to preserve full
+precision for floating point numbers. The longevity of file formats
+should be considered as well. A particularly egregious case of
+ignoring longevity would be using the Pickle file format in Python,
+which is both language dependent and code dependent. It is an example
+of data serialization, which is used mainly for in-process data
+storage for asynchronous tasks, but not good for long term data
+storage.
+
+There are many binary formats used for storing field data based on an
+Eulerian mesh or grid. Common formats for field data are NetCDF, VTK,
+XDMF and EXODUS. Within the phase field community, VTK seems to be the
+mostly widely used. VTK is actually a visualization library, but
+supports a number of different native file formats based on both XML
+and HDF5 (both non-binary and binary). The VTK library works well with
+FE simulations supporting many different element types as well as
+parallel data storage for domain decomposition. See the [XML file
+formats
+documentation](https://docs.vtk.org/en/latest/design_documents/VTKFileFormats.html#xml-file-formats)
+for VTK for an overview of zoo of different file extensions and their
+meaning. In contrast to VTK, NetCDF is more geared towards gridded
+data having arisen from atmospheric research, which uses more FD and
+FV than FE. For a comparison of performance and metrics for different
+file types see the [Python MeshIO tools's
+README.md](https://github.com/nschloe/meshio?tab=readme-ov-file#performance-comparison)
+
+The Python MeshIO tool is a good place to start for IO when writing
+custom phase field codes in Python (or Julia using `pyimport`). MeshIO
+is also a good place to start for exploring, debugging or picking
+apart file data in an interactive Python environment, which can be
+harder to do with dedicated viewing tools like Paraview. The
+scientific Python ecosystem is very rich with tools for data
+manipulation and storage such as Pandas, which supports storage in
+many different formats, and xarray for higher dimensional data. xarray
+supports NetCDF file storage, which includes coordinate systems and
+metadata in HDF5. Both Pandas and xarray can be used in a parallel or
+a distributed manner in conjucntion with Dask. Dask along with xarray
+supports writing to the Zarr data format. Zarr allows data to be
+stored on disk during analysis to avoid loading the entire data object
+into memory.
+
+https://aaltoscicomp.github.io/python-for-scicomp/work-with-data/
+https://docs.vtk.org/en/latest/index.html
+https://docs.xarray.dev/en/stable/user-guide/io.html=
+
+### Recovering from crashes and restarts
+
+A study from 2020 of HPC systems calculated the success rate (I.e. no
+error code on completion) of multi-node jobs with non-shared memory at
+between 60 and 70 %
+[Kumar](https://engineering.purdue.edu/dcsl/publications/papers/2020/fresco_dsn20_cameraready.pdf). This
+success rate diminishes rapidly as the run time of jobs
+increases. Needless to say that check-pointing is absolutely required
+for any jobs of more than a few hours. Nearly everyday, an HPC
+platform will experience some sort of failure
+[Benoit1](https://inria.hal.science/hal-03264047/file/rr9413.pdf)
+[Aupy](https://www.sciencedirect.com/science/article/abs/pii/S0743731513002219). That
+doesn't mean that every job will fail everyday, but it would be
+optimistic to think that jobs will go beyond a week without some
+issues. Given that fact one can estimate how long it might take to run
+a job without check-pointing. A very rough estimate for expected
+completion time assuming instantaneous restarts and no queuing time is
+given by,
+
+$$ E(T) = \frac{1}{2} \left(1 + e^{\frac{T}{\mu}} \right) T $$
+
+where $T$ is the nominal job completion time with no failures and
+$\mu$ is the mean time to failure. The formula predicts an expected
+time of 3.8 days for a job that nominally runs for 3 days with a $\mu$
+of one week. The formula is of course a gross simplification and
+includes many invalid assumptions, but regardless of the assumed
+failure distribution the exponential time increase without
+check-pointing is inescapable. Assuming that we're agreed on the need
+for checkpoint, the next step is to decide on the optimal time
+interval between checkpoints. This is given by the well known
+Young/Daly formula, $W=\sqrt{2 \mu C}$, where $C$ is the time taken
+for a checkpoint
+[Benoit2](https://icl.utk.edu/files/publications/2022/icl-utk-1569-2022.pdf)
+[Bautista-Gomez](https://www.ittc.ku.edu/~sun/publications/fgcs24.pdf). The
+Young/Daly formula accounts for the trade off between the start up
+time cost for a job to get back to its original point of failure and
+the cost associated with writing the checkpoint to disk.  For example,
+with a weekly failure rate and $C=6$ minutes, $W=5.8$ hours. In
+practice these estimates for $\mu$ and $C$ might be a little
+pessimistic, but be aware of the trade off. [Benoit1] . Note that some
+HPC systems have upper bounds on run times (e.g. TACC has a 7 days
+time limit so $\mu<7$ days regardless of other system failures).
+
+Given the above theory, what is the some practical advice for
+check-pointing jobs?
+
+- Estimate both $\mu$ and $C$. It might be worth discussing the $\mu$
+  value with the HPC cluster administrator to get some valid
+  numbers. Of course $C$ can be estimated by running test jobs. It's
+  good to know if you should be writing checkpoints every day or every
+  hour or every minute.
+- Ensure that restarts are deterministic (i.e. results don't change
+  between a job that restarts and one that doesn't). One way to do
+  this is to hash output files assuming that the simulation itself is
+  deterministic
+- Consider using a checkpointing library if you're using a custom
+  phase field code or even a workflow tool such as Snakemake which has
+  the inbuilt ability to handle checkpointing. A tool like Snakemake
+  is good for large parameter studies where it is difficult to keep
+  track of which jobs wrote which files. The `pickle` library is
+  acceptable for checkpointint Python programs in this shortlived
+  circumstance.
+- Use the inbuilt check-pointing available in the phase field code
+  that you're using.
+- Whatever system is being used check that the check-pointing actually
+  works and is deterministic.
+
+- https://hivehpc.haifa.ac.il/index.php/slurm?start=5
+- https://icl.utk.edu/files/publications/2022/icl-utk-1569-2022.pdf
+- https://inria.hal.science/hal-03264047/file/rr9413.pdf
+- https://www.sciencedirect.com/science/article/abs/pii/S0743731513002219
+- https://icl.utk.edu/files/publications/2022/icl-utk-1569-2022.pdf
+- https://www.ittc.ku.edu/~sun/publications/fgcs24.pdf
+- https://www.ittc.ku.edu/~sun/publications/fgcs24.pdf
+- https://icl.utk.edu/files/publications/2020/icl-utk-1385-2020.pdf
+- https://ftp.cs.toronto.edu/csrg-technical-reports/621/ut-csrg-621.pdf
+- https://arxiv.org/pdf/2012.00825
+- https://icl.utk.edu/~herault/papers/007%20-%20Checkpointing%20Strategies%20for%20Shared%20High-Performance%20Computing%20Platforms%20-%20IJNC%20(2019).pdf
+- https://dl.acm.org/doi/10.1145/2184512.2184574
+- https://engineering.purdue.edu/dcsl/publications/papers/2020/fresco_dsn20_cameraready.pdf
+- [Job failures](https://pdf.sciencedirectassets.com/271503/1-s2.0-S0898122111X00251/1-s2.0-S0898122111005980/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQCnYz7Yg2JHorkw2CwX7PI5fbyLRr02ykVPbgtxZhNy8QIhAIY%2BTq58bdBe3iRdnRXNP%2FjQ0%2B4LgrXUQh7aakHn9TSTKrsFCID%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQBRoMMDU5MDAzNTQ2ODY1IgwlVGRSpcXtIR5IRTcqjwUcZrP%2B7%2Byn4dYmelmvfF1CCdKNMP%2BftdY1KdvKA%2BnlBpDHwh%2FulDxZPkotPpiaFnrHfT85QaPGB0Q5Ck16mfWIG5KAjrrPFXY2azR3%2FxLIM6I8Ka4aHzcvUDa5L2rn8PpHqVF61wtBWRZYI8N0YM5CZi8r2%2B6NLe9OJvgLR1%2B55%2BfwK5GucDahcWDrP2FvbBFWQyidEBNl7thbpO4NIKoUTGJkb8H%2BBezk09N%2F4CPCjHel5mA1CHA8cQLH9lcCPiLurzKTBP8ozNi%2FtrlAZUKRKk%2BYHMy5HyFl%2Bobumh1eesuGe19b%2FpYOZBGzrQ4mn9eblczLd2SQi3k%2FoAws7yW9HHqzmMkJnla2B3tgfpP9WxaCnb5ZMNLIjlwEfu67ZiydyWQ2VnygTjG8CsiBYUeFuCbTplAeviP4WN%2BtiK%2FAsXbQZW93Q7cH7K%2B7lhfPiuPaauh0tlgQJNVdp2QzT8qvsxbQtzdEOQ5ethcoNbXU8YmXYgYdUtGwQbySD18i3aQo6zdUD0h9YtNNl%2BXskT8nv9xVPzsfMdkvrWA23PdIDYagX6n4Dd45DkeYIa10oXQfQKy7JiYIyfy7L1zt6tE6Rr0H9aMogJZIfjZG3tFcRea97xN%2BputMKCCqpyz%2FBJgfCptLvjhoKsWCfIqiE23xTHTTl%2FTkTK20ZQ8yO8lHuKHwtjbJJrX%2BQgnfiZQp2Sm6sKWchwej1Nn8IgtbHswKexMqoyaQHUeokSJ6MwQmtHAoUjuwuhaVcOqHn5gNEBuAWo3pAS%2Fwn2TTG5g00gF7RpQRoZvflp4b9poAN20kS%2F0lmLzutQ3wHOq1Ak59OzQhZASygvTGiqCxRp%2BzqctUt6%2B3%2FKRFwhR7q%2BwRluPBMMyix7sGOrAB3n1WiLFCV6WV5KLzctnyXliLNDqpIxUPVeXy2v%2FvcR8zUDFo49QquQ6nJudq2u9aUJ4nKzEkzpLTdAOCnQ%2FIR68LdMPQF%2BqJr0BD78PqcfoaacB%2BH4vV0FhCOVs0rVLdevPVGoAhB%2BIFbrsv%2BvHvQUZxU3wX%2FuOp2ChL1cUohEeoQzo2PyF2FZXkNcUenB2EWhcZGpgAIL1EYIyu1iCYmbfjVlISQL7xMJHj%2BSq1H3c%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241230T003505Z&X-Amz-SignedHeaders=host&X-Amz-Expires=299&X-Amz-Credential=ASIAQ3PHCVTYXOJ65CE4%2F20241230%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4d3b88d3c0b7d80e5ff0df11ef0d4246875d4aabdc0c8d49be54c9c029beae8e&hash=ebead6fd98beaced790a9b84e76f9f6326f41ebbf4cedadb1fde7cfc734bfc31&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S0898122111005980&tid=spdf-4974a446-6433-4619-afca-a5c210488d71&sid=a6179c5a4b870940603b745364079c847353gxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=161d5b095903025d02&rr=8f9df2a7da4fc990&cc=us)
+- https://www.cs.cmu.edu/~bianca/dsn06.pdf
+<!-- the note -->
+
+
 
 <!-- links -->
 

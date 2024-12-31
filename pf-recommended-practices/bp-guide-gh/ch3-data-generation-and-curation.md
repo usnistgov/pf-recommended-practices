@@ -302,7 +302,72 @@ check-pointing jobs?
 - https://www.cs.cmu.edu/~bianca/dsn06.pdf
 <!-- the note -->
 
+### Using Workflow Tools
 
+The authors of this article use Snakemake for their workflows so will
+discuss this in particular, but most of the ideas will apply to other
+workflow tools. In general when running many phase field jobs for a
+parameter study or dealing with many pre and post-processing steps, it
+is wise to employ a workflow tool such as Snakemake. One of the main
+benefits of workflow tools is the automation of all the steps in a
+workflow that researchers often neglect to implement in the absence of
+a workflow tool (e.g. with bash scripts). This forces a structure and
+the researchers to think carefully about the inputs / outputs and task
+graph. As a side effect, the graph structure produces a much FAIRer
+research object when the research is published and shared and even so
+that the researcher can rerun the simulation steps in the future. For
+example, when using Snakemake, the `Snakefile` itself is a clear
+record of the steps required to re-execute the workflow. Ideally, the
+`Snakefile` will include all the steps required to go from the raw
+inputs to images and data tables used in publications, but this might
+not always be possible.
+
+A secondary impact of using a workflow tool is that it often imposes a
+directory and file structure on the project. For example, Snakemake
+has an ideal suggested structure. An example folder structure when
+using Snakemake would look like the following.
+
+```plain
+.
+├── config
+│   └── config.yaml
+├── LICENSE.md
+├── README.md
+├── resources
+├── results
+│   └── image.png
+└── workflow
+    ├── envs
+    │   ├── env.yaml
+    │   ├── flake.lock
+    │   ├── flake.nix
+    │   ├── poetry.lock
+    │   └── pyproject.toml
+    ├── notebooks
+    │   └── analysis.ipynb
+    ├── rules
+    │   ├── postprocess.smk
+    │   ├── preprocess.smk
+    │   └── sim.smk
+    ├── scripts
+    │   ├── func.py
+    │   └── run.py
+    └── Snakefile
+```
+
+Notice that the above directory strucuture includes the `envs`
+directory. This allows diffferent steps in the workflow to be run in
+diffferent types of environments. The benefit of this is that the
+steps can be highly hetrogeneous in terms of the required
+computational enviornment. Additionally, most workflow tools will
+support both HPC and local workstation execution and make porting
+between systems easier.
+
+See https://pmc.ncbi.nlm.nih.gov/articles/PMC8114187/ for a more
+details overview off Snakemake and a list of other good workflow
+tools.
+
+- https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html
 
 <!-- links -->
 

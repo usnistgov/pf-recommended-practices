@@ -369,6 +369,56 @@ tools.
 
 - https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html
 
+
+## Data Curation
+
+Data curation involves the steps required to turn an unstructured data
+from a research project into a coherent research data object
+satisfying the principles of FAIR data. A robust data curation process
+is often a requirement for compliance for funding requirements and to
+simply meet the most basic needs of transparency in scientific
+research.
+
+Simulation FAIR data paragraph and importance of metadata
+
+The fundamental steps to curate a computational research project into
+a research data object and publish are as follows.
+
+- Automate the entire computational workflow where possible during the
+  research process from initial inputs to final research products such
+  as images and data tables.
+- Publish the code and workflows appropriately during development (see
+  the ... guide).
+- Employ a suitable metadata standard where possible to describe
+  different aspects of the research project such as the raw data
+  files, derived data assets, software environments, numerical
+  algorithms and problems specification.
+- Identify the significant raw and derived data assets that are
+  required to produce the final research products.
+- License the research work appropriately. This may require a separate license for the data products as they are generally not archived in the code repository.
+- Select a data repository to curate the data
+- Obtain a DOI for the data object and link with other research
+  products
+
+The above steps are difficult to implement near the conclusion of a
+research project. The authors suggest implementing the majority of
+these steps at the outset of the project and developing these steps as
+part of a protocol for all research projects within a computational
+materials research group.
+
+### Automation
+
+### Metadata Standards
+
+### Publish the codes and workflows during development
+
+### Identifying the significant data assets
+
+### Licensing
+
+### Selecting a data repository
+
+
 <!-- links -->
 
 [@tkphd]: https://github.com/tkphd

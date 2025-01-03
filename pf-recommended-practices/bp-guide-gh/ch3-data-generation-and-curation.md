@@ -22,7 +22,7 @@ Gauss points. Typically, data is stored at sufficient temporal
 frequency to reconstruct the evolution of the field variables.
 
 In recent years there have been efforts to embed phase field models
-into integrated computataional materials engineering (ICME) based
+into integrated computational materials engineering (ICME) based
 materials design workflows {cite}`TOURRET2022100810`. However, to
 leverage relevant phase field resources for these workflows a
 systematic approach is required for archiving and accessing
@@ -37,7 +37,7 @@ outlined in this guide will provide downstream researchers with an
 enhanced capability to use phase field as part of larger ICME
 workflows and, in particular, data intensive usages such as AI
 surrogate models. This guide serves as a primer rather than a
-detailied reference on scientific data, aiming to stimulate thought
+detailed reference on scientific data, aiming to stimulate thought
 and ensure that phase field practitioners are aware of the key
 considerations before initiating a phase field study.
 
@@ -82,8 +82,8 @@ title: A Phase Field Workflow
 flowchart TD
     id1@{ shape: lean-r, label: "Input Files", fill: #f96 }
     id1.2@{ shape: lean-r, label: "Parameters" }
-    id1.1([Code])
-    id2([Computational Environment])
+    id1.1@{ shape: lean-r, label: "Code" }
+    id2@{ shape: lean-r, label: "Computational Environment" }
     id2.5@{ shape: rect, label: "Pre-processing, (e.g. CALPHAD or Meshing)" }
     id2.7@{ shape: bow-rect, label: "Pre-processed Data" }
 	id3[Phase Field Simulation]
@@ -92,6 +92,7 @@ flowchart TD
 	id5@{ shape: rect, label: "Post-processing (e.g. Data Visualization)" }
 	id6@{ shape: bow-rect, label: "Post-processed Data" }
 	id7@{ shape: lin-cyl, label: "Data Repository" }
+	id8@{ shape: bow-rect, label: "Metadata" }
 	id1.2-->id1
 	id1-->id2.5
 	id1-->id5
@@ -105,6 +106,11 @@ flowchart TD
 	id2-->id5
 	id6--Curation-->id7
 	id4--Curation-->id7
+	id8--Curation-->id7
+	id1.2-->id8
+	id1.1-->id8	
+	id1-->id8		
+	id2-->id8			
 ```
 
 ## Data Generation
@@ -119,52 +125,50 @@ scientific studies.
 
 When performing a phase field simulation, one must be cognizant of
 several factors pertaining to data generation. Generally speaking, the
-considerations can be defined as follow,
+considerations can be defined as follow.
 
-- choosing data to generate (and then curate),
-- file formats,
-- file system hierarchy,
-- restarts and recovering from crashes
-- data generation  and workflow tools, and
-- HPC environments and writing to disk in parallel.
+ - Writing raw data to disk
+ - File formats
+ - Recovering from crashes and restarts
+ - Using workflow tools
+ - High performance computing (HPC) environments and parallel writes
 
 These considerations are often conflicting, require trial and error to
 determine the best approach and are highly specific to the
 requirements of the workflow and post-processing. However, there are
 some general guidelines that will be outlined below.
 
-### Choosing data to generate
+### Writing raw data to disk
 
 Selecting the appropriate data to write to disk during the simulation
 largely depends on the requirements such as post-processing or
 debugging. However, it is good practice to consider future uses of the
-data for future work such as subsequent researchers trying to reuse
-the workflow or even reviewers. Lack of forethought in saving data
-could hinder the data curation of the eventual curation of the data
-research object. This step should be considered independently from
-restarts. The data required to reconstruct derived quantities or the
-evolution of field data will not be the same as the data required to
-restart a simulation.
+data that might not be of immediate benefit to the research
+study. Lack of forethought in retaining data could hinder the data
+curation of the final research object. The data generation process
+should be considered independently from restarts, which is discussed
+in a [subsequent section](#label-restarts). In general, the data
+required to reconstruct derived quantities or the evolution of field
+data will not be the same as the data required to restart a
+simulation.
 
-Another aspect of saving data to disk is the frequency off the disk
-writes. This choice can often impact the performance of a simulation
-as the simulation might have to wait on the disk before continuing the
-computation. A method to avoid this is to use a separate thread that
-runs concurrently to write the data (in the same process), see
-[Stackflow
-Question](https://stackoverflow.com/questions/1014113/efficient-way-to-save-data-to-disk-while-running-a-computationally-intensive-tas). In
-fact many practitioners overlook optimizing this part of aspect of
-phase field codes
-[ref](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0202410). Generally,
-when writing data it is best to do single large write to disk as
-opposed to multiple small writes. In practice this could involve
-caching multiple field variables across multiple print steps as a
-single data blob to an HDF5 file. However, there is a trade off
-between simulation performance and memory usage as well as latency and
-communication overhead when considering parallel simulations.
-
-https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0202410
-https://dl.acm.org/doi/abs/10.1145/1713072.1713079
+On many HPC systems writing to disk frequently can be expensive and
+intermittently stall a simulation due to a number off factors such as
+I/O contention, see the [HPC section
+below](#label-hpc-environments). Generally, when writing data it is
+best to use single large writes to disk as opposed to multiple small
+writes especially on shared file systems (i.e. "perform more write
+bytes per write function call" {cite}`9406732`). In practice this
+could involve caching multiple field variables across multiple save
+steps and then writing to disk as a single data blob in an HDF5 file
+for example. This is a trade-off between IO efficiency and losing all
+the data if the job crashes without writing any useful data as well as
+simulation performance, memory usage and communication overhead when
+considering parallel simulations. Overall, it is essential that the IO
+part of a code is well profiled using different write
+configurations. The replicability of writes should also be tested by
+checking the hash of data based on parallel configurations and write
+frequencies.
 
 ### File formats
 
@@ -229,6 +233,7 @@ https://aaltoscicomp.github.io/python-for-scicomp/work-with-data/
 https://docs.vtk.org/en/latest/index.html
 https://docs.xarray.dev/en/stable/user-guide/io.html=
 
+(label-restarts)=
 ### Recovering from crashes and restarts
 
 A study from 2020 of HPC systems calculated the success rate (I.e. no
@@ -380,6 +385,8 @@ tools.
 
 - https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html
 
+(label-hpc-environments)=
+### HPC Environments and parallel writes
 
 ## Data Curation
 

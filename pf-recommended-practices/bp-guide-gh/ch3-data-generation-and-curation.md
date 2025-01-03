@@ -468,5 +468,4 @@ research will greatly benefit this process.
 [fair-phase-field]: https://doi.org/10.5281/zenodo.7254581
 [schemaorg]: https://github.com/openschemas/schemaorg
 [structured data schema]: https://en.wikipedia.org/wiki/Data_model
-[FAIR]: https://doi.org/10.1038/sdata.2016.18
 

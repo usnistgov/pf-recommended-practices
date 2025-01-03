@@ -40,9 +40,7 @@
         python = pkgs.python313;
       };
       env = pkgs.poetry2nix.mkPoetryEnv args;
-      app = pkgs.poetry2nix.mkPoetryApplication args;
-
-      ruby = pkgs.ruby.withPackages (ps: with ps; [ jekyll kramdown-parser-gfm webrick ]);
+      app = pkgs.poetry2nix.mkPoetryApplication args;3
    in
      rec {
        ## See https://github.com/nix-community/poetry2nix/issues/1433
@@ -50,7 +48,7 @@
        ## environment
        ## devShells.default = env.env;
        devShells.default = pkgs.mkShell {
-         packages = [ env ruby ]; 
+         packages = [ env ]; 
          shellHook = ''
             export PYTHONPATH=$PWD
          '';

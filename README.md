@@ -14,7 +14,9 @@ If you'd like to develop and/or build the Phase Field Method Recommended Practic
 4. Run `jupyter-book clean pf-recommended-practices/` to remove any existing builds
 5. Run `jupyter-book build pf-recommended-practices/`
 
-A fully-rendered HTML version of the book will be built in `pf-recommended-practices/_build/html/`.
+A fully-rendered HTML version of the book will be built in
+`pf-recommended-practices/_build/html/`. Render using `python -m
+http.server` in the `pf-recommended-practices/_build/html/` directory.
 
 ### Hosting the book
 

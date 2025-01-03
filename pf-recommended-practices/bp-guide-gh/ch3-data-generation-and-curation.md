@@ -8,35 +8,36 @@
 
 ## Overview
 
+
 Phase field models are characterized by a form of PDE related to an
 Eulerian free boundary problem and defined by a diffuse
 interface. Phase field models for practical applications require
 sufficient high fidelity to resolve both the macro length scale
 related to the application and the micro length scales associated with
-the free boundary. This requires extensive computationally resources
-and generates large volumes of raw field data. This data consists of
-field variables defined frequently across a domain or an interpolation
-function with many Gauss points. Typically, data is stored at
-sufficient temporal frequency to reconstruct the evolution of the
-field variables.
+the free boundary. Performing a useful phase field simulation requires
+extensive computationally resources and can generate large volumes of
+raw field data. This data consists of field variables defined
+frequently across a domain or an interpolation function with many
+Gauss points. Typically, data is stored at sufficient temporal
+frequency to reconstruct the evolution of the field variables.
 
 In recent years there have been efforts to embed phase field models
-into ICME-based materials design workflows. However, to leverage
-relevant phase field resources for these workflows a systematic
-approach is required for archiving and accessing data. Furthermore, it
-is often difficult for downstream researchers to find and access raw
-or minimally processed data from phase field studies, before the
-post-processing steps and final publication. In this document, we will
-provide motivation, guidance and a template for packaging and
-publishing FAIR data from phase field studies as well as managing
-unpublished raw data. Following the protocols outlined in this guide
+into ICME-based materials design workflows
+{cite}`TOURRET2022100810`. However, to leverage relevant phase field
+resources for these workflows a systematic approach is required for
+archiving and accessing data. Furthermore, it is often difficult for
+downstream researchers to find and access raw or minimally processed
+data from phase field studies, before the post-processing steps and
+final publication. In this document, we will provide motivation,
+guidance and a template for packaging and publishing FAIR data from
+phase field studies as well as managing unpublished raw data
+{cite}`Wilkinson2016`. Following the protocols outlined in this guide
 will provide downstream researchers with an enhanced capability to use
 phase field as part of larger ICME workflows and, in particular, data
-intensive usages such as AI surrogate models. This guide is not a
-complete guide about scientific data, but more of a though provoker so
-phase field practitioners are aware of the fundamental issues before
-embarking on a phase field study.
-
+intensive usages such as AI surrogate models. This guide serves as a
+primer rather than a detailied reference on scientific data, aiming to
+stimulate thought and ensure that phase field practitioners are aware
+of the key considerations before initiating a phase field study.
 
 ## Definitions
 
@@ -68,10 +69,10 @@ tools and practices. See the [Software Development] section of the
 best practices guide for a more detailed discussion of software and
 code curation.
 
-```mermaid
+```{mermaid}
 ---
 title: A Phase Field Workflow
----
+---p
 flowchart TD
     id1(Input Files\nParameters)
     id1.1(Code)
@@ -377,7 +378,8 @@ from a research project into a coherent research data object
 satisfying the principles of FAIR data. A robust data curation process
 is often a requirement for compliance for funding requirements and to
 simply meet the most basic needs of transparency in scientific
-research.
+research. The main benefits of data curation include (see
+[DCC](https://www.dcc.ac.uk/guidance/how-guides/develop-data-plan#Why%20develop))
 
 Simulation FAIR data paragraph and importance of metadata
 
@@ -395,7 +397,9 @@ a research data object and publish are as follows.
   algorithms and problems specification.
 - Identify the significant raw and derived data assets that are
   required to produce the final research products.
-- License the research work appropriately. This may require a separate license for the data products as they are generally not archived in the code repository.
+- License the research work appropriately. This may require a separate
+  license for the data products as they are generally not archived in
+  the code repository.
 - Select a data repository to curate the data
 - Obtain a DOI for the data object and link with other research
   products
@@ -408,6 +412,31 @@ materials research group.
 
 ### Automation
 
+Automating workflows in computational materials science is useful for
+many reasons, however, for data curation purposed it provides and
+added benefit. In short, an outlined workflow associated with a
+curated FAIR object is a major way to improve FAIR quality for
+subsequent researchers. For most workflow tools, the operation script
+outlining the workflow graph is the ultimate form of metadata about
+how the archived data files are used or generated during the
+research. For example, with Snakemake, the `Snakefile` has clearly
+outlined inputs and outputs as well as the procedure associated with
+each input / output pair. In particular, the computational
+environment, command line arguments, environment variables are
+recorded as well as the order of execution for each step. 
+
+In recent years there have been efforts in the life sciences to
+provide a minimum workflow for independent code execution during the
+peer review process. The [CODECHECK
+initiative](https://doi.org/10.12688/f1000research.51738.2) trys to
+provide a standard for executing workflows and a certification if the
+workflow satisifies basic criteria. These types of efforts will likely
+be used within the compuational materials science community in the
+coming years so adopting automated workflow tools as part of your
+research will greatly benefit this process.
+
+- https://www.sciencedirect.com/science/article/pii/S2666389921001707?via%3Dihub
+
 ### Metadata Standards
 
 ### Publish the codes and workflows during development
@@ -418,6 +447,11 @@ materials research group.
 
 ### Selecting a data repository
 
+## References
+
+```{bibliography}
+:filter: docname in docnames
+```
 
 <!-- links -->
 
@@ -434,3 +468,5 @@ materials research group.
 [fair-phase-field]: https://doi.org/10.5281/zenodo.7254581
 [schemaorg]: https://github.com/openschemas/schemaorg
 [structured data schema]: https://en.wikipedia.org/wiki/Data_model
+[FAIR]: https://doi.org/10.1038/sdata.2016.18
+

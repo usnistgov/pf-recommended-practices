@@ -7,3 +7,4 @@ tmp/
 .auctex-auto/
 logo.png
 /_build/
+pf-recommended-practices/_build

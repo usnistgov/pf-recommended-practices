@@ -1,10 +1,11 @@
-*/.DS_Store
-.DS_Store
-.idea
-*.log
-tmp/
 *.ipynb_checkpoints/
+*.log
+*/.DS_Store
+*~undo-tree~
+.DS_Store
 .auctex-auto/
-logo.png
+.idea
 /_build/
+logo.png
 pf-recommended-practices/_build
+tmp/

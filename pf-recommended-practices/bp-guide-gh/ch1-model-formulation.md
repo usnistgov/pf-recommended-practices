@@ -13,7 +13,7 @@ Phase field models are, quite generally, extensions of classical
 non-equilibrium thermodynamics. There are quite a few treatments of this in the
 literature.  Here we will follow formulations similar to those developed by
 Sekerka and Bi in "Interfaces for the Twenty-First Century."
-{cite}`bi_phase-field_1998` In that spirit, we will start with a very general
+{cite}`Bi1998` In that spirit, we will start with a very general
 formulation, including hydrodynamics, and then simplify the problem.  For those
 interested in starting with a simple model, you can skip over much of the
 initial formulation and jump to the section on the further reduction of the
@@ -64,10 +64,10 @@ A complete discussion of how to use the above rules in this context is outside
 the scope of this best-practice guide, but we offer a highly abbreviated
 discussion of the ''flavor,'' following the ideas of irreversible
 thermodynamics (we largely are following works like deGroot and Mazur
-{cite}`groot_non-equilibrium_2013`, although the continuum mechanics community
+{cite}`Groot2013`, although the continuum mechanics community
 may be more comfortable with Noll, Coleman, and Truesdale
-{cite}`malvern_introduction_1969`), as well as the aforementioned work by
-Sekerka and Bi {cite}`bi_phase-field_1998`.
+{cite}`Malvern1969`), as well as the aforementioned work by
+Sekerka and Bi {cite}`Bi1998`.
 
 ### Mass
 
@@ -239,7 +239,7 @@ arise, and also, for careful readers, how to extend this approach to multiple
 phases and additional gradient corrections, we will proceed with some more
 simplifications for a less complex system.  For those who are interested in
 solid state systems that can creep, the work of Mishin, Warren, Sekerka, and
-Boettinger (2013) {cite}`mishin_irreversible_2013` extends this framework.
+Boettinger (2013) {cite}`Mishin2013` extends this framework.
 Here we eliminate the ${\bf v}$ equations by fiat, assuming that only diffusion
 controls the evolution of the system, which is often reasonable in microgravity
 situations.  We can also go further, and consider an isothermal system. Then we
@@ -299,7 +299,7 @@ modeling a liquid-solid binary alloy, although the details are less important
 that understanding that a specific choice of state function has to come from
 _somewhere_. Following the treatment in the Annual Reviews of Materials
 Research (2001) by Boettinger, Warren, Beckerman and Karma
-{cite}`boettinger_phase-field_2002` we note that the free energy can be
+{cite}`Boettinger2002` we note that the free energy can be
 determined through a multi-step process where the two components are called $A$
 and $B$ respectively:
 

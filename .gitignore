@@ -1,3 +1,4 @@
+*.bkup
 *.ipynb_checkpoints/
 *.log
 */.DS_Store

@@ -40,7 +40,7 @@
         python = pkgs.python313;
       };
       env = pkgs.poetry2nix.mkPoetryEnv args;
-      app = pkgs.poetry2nix.mkPoetryApplication args;3
+      app = pkgs.poetry2nix.mkPoetryApplication args;
    in
      rec {
        ## See https://github.com/nix-community/poetry2nix/issues/1433

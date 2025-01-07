@@ -122,10 +122,7 @@ can be defined as follow.
 - Using workflow tools
 - High performance computing (HPC) environments and parallel writes
 
-These considerations are often conflicting, require trial and error to
-determine the best approach and are highly specific to the requirements of the
-workflow and post-processing. However, there are some general guidelines that
-will be outlined below.
+These considerations will be outlined below.
 
 ### Writing raw data to disk
 
@@ -146,13 +143,15 @@ when writing data it is best to use single large writes to disk as opposed to
 multiple small writes especially on shared file systems (i.e. "perform more
 write bytes per write function call" {cite}`Paul2020`). In practice this could
 involve caching multiple field variables across multiple save steps and then
-writing to disk as a single data blob in an HDF5 file for example. This is a
-trade-off between IO efficiency and losing all the data if the job crashes
-without writing any useful data as well as simulation performance, memory usage
-and communication overhead when considering parallel simulations. Overall, it
-is essential that the IO part of a code is well profiled using different write
-configurations. The replicability of writes should also be tested by checking
-the hash of data based on parallel configurations and write frequencies.
+writing to disk as a single data blob in an HDF5 file for example. Caching and
+chunking data writes is a trade-off between IO efficiency, data loss due to
+jobs crashing, simulation performance, memory usage and communication overhead
+for parallel jobs. Overall, it is essential that the IO part of a code is well
+profiled using different write configurations. The replicability of writes
+should also be tested by checking the hash of data files while varying parallel
+configurations, write frequencies and data chunking strategies. I/O performance
+can be a major bottleneck for larger parallel simulations, but there are tools
+to help characterize I/O, see {cite}`Ather2024` for an overview.
 
 ### File formats
 

@@ -15,6 +15,16 @@
     abstract = {This paper deals with the impact of fault prediction techniques on checkpointing strategies. We extend the classical first-order analysis of Young and Daly in the presence of a fault prediction system, characterized by its recall and its precision. In this framework, we provide optimal algorithms to decide whether and when to take predictions into account, and we derive the optimal value of the checkpointing period. These results allow us to analytically assess the key parameters that impact the performance of fault predictors at very large scale.}
 }
 
+@misc{Ather2024,
+      title={Parallel I/O Characterization and Optimization on Large-Scale HPC Systems: A 360-Degree Survey}, 
+      author={Hammad Ather and Jean Luca Bez and Chen Wang and Hank Childs and Allen D. Malony and Suren Byna},
+      year={2024},
+      eprint={2501.00203},
+      archivePrefix={arXiv},
+      primaryClass={cs.DC},
+      url={https://arxiv.org/abs/2501.00203}, 
+}
+
 @article{BautistaGomez2024,
     author = {Leonardo Bautista-Gomez and
               Anne Benoit and
@@ -133,6 +143,29 @@
     keywords = {Science / Physics / General},
 }
 
+@article{Herault2019,
+	author = {Thomas Herault and Yves Robert and Aurelien Bouteiller and Dorian Arnold and Kurt Ferreira and George Bosilca and Jack Dongarra},
+	title = {Checkpointing Strategies for Shared High-Performance Computing Platforms},
+	journal = {International Journal of Networking and Computing},
+	volume = {9},
+	number = {1},
+	year = {2019},
+	keywords = {},
+	abstract = {},
+	issn = {2185-2847},	pages = {28--52},	url = {http://www.ijnc.org/index.php/ijnc/article/view/195}
+}
+
+@article{Hoyer2017,
+    author={Hoyer, Stephan and Joseph, Hamman},
+    doi={10.5334/jors.148},
+    journal={Journal of Open Research Software},
+    month=apr,
+    number={1},
+    title={{xarray: N-D labeled Arrays and Datasets in Python}},
+    volume={5},
+    year={2017}
+}
+
 @INPROCEEDINGS{Kumar2020,
     author={Kumar, Rakesh and
             Jha, Saurabh and
@@ -247,6 +280,14 @@
     pages={202-211},
     keywords={Runtime;File systems;High performance computing;Conferences;Machine learning;Metadata;Servers;I/O analysis;High Performance Computing;Parallel File Systems;Lustre File System;I/O contention},
     doi={10.1109/HiPC50609.2020.00034}
+}
+
+@misc{Schlomer,
+    author={Schlömer, Nico},
+    doi={10.5281/zenodo.1173115},
+    license = {MIT},
+    title={{meshio: Tools for mesh files}},
+    url={https://github.com/nschloe/meshio}
 }
 
 @article{Tourret2022,
@@ -366,31 +407,5 @@
   url={https://arxiv.org/abs/2410.03490},
 }
 
-@misc{Ather2024,
-      title={Parallel I/O Characterization and Optimization on Large-Scale HPC Systems: A 360-Degree Survey}, 
-      author={Hammad Ather and Jean Luca Bez and Chen Wang and Hank Childs and Allen D. Malony and Suren Byna},
-      year={2024},
-      eprint={2501.00203},
-      archivePrefix={arXiv},
-      primaryClass={cs.DC},
-      url={https://arxiv.org/abs/2501.00203}, 
-}
 
-@misc{Schlomer,
-    author={Schlömer, Nico},
-    doi={10.5281/zenodo.1173115},
-    license = {MIT},
-    title={{meshio: Tools for mesh files}},
-    url={https://github.com/nschloe/meshio}
-}
 
-@article{Hoyer2017,
-    author={Hoyer, Stephan and Joseph, Hamman},
-    doi={10.5334/jors.148},
-    journal={Journal of Open Research Software},
-    month=apr,
-    number={1},
-    title={{xarray: N-D labeled Arrays and Datasets in Python}},
-    volume={5},
-    year={2017}
-}

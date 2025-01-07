@@ -205,82 +205,66 @@ data format which supports out-of-memory operations.
 
 A study from 2020 of HPC systems calculated the success rate (I.e. no error
 code on completion) of multi-node jobs with non-shared memory at between 60%
-and 70% {cite}`Kumar2020`. This success rate diminishes rapidly as the run time
-of jobs increases. Needless to say that check-pointing is absolutely required
-for any jobs of more than a few hours. Nearly everyday, an HPC platform will
+and 70% {cite}`Kumar2020`. Needless to say that check-pointing is absolutely
+required for any jobs of more than a day. Nearly everyday, an HPC platform will
 experience some sort of failure {cite}`Benoit2022b`, {cite}`Aupy2014`. That
 doesn't mean that every job will fail every day, but it would be optimistic to
-think that jobs will go beyond a week without some issues. Given that fact one
-can estimate how long it might take to run a job without check-pointing. A very
-rough estimate for expected completion time assuming instantaneous restarts and
-no queuing time is given by,
+think that jobs will go beyond a week without some issues. Given the failure
+rate one can estimate how long it might take to run a job without
+check-pointing. A very rough estimate for expected completion time assuming
+instantaneous restarts and no queuing time is given by,
 
 $$ E(T) = \frac{1}{2} \left(1 + e^{T / \mu} \right) T $$
 
-where $T$ is the nominal job completion time with no failures and
-$\mu$ is the mean time to failure. The formula predicts an expected
-time of 3.8 days for a job that nominally runs for 3 days with a $\mu$
-of one week. The formula is of course a gross simplification and
-includes many invalid assumptions, but regardless of the assumed
-failure distribution the exponential time increase without
-check-pointing is inescapable. Assuming that we're agreed on the need
-for checkpoint, the next step is to decide on the optimal time
-interval between checkpoints. This is given by the well known
-Young/Daly formula,
+where $T$ is the nominal job completion time with no failures and $\mu$ is the
+mean time to failure. The formula predicts an expected time of 3.8 days for a
+job that nominally runs for 3 days with a $\mu$ of one week. The formula is of
+course a gross simplification and includes many assumptions that are invalid in
+practice (such as a uniform failure distribution), but regardless of the
+assumptions the exponential time increase without check-pointing is
+inescapable. Assuming that we're agreed on the need for checkpoints, the next
+step is to decide on the optimal time interval between checkpoints. This is
+given by the well known Young/Daly formula,
 
 $$ W = \sqrt{2 \mu C} $$
 
-where $C$ is the time taken for a checkpoint {cite}`Benoit2022a`,
-{cite}`BautistaGomez2024`. The Young/Daly formula accounts for the trade off
-between the start up time cost for a job to get back to its original point of
-failure and the cost associated with writing the checkpoint to disk. For
-example, with a weekly failure rate and $C=6$ minutes, $W=5.8$ hours. In
-practice these estimates for $\mu$ and $C$ might be a little pessimistic, but
-be aware of the trade off {cite}`Benoit2022b`. Note that some HPC systems have
-upper bounds on run times (e.g. TACC has a 7 days time limit so $\mu<7$ days
-regardless of other system failures).
+where $C$ is the wall time required to execute the code associated with a
+checkpoint {cite}`Benoit2022a`, {cite}`BautistaGomez2024`. The Young/Daly
+formula accounts for the trade off between the start up time cost for a job to
+get back to its original point of failure and the cost associated with writing
+the checkpoint to disk. For example, with a weekly failure rate and $C=6$
+minutes the optimal write frequency is 5.8 hours. In practice these estimates
+for $\mu$ and $C$ might be a little pessimistic, but be aware of the trade off
+{cite}`Benoit2022b`. Note that some HPC systems have upper bounds on run
+times. The Texas Advanced Computing Center has an upper bound of 7 days for
+most jobs so $\mu<7$ days regardless of other system failures.
 
-Given the above theory, what is the some practical advice for
-check-pointing jobs?
+Given the above theory, what are some practical conclusions to draw?
 
-- Estimate both $\mu$ and $C$. It might be worth discussing the $\mu$
-  value with the HPC cluster administrator to get some valid
-  numbers. Of course $C$ can be estimated by running test jobs. It's
-  good to know if you should be writing checkpoints every day or every
-  hour -- definitely not every minute!
-- Ensure that restarts are deterministic (i.e. results don't change
-  between a job that restarts and one that doesn't). One way to do
-  this is to hash output files assuming that the simulation itself is
+- Take some time to estimate both $\mu$ and $C$. It might be worth discussing
+  the $\mu$ value with the HPC cluster administrator to get some valid
+  numbers. Of course $C$ can be estimated by running test jobs. Estimating
+  these values can be difficult due to HPC cluster volatility, but it's good to
+  know if you should be checkpointing every day or every hour or even never
+  checkpointing at all in the circumstances that $W \approx T$.
+- Ensure that restarts are deterministic (i.e. results don't change between a
+  job that restarts and one that doesn't). One way to do this is to compare
+  hashes from raw data output files assuming that the simulation itself is
   deterministic.
-- Consider using a checkpointing library if you're using a custom
-  phase-field code or even a workflow tool such as Snakemake which has
-  the inbuilt ability to handle checkpointing. A tool like Snakemake
-  is good for large parameter studies where it is difficult to keep
-  track of which jobs wrote which files. The `pickle` library is
-  acceptable for checkpointint Python programs _in this short-lived
-  circumstance_.
-- Use the built-in checkpointing available in the phase-field code
-  that you're using.
-- Whatever system is being used, check that the checkpointing machinery
-  actually works and is deterministic.
-
-Some links to further reading:
-
-- <https://hivehpc.haifa.ac.il/index.php/slurm?start=5>
-- <https://icl.utk.edu/files/publications/2022/icl-utk-1569-2022.pdf>
-- <https://inria.hal.science/hal-03264047/file/rr9413.pdf>
-- <https://www.sciencedirect.com/science/article/abs/pii/S0743731513002219>
-- <https://icl.utk.edu/files/publications/2022/icl-utk-1569-2022.pdf>
-- <https://www.ittc.ku.edu/~sun/publications/fgcs24.pdf>
-- <https://www.ittc.ku.edu/~sun/publications/fgcs24.pdf>
-- <https://icl.utk.edu/files/publications/2020/icl-utk-1385-2020.pdf>
-- <https://ftp.cs.toronto.edu/csrg-technical-reports/621/ut-csrg-621.pdf>
-- <https://arxiv.org/pdf/2012.00825>
-- <https://icl.utk.edu/~herault/papers/007%20-%20Checkpointing%20Strategies%20for%20Shared%20High-Performance%20Computing%20Platforms%20-%20IJNC%20(2019).pdf>
-- <https://dl.acm.org/doi/10.1145/2184512.2184574>
-- <https://engineering.purdue.edu/dcsl/publications/papers/2020/fresco_dsn20_cameraready.pdf>
-- [Job failures](https://pdf.sciencedirectassets.com/271503/1-s2.0-S0898122111X00251/1-s2.0-S0898122111005980/main.pdf)
-- <https://www.cs.cmu.edu/~bianca/dsn06.pdf>
+- Consider using a checkpointing library if you're using a custom phase-field
+  code or even a workflow tool such as Snakemake which has the inbuilt ability
+  to handle checkpointing. A tool like Snakemake is good for large parameter
+  studies where it is difficult to keep track of a multiplicy of jobs and their
+  various output files making restarts complicated. The `pickle` library is
+  acceptable for checkpointing Python programs as checkpoint data is only
+  useful for a brief period.
+- Many PDE solvers and dedicated phase field codes will have a checkpoint
+  mechanism built in. However, never trust the veracity of these
+  mechanisms. Always run your own tests varying parallel parameters and
+  checkpoint frequency!
+  
+Checkpointing strategies on HPC clusters is a complex topic, see
+{cite}`Herault2019` for an overview.
 
 ### Using Workflow Tools
 

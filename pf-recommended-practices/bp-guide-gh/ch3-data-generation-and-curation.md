@@ -151,32 +151,27 @@ profiled using different write configurations. The replicability of writes
 should also be tested by checking the hash of data files while varying parallel
 configurations, write frequencies and data chunking strategies. I/O performance
 can be a major bottleneck for larger parallel simulations, but there are tools
-to help characterize I/O, see {cite}`Ather2024` for an overview.
+to help characterize I/O, see {cite}`Ather2024` for a thorough overview.
 
 ### File formats
 
-In general, when running phase-field simulations, the user is limited to the
-file format that the software supports. For example, if the research is using
-PRISMS-PF the default data format is VTK and there is no reason to seek an
-alternative. If an alternative file format is required then the researcher
-could code a C++ function to write data in an alternative format to VTK such as
-NetCDF.
-
 As a general rule it is best to choose file formats that work with the tools
 already in use and / or that your colleagues are using. There are other
-considerations to be aware of though. Human readable formats such as CSV and
-JSON are often useful for small medium data sets (such as derived quantities)
-as some metadata can be embedded alongside the raw data resulting in a FAIRer
-data product than standard binary formats. Some binary file formats also
-support metadata and might be more useful for final data curation of a
+considerations to be aware of though. Human readable formats such as CSV, JSON
+or even YAML are often useful for small medium data sets (such as derived
+quantities) as some metadata can be embedded alongside the raw data resulting
+in a FAIRer data product than standard binary formats. Some binary file formats
+also support metadata and might be more useful for final data curation of a
 phase-field study even if not used during the research process. One main
 benefit of using binary data (beyond saving disk space) is the ability to
-preserve full precision for floating point numbers. The longevity of file
-formats should be considered as well. A particularly egregious case of ignoring
-longevity would be using the Pickle file format in Python, which is both
-language dependent and code dependent. It is an example of data serialization,
-which is used mainly for in-process data storage for asynchronous tasks, but
-not good for long term data storage.
+preserve full precision for floating point numbers. See the [Working with
+Data][working-with-data] section of the Python for Scientific Computing
+document for a comparison of binary versus text based formats. The longevity of
+file formats should be considered as well. A particularly egregious case of
+ignoring longevity would be using the Pickle file format in Python, which is
+both language dependent and code dependent. It is an example of data
+serialization, which is used mainly for in-process data storage for
+asynchronous tasks and checkpointing, but not good for long term data storage.
 
 There are many binary formats used for storing field data based on an Eulerian
 mesh or grid. Common formats for field data are NetCDF, VTK, XDMF and
@@ -186,28 +181,24 @@ different native file formats based on both XML and HDF5 (both non-binary and
 binary). The VTK library works well with FE simulations supporting many
 different element types as well as parallel data storage for domain
 decomposition.  See the [XML file formats documentation][vtk-xml] for VTK for
-an overview of zoo of different file extensions and their meaning. In contrast
-to VTK, NetCDF is more geared towards gridded data having arisen from
-atmospheric research, which uses more FD and FV than FE. For a comparison of
-performance and metrics for different file types see the
-[Python MeshIO tools's README.md][meshio].
+an overview of the many different file extensions and their meanings. In
+contrast to VTK, NetCDF is more geared towards gridded data having arisen from
+atmospheric research (using finite difference grids rather than finite element
+meshes). For a comparison of performance and metrics for different file types
+see the [MeshIO README.md][meshio].
 
-The Python MeshIO tool is a good place to start for IO when writing custom
-phase-field codes in Python (or Julia using `pyimport`). MeshIO is also a good
-place to start for exploring, debugging or picking apart file data in an
-interactive Python environment, which can be harder to do with dedicated
-viewing tools like Paraview. The scientific Python ecosystem is very rich with
-tools for data manipulation and storage such as Pandas, which supports storage
-in many different formats, and xarray for higher dimensional data. xarray
-supports NetCDF file storage, which includes coordinate systems and metadata in
+The MeshIO tool {cite}`Schlomer` is a good place to start for IO when writing
+custom phase-field codes in Python (or Julia using `pyimport`). MeshIO is also
+a good place to start for exploring, debugging or picking apart file data in an
+interactive Python environment. Debugging data can be much more difficult with
+GUI style data viewers such as Paraview. The scientific Python ecosystem is
+very rich with tools for data manipulation and storage such as Pandas, which
+supports table data storage in many different formats, and xarray
+{cite}`Hoyer2017` for higher dimensional data storage. [xarray supports NetCDF
+file storage][xarray-io], which includes coordinate systems and metadata in
 HDF5. Both Pandas and xarray can be used in a parallel or a distributed manner
-in conjucntion with Dask. Dask along with xarray supports writing to the Zarr
-data format. Zarr allows data to be stored on disk during analysis to avoid
-loading the entire data object into memory.
-
-- https://aaltoscicomp.github.io/python-for-scicomp/work-with-data/
-- https://docs.vtk.org/en/latest/index.html
-- https://docs.xarray.dev/en/stable/user-guide/io.html=
+in conjunction with Dask. Dask along with xarray supports writing to the Zarr
+data format which supports out-of-memory operations.
 
 (label-restarts)=
 ### Recovering from crashes and restarts
@@ -456,5 +447,8 @@ Dockstore and Workflowhub https://arxiv.org/pdf/2410.03490
 [schemaorg]: https://github.com/openschemas/schemaorg
 [structured data schema]: https://en.wikipedia.org/wiki/Data_model
 [link1]: https://workflows.community/groups/fair/best-practices/
-[mehio]: https://github.com/nschloe/meshio?tab=readme-ov-file#performance-comparison
+[meshio]: https://github.com/nschloe/meshio?tab=readme-ov-file#performance-comparison
 [vtk-xml]: https://docs.vtk.org/en/latest/design_documents/VTKFileFormats.html#xml-file-formats
+[working-with-data]: https://aaltoscicomp.github.io/python-for-scicomp/work-with-data/#binary-file-formats
+[xarray-io]: https://docs.xarray.dev/en/stable/user-guide/io.html
+

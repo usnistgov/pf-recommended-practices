@@ -203,10 +203,10 @@ data format which supports out-of-memory operations.
 (label-restarts)=
 ### Recovering from crashes and restarts
 
-A study from 2020 of HPC systems calculated the success rate (I.e. no error
-code on completion) of multi-node jobs with non-shared memory at between 60%
-and 70% {cite}`Kumar2020`. Needless to say that check-pointing is absolutely
-required for any jobs of more than a day. Nearly everyday, an HPC platform will
+A study from 2020 of HPC systems calculated the success rate (I.e. no error code
+on completion) of multi-node jobs with non-shared memory at between 60% and 70%
+{cite}`Kumar2020`. Needless to say that check-pointing is absolutely required
+for any jobs of more than a day. Nearly everyday, an HPC platform will
 experience some sort of failure {cite}`Benoit2022b`, {cite}`Aupy2014`. That
 doesn't mean that every job will fail every day, but it would be optimistic to
 think that jobs will go beyond a week without some issues. Given the failure
@@ -236,16 +236,16 @@ the checkpoint to disk. For example, with a weekly failure rate and $C=6$
 minutes the optimal write frequency is 5.8 hours. In practice these estimates
 for $\mu$ and $C$ might be a little pessimistic, but be aware of the trade off
 {cite}`Benoit2022b`. Note that some HPC systems have upper bounds on run
-times. The Texas Advanced Computing Center has an upper bound of 7 days for
-most jobs so $\mu<7$ days regardless of other system failures.
+times. The Texas Advanced Computing Center has an upper bound of 7 days for most
+jobs so $\mu<7$ days regardless of other system failures.
 
 Given the above theory, what are some practical conclusions to draw?
 
 - Take some time to estimate both $\mu$ and $C$. It might be worth discussing
   the $\mu$ value with the HPC cluster administrator to get some valid
-  numbers. Of course $C$ can be estimated by running test jobs. Estimating
-  these values can be difficult due to HPC cluster volatility, but it's good to
-  know if you should be checkpointing every day or every hour or even never
+  numbers. Of course $C$ can be estimated by running test jobs. Estimating these
+  values can be difficult due to HPC cluster volatility, but it's good to know
+  if you should be checkpointing every day or every hour or even never
   checkpointing at all in the circumstances that $W \approx T$.
 - Ensure that restarts are deterministic (i.e. results don't change between a
   job that restarts and one that doesn't). One way to do this is to compare
@@ -256,8 +256,8 @@ Given the above theory, what are some practical conclusions to draw?
   to handle checkpointing. A tool like Snakemake is good for large parameter
   studies where it is difficult to keep track of a multiplicy of jobs and their
   various output files making restarts complicated. The `pickle` library is
-  acceptable for checkpointing Python programs as checkpoint data is only
-  useful for a brief period.
+  acceptable for checkpointing Python programs as checkpoint data is only useful
+  for a brief period.
 - Many PDE solvers and dedicated phase field codes will have a checkpoint
   mechanism built in. However, never trust the veracity of these
   mechanisms. Always run your own tests varying parallel parameters and
@@ -268,28 +268,28 @@ Checkpointing strategies on HPC clusters is a complex topic, see
 
 ### Using Workflow Tools
 
-The authors of this article use Snakemake for their workflows so will
-discuss this in particular, but most of the ideas will apply to other
-workflow tools. In general when running many phase-field jobs for a
-parameter study or dealing with many pre and post-processing steps, it
-is wise to employ a workflow tool such as Snakemake. One of the main
-benefits of workflow tools is the automation of all the steps in a
-workflow that researchers often neglect to implement in the absence of
-a workflow tool (e.g. with bash scripts). This forces a structure and
-the researchers to think carefully about the inputs / outputs and task
-graph. As a side effect, the graph structure produces a much FAIRer
-research object when the research is published and shared and even so
-that the researcher can rerun the simulation steps in the future. For
-example, when using Snakemake, the `Snakefile` itself is a clear
-record of the steps required to re-execute the workflow. Ideally, the
-`Snakefile` will include all the steps required to go from the raw
-inputs to images and data tables used in publications, but this might
-not always be possible.
+In general when running many phase-field jobs for a parameter study or dealing
+with many pre and post-processing steps, it is wise to employ a workflow
+tool. The authors are particularly familiar with Snakemake so discussion is
+slanted towards this tool. One of the main benefits of using a workflow tool is
+that the user is more likely to automate workflow steps that ordinarily would
+not be automated with ad-hoc tools such as Bash scripts. Workflow tools enforce
+a structure on and careful consideration of the inputs, outputs and overall task
+graph of the workflow. As a side effect, the imposed graph structure produces a
+much FAIRer research object when the research is eventually published. Future
+reuse of the study is much easier when the steps in producing the final data
+objects are clearly expressed. When using Snakemake, the `Snakefile` itself is a
+clear human readable record of the steps required to re-execute the
+workflow. Ideally, the `Snakefile` will fully automate all the steps required,
+starting from the parameters and raw input data, to reach the final images and
+data tables used in any publications. In practice this might be quite difficult
+to implement due to the chaotic nature of research projects and the associated
+workflows.
 
-A secondary impact of using a workflow tool is that it often imposes a
-directory and file structure on the project. For example, Snakemake
-has an ideal suggested structure. An example folder structure when
-using Snakemake would look like the following.
+A secondary impact of using a workflow tool is that it often imposes a directory
+and file structure on the project. For example, Snakemake has an [ideal
+suggested directory structure][snakemake-directory]. An example folder structure
+when using Snakemake would look like the following.
 
 ```plain
 .
@@ -319,21 +319,18 @@ using Snakemake would look like the following.
     └── Snakefile
 ```
 
-Notice that the above directory strucuture includes the `envs`
-directory. This allows diffferent steps in the workflow to be run in
-diffferent types of environments. The benefit of this is that the
-steps can be highly hetrogeneous in terms of the required
-computational enviornment. Additionally, most workflow tools will
-support both HPC and local workstation execution and make porting
-between systems easier.
+Notice that the above directory structure includes the `envs` directory. This
+allows different steps in the workflow to be run with independent computational
+environments. Additionally, most workflow tools will support both HPC and local
+workstation execution and make porting between systems easier.
 
 See {cite}`Moelder2021` for a more detailed overview of Snakemake and a list of
 other good workflow tools.
 
-- https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html
-
 (label-hpc-environments)=
 ### HPC Environments and parallel writes
+
+Under construction
 
 ## Data Curation
 
@@ -435,4 +432,4 @@ Dockstore and Workflowhub https://arxiv.org/pdf/2410.03490
 [vtk-xml]: https://docs.vtk.org/en/latest/design_documents/VTKFileFormats.html#xml-file-formats
 [working-with-data]: https://aaltoscicomp.github.io/python-for-scicomp/work-with-data/#binary-file-formats
 [xarray-io]: https://docs.xarray.dev/en/stable/user-guide/io.html
-
+[snakemake-directory]: https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html

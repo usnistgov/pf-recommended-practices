@@ -334,71 +334,60 @@ Under construction
 
 ## Data Curation
 
-Data curation involves the steps required to turn an unstructured data
-from a research project into a coherent research data object
-satisfying the principles of FAIR data. A robust data curation process
-is often a requirement for compliance for funding requirements and to
-simply meet the most basic needs of transparency in scientific
-research. The main benefits of data curation include (see
-[DCC](https://www.dcc.ac.uk/guidance/how-guides/develop-data-plan#Why%20develop))
+Data curation involves manipulating an assortment of unstructured data files,
+scripts and metadata from a research study into a coherent research data object
+that satisfies the principles of FAIR data. A robust data curation process is
+often a requirement for compliance with funding bodies and to simply meet the
+most basic needs of transparency in scientific research. The fundamental steps
+to curate a computational research project into a research data object and
+publish are as follows.
 
-_To Do:_ Simulation FAIR data paragraph and importance of metadata
-
-The fundamental steps to curate a computational research project into
-a research data object and publish are as follows.
-
-- Automate the entire computational workflow where possible during the
-  research process from initial inputs to final research products such
-  as images and data tables.
-- Publish the code and workflows appropriately during development (see
-  the ... guide).
-- Employ a suitable metadata standard where possible to describe
-  different aspects of the research project such as the raw data
-  files, derived data assets, software environments, numerical
-  algorithms and problems specification.
-- Identify the significant raw and derived data assets that are
-  required to produce the final research products.
-- License the research work appropriately. This may require a separate
-  license for the data products as they are generally not archived in
+- **Automation:** Automate the entire computational workflow where possible
+  during the research process from initial inputs to final research products
+  such as images and data tables.
+- **Public Development:** Submit the code and workflows appropriately during
+  development. This step will not be described here, but is discussed in the
+  [Version control and metadata section](label-version-control-and-metadata) of
+  the [Software Development Guide](label-software-development).
+- **Metadata Standards:** Employ a suitable metadata standard where possible to
+  describe different aspects of the research project such as the raw data files,
+  derived data assets, software environments, numerical algorithms and problem
+  specification.
+- **Licensing:** License the research work appropriately. This may require a
+  separate license for the data products as they are generally not archived in
   the code repository.
-- Select a data repository to curate the data
-- Obtain a DOI for the data object and link with other research
-  products
+- **Data Repositories:** Select a data repository to curate the data, submit the
+  data and then obtain a DOI.
 
 The above steps are difficult to implement near the conclusion of a research
-project. The authors suggest implementing the majority of these steps at the
-outset of the project and developing these steps as part of a protocol for all
-research projects within a computational materials research group.
+study. The authors suggest considering these steps at the outset and during a
+study and also considering these steps as part of an overall protocol in a
+computational materials research group.
 
 ### Automation
 
 Automating workflows in computational materials science is useful for many
 reasons, however, for data curation purposed it provides and added benefit. In
-short, an outlined workflow associated with a curated FAIR object is a major
-way to improve FAIR quality for subsequent researchers. For most workflow
-tools, the operation script outlining the workflow graph is the ultimate form
-of metadata about how the archived data files are used or generated during the
-research. For example, with Snakemake, the `Snakefile` has clearly outlined
-inputs and outputs as well as the procedure associated with each input / output
-pair. In particular, the computational environment, command line arguments,
-environment variables are recorded as well as the order of execution for each
-step.
+short, an outlined workflow associated with a curated FAIR object is a major way
+to improve FAIR quality for subsequent researchers. For most workflow tools, the
+operation script outlining the workflow graph is the ultimate form of metadata
+about how the archived data files are used or generated during the research. For
+example, with Snakemake, the `Snakefile` has clearly outlined inputs and outputs
+as well as the procedure associated with each input / output pair. In
+particular, the computational environment, command line arguments, environment
+variables are recorded as well as the order of execution for each step.
 
 In recent years there have been efforts in the life sciences to provide a
 minimum workflow for independent code execution during the peer review
 process. The CODECHECK initiative {cite}`Nuest2021` tries to provide a standard
-for executing workflows and a certification if the workflow satisifies basic
-criteria. These types of efforts will likely be used within the compuational
+for executing workflows and a certification if the workflow satisfies basic
+criteria. These types of efforts will likely be used within the computational
 materials science community in the coming years so adopting automated workflow
 tools as part of your research will greatly benefit this process.
 
 - See also {cite}`Leipzig2021`
 
 ### Metadata Standards
-
-### Publish the codes and workflows during development
-
-### Identifying the significant data assets
 
 ### Licensing
 

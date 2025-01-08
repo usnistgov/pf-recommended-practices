@@ -67,6 +67,7 @@ should contain
 * Theory docs
 * Reference documentation
 
+(label-version-control-and-metadata)=
 ### Version control and metadata
 
 To facilitate contributions to a code, version control is

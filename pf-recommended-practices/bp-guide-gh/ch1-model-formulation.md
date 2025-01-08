@@ -504,4 +504,5 @@ scientific and engineering applications.
 ## References
 
 ```{bibliography}
+:filter: docname in docnames
 ```

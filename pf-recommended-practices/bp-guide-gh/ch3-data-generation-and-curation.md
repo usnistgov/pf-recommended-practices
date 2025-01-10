@@ -291,7 +291,7 @@ and file structure on the project. For example, Snakemake has an [ideal
 suggested directory structure][snakemake-directory]. An example folder structure
 when using Snakemake would look like the following.
 
-```plain
+```
 .
 ├── config
 │   └── config.yaml
@@ -367,15 +367,16 @@ computational materials research group.
 ### Automation
 
 Automating workflows in computational materials science is useful for many
-reasons, however, for data curation purposed it provides and added benefit. In
-short, an outlined workflow associated with a curated FAIR object is a major way
-to improve FAIR quality for subsequent researchers. For most workflow tools, the
-operation script outlining the workflow graph is the ultimate form of metadata
-about how the archived data files are used or generated during the research. For
-example, with Snakemake, the `Snakefile` has clearly outlined inputs and outputs
-as well as the procedure associated with each input / output pair. In
-particular, the computational environment, command line arguments, environment
-variables are recorded as well as the order of execution for each step.
+reasons, however, for data curation purposes it provides and added benefit. In
+short, an outlined workflow associated with a curated FAIR object is a primary
+method to improve FAIR quality for subsequent researchers. For most workflow
+tools, the operation script outlining the workflow graph is the ultimate form of
+metadata about how the archived data files are used or generated during the
+research. For example, with Snakemake, the `Snakefile` has clearly outlined,
+human-readable inputs and outputs as well as the procedure associated with each
+input / output pair. The computational environment, command line arguments,
+environment variables are recorded for each workflow step as well as the order
+of execution of each of these steps.
 
 In recent years there have been efforts in the life sciences to provide a
 minimum workflow for independent code execution during the peer review

@@ -1,76 +1,411 @@
----
----
+@article{Aupy2014,
+    author = {Guillaume Aupy and
+              Yves Robert and
+              Frédéric Vivien and
+              Dounia Zaidouni},
+    title = {Checkpointing algorithms and fault prediction},
+    journal = {Journal of Parallel and Distributed Computing},
+    volume = {74},
+    number = {2},
+    pages = {2048-2064},
+    year = {2014},
+    issn = {0743-7315},
+    doi = {10.1016/j.jpdc.2013.10.010},
+    keywords = {Algorithms, Checkpoint, Prediction, Fault-tolerance, Resilience, Exascale},
+    abstract = {This paper deals with the impact of fault prediction techniques on checkpointing strategies. We extend the classical first-order analysis of Young and Daly in the presence of a fault prediction system, characterized by its recall and its precision. In this framework, we provide optimal algorithms to decide whether and when to take predictions into account, and we derive the optimal value of the checkpointing period. These results allow us to analytically assess the key parameters that impact the performance of fault predictors at very large scale.}
+}
 
-@article{bi_phase-field_1998,
-	title = {Phase-field model of solidification of a binary alloy},
-	volume = {261},
-	issn = {0378-4371},
-	url = {https://www.sciencedirect.com/science/article/pii/S0378437198003641},
-	doi = {10.1016/S0378-4371(98)00364-1},
-	abstract = {We develop a rather general thermodynamically consistent phase-field model for solidification of a binary alloy, based on an entropy functional that contains squared gradient terms in the energy density, the composition and the phase-field variable. By assuming positive local entropy production, we derive generalized phase-field equations for an alloy, including cross terms that connect thermal and compositional driving forces to energy and solute fluxes. We explore this model in detail for a regular solution and show that four existing models can be recovered as special cases. We also use it to develop a new phase-field model for an alloy in which an explicit phase-field variable is absent.},
+@misc{Ather2024,
+      title={Parallel I/O Characterization and Optimization on Large-Scale HPC Systems: A 360-Degree Survey}, 
+      author={Hammad Ather and Jean Luca Bez and Chen Wang and Hank Childs and Allen D. Malony and Suren Byna},
+      year={2024},
+      eprint={2501.00203},
+      archivePrefix={arXiv},
+      primaryClass={cs.DC},
+      url={https://arxiv.org/abs/2501.00203}, 
+}
+
+@article{BautistaGomez2024,
+    author = {Leonardo Bautista-Gomez and
+              Anne Benoit and
+              Sheng Di and
+              Thomas Herault and
+              Yves Robert and
+              Hongyang Sun},
+    title = {A survey on checkpointing strategies: {S}hould we always checkpoint à la {Y}oung/{D}aly?},
+    journal = {Future Generation Computer Systems},
+    volume = {161},
+    pages = {315-328},
+    year = {2024},
+    issn = {0167-739X},
+    doi = {10.1016/j.future.2024.07.022},
+    url = {https://www.ittc.ku.edu/~sun/publications/fgcs24.pdf},
+    urldate={2025-01-06},
+    keywords = {Checkpointing, Optimal period, Young/Daly formula, Resilience},
+    abstract = {The Young/Daly formula provides an approximation of the optimal checkpointing period for a parallel application executing on a supercomputing platform. It was originally designed to handle fail-stop errors for preemptible tightly-coupled applications, but has been extended to other application and resilience frameworks. We provide some backgroundand survey various scenarios to assess the usefulness and limitations of the formula, both for preemptible applications and workflow applications represented as a graph of tasks. We also discuss scenarios with uncertainties, and extend the study to silent errors. We exhibit cases where the optimal period is of a different order than that dictated by the Young/Daly formula, and finally we explain how checkpointing can be further combined with replication.}
+}
+
+@inproceedings{Benoit2022a,
+    author = {Benoit, Anne and
+              Du, Yishu and
+              Herault, Thomas and
+              Marchal, Loris and
+              Pallez, Guillaume and
+              Perotin, Lucas and
+              Robert, Yves and
+              Sun, Hongyang and
+              Vivien, Frederic},
+    title = {Checkpointing \`{a} la {Y}oung/{D}aly: {A}n Overview},
+    year = {2022},
+    isbn = {9781450396752},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY},
+    url = {https://icl.utk.edu/files/publications/2022/icl-utk-1569-2022.pdf},
+    urldate={2025-01-06},
+    doi = {10.1145/3549206.3549328},
+    abstract = {The Young/Daly formula provides an approximation of the optimal checkpoint period for a parallel application executing on a supercomputing platform. The Young/Daly formula was originally designed for preemptible tightly-coupled applications. We provide some background and survey various application scenarios to assess the usefulness and limitations of the formula.},
+    booktitle = {Proceedings of the 2022 Fourteenth International Conference on Contemporary Computing},
+    pages = {701–710},
+    numpages = {10},
+    keywords = {Checkpoint, Optimal period, Young/Daly formula.},
+    location = {Noida, India},
+    series = {IC3-2022}
+}
+
+@article{Benoit2022b,
+    author = {Benoit, Anne and
+              Perotin, Luca and
+              Robert, Yves and
+              Sun, Hongyang},
+    title = {Checkpointing Workflows \`{a} la {Y}oung/{D}aly Is Not Good Enough},
+    year = {2022},
+    issue_date = {December 2022},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {9},
+    number = {4},
+    issn = {2329-4949},
+    url = {https://inria.hal.science/hal-03264047/file/rr9413.pdf},
+    urldate={2025-01-06},
+    doi = {10.1145/3548607},
+    abstract = {This article revisits checkpointing strategies when workflows composed of multiple tasks execute on a parallel platform. The objective is to minimize the expectation of the total execution time. For a single task, the Young/Daly formula provides the optimal checkpointing period. However, when many tasks execute simultaneously, the risk that one of them is severely delayed increases with the number of tasks. To mitigate this risk, a possibility is to checkpoint each task more often than with the Young/Daly strategy. But is it worth slowing each task down with extra checkpoints? Does the extra checkpointing make a difference globally? This article answers these questions. On the theoretical side, we prove several negative results for keeping the Young/Daly period when many tasks execute concurrently, and we design novel checkpointing strategies that guarantee an efficient execution with high probability. On the practical side, we report comprehensive experiments that demonstrate the need to go beyond the Young/Daly period and to checkpoint more often for a wide range of application/platform settings.},
+    journal = {ACM Trans. Parallel Comput.},
+    month = dec,
+    articleno = {14},
+    numpages = {25},
+    keywords = {Young/Daly formula, concurrent tasks, workflow, Checkpoint}
+}
+
+@article{Bi1998,
+    title = {Phase-field model of solidification of a binary alloy},
+    volume = {261},
+    issn = {0378-4371},
+    url = {https://www.sciencedirect.com/science/article/pii/S0378437198003641},
+    doi = {10.1016/S0378-4371(98)00364-1},
+    abstract = {We develop a rather general thermodynamically consistent phase-field model for solidification of a binary alloy, based on an entropy functional that contains squared gradient terms in the energy density, the composition and the phase-field variable. By assuming positive local entropy production, we derive generalized phase-field equations for an alloy, including cross terms that connect thermal and compositional driving forces to energy and solute fluxes. We explore this model in detail for a regular solution and show that four existing models can be recovered as special cases. We also use it to develop a new phase-field model for an alloy in which an explicit phase-field variable is absent.},
+    number = {1},
+    urldate = {2024-09-05},
+    journal = {Physica A: Statistical Mechanics and its Applications},
+    author = {Bi, Zhiqiang and Sekerka, Robert F.},
+    month = dec,
+    year = {1998},
+    keywords = {Phase-field, Models, Alloy, Solidification, Irreversible thermodynamics},
+    pages = {95--106},
+}
+
+@article{Boettinger2002,
+    title = {Phase-Field Simulation of Solidification},
+    volume = {32},
+    issn = {1531-7331, 1545-4118},
+    url = {https://www.annualreviews.org/doi/10.1146/annurev.matsci.32.101901.155803},
+    doi = {10.1146/annurev.matsci.32.101901.155803},
+    abstract = {▪ Abstract  An overview of the phase-field method for modeling solidification is presented, together with several example results. Using a phase-field variable and a corresponding governing equation to describe the state (solid or liquid) in a material as a function of position and time, the diffusion equations for heat and solute can be solved without tracking the liquid-solid interface. The interfacial regions between liquid and solid involve smooth but highly localized variations of the phase-field variable. The method has been applied to a wide variety of problems including dendritic growth in pure materials; dendritic, eutectic, and peritectic growth in alloys; and solute trapping during rapid solidification.},
+    language = {en},
+    number = {1},
+    urldate = {2024-09-05},
+    journal = {Annual Review of Materials Research},
+    author = {Boettinger, W. J. and Warren, J. A. and Beckermann, C. and Karma, A.},
+    month = aug,
+    year = {2002},
+    pages = {163--194},
+}
+
+@book{Groot2013,
+    title = {{N}on-{E}quilibrium {T}hermodynamics},
+    isbn = {9780486153506},
+    abstract = {The study of thermodynamics is especially timely today, as its concepts are being applied to problems in biology, biochemistry, electrochemistry, and engineering. This book treats irreversible processes and phenomena — non-equilibrium thermodynamics. S. R. de Groot and P. Mazur, Professors of Theoretical Physics, present a comprehensive and insightful survey of the foundations of the field, providing the only complete discussion of the fluctuating linear theory of irreversible thermodynamics. The application covers a wide range of topics: the theory of diffusion and heat conduction, fluid dynamics, relaxation phenomena, acoustical relaxation, and the behavior of systems in an electromagnetic field.The statistical foundations of non-equilibrium thermodynamics are treated in detail, and there are special sections on fluctuation theory, the theory of stochastic processes, the kinetic theory of gases, and the derivation of the Onsager reciprocal relations. The implications of causality conditions and of dispersion relations are analyzed in depth.Advanced students will find a great number of challenging problems, with hints for their solutions. Chemists will be especially interested in the applications to electrochemistry and the theory of chemical reactions. Physicists, teachers, scholars, biologists, and anyone interested in the principle and modern applications of non-equilibrium thermodynamics will find this classic monograph an invaluable reference.},
+    language = {en},
+    publisher = {Courier Corporation},
+    author = {Groot, S. R. De and Mazur, P.},
+    month = jan,
+    year = {2013},
+    note = {Google-Books-ID: mfFyG9jfaMYC},
+    keywords = {Science / Physics / General},
+}
+
+@article{Herault2019,
+	author = {Thomas Herault and Yves Robert and Aurelien Bouteiller and Dorian Arnold and Kurt Ferreira and George Bosilca and Jack Dongarra},
+	title = {Checkpointing Strategies for Shared High-Performance Computing Platforms},
+	journal = {International Journal of Networking and Computing},
+	volume = {9},
 	number = {1},
-	urldate = {2024-09-05},
-	journal = {Physica A: Statistical Mechanics and its Applications},
-	author = {Bi, Zhiqiang and Sekerka, Robert F.},
-	month = dec,
-	year = {1998},
-	keywords = {Phase-field, Models, Alloy, Solidification, Irreversible thermodynamics},
-	pages = {95--106},
+	year = {2019},
+	keywords = {},
+	abstract = {},
+	issn = {2185-2847},	pages = {28--52},	url = {http://www.ijnc.org/index.php/ijnc/article/view/195}
 }
 
-@book{groot_non-equilibrium_2013,
-	title = {Non-{Equilibrium} {Thermodynamics}},
-	isbn = {9780486153506},
-	abstract = {The study of thermodynamics is especially timely today, as its concepts are being applied to problems in biology, biochemistry, electrochemistry, and engineering. This book treats irreversible processes and phenomena — non-equilibrium thermodynamics.S. R. de Groot and P. Mazur, Professors of Theoretical Physics, present a comprehensive and insightful survey of the foundations of the field, providing the only complete discussion of the fluctuating linear theory of irreversible thermodynamics. The application covers a wide range of topics: the theory of diffusion and heat conduction, fluid dynamics, relaxation phenomena, acoustical relaxation, and the behavior of systems in an electromagnetic field.The statistical foundations of non-equilibrium thermodynamics are treated in detail, and there are special sections on fluctuation theory, the theory of stochastic processes, the kinetic theory of gases, and the derivation of the Onsager reciprocal relations. The implications of causality conditions and of dispersion relations are analyzed in depth.Advanced students will find a great number of challenging problems, with hints for their solutions. Chemists will be especially interested in the applications to electrochemistry and the theory of chemical reactions. Physicists, teachers, scholars, biologists, and anyone interested in the principle and modern applications of non-equilibrium thermodynamics will find this classic monograph an invaluable reference.},
-	language = {en},
-	publisher = {Courier Corporation},
-	author = {Groot, S. R. De and Mazur, P.},
-	month = jan,
-	year = {2013},
-	note = {Google-Books-ID: mfFyG9jfaMYC},
-	keywords = {Science / Physics / General},
+@article{Hoyer2017,
+    author={Hoyer, Stephan and Joseph, Hamman},
+    doi={10.5334/jors.148},
+    journal={Journal of Open Research Software},
+    month=apr,
+    number={1},
+    title={{xarray: N-D labeled Arrays and Datasets in Python}},
+    volume={5},
+    year={2017}
 }
 
-@book{malvern_introduction_1969,
-	title = {Introduction to the {Mechanics} of a {Continuous} {Medium}},
-	isbn = {9780134876030},
-	abstract = {A unified presentation of the concepts and general principles common to all branches of solid and fluid mechanics.},
-	language = {en},
-	publisher = {Prentice-Hall},
-	author = {Malvern, Lawrence E.},
-	year = {1969},
-	note = {Google-Books-ID: IIMpAQAAMAAJ},
-	keywords = {Science / Mechanics / General, Science / Mechanics / Fluids, Technology \& Engineering / Civil / General},
+@INPROCEEDINGS{Kumar2020,
+    author={Kumar, Rakesh and
+            Jha, Saurabh and
+            Mahgoub, Ashraf and
+            Kalyanam, Rajesh and
+            Harrell, Stephen and
+            Song, Xiaohui Carol and
+            Kalbarczyk, Zbigniew and
+            Kramer, William and
+            Iyer, Ravishankar and
+            Bagchi, Saurabh},
+    booktitle={2020 50th Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)}, 
+    title={The Mystery of the Failing Jobs: {I}nsights from Operational Data from Two University-Wide Computing Systems}, 
+    year={2020},
+    pages={158-171},
+    keywords={Predictive models;Checkpointing;Runtime;Computational modeling;Reliability;Indexes;Organizations;HPC, Production failure data, Data analytics, Compute clusters},
+    doi={10.1109/DSN48063.2020.00034},
+    url={https://engineering.purdue.edu/dcsl/publications/papers/2020/fresco_dsn20_cameraready.pdf},
+    urldate={2025-01-06}
 }
 
-@article{mishin_irreversible_2013,
-	title = {Irreversible thermodynamics of creep in crystalline solids},
-	volume = {88},
-	url = {https://link.aps.org/doi/10.1103/PhysRevB.88.184303},
-	doi = {10.1103/PhysRevB.88.184303},
-	abstract = {We develop an irreversible thermodynamics framework for the description of creep deformation in crystalline solids by mechanisms that involve vacancy diffusion and lattice site generation and annihilation. The material undergoing the creep deformation is treated as a nonhydrostatically stressed multicomponent solid medium with nonconserved lattice sites and inhomogeneities handled by employing gradient thermodynamics. Phase fields describe microstructure evolution, which gives rise to redistribution of vacancy sinks and sources in the material during the creep process. We derive a general expression for the entropy production rate and use it to identify of the relevant fluxes and driving forces and to formulate phenomenological relations among them taking into account symmetry properties of the material. As a simple application, we analyze a one-dimensional model of a bicrystal in which the grain boundary acts as a sink and source of vacancies. The kinetic equations of the model describe a creep deformation process accompanied by grain boundary migration and relative rigid translations of the grains. They also demonstrate the effect of grain boundary migration induced by a vacancy concentration gradient across the boundary.},
-	number = {18},
-	urldate = {2024-09-05},
-	journal = {Physical Review B},
-	author = {Mishin, Y. and Warren, J. A. and Sekerka, R. F. and Boettinger, W. J.},
-	month = nov,
-	year = {2013},
-	pages = {184303},
+@article{Leipzig2021,
+    title = {The role of metadata in reproducible computational research},
+    journal = {Patterns},
+    volume = {2},
+    number = {9},
+    pages = {100322},
+    year = {2021},
+    issn = {2666-3899},
+    doi = {10.1016/j.patter.2021.100322},
+    author = {Jeremy Leipzig and
+              Daniel Nüst and
+              Charles Tapley Hoyt and
+              Karthik Ram and
+              Jane Greenberg},
+    keywords = {reproducible research, reproducible computational research, RCR, reproducibility, replicability, metadata, provenance, workflows, pipelines, ontologies, notebooks, containers, software dependencies, semantic, FAIR},
+    abstract = {Reproducible computational research (RCR) is the keystone of the scientific method for in silico analyses, packaging the transformation of raw data to published results. In addition to its role in research integrity, improving the reproducibility of scientific studies can accelerate evaluation and reuse. This potential and wide support for the FAIR principles have motivated interest in metadata standards supporting reproducibility. Metadata provide context and provenance to raw data and methods and are essential to both discovery and validation. Despite this shared connection with scientific data, few studies have explicitly described how metadata enable reproducible computational research. This review employs a functional content analysis to identify metadata standards that support reproducibility across an analytic stack consisting of input data, tools, notebooks, pipelines, and publications. Our review provides background context, explores gaps, and discovers component trends of embeddedness and methodology weight from which we derive recommendations for futurework.}
 }
 
-@article{boettinger_phase-field_2002,
-	title = {Phase-{Field} {Simulation} of {Solidification}},
-	volume = {32},
-	issn = {1531-7331, 1545-4118},
-	url = {https://www.annualreviews.org/doi/10.1146/annurev.matsci.32.101901.155803},
-	doi = {10.1146/annurev.matsci.32.101901.155803},
-	abstract = {▪ Abstract  An overview of the phase-field method for modeling solidification is presented, together with several example results. Using a phase-field variable and a corresponding governing equation to describe the state (solid or liquid) in a material as a function of position and time, the diffusion equations for heat and solute can be solved without tracking the liquid-solid interface. The interfacial regions between liquid and solid involve smooth but highly localized variations of the phase-field variable. The method has been applied to a wide variety of problems including dendritic growth in pure materials; dendritic, eutectic, and peritectic growth in alloys; and solute trapping during rapid solidification.},
-	language = {en},
-	number = {1},
-	urldate = {2024-09-05},
-	journal = {Annual Review of Materials Research},
-	author = {Boettinger, W. J. and Warren, J. A. and Beckermann, C. and Karma, A.},
-	month = aug,
-	year = {2002},
-	pages = {163--194},
+@book{Malvern1969,
+    title = {Introduction to the {Mechanics} of a {Continuous} {Medium}},
+    isbn = {9780134876030},
+    abstract = {A unified presentation of the concepts and general principles common to all branches of solid and fluid mechanics.},
+    language = {en},
+    publisher = {Prentice-Hall},
+    author = {Malvern, Lawrence E.},
+    year = {1969},
+    note = {Google-Books-ID: IIMpAQAAMAAJ},
+    keywords = {Science / Mechanics / General, Science / Mechanics / Fluids, Technology \& Engineering / Civil / General},
 }
+
+@article{Mishin2013,
+    title = {Irreversible thermodynamics of creep in crystalline solids},
+    volume = {88},
+    url = {https://link.aps.org/doi/10.1103/PhysRevB.88.184303},
+    doi = {10.1103/PhysRevB.88.184303},
+    abstract = {We develop an irreversible thermodynamics framework for the description of creep deformation in crystalline solids by mechanisms that involve vacancy diffusion and lattice site generation and annihilation. The material undergoing the creep deformation is treated as a nonhydrostatically stressed multicomponent solid medium with nonconserved lattice sites and inhomogeneities handled by employing gradient thermodynamics. Phase fields describe microstructure evolution, which gives rise to redistribution of vacancy sinks and sources in the material during the creep process. We derive a general expression for the entropy production rate and use it to identify of the relevant fluxes and driving forces and to formulate phenomenological relations among them taking into account symmetry properties of the material. As a simple application, we analyze a one-dimensional model of a bicrystal in which the grain boundary acts as a sink and source of vacancies. The kinetic equations of the model describe a creep deformation process accompanied by grain boundary migration and relative rigid translations of the grains. They also demonstrate the effect of grain boundary migration induced by a vacancy concentration gradient across the boundary.},
+    number = {18},
+    urldate = {2024-09-05},
+    journal = {Physical Review B},
+    author = {Mishin, Y. and Warren, J. A. and Sekerka, R. F. and Boettinger, W. J.},
+    month = nov,
+    year = {2013},
+    pages = {184303},
+}
+
+@article{Moelder2021,
+    author = {Felix Mölder and
+              Kim Philipp Jablonski and
+              Brice Letcher and
+              Michael B Hall and
+              Christopher H Tomkins-Tinch and
+              Vanessa Sochat and
+              Jan Forster and
+              Soohyun Lee and
+              Sven O Twardziok and
+              Alexander Kanitz and
+              Andreas Wilm and
+              Manuel Holtgrewe and
+              Sven Rahmann and
+              Sven Nahnsen and
+              Johannes Köster},
+    title = {Sustainable data analysis with {Snakemake}},
+    journal = {F1000Research},
+    year = {2021},
+    volume = {10},
+    number = {33},
+    doi = {10.12688/f1000research.29032.2}
+}
+
+@article{Nuest2021,
+    author = {Nüst D and
+              Eglen SJ},
+    title  = {{CODECHECK}: an {O}pen {S}cience initiative for the independent execution of computations underlying research articles during peer review to improve reproducibility},
+    journal = {F1000Research},
+    year = {2021},
+    volume = {10},
+    number = {253},
+    doi = {10.12688/f1000research.51738.2}
+}
+
+@INPROCEEDINGS{Paul2020,
+    author={Paul, Arnab K. and
+            Faaland, Olaf and
+            Moody, Adam and
+            Gonsiorowski, Elsa and
+            Mohror, Kathryn and
+            Butt, Ali R.},
+    booktitle={2020 IEEE 27th International Conference on High Performance Computing, Data, and Analytics (HiPC)}, 
+    title={Understanding {HPC} Application {I/O} Behavior Using System Level Statistics}, 
+    year={2020},
+    pages={202-211},
+    keywords={Runtime;File systems;High performance computing;Conferences;Machine learning;Metadata;Servers;I/O analysis;High Performance Computing;Parallel File Systems;Lustre File System;I/O contention},
+    doi={10.1109/HiPC50609.2020.00034}
+}
+
+@misc{Schlomer,
+    author={Schlömer, Nico},
+    doi={10.5281/zenodo.1173115},
+    license = {MIT},
+    title={{meshio: Tools for mesh files}},
+    url={https://github.com/nschloe/meshio}
+}
+
+@article{Tourret2022,
+    author = {Damien Tourret and
+              Hong Liu and
+              Javier LLorca},
+    title = {Phase-field modeling of microstructure evolution: {R}ecent applications, perspectives and challenges},
+    journal = {Progress in Materials Science},
+    volume = {123},
+    pages = {100810},
+    year = {2022},
+    note = {A Festschrift in Honor of {B}rian {C}antor},
+    issn = {0079-6425},
+    doi = {10.1016/j.pmatsci.2021.100810},
+    url = {https://www.sciencedirect.com/science/article/pii/S0079642521000347},
+    keywords = {Phase-field, Microstructure evolution, Solid state transformations, Solidification},
+    abstract = {We briefly review the state-of-the-art in phase-field modeling of microstructure evolution. The focus is placed on recent applications of phase-field simulations of solid-state microstructure evolution and solidification that have been compared and/or validated with experiments. They show the potential of phase-field modeling to make quantitative predictions of the link between processing and microstructure. Finally, some current challenges in extending the application of phase-field models within the context of integrated computational materials engineering are mentioned.}
+}
+
+@Article{Wilkinson2016,
+    author={Wilkinson, Mark D. and
+            Dumontier, Michel  and
+            Aalbersberg, IJsbrJan and
+            Appleton, Gabrielle and
+            Axton, Myles and
+            Baak, Arie and
+            Blomberg, Niklas and
+            Boiten, Jan-Willem and
+            da Silva Santos, Luiz Bonino and
+            Bourne, Philip E. and
+            Bouwman, Jildau and
+            Brookes, Anthony J. and
+            Clark, Tim and
+            Crosas, Merc{\`e} and
+            Dillo, Ingrid and
+            Dumon, Olivier and
+            Edmunds, Scott and
+            Evelo, Chris T. and
+            Finkers, Richard and
+            Gonzalez-Beltran, Alejandra and
+            Gray, Alasdair J.G. and
+            Groth, Paul and
+            Goble, Carole and
+            Grethe, Jeffrey S. and
+            Heringa, Jaap and
+            't Hoen, Peter A.C and
+            Hooft, Rob and
+            Kuhn, Tobias and
+            Kok, Ruben and
+            Kok, Joost and
+            Lusher, Scott J. and
+            Martone, Maryann E. and
+            Mons, Albert and
+            Packer, Abel L. and
+            Persson, Bengt and
+            Rocca-Serra, Philippe and
+            Roos, Marco and
+            van Schaik, Rene and
+            Sansone, Susanna-Assunta and
+            Schultes, Erik and
+            Sengstag, Thierry and
+            Slater, Ted and
+            Strawn, George and
+            Swertz, Morris A. and
+            Thompson, Mark and
+            van der Lei, Johan and
+            van Mulligen, Erik and
+            Velterop, Jan and
+            Waagmeester, Andra and
+            Wittenburg, Peter and
+            Wolstencroft, Katherine and
+            Zhao, Jun and
+            Mons, Barend},
+    title={The {FAIR} Guiding Principles for scientific data management and stewardship},
+    journal={Scientific Data},
+    year={2016},
+    month={Mar},
+    day={15},
+    volume={3},
+    number={1},
+    pages={160018},
+    abstract={There is an urgent need to improve the infrastructure supporting the reuse of scholarly data. A diverse set of stakeholders---representing academia, industry, funding agencies, and scholarly publishers---have come together to design and jointly endorse a concise and measureable set of principles that we refer to as the FAIR Data Principles. The intent is that these may act as a guideline for those wishing to enhance the reusability of their data holdings. Distinct from peer initiatives that focus on the human scholar, the FAIR Principles put specific emphasis on enhancing the ability of machines to automatically find and use the data, in addition to supporting its reuse by individuals. This Comment is the first formal publication of the FAIR Principles, and includes the rationale behind them, and some exemplar implementations in the community.},
+    issn={2052-4463},
+    doi={10.1038/sdata.2016.18},
+    url={https://doi.org/10.1038/sdata.2016.18}
+}
+
+@misc{Wilkinson2024,
+    title={Applying the {FAIR} Principles to Computational Workflows},
+    author={Sean R. Wilkinson and
+            Meznah Aloqalaa and
+            Khalid Belhajjame and
+            Michael R. Crusoe and
+            Bruno de Paula Kinoshita and
+            Luiz Gadelha and
+            Daniel Garijo and
+            Ove Johan Ragnar Gustafsson and
+            Nick Juty and
+            Sehrish Kanwal and
+            Farah Zaib Khan and
+            Johannes Köster and
+            Karsten Peters-von Gehlen and
+            Line Pouchard and
+            Randy K. Rannow and
+            Stian Soiland-Reyes and
+            Nicola Soranzo and
+            Shoaib Sufi and
+            Ziheng Sun and
+            Baiba Vilne and
+            Merridee A. Wouters and
+            Denis Yuen and
+            Carole Goble},
+  year={2024},
+  eprint={2410.03490},
+  archivePrefix={arXiv},
+  primaryClass={cs.DL},
+  url={https://arxiv.org/abs/2410.03490},
+}
+
+
+

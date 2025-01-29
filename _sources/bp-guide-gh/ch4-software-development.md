@@ -1,3 +1,4 @@
+(label-software-development)=
 # Software Development
 
 Daniel Schwen ([@dschwen](https://github.com/dschwen)), Jon Guyer ([@guyer](https://github.com/guyer)), Trevor Keller ([@tkphd](https://github.com/tkphd))
@@ -66,6 +67,7 @@ should contain
 * Theory docs
 * Reference documentation
 
+(label-version-control-and-metadata)=
 ### Version control and metadata
 
 To facilitate contributions to a code, version control is

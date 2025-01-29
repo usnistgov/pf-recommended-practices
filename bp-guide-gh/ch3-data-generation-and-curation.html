@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -60,6 +60,16 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'bp-guide-gh/ch3-data-generation-and-curation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -190,9 +200,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -370,27 +385,23 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideas">Ideas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-want-to-structure-the-sections">How do we want to structure the sections?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#old-version">Old version</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fair-data">FAIR Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#findable">Findable</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accessible">Accessible</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interoperable">Interoperable</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reusable">Reusable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-generation">Data Generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raw-data-to-disk">Writing raw data to disk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-formats">File formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recovering-from-crashes-and-restarts">Recovering from crashes and restarts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-workflow-tools">Using Workflow Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-environments-and-parallel-writes">HPC Environments and parallel writes</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zenodo">Zenodo</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-examples">Metadata Examples</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-files">Metadata Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-curation">Data Curation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automation">Automation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-standards">Metadata Standards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#licensing">Licensing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-a-data-repository">Selecting a data repository</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-data-schemas">Structured Data Schemas</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-phase-field-schema">Towards a Phase-Field Schema</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -404,541 +415,460 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-generation-and-curation">
 <h1>Data Generation and Curation<a class="headerlink" href="#data-generation-and-curation" title="Link to this heading">#</a></h1>
+<p>Authors:</p>
 <ul class="simple">
-<li><p><em><a class="reference external" href="https://www.nist.gov/people/trevor-keller">Trevor Keller</a>, NIST</em>, <a class="reference external" href="https://github.com/tkphd">&#64;tkphd</a></p></li>
-<li><p><em><a class="reference external" href="https://www.nist.gov/people/daniel-wheeler">Daniel Wheeler</a>, NIST</em>, <a class="reference external" href="https://github.com/wd15">&#64;wd15</a></p></li>
-<li><p><em><a class="reference external" href="https://ca.linkedin.com/in/damien-pinto-4748387b">Damien Pinto</a>, McGill</em>, <a class="reference external" href="https://github.com/DamienPinto">&#64;DamienPinto</a></p></li>
+<li><p><a class="reference external" href="https://www.nist.gov/people/trevor-keller">Trevor Keller</a>, NIST, <a class="reference external" href="https://github.com/tkphd">&#64;tkphd</a></p></li>
+<li><p><a class="reference external" href="https://www.nist.gov/people/daniel-wheeler">Daniel Wheeler</a>, NIST, <a class="reference external" href="https://github.com/wd15">&#64;wd15</a></p></li>
+<li><p><a class="reference external" href="https://ca.linkedin.com/in/damien-pinto-4748387b">Damien Pinto</a>, McGill, <a class="reference external" href="https://github.com/DamienPinto">&#64;DamienPinto</a></p></li>
 </ul>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Look at lit on data and see how this is implemented</p></li>
-<li><p>Generation and dissemination</p></li>
-</ul>
+<p>Phase-field models are characterized by a form of PDE related to an Eulerian
+free boundary problem and defined by a diffuse interface. Phase-field models
+for practical applications require sufficient high fidelity to resolve both the
+macro length scale related to the application and the micro length scales
+associated with the free boundary. Performing a useful phase-field simulation
+requires extensive computational resources and can generate large volumes of
+raw field data. This data consists of field variables defined throughout a
+discretized domain or an interpolation function with many Gauss
+points. Typically, data is stored at sufficient temporal frequency to
+reconstruct the evolution of the field variables.</p>
+<p>In recent years there have been efforts to embed phase-field models into
+integrated computational materials engineering (ICME) based materials design
+workflows <span id="id1">[<a class="reference internal" href="#id37" title="Damien Tourret, Hong Liu, and Javier LLorca. Phase-field modeling of microstructure evolution: Recent applications, perspectives and challenges. Progress in Materials Science, 123:100810, 2022. A Festschrift in Honor of Brian Cantor. URL: https://www.sciencedirect.com/science/article/pii/S0079642521000347, doi:10.1016/j.pmatsci.2021.100810.">TLL22</a>]</span>. However, to leverage relevant phase-field
+resources for these workflows a systematic approach is required for archiving
+and accessing data. Furthermore, it is often difficult for downstream
+researchers to find and access raw or minimally processed data from phase-field
+studies, before the post-processing steps and final publication. In this
+document, we will provide motivation, guidance and a template for packaging and
+publishing findable, accessible, interoperable, and reusable (FAIR) data from
+phase-field studies as well as managing unpublished raw data
+<span id="id2">[<a class="reference internal" href="#id38" title="Mark D. Wilkinson, Michel Dumontier, IJsbrJan Aalbersberg, Gabrielle Appleton, Myles Axton, Arie Baak, Niklas Blomberg, Jan-Willem Boiten, Luiz Bonino da Silva Santos, Philip E. Bourne, Jildau Bouwman, Anthony J. Brookes, Tim Clark, Mercè Crosas, Ingrid Dillo, Olivier Dumon, Scott Edmunds, Chris T. Evelo, Richard Finkers, Alejandra Gonzalez-Beltran, Alasdair J.G. Gray, Paul Groth, Carole Goble, Jeffrey S. Grethe, Jaap Heringa, Peter A.C 't Hoen, Rob Hooft, Tobias Kuhn, Ruben Kok, Joost Kok, Scott J. Lusher, Maryann E. Martone, Albert Mons, Abel L. Packer, Bengt Persson, Philippe Rocca-Serra, Marco Roos, Rene van Schaik, Susanna-Assunta Sansone, Erik Schultes, Thierry Sengstag, Ted Slater, George Strawn, Morris A. Swertz, Mark Thompson, Johan van der Lei, Erik van Mulligen, Jan Velterop, Andra Waagmeester, Peter Wittenburg, Katherine Wolstencroft, Jun Zhao, and Barend Mons. The FAIR guiding principles for scientific data management and stewardship. Scientific Data, 3(1):160018, Mar 2016. URL: https://doi.org/10.1038/sdata.2016.18, doi:10.1038/sdata.2016.18.">WDA+16</a>]</span>. Following the protocols outlined in this guide will
+provide downstream researchers with an enhanced capability to use phase-field
+as part of larger ICME workflows and, in particular, data intensive usages such
+as AI surrogate models. This guide serves as a primer rather than a detailed
+reference on scientific data, aiming to stimulate thought and ensure that
+phase-field practitioners are aware of the key considerations before initiating
+a phase-field study.</p>
 </section>
-<section id="ideas">
-<h2>Ideas<a class="headerlink" href="#ideas" title="Link to this heading">#</a></h2>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Link to this heading">#</a></h2>
+<p>It is beneficial for the reader to be clear regarding the main concepts of FAIR
+data management when applied to phase-field studies. Broadly speaking, <strong>FAIR
+data management</strong> encompasses the curation of simulation workflows (including
+the software, data inputs and data outputs) for subsequent researchers or even
+machine agents. <strong>FAIR data</strong> concepts for simulation workflows have been well
+explained elsewhere, see <span id="id3">[<a class="reference internal" href="#id39" title="Sean R. Wilkinson, Meznah Aloqalaa, Khalid Belhajjame, Michael R. Crusoe, Bruno de Paula Kinoshita, Luiz Gadelha, Daniel Garijo, Ove Johan Ragnar Gustafsson, Nick Juty, Sehrish Kanwal, Farah Zaib Khan, Johannes Köster, Karsten Peters-von Gehlen, Line Pouchard, Randy K. Rannow, Stian Soiland-Reyes, Nicola Soranzo, Shoaib Sufi, Ziheng Sun, Baiba Vilne, Merridee A. Wouters, Denis Yuen, and Carole Goble. Applying the FAIR principles to computational workflows. 2024. URL: https://arxiv.org/abs/2410.03490, arXiv:2410.03490.">WAB+24</a>]</span>. A <strong>scientific workflow</strong> is
+generally conceptualized as a graph of connected actions with various inputs
+and outputs. Some of the nodes in a workflow may not be entirely automated and
+require human agent inputs, which can increase the complexity of workflow
+curation. Workflow nodes include the pre and post-processing steps for
+phase-field simulation workflows. In this guide, the <strong>raw and post-processed
+data</strong> is considered to be distinct from the <strong>metadata</strong>, which describes the
+simulation, associated workflow and data files. The <strong>raw data</strong> is generated
+by the simulation as it is running and often consists of temporal field
+data. The <strong>post-processed data</strong> consists of derived quantities and images
+generated using the <strong>raw data</strong>. The <strong>software</strong> or <strong>software application</strong>
+used to perform the simulation generally refers to a particular phase-field
+code, which is part of the larger <strong>computational environment</strong>. The <strong>code</strong>
+might also refer to the <strong>software</strong>, but the distinction is that the <strong>code</strong>
+may have been modified by the researcher and might include <strong>input files</strong> to
+the <strong>software application</strong>. Although the code can be considered as data in
+the larger sense, in this work, the data curation process excludes
+consideration of code curation, which involves its own distinct practices. See
+the <a class="reference internal" href="ch4-software-development.html#label-software-development"><span class="std std-ref">Software Development</span></a> section of the best
+practices guide for a more detailed discussion of software and code curation.</p>
+<pre  class="mermaid">
+        ---
+title: A Phase-Field Workflow
+---
+flowchart TD
+    id1&#64;{   shape: lean-r,   label: &quot;Input Files&quot;, fill: #f96 }
+    id1.2&#64;{ shape: lean-r,   label: &quot;Parameters&quot; }
+    id1.1&#64;{ shape: lean-r,   label: &quot;Code&quot; }
+    id2&#64;{   shape: lean-r,   label: &quot;Computational Environment&quot; }
+    id2.5&#64;{ shape: rect,     label: &quot;Pre-processing, (e.g. CALPHAD or Meshing)&quot; }
+    id2.7&#64;{ shape: bow-rect, label: &quot;Pre-processed Data&quot; }
+    id3[Phase-Field Simulation]
+    id3.5&#64;{ shape: bow-rect, label: &quot;Scratch Data&quot; }
+    id4&#64;{   shape: bow-rect, label: &quot;Raw Field Data&quot; }
+    id5&#64;{   shape: rect,     label: &quot;Post-processing (e.g. Data Visualization)&quot; }
+    id6&#64;{   shape: bow-rect, label: &quot;Post-processed Data&quot; }
+    id7&#64;{   shape: lin-cyl,  label: &quot;Data Repository&quot; }
+    id8&#64;{   shape: bow-rect, label: &quot;Metadata&quot; }
+    id1.2--&gt;id1
+    id1--&gt;id2.5
+    id1--&gt;id5
+    id2.5--&gt;id2.7--&gt;id3
+    id1--&gt;id3
+    id1.1--&gt;id3
+    id2--&gt;id3
+    id3--&gt;id4--&gt;id5--&gt;id6
+    id3--&gt;id3.5--&gt;id3
+    id2--&gt;id2.5
+    id2--&gt;id5
+    id6--Curation--&gt;id7
+    id4--Curation--&gt;id7
+    id8--Curation--&gt;id7
+    id1.2--&gt;id8
+    id1.1--&gt;id8
+    id1--&gt;id8
+    id2--&gt;id8
+    </pre></section>
+<section id="data-generation">
+<h2>Data Generation<a class="headerlink" href="#data-generation" title="Link to this heading">#</a></h2>
+<p>Let’s first draw the distinction between <strong>data generation</strong> and <strong>data
+curation</strong>. Data generation involves writing raw data to disk during the
+simulation execution and generating post-processed data from that raw
+data. Data curation involves packaging the generated data objects from a
+phase-field workflow or study along with sufficient provenance metadata into a
+FAIR research object for consumption by subsequent scientific studies.</p>
+<p>When performing a phase-field simulation, one must be cognizant of several
+factors pertaining to data generation. Generally speaking, the considerations
+can be defined as follow.</p>
 <ul class="simple">
-<li><p>Data formats</p></li>
-<li><p>FAIR</p></li>
-<li><p>Metadata (hierarchical data standards (look for current versions))</p></li>
-<li><p>What standards exist</p></li>
-<li><p>One or two examples of phase field data stored currently</p>
-<ul>
-<li><p>Use an existing</p></li>
-<li><p>Create our own example</p></li>
+<li><p>Writing raw data to disk</p></li>
+<li><p>File formats</p></li>
+<li><p>Recovering from crashes and restarts</p></li>
+<li><p>Using workflow tools</p></li>
+<li><p>High performance computing (HPC) environments and parallel writes</p></li>
 </ul>
-</li>
-<li><p>Practical choices for storing data (figshare, zenodo, dryad, MDF)</p></li>
-<li><p>Deciding what data to keep</p>
-<ul>
-<li><p>What data to store when publishing</p></li>
-<li><p>What is supplementary material versus store versus leave on hard drive</p></li>
-</ul>
-</li>
-<li><p>Lit review, good citations</p></li>
-<li><p>minting DOIs for the data</p></li>
-<li><p>might include simulatioin execution and logging</p>
-<ul>
-<li><p>how frequently to store data</p></li>
-<li><p>how to store</p></li>
-</ul>
-</li>
-</ul>
+<p>These considerations will be outlined below.</p>
+<section id="writing-raw-data-to-disk">
+<h3>Writing raw data to disk<a class="headerlink" href="#writing-raw-data-to-disk" title="Link to this heading">#</a></h3>
+<p>Selecting the appropriate data to write to disk during the simulation largely
+depends on the requirements such as post-processing or debugging. However, it
+is good practice to consider future uses of the data that might not be of
+immediate benefit to the research study. Lack of forethought in retaining data
+could hinder the data curation of the final research object. The data
+generation process should be considered independently from restarts, which is
+discussed in a <a class="reference internal" href="#label-restarts">subsequent section</a>. In general, the data
+required to reconstruct derived quantities or the evolution of field data will
+not be the same as the data required to restart a simulation.</p>
+<p>On many HPC systems writing to disk frequently can be expensive and
+intermittently stall a simulation due to a number off factors such as I/O
+contention, see the <a class="reference internal" href="#label-hpc-environments">HPC section below</a>.  Generally,
+when writing data it is best to use single large writes to disk as opposed to
+multiple small writes especially on shared file systems (i.e. “perform more
+write bytes per write function call” <span id="id4">[<a class="reference internal" href="#id35" title="Arnab K. Paul, Olaf Faaland, Adam Moody, Elsa Gonsiorowski, Kathryn Mohror, and Ali R. Butt. Understanding HPC application I/O behavior using system level statistics. In 2020 IEEE 27th International Conference on High Performance Computing, Data, and Analytics (HiPC), 202-211. 2020. doi:10.1109/HiPC50609.2020.00034.">PFM+20</a>]</span>). In practice this could
+involve caching multiple field variables across multiple save steps and then
+writing to disk as a single data blob in an HDF5 file for example. Caching and
+chunking data writes is a trade-off between IO efficiency, data loss due to
+jobs crashing, simulation performance, memory usage and communication overhead
+for parallel jobs. Overall, it is essential that the IO part of a code is well
+profiled using different write configurations. The replicability of writes
+should also be tested by checking the hash of data files while varying parallel
+configurations, write frequencies and data chunking strategies. I/O performance
+can be a major bottleneck for larger parallel simulations, but there are tools
+to help characterize I/O, see <span id="id5">[<a class="reference internal" href="#id20" title="Hammad Ather, Jean Luca Bez, Chen Wang, Hank Childs, Allen D. Malony, and Suren Byna. Parallel i/o characterization and optimization on large-scale hpc systems: a 360-degree survey. 2024. URL: https://arxiv.org/abs/2501.00203, arXiv:2501.00203.">ABW+24</a>]</span> for a thorough overview.</p>
 </section>
-<section id="how-do-we-want-to-structure-the-sections">
-<h2>How do we want to structure the sections?<a class="headerlink" href="#how-do-we-want-to-structure-the-sections" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Intro (Daniel)</p>
-<ul class="simple">
-<li><p>What is data?</p></li>
-<li><p>What is metadata?</p></li>
-<li><p>Why do we need curate data?</p></li>
-<li><p>What is the motivation for this document?</p>
-<ul>
-<li><p>What should the reader get out of this document</p></li>
-<li><p>Why is this useful</p></li>
-</ul>
-</li>
-<li><p>Create a distinction between software, data, and post-processed results</p></li>
-</ul>
-</li>
-<li><p>Data Generation (Trevor)</p>
-<ul class="simple">
-<li><p>HPC</p></li>
-<li><p>file systems</p></li>
-<li><p>data formats</p>
-<ul>
-<li><p>formats not to use (e.g., don’t use serialization that depends on the version of the code that reads and writes because code changes)</p></li>
-<li><p>don’t use pickles</p></li>
-</ul>
-</li>
-<li><p>restarts</p></li>
-<li><p>data frequency</p></li>
-<li><p>post-processing -&gt; refer to other document for this</p></li>
-<li><p>precision</p></li>
-<li><p>importance of folder structure</p></li>
-</ul>
-</li>
-<li><p>Data Curation (Trevor)</p>
-<ul class="simple">
-<li><p>Why is curating data important?</p></li>
-<li><p>Why do we need to store our data</p></li>
-<li><p>What formats can we use</p></li>
-<li><p>Is my data too large, data sizes</p></li>
-<li><p>What is useful for third party / subsequent users</p></li>
-<li><p>How might the data be used for AI or something else</p></li>
-<li><p>Could a reviewer make use of your curated data</p></li>
-<li><p>Storing post-processed data and raw data and which to store or keep</p></li>
-<li><p>Minting DOIs for your software when publishing a paper</p></li>
-<li><p>FAIR</p></li>
-</ul>
-</li>
-<li><p>Metadata standards (Daniel)</p>
-<ul class="simple">
-<li><p>Why do we need to keep some metadata beyond the data</p></li>
-<li><p>Zoo of things like data dictionaries, ontologies</p>
-<ul>
-<li><p>however, these are not well developed for our use case</p></li>
-</ul>
-</li>
-<li><p>For example, you curate on Zenodo</p></li>
-<li><p>what extra data should you include</p>
-<ul>
-<li><p>how to describe the data files</p></li>
-<li><p>how to maintain some minimalist info about the simulation that generated the run</p></li>
-<li><p>When, why and how I ran this simulation</p></li>
-<li><p>What software</p></li>
-<li><p>Give example of a yaml file with 10 flat fields</p></li>
-</ul>
-</li>
-<li><p>The future should be better in this regard. People actively working to improve this issue.</p></li>
-</ul>
-</li>
-<li><p>Examples</p>
-<ul class="simple">
-<li><p>Practical examples (Trevor)</p></li>
-<li><p>Using Zenodo for a PFHub record to store data and metadata</p>
-<ul>
-<li><p>Relatively rich metadata scheme</p></li>
-</ul>
-</li>
-<li><p>Simulation from scratch (Damien)</p>
-<ul>
-<li><p>data generation</p>
-<ul>
-<li><p>folder structure</p></li>
-<li><p>HPC issues with data</p></li>
-<li><p>capture process / descriptive parameters for the data that
-are useful for subsequent ML practitioners that use the data</p></li>
-</ul>
-</li>
-<li><p>ML / store data</p></li>
-<li><p>Narrative of what gets stored to disk</p></li>
-<li><p>Decisions of what to keep and how frequently to save data</p></li>
-<li><p>Auxiliary metadata decisions</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Summary (Daniel)</p></li>
-<li><p>Biblio (Daniel)</p></li>
-</ol>
+<section id="file-formats">
+<h3>File formats<a class="headerlink" href="#file-formats" title="Link to this heading">#</a></h3>
+<p>As a general rule it is best to choose file formats that work with the tools
+already in use and / or that your colleagues are using. There are other
+considerations to be aware of though. Human readable formats such as CSV, JSON
+or even YAML are often useful for small medium data sets (such as derived
+quantities) as some metadata can be embedded alongside the raw data resulting
+in a FAIRer data product than standard binary formats. Some binary file formats
+also support metadata and might be more useful for final data curation of a
+phase-field study even if not used during the research process. One main
+benefit of using binary data (beyond saving disk space) is the ability to
+preserve full precision for floating point numbers. See the <a class="reference external" href="https://aaltoscicomp.github.io/python-for-scicomp/work-with-data/#binary-file-formats">Working with
+Data</a> section of the Python for Scientific Computing
+document for a comparison of binary versus text based formats. The longevity of
+file formats should be considered as well. A particularly egregious case of
+ignoring longevity would be using the Pickle file format in Python, which is
+both language dependent and code dependent. It is an example of data
+serialization, which is used mainly for in-process data storage for
+asynchronous tasks and checkpointing, but not good for long term data storage.</p>
+<p>There are many binary formats used for storing field data based on an Eulerian
+mesh or grid. Common formats for field data are NetCDF, VTK, XDMF and
+EXODUS. Within the phase-field community, VTK seems to be the mostly widely
+used. VTK is actually a visualization library, but supports a number of
+different native file formats based on both XML and HDF5 (both non-binary and
+binary). The VTK library works well with FE simulations supporting many
+different element types as well as parallel data storage for domain
+decomposition.  See the <a class="reference external" href="https://docs.vtk.org/en/latest/design_documents/VTKFileFormats.html#xml-file-formats">XML file formats documentation</a> for VTK for
+an overview of the many different file extensions and their meanings. In
+contrast to VTK, NetCDF is more geared towards gridded data having arisen from
+atmospheric research (using finite difference grids rather than finite element
+meshes). For a comparison of performance and metrics for different file types
+see the <a class="reference external" href="https://github.com/nschloe/meshio?tab=readme-ov-file#performance-comparison">MeshIO README.md</a>.</p>
+<p>The MeshIO tool <span id="id6">[<a class="reference internal" href="#id36" title="Nico Schlömer. meshio: Tools for mesh files. URL: https://github.com/nschloe/meshio, doi:10.5281/zenodo.1173115.">Sch</a>]</span> is a good place to start for IO when writing
+custom phase-field codes in Python (or Julia using <code class="docutils literal notranslate"><span class="pre">pyimport</span></code>). MeshIO is also
+a good place to start for exploring, debugging or picking apart file data in an
+interactive Python environment. Debugging data can be much more difficult with
+GUI style data viewers such as Paraview. The scientific Python ecosystem is
+very rich with tools for data manipulation and storage such as Pandas, which
+supports table data storage in many different formats, and xarray
+<span id="id7">[<a class="reference internal" href="#id28" title="Stephan Hoyer and Hamman Joseph. xarray: N-D labeled Arrays and Datasets in Python. Journal of Open Research Software, April 2017. doi:10.5334/jors.148.">HJ17</a>]</span> for higher dimensional data storage. <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/io.html">xarray supports NetCDF
+file storage</a>, which includes coordinate systems and metadata in
+HDF5. Both Pandas and xarray can be used in a parallel or a distributed manner
+in conjunction with Dask. Dask along with xarray supports writing to the Zarr
+data format which supports out-of-memory operations.</p>
 </section>
-<hr class="docutils" />
-<section id="old-version">
-<h2>Old version<a class="headerlink" href="#old-version" title="Link to this heading">#</a></h2>
+<section id="recovering-from-crashes-and-restarts">
+<span id="label-restarts"></span><h3>Recovering from crashes and restarts<a class="headerlink" href="#recovering-from-crashes-and-restarts" title="Link to this heading">#</a></h3>
+<p>A study from 2020 of HPC systems calculated the success rate (I.e. no error code
+on completion) of multi-node jobs with non-shared memory at between 60% and 70%
+<span id="id8">[<a class="reference internal" href="#id29" title="Rakesh Kumar, Saurabh Jha, Ashraf Mahgoub, Rajesh Kalyanam, Stephen Harrell, Xiaohui Carol Song, Zbigniew Kalbarczyk, William Kramer, Ravishankar Iyer, and Saurabh Bagchi. The mystery of the failing jobs: Insights from operational data from two university-wide computing systems. In 2020 50th Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN), 158-171. 2020. URL: https://engineering.purdue.edu/dcsl/publications/papers/2020/fresco_dsn20_cameraready.pdf (visited on 2025-01-06), doi:10.1109/DSN48063.2020.00034.">KJM+20</a>]</span>. Needless to say that check-pointing is absolutely required
+for any jobs of more than a day. Nearly everyday, an HPC platform will
+experience some sort of failure <span id="id9">[<a class="reference internal" href="#id23" title="Anne Benoit, Luca Perotin, Yves Robert, and Hongyang Sun. Checkpointing workflows à la Young/Daly is not good enough. ACM Trans. Parallel Comput., December 2022. URL: https://inria.hal.science/hal-03264047/file/rr9413.pdf (visited on 2025-01-06), doi:10.1145/3548607.">BPRS22</a>]</span>, <span id="id10">[<a class="reference internal" href="#id19" title="Guillaume Aupy, Yves Robert, Frédéric Vivien, and Dounia Zaidouni. Checkpointing algorithms and fault prediction. Journal of Parallel and Distributed Computing, 74(2):2048-2064, 2014. doi:10.1016/j.jpdc.2013.10.010.">ARVZ14</a>]</span>. That
+doesn’t mean that every job will fail every day, but it would be optimistic to
+think that jobs will go beyond a week without some issues. Given the failure
+rate one can estimate how long it might take to run a job without
+check-pointing. A very rough estimate for expected completion time assuming
+instantaneous restarts and no queuing time is given by,</p>
+<div class="math notranslate nohighlight">
+\[ E(T) = \frac{1}{2} \left(1 + e^{T / \mu} \right) T \]</div>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is the nominal job completion time with no failures and <span class="math notranslate nohighlight">\(\mu\)</span> is the
+mean time to failure. The formula predicts an expected time of 3.8 days for a
+job that nominally runs for 3 days with a <span class="math notranslate nohighlight">\(\mu\)</span> of one week. The formula is of
+course a gross simplification and includes many assumptions that are invalid in
+practice (such as a uniform failure distribution), but regardless of the
+assumptions the exponential time increase without check-pointing is
+inescapable. Assuming that we’re agreed on the need for checkpoints, the next
+step is to decide on the optimal time interval between checkpoints. This is
+given by the well known Young/Daly formula,</p>
+<div class="math notranslate nohighlight">
+\[ W = \sqrt{2 \mu C} \]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is the wall time required to execute the code associated with a
+checkpoint <span id="id11">[<a class="reference internal" href="#id22" title="Anne Benoit, Yishu Du, Thomas Herault, Loris Marchal, Guillaume Pallez, Lucas Perotin, Yves Robert, Hongyang Sun, and Frederic Vivien. Checkpointing à la Young/Daly: An overview. In Proceedings of the 2022 Fourteenth International Conference on Contemporary Computing, IC3-2022, 701–710. New York, NY, 2022. Association for Computing Machinery. URL: https://icl.utk.edu/files/publications/2022/icl-utk-1569-2022.pdf (visited on 2025-01-06), doi:10.1145/3549206.3549328.">BDH+22</a>]</span>, <span id="id12">[<a class="reference internal" href="#id21" title="Leonardo Bautista-Gomez, Anne Benoit, Sheng Di, Thomas Herault, Yves Robert, and Hongyang Sun. A survey on checkpointing strategies: Should we always checkpoint à la Young/Daly? Future Generation Computer Systems, 161:315-328, 2024. URL: https://www.ittc.ku.edu/~sun/publications/fgcs24.pdf (visited on 2025-01-06), doi:10.1016/j.future.2024.07.022.">BGBD+24</a>]</span>. The Young/Daly
+formula accounts for the trade off between the start up time cost for a job to
+get back to its original point of failure and the cost associated with writing
+the checkpoint to disk. For example, with a weekly failure rate and <span class="math notranslate nohighlight">\(C=6\)</span>
+minutes the optimal write frequency is 5.8 hours. In practice these estimates
+for <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(C\)</span> might be a little pessimistic, but be aware of the trade off
+<span id="id13">[<a class="reference internal" href="#id23" title="Anne Benoit, Luca Perotin, Yves Robert, and Hongyang Sun. Checkpointing workflows à la Young/Daly is not good enough. ACM Trans. Parallel Comput., December 2022. URL: https://inria.hal.science/hal-03264047/file/rr9413.pdf (visited on 2025-01-06), doi:10.1145/3548607.">BPRS22</a>]</span>. Note that some HPC systems have upper bounds on run
+times. The Texas Advanced Computing Center has an upper bound of 7 days for most
+jobs so <span class="math notranslate nohighlight">\(\mu&lt;7\)</span> days regardless of other system failures.</p>
+<p>Given the above theory, what are some practical conclusions to draw?</p>
 <ul class="simple">
-<li><p>Save the data from your published work as much as possible, with meta data</p></li>
-<li><p>Save the inputs used to produce the results from all your published work</p></li>
+<li><p>Take some time to estimate both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(C\)</span>. It might be worth discussing
+the <span class="math notranslate nohighlight">\(\mu\)</span> value with the HPC cluster administrator to get some valid
+numbers. Of course <span class="math notranslate nohighlight">\(C\)</span> can be estimated by running test jobs. Estimating these
+values can be difficult due to HPC cluster volatility, but it’s good to know
+if you should be checkpointing every day or every hour or even never
+checkpointing at all in the circumstances that <span class="math notranslate nohighlight">\(W \approx T\)</span>.</p></li>
+<li><p>Ensure that restarts are deterministic (i.e. results don’t change between a
+job that restarts and one that doesn’t). One way to do this is to compare
+hashes from raw data output files assuming that the simulation itself is
+deterministic.</p></li>
+<li><p>Consider using a checkpointing library if you’re using a custom phase-field
+code or even a workflow tool such as Snakemake which has the inbuilt ability
+to handle checkpointing. A tool like Snakemake is good for large parameter
+studies where it is difficult to keep track of a multiplicy of jobs and their
+various output files making restarts complicated. The <code class="docutils literal notranslate"><span class="pre">pickle</span></code> library is
+acceptable for checkpointing Python programs as checkpoint data is only useful
+for a brief period.</p></li>
+<li><p>Many PDE solvers and dedicated phase field codes will have a checkpoint
+mechanism built in. However, never trust the veracity of these
+mechanisms. Always run your own tests varying parallel parameters and
+checkpoint frequency!</p></li>
 </ul>
-<section id="fair-data">
-<h3>FAIR Data<a class="headerlink" href="#fair-data" title="Link to this heading">#</a></h3>
-<p>We discussed the <a class="reference external" href="https://www.go-fair.org/fair-principles/">FAIR Principles</a> at <a class="reference external" href="https://doi.org/10.5281/zenodo.7254581">CHiMaD Phase-Field XIII</a>:</p>
-<section id="findable">
-<h4>Findable<a class="headerlink" href="#findable" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>[ ] (Meta)data are assigned a globally unique and persistent identifier</p></li>
-<li><p>[ ] Data are described with rich metadata (defined by R1 below)</p></li>
-<li><p>[ ] Metadata clearly and explicitly include the identifier of the data they describe</p></li>
-<li><p>[ ] (Meta)data are registered or indexed in a searchable resource</p></li>
-</ul>
+<p>Checkpointing strategies on HPC clusters is a complex topic, see
+<span id="id14">[<a class="reference internal" href="#id27" title="Thomas Herault, Yves Robert, Aurelien Bouteiller, Dorian Arnold, Kurt Ferreira, George Bosilca, and Jack Dongarra. Checkpointing strategies for shared high-performance computing platforms. International Journal of Networking and Computing, 9(1):28–52, 2019. URL: http://www.ijnc.org/index.php/ijnc/article/view/195.">HRB+19</a>]</span> for an overview.</p>
 </section>
-<section id="accessible">
-<h4>Accessible<a class="headerlink" href="#accessible" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>[ ] (Meta)data are retrievable by their identifier using a standardized
-communications protocol</p>
-<ul>
-<li><p>[ ] The protocol is open, free, and universally implementable</p></li>
-<li><p>[ ] The protocol allows for an authentication and authorisation procedure,
-where necessary</p></li>
-</ul>
-</li>
-<li><p>[ ] Metadata are accessible, even when the data are no longer available</p></li>
-</ul>
-</section>
-<section id="interoperable">
-<h4>Interoperable<a class="headerlink" href="#interoperable" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>[ ] (Meta)data use a formal, accessible, shared, and broadly applicable language
-for knowledge representation.</p></li>
-<li><p>[ ] (Meta)data use vocabularies that follow FAIR principles</p></li>
-<li><p>[ ] (Meta)data include qualified references to other (meta)data</p></li>
-</ul>
-</section>
-<section id="reusable">
-<h4>Reusable<a class="headerlink" href="#reusable" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>[ ] (Meta)data are richly described with a plurality of accurate and relevant attributes</p>
-<ul>
-<li><p>[ ] (Meta)data are released with a clear and accessible data usage license</p></li>
-<li><p>[ ] (Meta)data are associated with detailed provenance</p></li>
-<li><p>[ ] (Meta)data meet domain-relevant community standards</p></li>
-</ul>
-</li>
-</ul>
-</section>
-</section>
-<section id="zenodo">
-<h3>Zenodo<a class="headerlink" href="#zenodo" title="Link to this heading">#</a></h3>
-<p>Historically, <a class="reference external" href="https://pages.nist.gov/pfhub">PFHub</a> has accepted datasets linked from any host on the Web.
-At this time, we recommend using <a class="reference external" href="https://zenodo.org">Zenodo</a> to host your benchmark data. Why? <em>It’s not “just” a shared folder.</em></p>
-<ul class="simple">
-<li><p>Guided prompts to describe what you’re uploading</p></li>
-<li><p>DOI is automatically assigned to your dataset</p></li>
-<li><p>Basic metadata exported in multiple formats</p></li>
-<li><p>Browser-based viewers for CSV, Markdown, PDF, images, videos</p></li>
-</ul>
-<section id="metadata-examples">
-<h4>Metadata Examples<a class="headerlink" href="#metadata-examples" title="Link to this heading">#</a></h4>
-<p>Zenodo gives you the option to import a repository directly from GitHub. The original <a class="reference external" href="https://doi.org/10.5281/zenodo.6540105">FAIR Phase-field talk</a> was “uploaded” this way, producing the following record. While basic authorship information was captured, this tells an interested person or machine nothing meaningful about the dataset.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org/&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://doi.org/10.5281/zenodo.6540105&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SoftwareSourceCode&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tkphd/fair-phase-field-data: CHiMaD Phase-field XIII&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FAIR Principles for Phase-Field Practitioners&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v0.1.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://doi.org/10.5281/zenodo.6540105&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/record/6540105&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;datePublished&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-05-11&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;creator&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;givenName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trevor&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;familyName&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;Keller&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;affiliation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIST&quot;</span><span class="p">}],</span>
-<span class="w">  </span><span class="nt">&quot;codeRepository&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/tkphd/fair-phase-field-data/tree/v0.1.0&quot;</span>
-<span class="p">}</span>
+<section id="using-workflow-tools">
+<h3>Using Workflow Tools<a class="headerlink" href="#using-workflow-tools" title="Link to this heading">#</a></h3>
+<p>In general when running many phase-field jobs for a parameter study or dealing
+with many pre and post-processing steps, it is wise to employ a workflow
+tool. The authors are particularly familiar with Snakemake so discussion is
+slanted towards this tool. One of the main benefits of using a workflow tool is
+that the user is more likely to automate workflow steps that ordinarily would
+not be automated with ad-hoc tools such as Bash scripts. Workflow tools enforce
+a structure on and careful consideration of the inputs, outputs and overall task
+graph of the workflow. As a side effect, the imposed graph structure produces a
+much FAIRer research object when the research is eventually published. Future
+reuse of the study is much easier when the steps in producing the final data
+objects are clearly expressed. When using Snakemake, the <code class="docutils literal notranslate"><span class="pre">Snakefile</span></code> itself is a
+clear human readable record of the steps required to re-execute the
+workflow. Ideally, the <code class="docutils literal notranslate"><span class="pre">Snakefile</span></code> will fully automate all the steps required,
+starting from the parameters and raw input data, to reach the final images and
+data tables used in any publications. In practice this might be quite difficult
+to implement due to the chaotic nature of research projects and the associated
+workflows.</p>
+<p>A secondary impact of using a workflow tool is that it often imposes a directory
+and file structure on the project. For example, Snakemake has an <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html">ideal
+suggested directory structure</a>. An example folder structure
+when using Snakemake would look like the following.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── config
+│   └── config.yaml
+├── LICENSE.md
+├── README.md
+├── resources
+├── results
+│   └── image.png
+└── workflow
+    ├── envs
+    │   ├── env.yaml
+    │   ├── flake.lock
+    │   ├── flake.nix
+    │   ├── poetry.lock
+    │   └── pyproject.toml
+    ├── notebooks
+    │   └── analysis.ipynb
+    ├── rules
+    │   ├── postprocess.smk
+    │   ├── preprocess.smk
+    │   └── sim.smk
+    ├── scripts
+    │   ├── func.py
+    │   └── run.py
+    └── Snakefile
 </pre></div>
 </div>
-<p>The <em>strongly</em> preferred method is to upload files directly. The following record represents an upload for <a class="reference external" href="https://doi.org/10.5281/zenodo.1124941">Benchmark 1b using HiPerC</a>. I would consider this metadata <em><strong>rich!</strong></em></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org/&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://doi.org/10.5281/zenodo.1124941&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;hiperc-gpu-cuda-spinodal&quot;</span>
-<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Solution to the CHiMaD Phase Field benchmark problem on spinodal decomposition using CUDA, with a 9-point discrete Laplacian stencil&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://doi.org/10.5281/zenodo.1124941&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://creativecommons.org/licenses/by/4.0/legalcode&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/record/1124941&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;datePublished&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2017-12-21&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;creator&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://orcid.org/0000-0002-2920-8302&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;givenName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trevor&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;familyName&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;Keller&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;affiliation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIST&quot;</span><span class="p">}],</span>
-<span class="w">  </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;phase-field&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pfhub&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;chimad&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;sameAs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://doi.org/10.6084/m9.figshare.5715103.v2&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/free-energy-9pt.csv&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;encodingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;csv&quot;</span>
-<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0000000.png&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;encodingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span>
-<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0100000.png&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;encodingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span>
-<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal.0200000.png&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;encodingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span>
-<span class="w">    </span><span class="p">}]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<p>Notice that the above directory structure includes the <code class="docutils literal notranslate"><span class="pre">envs</span></code> directory. This
+allows different steps in the workflow to be run with independent computational
+environments. Additionally, most workflow tools will support both HPC and local
+workstation execution and make porting between systems easier.</p>
+<p>See <span id="id15">[<a class="reference internal" href="#id33" title="Felix Mölder, Kim Philipp Jablonski, Brice Letcher, Michael B Hall, Christopher H Tomkins-Tinch, Vanessa Sochat, Jan Forster, Soohyun Lee, Sven O Twardziok, Alexander Kanitz, Andreas Wilm, Manuel Holtgrewe, Sven Rahmann, Sven Nahnsen, and Johannes Köster. Sustainable data analysis with Snakemake. F1000Research, 2021. doi:10.12688/f1000research.29032.2.">MJL+21</a>]</span> for a more detailed overview of Snakemake and a list of
+other good workflow tools.</p>
 </section>
-<section id="metadata-files">
-<h4>Metadata Files<a class="headerlink" href="#metadata-files" title="Link to this heading">#</a></h4>
-<p>After uploading the HiPerC simulation data, I also registered it with PFHub using <code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code>. This file tells the website-generating machinery what to do with the dataset, and provides additional information about the resources required to perform the simulation.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="nt">benchmark</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1b</span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1&#39;</span>
-<span class="nt">data</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run_time</span>
-<span class="w">  </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sim_time</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;200000&#39;</span>
-<span class="w">    </span><span class="nt">wall_time</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;7464&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory_usage</span>
-<span class="w">  </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KB</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;308224&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">free energy data</span>
-<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/free-energy-9pt.csv</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microstructure at t=0</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">image</span>
-<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal-000000.png</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microstructure at t=100,000</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">image</span>
-<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal-100000.png</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microstructure at t=200,000</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">image</span>
-<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://zenodo.org/api/files/ce1ca4a3-b6bc-4e2c-9b70-8fe45fc243fd/spinodal-200000.png</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">author</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trevor.keller@nist.gov</span>
-<span class="w">    </span><span class="nt">first</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Trevor</span>
-<span class="w">    </span><span class="nt">github_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tkphd</span>
-<span class="w">    </span><span class="nt">last</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Keller</span>
-<span class="w">  </span><span class="nt">hardware</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">acc_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu</span>
-<span class="w">    </span><span class="nt">clock_rate</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1.48&#39;</span>
-<span class="w">    </span><span class="nt">cores</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1792&#39;</span>
-<span class="w">    </span><span class="nt">cpu_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_64</span>
-<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">    </span><span class="nt">parallel_model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">threaded</span>
-<span class="w">  </span><span class="nt">implementation</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">repo</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/usnistgov/hiperc</span>
-<span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">b25b14acda7c5aef565cdbcfc88f2df3412dcc46</span>
-<span class="w">  </span><span class="nt">simulation_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hiperc_cuda</span>
-<span class="w">  </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HiPerC spinodal decomposition result using CUDA on a Tesla P100</span>
-<span class="w">  </span><span class="nt">timestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18 December, 2017</span>
-</pre></div>
-</div>
-<p>This file is not part of my dataset: it resides in the <a class="reference external" href="https://github.com/usnistgov/pfhub">PFHub repository on GitHub</a>. Furthermore, since the structure of this file specifically suits PFHub, it is of no use at all to other software, websites, or researchers.</p>
+<section id="hpc-environments-and-parallel-writes">
+<span id="label-hpc-environments"></span><h3>HPC Environments and parallel writes<a class="headerlink" href="#hpc-environments-and-parallel-writes" title="Link to this heading">#</a></h3>
+<p>Under construction</p>
 </section>
 </section>
-<section id="structured-data-schemas">
-<h3>Structured Data Schemas<a class="headerlink" href="#structured-data-schemas" title="Link to this heading">#</a></h3>
-<p>In the Zenodo metadata above, note the <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> fields: <a class="reference external" href="https://www.schema.org">Schema.org</a> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Data_model">structured data schema</a> <em>and controlled vocabulary</em> for describing things on the Internet. How is this useful?</p>
-<p>Consider the <a class="reference external" href="https://codemeta.github.io">CodeMeta</a> project. It creates metadata files for software projects using <a class="reference external" href="https://www.schema.org">Schema.org</a> building blocks. There’s even a handy <a class="reference external" href="https://codemeta.github.io/codemeta-generator/">CodeMeta Generator</a>! If you maintain a phase-field software framework, you can (and should!) use it to document your code in a standards-compliant, machine-readable format. This improves interoperability and reusability!</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://doi.org/10.5063/schema/codemeta-2.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SoftwareSourceCode&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://spdx.org/licenses/CC-PDDC&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;codeRepository&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;git+https://github.com/usnistgov/hiperc&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2017-08-07&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;dateModified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-03-04&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;downloadUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/usnistgov/hiperc/releases/tag/v1.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;issueTracker&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/usnistgov/hiperc/issues&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HiPerC&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;High-Performance Computing in C and CUDA&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;applicationCategory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;phase-field&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;developmentStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inactive&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;programmingLanguage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CUDA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;OpenCL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;OpenMP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;TBB&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://orcid.org/my-orcid?orcid=0000-0002-2920-8302&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;givenName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trevor&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;familyName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Keller&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trevor.keller@nist.gov&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;affiliation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIST&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
+<section id="data-curation">
+<h2>Data Curation<a class="headerlink" href="#data-curation" title="Link to this heading">#</a></h2>
+<p>Data curation involves manipulating an assortment of unstructured data files,
+scripts and metadata from a research study into a coherent research data object
+that satisfies the principles of FAIR data. A robust data curation process is
+often a requirement for compliance with funding bodies and to simply meet the
+most basic needs of transparency in scientific research. The fundamental steps
+to curate a computational research project into a research data object and
+publish are as follows.</p>
+<ul class="simple">
+<li><p><strong>Automation:</strong> Automate the entire computational workflow where possible
+during the research process from initial inputs to final research products
+such as images and data tables.</p></li>
+<li><p><strong>Public Development:</strong> Submit the code and workflows appropriately during
+development. This step will not be described here, but is discussed in the
+<a class="reference internal" href="ch4-software-development.html#label-version-control-and-metadata"><span class="std std-ref">Version control and metadata section</span></a> of
+the <a class="reference internal" href="ch4-software-development.html#label-software-development"><span class="std std-ref">Software Development Guide</span></a>.</p></li>
+<li><p><strong>Metadata Standards:</strong> Employ a suitable metadata standard where possible to
+describe different aspects of the research project such as the raw data files,
+derived data assets, software environments, numerical algorithms and problem
+specification.</p></li>
+<li><p><strong>Licensing:</strong> License the research work appropriately. This may require a
+separate license for the data products as they are generally not archived in
+the code repository.</p></li>
+<li><p><strong>Data Repositories:</strong> Select a data repository to curate the data, submit the
+data and then obtain a DOI.</p></li>
+</ul>
+<p>The above steps are difficult to implement near the conclusion of a research
+study. The authors suggest considering these steps at the outset and during a
+study and also considering these steps as part of an overall protocol in a
+computational materials research group.</p>
+<section id="automation">
+<h3>Automation<a class="headerlink" href="#automation" title="Link to this heading">#</a></h3>
+<p>Automating workflows in computational materials science is useful for many
+reasons, however, for data curation purposes it provides and added benefit. In
+short, an outlined workflow associated with a curated FAIR object is a primary
+method to improve FAIR quality for subsequent researchers. For most workflow
+tools, the operation script outlining the workflow graph is the ultimate form of
+metadata about how the archived data files are used or generated during the
+research. For example, with Snakemake, the <code class="docutils literal notranslate"><span class="pre">Snakefile</span></code> has clearly outlined,
+human-readable inputs and outputs as well as the procedure associated with each
+input / output pair. The computational environment, command line arguments,
+environment variables are recorded for each workflow step as well as the order
+of execution of each of these steps.</p>
+<p>In recent years there have been efforts in the life sciences to provide a
+minimum workflow for independent code execution during the peer review
+process. The CODECHECK initiative <span id="id16">[<a class="reference internal" href="#id34" title="Nüst D and Eglen SJ. CODECHECK: an Open Science initiative for the independent execution of computations underlying research articles during peer review to improve reproducibility. F1000Research, 2021. doi:10.12688/f1000research.51738.2.">DS21</a>]</span> tries to provide a standard
+for executing workflows and a certification if the workflow satisfies basic
+criteria. These types of efforts will likely be used within the computational
+materials science community in the coming years so adopting automated workflow
+tools as part of your research will greatly benefit this process.</p>
+<ul class="simple">
+<li><p>See also <span id="id17">[<a class="reference internal" href="#id30" title="Jeremy Leipzig, Daniel Nüst, Charles Tapley Hoyt, Karthik Ram, and Jane Greenberg. The role of metadata in reproducible computational research. Patterns, 2(9):100322, 2021. doi:10.1016/j.patter.2021.100322.">LNH+21</a>]</span></p></li>
+</ul>
+</section>
+<section id="metadata-standards">
+<h3>Metadata Standards<a class="headerlink" href="#metadata-standards" title="Link to this heading">#</a></h3>
+</section>
+<section id="licensing">
+<h3>Licensing<a class="headerlink" href="#licensing" title="Link to this heading">#</a></h3>
+</section>
+<section id="selecting-a-data-repository">
+<h3>Selecting a data repository<a class="headerlink" href="#selecting-a-data-repository" title="Link to this heading">#</a></h3>
+<p>Dockstore and Workflowhub https://arxiv.org/pdf/2410.03490</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id18">
+<div role="list" class="citation-list">
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">ABW+24</a><span class="fn-bracket">]</span></span>
+<p>Hammad Ather, Jean Luca Bez, Chen Wang, Hank Childs, Allen D. Malony, and Suren Byna. Parallel i/o characterization and optimization on large-scale hpc systems: a 360-degree survey. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2501.00203">https://arxiv.org/abs/2501.00203</a>, <a class="reference external" href="https://arxiv.org/abs/2501.00203">arXiv:2501.00203</a>.</p>
 </div>
-<p>That’s nice! But what about our datasets? Shouldn’t the <a class="reference external" href="https://pages.nist.gov/pfhub">PFHub</a> metadata “describing” a dataset live alongside that data?</p>
-<section id="towards-a-phase-field-schema">
-<h4>Towards a Phase-Field Schema<a class="headerlink" href="#towards-a-phase-field-schema" title="Link to this heading">#</a></h4>
-<p>We are working to build a phase-field schema (or schemas) using <a class="reference external" href="https://www.schema.org">Schema.org</a> and the <a class="reference external" href="https://github.com/openschemas/schemaorg">schemaorg</a> Python library. The work-alike port of <code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code> looks like the following.</p>
-<blockquote>
-<div><p><em>N.B.:</em> We’re going to deploy a generator similar to CodeMeta’s so you won’t have to write this!</p>
-</div></blockquote>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.schema.org&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataCatalog&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;affiliation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Materials Science and Engineering Division&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Material Measurement Laboratory&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PostalAddress&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;addressCountry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;addressLocality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gaithersburg&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;addressRegion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Maryland&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;postalCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20899&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;streetAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;100 Bureau Drive&quot;</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIST&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;National Institute of Standards and Technology&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U.S. Department of Commerce&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.nist.gov&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trevor.keller@nist.gov&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;familyName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Keller&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;givenName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trevor&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tkphd&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;sameAs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://orcid.org/0000-0002-2920-8302&quot;</span>
-<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;affiliation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Materials Science and Engineering Division&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Material Measurement Laboratory&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GovernmentOrganization&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PostalAddress&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;addressCountry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;addressLocality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gaithersburg&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;addressRegion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Maryland&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;postalCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20899&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;streetAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;100 Bureau Drive&quot;</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIST&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;National Institute of Standards and Technology&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;parentOrganization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U.S. Department of Commerce&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.nist.gov&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daniel.wheeler@nist.gov&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;familyName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wheeler&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;givenName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Daniel&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wd15&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;sameAs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://orcid.org/0000-0002-2653-7418&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;dataset&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;parallel_nodes&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cpu_architecture&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;amd64&quot;</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;parallel_cores&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;parallel_gpus&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gpu_architecture&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nvidia&quot;</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gpu_cores&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6144</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wall_time&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;unitCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SEC&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;unitText&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">384</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PropertyValue&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;memory_usage&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;unitCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;E63&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;unitText&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mebibyte&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1835</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;irl&quot;</span>
-<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/free_energy_1.csv&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;free energy&quot;</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/solid_fraction_1.csv&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;solid fraction&quot;</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/free_energy_2.csv&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;free energy&quot;</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/solid_fraction_2.csv&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;solid fraction&quot;</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/free_energy_3.csv&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;free energy&quot;</span>
-<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DataDownload&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a/solid_fraction_3.csv&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;solid fraction&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;output&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-10-25T19:25:02+00:00&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A fake dataset for Benchmark 8a unprepared using FiPy by @tkphd &amp; @wd15&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;isBasedOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SoftwareSourceCode&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;codeRepository&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/tkphd/fake-pfhub-bm8a&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fake benchmark 8a upload with FiPy&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;runtimePlatform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fipy&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;targetProduct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9df6603e&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;isPartOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Series&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Homogeneous Nucleation&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pages.nist.gov/pfhub/benchmarks/benchmark8.ipynb&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;phase-field&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;benchmarks&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;pfhub&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;fipy&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;homogeneous-nucleation&quot;</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.nist.gov/open/license#software&quot;</span>
-<span class="p">}</span>
-</pre></div>
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">ARVZ14</a><span class="fn-bracket">]</span></span>
+<p>Guillaume Aupy, Yves Robert, Frédéric Vivien, and Dounia Zaidouni. Checkpointing algorithms and fault prediction. <em>Journal of Parallel and Distributed Computing</em>, 74(2):2048–2064, 2014. <a class="reference external" href="https://doi.org/10.1016/j.jpdc.2013.10.010">doi:10.1016/j.jpdc.2013.10.010</a>.</p>
+</div>
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">BGBD+24</a><span class="fn-bracket">]</span></span>
+<p>Leonardo Bautista-Gomez, Anne Benoit, Sheng Di, Thomas Herault, Yves Robert, and Hongyang Sun. A survey on checkpointing strategies: Should we always checkpoint à la Young/Daly? <em>Future Generation Computer Systems</em>, 161:315–328, 2024. URL: <a class="reference external" href="https://www.ittc.ku.edu/~sun/publications/fgcs24.pdf">https://www.ittc.ku.edu/~sun/publications/fgcs24.pdf</a> (visited on 2025-01-06), <a class="reference external" href="https://doi.org/10.1016/j.future.2024.07.022">doi:10.1016/j.future.2024.07.022</a>.</p>
+</div>
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">BDH+22</a><span class="fn-bracket">]</span></span>
+<p>Anne Benoit, Yishu Du, Thomas Herault, Loris Marchal, Guillaume Pallez, Lucas Perotin, Yves Robert, Hongyang Sun, and Frederic Vivien. Checkpointing à la Young/Daly: An overview. In <em>Proceedings of the 2022 Fourteenth International Conference on Contemporary Computing</em>, IC3-2022, 701–710. New York, NY, 2022. Association for Computing Machinery. URL: <a class="reference external" href="https://icl.utk.edu/files/publications/2022/icl-utk-1569-2022.pdf">https://icl.utk.edu/files/publications/2022/icl-utk-1569-2022.pdf</a> (visited on 2025-01-06), <a class="reference external" href="https://doi.org/10.1145/3549206.3549328">doi:10.1145/3549206.3549328</a>.</p>
+</div>
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BPRS22<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id9">1</a>,<a role="doc-backlink" href="#id13">2</a>)</span>
+<p>Anne Benoit, Luca Perotin, Yves Robert, and Hongyang Sun. Checkpointing workflows à la Young/Daly is not good enough. <em>ACM Trans. Parallel Comput.</em>, December 2022. URL: <a class="reference external" href="https://inria.hal.science/hal-03264047/file/rr9413.pdf">https://inria.hal.science/hal-03264047/file/rr9413.pdf</a> (visited on 2025-01-06), <a class="reference external" href="https://doi.org/10.1145/3548607">doi:10.1145/3548607</a>.</p>
+</div>
+<div class="citation" id="id34" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">DS21</a><span class="fn-bracket">]</span></span>
+<p>Nüst D and Eglen SJ. CODECHECK: an Open Science initiative for the independent execution of computations underlying research articles during peer review to improve reproducibility. <em>F1000Research</em>, 2021. <a class="reference external" href="https://doi.org/10.12688/f1000research.51738.2">doi:10.12688/f1000research.51738.2</a>.</p>
+</div>
+<div class="citation" id="id27" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">HRB+19</a><span class="fn-bracket">]</span></span>
+<p>Thomas Herault, Yves Robert, Aurelien Bouteiller, Dorian Arnold, Kurt Ferreira, George Bosilca, and Jack Dongarra. Checkpointing strategies for shared high-performance computing platforms. <em>International Journal of Networking and Computing</em>, 9(1):28–52, 2019. URL: <a class="reference external" href="http://www.ijnc.org/index.php/ijnc/article/view/195">http://www.ijnc.org/index.php/ijnc/article/view/195</a>.</p>
+</div>
+<div class="citation" id="id28" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">HJ17</a><span class="fn-bracket">]</span></span>
+<p>Stephan Hoyer and Hamman Joseph. xarray: N-D labeled Arrays and Datasets in Python. <em>Journal of Open Research Software</em>, April 2017. <a class="reference external" href="https://doi.org/10.5334/jors.148">doi:10.5334/jors.148</a>.</p>
+</div>
+<div class="citation" id="id29" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">KJM+20</a><span class="fn-bracket">]</span></span>
+<p>Rakesh Kumar, Saurabh Jha, Ashraf Mahgoub, Rajesh Kalyanam, Stephen Harrell, Xiaohui Carol Song, Zbigniew Kalbarczyk, William Kramer, Ravishankar Iyer, and Saurabh Bagchi. The mystery of the failing jobs: Insights from operational data from two university-wide computing systems. In <em>2020 50th Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)</em>, 158–171. 2020. URL: <a class="reference external" href="https://engineering.purdue.edu/dcsl/publications/papers/2020/fresco_dsn20_cameraready.pdf">https://engineering.purdue.edu/dcsl/publications/papers/2020/fresco_dsn20_cameraready.pdf</a> (visited on 2025-01-06), <a class="reference external" href="https://doi.org/10.1109/DSN48063.2020.00034">doi:10.1109/DSN48063.2020.00034</a>.</p>
+</div>
+<div class="citation" id="id30" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">LNH+21</a><span class="fn-bracket">]</span></span>
+<p>Jeremy Leipzig, Daniel Nüst, Charles Tapley Hoyt, Karthik Ram, and Jane Greenberg. The role of metadata in reproducible computational research. <em>Patterns</em>, 2(9):100322, 2021. <a class="reference external" href="https://doi.org/10.1016/j.patter.2021.100322">doi:10.1016/j.patter.2021.100322</a>.</p>
+</div>
+<div class="citation" id="id33" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">MJL+21</a><span class="fn-bracket">]</span></span>
+<p>Felix Mölder, Kim Philipp Jablonski, Brice Letcher, Michael B Hall, Christopher H Tomkins-Tinch, Vanessa Sochat, Jan Forster, Soohyun Lee, Sven O Twardziok, Alexander Kanitz, Andreas Wilm, Manuel Holtgrewe, Sven Rahmann, Sven Nahnsen, and Johannes Köster. Sustainable data analysis with Snakemake. <em>F1000Research</em>, 2021. <a class="reference external" href="https://doi.org/10.12688/f1000research.29032.2">doi:10.12688/f1000research.29032.2</a>.</p>
+</div>
+<div class="citation" id="id35" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">PFM+20</a><span class="fn-bracket">]</span></span>
+<p>Arnab K. Paul, Olaf Faaland, Adam Moody, Elsa Gonsiorowski, Kathryn Mohror, and Ali R. Butt. Understanding HPC application I/O behavior using system level statistics. In <em>2020 IEEE 27th International Conference on High Performance Computing, Data, and Analytics (HiPC)</em>, 202–211. 2020. <a class="reference external" href="https://doi.org/10.1109/HiPC50609.2020.00034">doi:10.1109/HiPC50609.2020.00034</a>.</p>
+</div>
+<div class="citation" id="id36" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">Sch</a><span class="fn-bracket">]</span></span>
+<p>Nico Schlömer. meshio: Tools for mesh files. URL: <a class="github reference external" href="https://github.com/nschloe/meshio">nschloe/meshio</a>, <a class="reference external" href="https://doi.org/10.5281/zenodo.1173115">doi:10.5281/zenodo.1173115</a>.</p>
+</div>
+<div class="citation" id="id37" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">TLL22</a><span class="fn-bracket">]</span></span>
+<p>Damien Tourret, Hong Liu, and Javier LLorca. Phase-field modeling of microstructure evolution: Recent applications, perspectives and challenges. <em>Progress in Materials Science</em>, 123:100810, 2022. A Festschrift in Honor of Brian Cantor. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0079642521000347">https://www.sciencedirect.com/science/article/pii/S0079642521000347</a>, <a class="reference external" href="https://doi.org/10.1016/j.pmatsci.2021.100810">doi:10.1016/j.pmatsci.2021.100810</a>.</p>
+</div>
+<div class="citation" id="id38" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">WDA+16</a><span class="fn-bracket">]</span></span>
+<p>Mark D. Wilkinson, Michel Dumontier, IJsbrJan Aalbersberg, Gabrielle Appleton, Myles Axton, Arie Baak, Niklas Blomberg, Jan-Willem Boiten, Luiz Bonino da Silva Santos, Philip E. Bourne, Jildau Bouwman, Anthony J. Brookes, Tim Clark, Mercè Crosas, Ingrid Dillo, Olivier Dumon, Scott Edmunds, Chris T. Evelo, Richard Finkers, Alejandra Gonzalez-Beltran, Alasdair J.G. Gray, Paul Groth, Carole Goble, Jeffrey S. Grethe, Jaap Heringa, Peter A.C 't Hoen, Rob Hooft, Tobias Kuhn, Ruben Kok, Joost Kok, Scott J. Lusher, Maryann E. Martone, Albert Mons, Abel L. Packer, Bengt Persson, Philippe Rocca-Serra, Marco Roos, Rene van Schaik, Susanna-Assunta Sansone, Erik Schultes, Thierry Sengstag, Ted Slater, George Strawn, Morris A. Swertz, Mark Thompson, Johan van der Lei, Erik van Mulligen, Jan Velterop, Andra Waagmeester, Peter Wittenburg, Katherine Wolstencroft, Jun Zhao, and Barend Mons. The FAIR guiding principles for scientific data management and stewardship. <em>Scientific Data</em>, 3(1):160018, Mar 2016. URL: <a class="reference external" href="https://doi.org/10.1038/sdata.2016.18">https://doi.org/10.1038/sdata.2016.18</a>, <a class="reference external" href="https://doi.org/10.1038/sdata.2016.18">doi:10.1038/sdata.2016.18</a>.</p>
+</div>
+<div class="citation" id="id39" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">WAB+24</a><span class="fn-bracket">]</span></span>
+<p>Sean R. Wilkinson, Meznah Aloqalaa, Khalid Belhajjame, Michael R. Crusoe, Bruno de Paula Kinoshita, Luiz Gadelha, Daniel Garijo, Ove Johan Ragnar Gustafsson, Nick Juty, Sehrish Kanwal, Farah Zaib Khan, Johannes Köster, Karsten Peters-von Gehlen, Line Pouchard, Randy K. Rannow, Stian Soiland-Reyes, Nicola Soranzo, Shoaib Sufi, Ziheng Sun, Baiba Vilne, Merridee A. Wouters, Denis Yuen, and Carole Goble. Applying the FAIR principles to computational workflows. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2410.03490">https://arxiv.org/abs/2410.03490</a>, <a class="reference external" href="https://arxiv.org/abs/2410.03490">arXiv:2410.03490</a>.</p>
+</div>
+</div>
 </div>
 <!-- links -->
-</section>
-</section>
 </section>
 </section>
 
@@ -1008,27 +938,23 @@ At this time, we recommend using <a class="reference external" href="https://zen
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideas">Ideas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-want-to-structure-the-sections">How do we want to structure the sections?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#old-version">Old version</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fair-data">FAIR Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#findable">Findable</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accessible">Accessible</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interoperable">Interoperable</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reusable">Reusable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-generation">Data Generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raw-data-to-disk">Writing raw data to disk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-formats">File formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recovering-from-crashes-and-restarts">Recovering from crashes and restarts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-workflow-tools">Using Workflow Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-environments-and-parallel-writes">HPC Environments and parallel writes</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zenodo">Zenodo</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-examples">Metadata Examples</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-files">Metadata Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-curation">Data Curation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automation">Automation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-standards">Metadata Standards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#licensing">Licensing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-a-data-repository">Selecting a data repository</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-data-schemas">Structured Data Schemas</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-phase-field-schema">Towards a Phase-Field Schema</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 
@@ -1077,8 +1003,8 @@ By PFHub Workshop Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

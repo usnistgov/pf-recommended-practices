@@ -68,39 +68,43 @@ practices guide for a more detailed discussion of software and code curation.
 ```{mermaid}
 ---
 title: A Phase-Field Workflow
----p
+config:
+  layout: elk
+  elk:
+    mergeEdges: true
+    nodePlacementStrategy: NETWORK_SIMPLEX
+---
 flowchart TD
-    id1@{   shape: lean-r,   label: "Input Files", fill: #f96 }
-    id1.2@{ shape: lean-r,   label: "Parameters" }
-    id1.1@{ shape: lean-r,   label: "Code" }
-    id2@{   shape: lean-r,   label: "Computational Environment" }
-    id2.5@{ shape: rect,     label: "Pre-processing, (e.g. CALPHAD or Meshing)" }
-    id2.7@{ shape: bow-rect, label: "Pre-processed Data" }
-    id3[Phase-Field Simulation]
-    id3.5@{ shape: bow-rect, label: "Scratch Data" }
-    id4@{   shape: bow-rect, label: "Raw Field Data" }
-    id5@{   shape: rect,     label: "Post-processing (e.g. Data Visualization)" }
-    id6@{   shape: bow-rect, label: "Post-processed Data" }
-    id7@{   shape: lin-cyl,  label: "Data Repository" }
-    id8@{   shape: bow-rect, label: "Metadata" }
-    id1.2-->id1
-    id1-->id2.5
-    id1-->id5
-    id2.5-->id2.7-->id3
-    id1-->id3
-    id1.1-->id3
-    id2-->id3
-    id3-->id4-->id5-->id6
-    id3-->id3.5-->id3
-    id2-->id2.5
-    id2-->id5
-    id6--Curation-->id7
-    id4--Curation-->id7
-    id8--Curation-->id7
-    id1.2-->id8
-    id1.1-->id8
-    id1-->id8
-    id2-->id8
+
+INPUT@{ shape: doc,      label: "Input Files", fill: #f96 }
+PARAM@{ shape: in-out,   label: "Parameters" }
+PREPR@{ shape: rect,     label: "Pre-processing (e.g. CALPHAD or Meshing)" }
+PREDT@{ shape: bow-rect, label: "Pre-processed Data" }
+
+ENVIR@{ shape: in-out,   label: "Computational Environment" }
+SOURC@{ shape: in-out,   label: "Code" }
+METAD@{ shape: bow-rect, label: "Metadata" }
+
+PFSIM@{ shape: procs,    label: "Phase-Field Simulation" }
+FDATA@{ shape: bow-rect, label: "Raw Field Data" }
+SCRAT@{ shape: bow-rect, label: "Scratch Data" }
+
+POSPR@{ shape: display,  label: "Post-processing (e.g. Data Visualization)" }
+POSDT@{ shape: bow-rect, label: "Post-processed Data" }
+
+CURAT@{ shape: manual,   label: "Curation" }
+CRATE@{ shape: disk,     label: "Data Repository" }
+
+PARAM --> INPUT & METAD
+SOURC --> PFSIM & METAD
+ENVIR --> PFSIM & METAD & PREPR
+INPUT --> PREPR & PFSIM & METAD & POSPR
+PREPR --> PREDT --> PFSIM
+PFSIM --> FDATA & SCRAT
+SCRAT --> PFSIM
+FDATA --> POSPR --> POSDT
+
+METAD & FDATA & POSDT --> CURAT --> CRATE
 ```
 
 ## Data Generation

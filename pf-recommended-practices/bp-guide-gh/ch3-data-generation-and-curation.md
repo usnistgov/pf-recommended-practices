@@ -397,8 +397,10 @@ tools as part of your research will greatly benefit this process.
 
 ### Licensing
 
+A license serves two purposes: it articulates ownership of the data
+and it describes the conditions for use of the data by others.
 Data released without an accompanying license cannot be used by anybody but the author.
-Publicly available is not the same thing as "public domain".
+Publicly available is not the same thing as "public domain". Data repositories like [Zenodo] require declaration of a license in order to deposit data.
 
 Licensing of data is distinct from [licensing software](label-software-license-considerations).
 This is, in part, because, software and data may be released in different places,
@@ -407,7 +409,13 @@ They may also have different release cycles;
 data might be released only at the completion of a research study, and rarely or never updated afterwards,
 whereas new versions of code might be publicly posted several times per day when under active development.
 
-Even if released concurrently, data and software have different needs.
+Even if released concurrently,
+[data and software have different needs][data-software-different-license].
+With software, there is a distinction between source code and executable.
+A software license must address the conditions for sharing and reuse of
+source code. A software license may also address patent rights.
+
+Your institution may stipulate a license; you should use that.
 
 ### Selecting a data repository
 
@@ -441,3 +449,4 @@ Dockstore and Workflowhub https://arxiv.org/pdf/2410.03490
 [working-with-data]: https://aaltoscicomp.github.io/python-for-scicomp/work-with-data/#binary-file-formats
 [xarray-io]: https://docs.xarray.dev/en/stable/user-guide/io.html
 [snakemake-directory]: https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html
+[data-software-different-license]: https://creativecommons.org/faq/#can-i-apply-a-creative-commons-license-to-software

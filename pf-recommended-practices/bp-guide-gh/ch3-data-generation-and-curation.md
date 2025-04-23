@@ -417,6 +417,8 @@ source code. A software license may also address patent rights.
 
 Your institution may stipulate a license; you should use that.
 
+See the [Creative Commons discussion of data licensing considerations][https://wiki.creativecommons.org/wiki/Data].
+
 ### Selecting a data repository
 
 Dockstore and Workflowhub https://arxiv.org/pdf/2410.03490

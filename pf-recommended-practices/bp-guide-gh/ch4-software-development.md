@@ -82,6 +82,7 @@ contributions and user engagement, leading to project growth.
 On open platforms, it is important to add and maintain metadata, such as the
 code license. Authorship is tracked through the version control system.
 
+(label-software-license-considerations)=
 #### License considerations
 
 > [Largely not unique to phase field, or even to scientific computing, so not a lot to say here, but should reference good guidance]

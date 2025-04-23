@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -77,7 +74,6 @@ window.addEventListener("load", () => mermaid.run());
     <link rel="prev" title="Numerical Implementation" href="ch2-numerical-implementation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -93,8 +89,19 @@ window.addEventListener("load", () => mermaid.run());
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -102,6 +109,7 @@ window.addEventListener("load", () => mermaid.run());
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -109,8 +117,8 @@ window.addEventListener("load", () => mermaid.run());
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -126,8 +134,7 @@ window.addEventListener("load", () => mermaid.run());
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -157,17 +164,21 @@ window.addEventListener("load", () => mermaid.run());
     
     
     <img src="../_static/pfhub-logo.jpg" class="logo__image only-light" alt="Phase Field Method Recommended Practices - Home"/>
-    <img src="../_static/pfhub-logo.jpg" class="logo__image only-dark pst-js-only" alt="Phase Field Method Recommended Practices - Home"/>
+    <script>document.write(`<img src="../_static/pfhub-logo.jpg" class="logo__image only-dark" alt="Phase Field Method Recommended Practices - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -200,14 +211,9 @@ window.addEventListener("load", () => mermaid.run());
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -351,16 +357,24 @@ window.addEventListener("load", () => mermaid.run());
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -420,6 +434,7 @@ window.addEventListener("load", () => mermaid.run());
 <li><p><a class="reference external" href="https://www.nist.gov/people/trevor-keller">Trevor Keller</a>, NIST, <a class="reference external" href="https://github.com/tkphd">&#64;tkphd</a></p></li>
 <li><p><a class="reference external" href="https://www.nist.gov/people/daniel-wheeler">Daniel Wheeler</a>, NIST, <a class="reference external" href="https://github.com/wd15">&#64;wd15</a></p></li>
 <li><p><a class="reference external" href="https://ca.linkedin.com/in/damien-pinto-4748387b">Damien Pinto</a>, McGill, <a class="reference external" href="https://github.com/DamienPinto">&#64;DamienPinto</a></p></li>
+<li><p><a class="reference external" href="https://www.nist.gov/people/jonathan-e-guyer">Jonathan Guyer</a>, NIST, <a class="reference external" href="https://github.com/guyer">&#64;guyer</a></p></li>
 </ul>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
@@ -483,37 +498,36 @@ practices guide for a more detailed discussion of software and code curation.</p
 title: A Phase-Field Workflow
 ---
 flowchart TD
-    id1&#64;{   shape: lean-r,   label: &quot;Input Files&quot;, fill: #f96 }
-    id1.2&#64;{ shape: lean-r,   label: &quot;Parameters&quot; }
-    id1.1&#64;{ shape: lean-r,   label: &quot;Code&quot; }
-    id2&#64;{   shape: lean-r,   label: &quot;Computational Environment&quot; }
-    id2.5&#64;{ shape: rect,     label: &quot;Pre-processing, (e.g. CALPHAD or Meshing)&quot; }
-    id2.7&#64;{ shape: bow-rect, label: &quot;Pre-processed Data&quot; }
-    id3[Phase-Field Simulation]
-    id3.5&#64;{ shape: bow-rect, label: &quot;Scratch Data&quot; }
-    id4&#64;{   shape: bow-rect, label: &quot;Raw Field Data&quot; }
-    id5&#64;{   shape: rect,     label: &quot;Post-processing (e.g. Data Visualization)&quot; }
-    id6&#64;{   shape: bow-rect, label: &quot;Post-processed Data&quot; }
-    id7&#64;{   shape: lin-cyl,  label: &quot;Data Repository&quot; }
-    id8&#64;{   shape: bow-rect, label: &quot;Metadata&quot; }
-    id1.2--&gt;id1
-    id1--&gt;id2.5
-    id1--&gt;id5
-    id2.5--&gt;id2.7--&gt;id3
-    id1--&gt;id3
-    id1.1--&gt;id3
-    id2--&gt;id3
-    id3--&gt;id4--&gt;id5--&gt;id6
-    id3--&gt;id3.5--&gt;id3
-    id2--&gt;id2.5
-    id2--&gt;id5
-    id6--Curation--&gt;id7
-    id4--Curation--&gt;id7
-    id8--Curation--&gt;id7
-    id1.2--&gt;id8
-    id1.1--&gt;id8
-    id1--&gt;id8
-    id2--&gt;id8
+
+    INPUT&#64;{ shape: doc,      label: &quot;Input Files&quot;, fill: #f96 }
+    PARAM&#64;{ shape: in-out,   label: &quot;Parameters&quot; }
+    PREPR&#64;{ shape: rect,     label: &quot;Pre-processing (e.g. CALPHAD or Meshing)&quot; }
+    PREDT&#64;{ shape: bow-rect, label: &quot;Pre-processed Data&quot; }
+
+    ENVIR&#64;{ shape: in-out,   label: &quot;Computational Environment&quot; }
+    SOURC&#64;{ shape: in-out,   label: &quot;Code&quot; }
+    METAD&#64;{ shape: bow-rect, label: &quot;Metadata&quot; }
+
+    PFSIM&#64;{ shape: procs,    label: &quot;Phase-Field Simulation&quot; }
+    FDATA&#64;{ shape: bow-rect, label: &quot;Raw Field Data&quot; }
+    SCRAT&#64;{ shape: bow-rect, label: &quot;Scratch Data&quot; }
+
+    POSPR&#64;{ shape: display,  label: &quot;Post-processing (e.g. Data Visualization)&quot; }
+    POSDT&#64;{ shape: bow-rect, label: &quot;Post-processed Data&quot; }
+
+    CURAT&#64;{ shape: manual,   label: &quot;Curation&quot; }
+    CRATE&#64;{ shape: disk,     label: &quot;Data Repository&quot; }
+
+    PARAM --&gt; INPUT &amp; METAD
+    SOURC --&gt; PFSIM &amp; METAD
+    ENVIR --&gt; PFSIM &amp; METAD &amp; PREPR
+    INPUT --&gt; PREPR &amp; PFSIM &amp; METAD &amp; POSPR
+    PREPR --&gt; PREDT --&gt; PFSIM
+    PFSIM --&gt; FDATA &amp; SCRAT
+    SCRAT --&gt; PFSIM
+    FDATA --&gt; POSPR --&gt; POSDT
+
+    METAD &amp; FDATA &amp; POSDT --&gt; CURAT --&gt; CRATE
     </pre></section>
 <section id="data-generation">
 <h2>Data Generation<a class="headerlink" href="#data-generation" title="Link to this heading">#</a></h2>
@@ -692,31 +706,31 @@ workflows.</p>
 and file structure on the project. For example, Snakemake has an <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html">ideal
 suggested directory structure</a>. An example folder structure
 when using Snakemake would look like the following.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
-├── config
-│   └── config.yaml
-├── LICENSE.md
-├── README.md
-├── resources
-├── results
-│   └── image.png
-└── workflow
-    ├── envs
-    │   ├── env.yaml
-    │   ├── flake.lock
-    │   ├── flake.nix
-    │   ├── poetry.lock
-    │   └── pyproject.toml
-    ├── notebooks
-    │   └── analysis.ipynb
-    ├── rules
-    │   ├── postprocess.smk
-    │   ├── preprocess.smk
-    │   └── sim.smk
-    ├── scripts
-    │   ├── func.py
-    │   └── run.py
-    └── Snakefile
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">.</span>
+<span class="go">├── config</span>
+<span class="go">│   └── config.yaml</span>
+<span class="go">├── LICENSE.md</span>
+<span class="go">├── README.md</span>
+<span class="go">├── resources</span>
+<span class="go">├── results</span>
+<span class="go">│   └── image.png</span>
+<span class="go">└── workflow</span>
+<span class="go">    ├── envs</span>
+<span class="go">    │   ├── env.yaml</span>
+<span class="go">    │   ├── flake.lock</span>
+<span class="go">    │   ├── flake.nix</span>
+<span class="go">    │   ├── poetry.lock</span>
+<span class="go">    │   └── pyproject.toml</span>
+<span class="go">    ├── notebooks</span>
+<span class="go">    │   └── analysis.ipynb</span>
+<span class="go">    ├── rules</span>
+<span class="go">    │   ├── postprocess.smk</span>
+<span class="go">    │   ├── preprocess.smk</span>
+<span class="go">    │   └── sim.smk</span>
+<span class="go">    ├── scripts</span>
+<span class="go">    │   ├── func.py</span>
+<span class="go">    │   └── run.py</span>
+<span class="go">    └── Snakefile</span>
 </pre></div>
 </div>
 <p>Notice that the above directory structure includes the <code class="docutils literal notranslate"><span class="pre">envs</span></code> directory. This
@@ -791,10 +805,27 @@ tools as part of your research will greatly benefit this process.</p>
 </section>
 <section id="licensing">
 <h3>Licensing<a class="headerlink" href="#licensing" title="Link to this heading">#</a></h3>
+<p>A license serves two purposes: it articulates ownership of the data
+and it describes the conditions for use of the data by others.
+Data released without an accompanying license cannot be used by anybody but the author.
+Publicly available is not the same thing as “public domain”. Data repositories like <a class="reference external" href="https://zenodo.org">Zenodo</a> require declaration of a license in order to deposit data.</p>
+<p>Licensing of data is distinct from <a class="reference internal" href="ch4-software-development.html#label-software-license-considerations"><span class="std std-ref">licensing software</span></a>.
+This is, in part, because, software and data may be released in different places,
+e.g., GitHub vs. Zenodo, requiring a license statement in each location.
+They may also have different release cycles;
+data might be released only at the completion of a research study, and rarely or never updated afterwards,
+whereas new versions of code might be publicly posted several times per day when under active development.</p>
+<p>Even if released concurrently,
+<a class="reference external" href="https://creativecommons.org/faq/#can-i-apply-a-creative-commons-license-to-software">data and software have different needs</a>.
+With software, there is a distinction between source code and executable.
+A software license must address the conditions for sharing and reuse of
+source code. A software license may also address patent rights.</p>
+<p>Your institution may stipulate a license; you should use that.</p>
+<p>See the <a class="reference external" href="https://wiki.creativecommons.org/wiki/Data">Creative Commons discussion of data licensing considerations</a>.</p>
 </section>
 <section id="selecting-a-data-repository">
 <h3>Selecting a data repository<a class="headerlink" href="#selecting-a-data-repository" title="Link to this heading">#</a></h3>
-<p>Dockstore and Workflowhub https://arxiv.org/pdf/2410.03490</p>
+<p>Dockstore and Workflowhub <a class="reference external" href="https://arxiv.org/pdf/2410.03490">https://arxiv.org/pdf/2410.03490</a></p>
 </section>
 </section>
 <section id="references">
@@ -927,8 +958,7 @@ tools as part of your research will greatly benefit this process.</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1003,8 +1033,8 @@ By PFHub Workshop Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

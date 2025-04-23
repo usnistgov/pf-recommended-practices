@@ -69,43 +69,38 @@ practices guide for a more detailed discussion of software and code curation.
 ```{mermaid}
 ---
 title: A Phase-Field Workflow
-config:
-  layout: elk
-  elk:
-    mergeEdges: true
-    nodePlacementStrategy: NETWORK_SIMPLEX
 ---
 flowchart TD
 
-INPUT@{ shape: doc,      label: "Input Files", fill: #f96 }
-PARAM@{ shape: in-out,   label: "Parameters" }
-PREPR@{ shape: rect,     label: "Pre-processing (e.g. CALPHAD or Meshing)" }
-PREDT@{ shape: bow-rect, label: "Pre-processed Data" }
+    INPUT@{ shape: doc,      label: "Input Files", fill: #f96 }
+    PARAM@{ shape: in-out,   label: "Parameters" }
+    PREPR@{ shape: rect,     label: "Pre-processing (e.g. CALPHAD or Meshing)" }
+    PREDT@{ shape: bow-rect, label: "Pre-processed Data" }
 
-ENVIR@{ shape: in-out,   label: "Computational Environment" }
-SOURC@{ shape: in-out,   label: "Code" }
-METAD@{ shape: bow-rect, label: "Metadata" }
+    ENVIR@{ shape: in-out,   label: "Computational Environment" }
+    SOURC@{ shape: in-out,   label: "Code" }
+    METAD@{ shape: bow-rect, label: "Metadata" }
 
-PFSIM@{ shape: procs,    label: "Phase-Field Simulation" }
-FDATA@{ shape: bow-rect, label: "Raw Field Data" }
-SCRAT@{ shape: bow-rect, label: "Scratch Data" }
+    PFSIM@{ shape: procs,    label: "Phase-Field Simulation" }
+    FDATA@{ shape: bow-rect, label: "Raw Field Data" }
+    SCRAT@{ shape: bow-rect, label: "Scratch Data" }
 
-POSPR@{ shape: display,  label: "Post-processing (e.g. Data Visualization)" }
-POSDT@{ shape: bow-rect, label: "Post-processed Data" }
+    POSPR@{ shape: display,  label: "Post-processing (e.g. Data Visualization)" }
+    POSDT@{ shape: bow-rect, label: "Post-processed Data" }
 
-CURAT@{ shape: manual,   label: "Curation" }
-CRATE@{ shape: disk,     label: "Data Repository" }
+    CURAT@{ shape: manual,   label: "Curation" }
+    CRATE@{ shape: disk,     label: "Data Repository" }
 
-PARAM --> INPUT & METAD
-SOURC --> PFSIM & METAD
-ENVIR --> PFSIM & METAD & PREPR
-INPUT --> PREPR & PFSIM & METAD & POSPR
-PREPR --> PREDT --> PFSIM
-PFSIM --> FDATA & SCRAT
-SCRAT --> PFSIM
-FDATA --> POSPR --> POSDT
+    PARAM --> INPUT & METAD
+    SOURC --> PFSIM & METAD
+    ENVIR --> PFSIM & METAD & PREPR
+    INPUT --> PREPR & PFSIM & METAD & POSPR
+    PREPR --> PREDT --> PFSIM
+    PFSIM --> FDATA & SCRAT
+    SCRAT --> PFSIM
+    FDATA --> POSPR --> POSDT
 
-METAD & FDATA & POSDT --> CURAT --> CRATE
+    METAD & FDATA & POSDT --> CURAT --> CRATE
 ```
 
 ## Data Generation
@@ -296,7 +291,7 @@ and file structure on the project. For example, Snakemake has an [ideal
 suggested directory structure][snakemake-directory]. An example folder structure
 when using Snakemake would look like the following.
 
-```
+```output
 .
 ├── config
 │   └── config.yaml
@@ -417,11 +412,11 @@ source code. A software license may also address patent rights.
 
 Your institution may stipulate a license; you should use that.
 
-See the [Creative Commons discussion of data licensing considerations][https://wiki.creativecommons.org/wiki/Data].
+See the [Creative Commons discussion of data licensing considerations][cc-data].
 
 ### Selecting a data repository
 
-Dockstore and Workflowhub https://arxiv.org/pdf/2410.03490
+Dockstore and Workflowhub <https://arxiv.org/pdf/2410.03490>
 
 ## References
 
@@ -445,10 +440,11 @@ Dockstore and Workflowhub https://arxiv.org/pdf/2410.03490
 [fair-phase-field]: https://doi.org/10.5281/zenodo.7254581
 [schemaorg]: https://github.com/openschemas/schemaorg
 [structured data schema]: https://en.wikipedia.org/wiki/Data_model
-[link1]: https://workflows.community/groups/fair/best-practices/
+[workflow-community-bp]: https://workflows.community/groups/fair/best-practices/
 [meshio]: https://github.com/nschloe/meshio?tab=readme-ov-file#performance-comparison
 [vtk-xml]: https://docs.vtk.org/en/latest/design_documents/VTKFileFormats.html#xml-file-formats
 [working-with-data]: https://aaltoscicomp.github.io/python-for-scicomp/work-with-data/#binary-file-formats
 [xarray-io]: https://docs.xarray.dev/en/stable/user-guide/io.html
 [snakemake-directory]: https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html
 [data-software-different-license]: https://creativecommons.org/faq/#can-i-apply-a-creative-commons-license-to-software
+[cc-data]: https://wiki.creativecommons.org/wiki/Data

@@ -1,4 +1,4 @@
-jupyter-book
-matplotlib
-numpy
-sphinxcontrib-mermaid
+jupyter-book>=0.14.0
+matplotlib>=3.5.0
+numpy>=1.21.0
+sphinxcontrib-mermaid>=0.7.1

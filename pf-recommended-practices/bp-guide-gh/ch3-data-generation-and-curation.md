@@ -5,6 +5,7 @@ Authors:
 - [Trevor Keller](https://www.nist.gov/people/trevor-keller), NIST, [@tkphd]
 - [Daniel Wheeler](https://www.nist.gov/people/daniel-wheeler), NIST, [@wd15]
 - [Damien Pinto](https://ca.linkedin.com/in/damien-pinto-4748387b), McGill, [@DamienPinto]
+- [Jonathan Guyer](https://www.nist.gov/people/jonathan-e-guyer), NIST, [@guyer]
 
 ## Overview
 
@@ -396,6 +397,18 @@ tools as part of your research will greatly benefit this process.
 
 ### Licensing
 
+Data released without an accompanying license cannot be used by anybody but the author.
+Publicly available is not the same thing as "public domain".
+
+Licensing of data is distinct from [licensing software](label-software-license-considerations).
+This is, in part, because, software and data may be released in different places,
+e.g., GitHub vs. Zenodo, requiring a license statement in each location.
+They may also have different release cycles;
+data might be released only at the completion of a research study, and rarely or never updated afterwards,
+whereas new versions of code might be publicly posted several times per day when under active development.
+
+Even if released concurrently, data and software have different needs.
+
 ### Selecting a data repository
 
 Dockstore and Workflowhub https://arxiv.org/pdf/2410.03490
@@ -411,6 +424,7 @@ Dockstore and Workflowhub https://arxiv.org/pdf/2410.03490
 [@tkphd]: https://github.com/tkphd
 [@wd15]: https://github.com/wd15
 [@DamienPinto]: https://github.com/DamienPinto
+[@guyer]: https://github.com/guyer
 [CodeMeta]: https://codemeta.github.io
 [CodeMeta Generator]: https://codemeta.github.io/codemeta-generator/
 [FAIR Principles]: https://www.go-fair.org/fair-principles/

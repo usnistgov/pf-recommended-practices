@@ -3,7 +3,7 @@
 Nana Ofori-Opuku, Jim Warren, Pierre-Clement Simon
 
 * Review the literature
-  * Start with a careful lit review and see what others have done.
+  * Start with a careful literature review and see what others have done.
   * Take the time to understand the derivations from the literature.
   * Consider good examples from the literature (Can we list these on PFHub?)
 

@@ -499,7 +499,7 @@ helps ensure the reliability and validity of your simulation results in various
 scientific and engineering applications.
 
 * Non-dimensionalization
-  * It gets MUCH harder with coupled physics, so be careful
+  * It gets MUCH harder with coupled physics, so be careful!
 
 ## References
 

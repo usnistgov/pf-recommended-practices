@@ -147,6 +147,6 @@ verification approaches exist.
    convergence rate as a function of domain discretization, can be tested to
    discover implementation errors.
 
-## TODO
+<!-- ## TODO -->
 
-- Am I disseminating this software?
+<!-- - Am I disseminating this software? -->

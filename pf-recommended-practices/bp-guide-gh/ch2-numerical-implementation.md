@@ -212,7 +212,7 @@ the spatial error is expected to be low (e.g., where fields are changing
 slowly). An example of adaptive mesh refinement for the PFHub Benchmark 3
 problem is shown below:
 
-(Insert BM3 AMR example)
+<!-- (Insert BM3 AMR example) -->
 
 Note that in this example, the mesh is the finest near the solid-liquid
 interface and coarsest far from the interface in the liquid. PFHub Benchmark 3
@@ -686,6 +686,8 @@ therefore, be **straightforward to implement, even with intricate linear
 functions**.  However, **convergence is strongly dependent on the condition
 number of the operator matrix.**
 
+<!-- Define $\mathbf{M}, $\mathbf{J}$, $z$ and $r$ below. -->
+
 The performance of Krylov methods can be improved through **preconditioning**.
 Here, we form an approximation to the overall Jacobian matrix, $\mathbf{M}
 \approx \mathbf{J}$.  Depending on the exact method, we will then find
@@ -712,17 +714,17 @@ the preconditioner can have varying difficulties: switching from a Jacobi to a
 Gauss-Seidel preconditioner is trivial, but switching to an ILU preconditioner
 might require much more effort.
 
-### Choosing an appropriate parallelism approach
+<!-- ### Choosing an appropriate parallelism approach -->
 
-(Discuss distributed vs shared, CPU vs GPU)
+<!-- (Discuss distributed vs shared, CPU vs GPU) -->
 
-#### Distributed memory
+<!-- #### Distributed memory -->
 
-(pretty much just MPI, also mention UPC or Legion or Charm++?)
+<!-- (pretty much just MPI, also mention UPC or Legion or Charm++?) -->
 
-#### Shared memory
+<!-- #### Shared memory -->
 
-CPU/GPU, performance portability layers
+<!-- CPU/GPU, performance portability layers -->
 
 ## Choosing appropriate numerical libraries and/or what to write yourself
 

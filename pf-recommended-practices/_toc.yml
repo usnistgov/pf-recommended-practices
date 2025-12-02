@@ -4,7 +4,7 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Importing GH Wiki
+  - caption: Importing GitHub Wiki
     chapters:
       - glob: bp-guide-gh/*
   - caption: Default Pages

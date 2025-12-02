@@ -2,10 +2,10 @@
 
 Nana Ofori-Opuku, Jim Warren, Pierre-Clement Simon
 
-* Review the literature
-  * Start with a careful lit review and see what others have done.
-  * Take the time to understand the derivations from the literature.
-  * Consider good examples from the literature (Can we list these on PFHub?)
+<!-- * Review the literature -->
+<!--   * Start with a careful lit review and see what others have done. -->
+<!--   * Take the time to understand the derivations from the literature. -->
+<!--   * Consider good examples from the literature (Can we list these on PFHub?) -->
 
 ## General Considerations on the formulation of phase field models
 
@@ -63,8 +63,9 @@ back on
 A complete discussion of how to use the above rules in this context is outside
 the scope of this best-practice guide, but we offer a highly abbreviated
 discussion of the ''flavor,'' following the ideas of irreversible
-thermodynamics (we largely are following works like deGroot and Mazur
-{cite}`Groot2013`, although the continuum mechanics community
+thermodynamics (we recommend consulting works
+<!-- we largely are following works --> like deGroot and Mazur
+we {cite}`Groot2013`, although the continuum mechanics community
 may be more comfortable with Noll, Coleman, and Truesdale
 {cite}`Malvern1969`), as well as the aforementioned work by
 Sekerka and Bi {cite}`Bi1998`.
@@ -83,6 +84,8 @@ $${\bf v}=\frac{\sum_i \rho_i {\bf v}_i}{\sum_i \rho_i}.$$
 Notice that this implies (by construction) that $\sum_i {\bf J}_i=0$.
 
 The law of conservation of mass can be simply written as
+
+<!-- Define $t$. -->
 
 $$\frac{\partial \rho_i}{\partial t}+\nabla\cdot(\rho_i {\bf v}_i)=0.$$
 
@@ -185,11 +188,12 @@ and
 
 $${\bf J}_s=s^{NC}{\bf v} + \frac{1}{T}{\bf J}_e-\sum_i \left(\frac{\mu_i}{T}\right)^{NC}{\bf J}_i+\sum_i \alpha_i^2\frac{D\rho_i}{Dt}\nabla\rho_i+\epsilon^2\frac{D\phi}{Dt}\nabla\phi.$$
 
-It is worth noting that this form for ${\bf J}_s$ eliminates the explicit
-surface terms from the entropy production. We have also introduced the tensor
-${\bf Y}$ which is rather a complicated beast (it came from all those
-integrations by parts which we have skipped in this presentation), and has the
-form
+It is worth noting that this form for ${\bf J}_s$ eliminates the
+explicit surface terms from the entropy production. We have also
+introduced the tensor ${\bf Y}$ which is complicated beast <!-- which
+is rather a complicated beast (it came from all those --> <!--
+integrations by parts which we have skipped in this presentation), -->
+and has the form
 
 $$\frac{{\bf Y}}{T}=\frac{\sigma}{T}+\sum \alpha_i^2\nabla\rho_i\otimes\nabla\rho_i+\epsilon^2\nabla\phi\otimes\nabla\phi+\left(\frac{p}{T}-\sum_i \alpha_i^2\rho_i\nabla^2\rho_i-\sum_i\frac{\alpha_i^2}{2}|\nabla\rho_i|^2-\frac{\epsilon^2}{2}|\nabla\phi|^2\right){\bf I},$$
 
@@ -392,8 +396,8 @@ When implementing the boundary conditions, extreme care must be taken.  One
 cannot just "zero-out" boundary terms, as this may break some requirement about
 mass conservation or other physical constraint.
 
-* (Show examples on PFHub, possibly benchmark problems?)
-* Be mindful of your assumptions and approximations
+<!-- * (Show examples on PFHub, possibly benchmark problems?) -->
+<!-- * Be mindful of your assumptions and approximations -->
 
 Having clearly defined the mathematical framework underlying the problem, it
 becomes important, prior to progressing further, to contemplate and thoroughly

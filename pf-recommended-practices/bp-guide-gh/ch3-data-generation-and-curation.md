@@ -191,7 +191,7 @@ There are many binary formats used for storing field data based on an
 Eulerian mesh or grid. Common formats for field data are NetCDF
 (Network Common Data Format), VTK (Visualization Toolkit), XDMF
 (eXtensible Data Model and Format) and EXODUS (finite element
-solver). Within the phase-field community, VTK seems to be the mostly
+solver). Within the phase-field community, VTK seems to be the most
 widely used. VTK is actually a visualization library, but supports a
 number of different native file formats based on both XML and HDF5
 (both non-binary and binary). The VTK library works well with FE

@@ -1,5 +1,13 @@
 # Numerical Implementation
 
+Authors
+
+- Stephen DeWitt, [@stvdwtt]
+- Alex Chadwick, [@afchadwi]
+- Vishwas Goel, [@vishwasgoel]
+
+## Overview
+
 When writing your own phase-field simulation code or when choosing among
 existing codes, the numerical implementation of the model is an important
 consideration. This section of Phase-Field Recommended Practices Guide is split

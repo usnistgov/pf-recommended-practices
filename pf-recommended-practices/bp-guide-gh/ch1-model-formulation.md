@@ -60,15 +60,14 @@ back on
 * Conservation of momentum and maybe angular momentum if absolutely necessary
 * The second law of thermodynamics (entropy increases, free energy decreases...)
 
-A complete discussion of how to use the above rules in this context is outside
-the scope of this best-practice guide, but we offer a highly abbreviated
-discussion of the ''flavor,'' following the ideas of irreversible
-thermodynamics (we recommend consulting works
-<!-- we largely are following works --> like deGroot and Mazur
-we {cite}`Groot2013`, although the continuum mechanics community
-may be more comfortable with Noll, Coleman, and Truesdale
-{cite}`Malvern1969`), as well as the aforementioned work by
-Sekerka and Bi {cite}`Bi1998`.
+A complete discussion of how to use the above rules in this context is
+outside the scope of this best-practice guide, but we offer a highly
+abbreviated discussion of the ''flavor,'' following the ideas of
+irreversible thermodynamics (we recommend consulting works like
+deGroot and Mazur {cite}`Groot2013`, although the continuum mechanics
+community may be more comfortable with Noll, Coleman, and Truesdale
+{cite}`Malvern1969`), as well as the aforementioned work by Sekerka
+and Bi {cite}`Bi1998`.
 
 ### Mass
 
@@ -85,11 +84,10 @@ Notice that this implies (by construction) that $\sum_i {\bf J}_i=0$.
 
 The law of conservation of mass can be simply written as
 
-<!-- Define $t$. -->
-
 $$\frac{\partial \rho_i}{\partial t}+\nabla\cdot(\rho_i {\bf v}_i)=0.$$
 
-Then we use the definition of ${\bf J}_i$ to rewrite that as
+where $t$ is time. Then we use the definition of ${\bf J}_i$ to
+rewrite that as
 
 $$\frac{\partial \rho_i}{\partial t}+ \nabla\cdot\left({\bf J}_i+\rho_i{\bf v}\right)=0.$$
 
@@ -190,8 +188,8 @@ $${\bf J}_s=s^{NC}{\bf v} + \frac{1}{T}{\bf J}_e-\sum_i \left(\frac{\mu_i}{T}\
 
 It is worth noting that this form for ${\bf J}_s$ eliminates the
 explicit surface terms from the entropy production. We have also
-introduced the tensor ${\bf Y}$ which is complicated beast <!-- which
-is rather a complicated beast (it came from all those --> <!--
+introduced the tensor ${\bf Y}$ which is a complicated beast <!--
+which is rather a complicated beast (it came from all those --> <!--
 integrations by parts which we have skipped in this presentation), -->
 and has the form
 

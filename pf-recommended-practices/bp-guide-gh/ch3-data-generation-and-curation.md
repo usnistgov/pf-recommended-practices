@@ -285,23 +285,25 @@ Checkpointing strategies on HPC clusters is a complex topic, see
 
 ### Using Workflow Tools
 
-In general when running many phase-field jobs for a parameter study or dealing
-with many pre and post-processing steps, it is wise to employ a workflow
-tool. The authors are particularly familiar with Snakemake so discussion is
-slanted towards this tool. One of the main benefits of using a workflow tool is
-that the user is more likely to automate workflow steps that ordinarily would
-not be automated with ad-hoc tools such as Bash scripts. Workflow tools enforce
-a structure on and careful consideration of the inputs, outputs and overall task
-graph of the workflow. As a side effect, the imposed graph structure produces a
-much FAIRer research object when the research is eventually published. Future
-reuse of the study is much easier when the steps in producing the final data
-objects are clearly expressed. When using Snakemake, the `Snakefile` itself is a
-clear human readable record of the steps required to re-execute the
-workflow. Ideally, the `Snakefile` will fully automate all the steps required,
-starting from the parameters and raw input data, to reach the final images and
-data tables used in any publications. In practice this might be quite difficult
-to implement due to the chaotic nature of research projects and the associated
-workflows.
+In general when running many phase-field jobs for a parameter study or
+dealing with many pre- and post-processing steps, it is wise to employ
+a workflow tool. The authors are particularly familiar with Snakemake
+so discussion is slanted towards this tool. One of the main benefits
+of using a workflow tool is that the user is more likely to automate
+workflow steps that ordinarily would not be automated with ad-hoc
+tools such as Bash scripts. Workflow tools enforce a structure on and
+careful consideration of the inputs, outputs and overall task graph of
+the workflow. As a side effect, the imposed graph structure produces a
+much FAIRer research object when the research is eventually
+published. Future reuse of the study is much easier when the steps in
+producing the final data objects are clearly expressed. When using
+Snakemake, the `Snakefile` itself is a clear human readable record of
+the steps required to re-execute the workflow. Ideally, the
+`Snakefile` will fully automate all the steps required, starting from
+the parameters and raw input data, to reach the final images and data
+tables used in any publications. In practice this might be quite
+difficult to implement due to the chaotic nature of research projects
+and the associated workflows.
 
 A secondary impact of using a workflow tool is that it often imposes a directory
 and file structure on the project. For example, Snakemake has an [ideal

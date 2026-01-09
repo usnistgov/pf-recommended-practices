@@ -48,5 +48,6 @@ sphinx:
     mermaid_version: "11.4.1"
   extra_extensions:
     - sphinxcontrib.mermaid
+    - sphinx_design
 
 

@@ -63,10 +63,10 @@ back on
 A complete discussion of how to use the above rules in this context is
 outside the scope of this best-practice guide, but we offer a highly
 abbreviated discussion of the ''flavor,'' following the ideas of
-irreversible thermodynamics (we recommend consulting works like
+irreversible thermodynamics. For further reading, we recommend consulting works like
 deGroot and Mazur {cite}`Groot2013`, although the continuum mechanics
 community may be more comfortable with Noll, Coleman, and Truesdale
-{cite}`Malvern1969`), as well as the aforementioned work by Sekerka
+{cite}`Malvern1969` as well as the aforementioned work by Sekerka
 and Bi {cite}`Bi1998`.
 
 ### Mass
@@ -104,7 +104,7 @@ mass conservation equation as
 
 $$\frac{D \rho_i}{Dt}+ \nabla\cdot{\bf J}_i+\rho_i\nabla\cdot{\bf v}=0.$$
 
-If the system in incompressible (a common assumption, although we'd have to
+If the system is incompressible (a common assumption, although we'd have to
 abandon that if we want to consider gasses), then $\nabla\cdot{\bf v}=0$ and we
 can write
 
@@ -199,7 +199,7 @@ where $\bf I$ is the identity tensor.
 
 ### Constitutive Equations and Evolution Equations
 
-After all this work we can now find constitutive equations.  Inspection of the
+After all this work we can now derive the constitutive equations.  Inspection of the
 final expression for $S^{\mathrm{prod}}$, suggests a that we can guarantee it
 be positive definite (which is required from the second law) by assuming
 
@@ -350,7 +350,7 @@ above detail the evolution of the phase, composition, temperature, etc.  Here
 we chose only to consider phase and composition, with temperature as a
 parameter. Having fully specified the state function, the next question is
 really about practical issues around a specific simulation. What are the
-boundary conditions? What are the relevant length scales.  Here is a list of
+boundary conditions? What are the relevant length scales?  Here is a list of
 issues:
 
 ### Complete dimensional analysis and understanding relevant scales; state the reference frame
@@ -428,7 +428,7 @@ could only hypothetically yield an infinite set of solutions.
    structure. Properly resolving the smallest features is essential for
    capturing detailed interactions and behaviors in your system.
 
-   **Additional Item 1: Generally the smallest feature is the interface width
+   **Generally the smallest feature is the interface width
    between the features that need to be resolved.** The interface width often
    represents the smallest detail that demands attention. Neglecting this width
    may lead to inaccurate results and incomplete understanding of the system's
@@ -439,7 +439,7 @@ could only hypothetically yield an infinite set of solutions.
    system. It's important to accurately capture these time scales to ensure
    that rapid events are not overlooked or misrepresented.
 
-   **Additional Item 2: The time steps you consider shall be small enough to
+   **The time steps you consider shall be small enough to
    allow capturing the kinetics of the process you want to model.** Choosing
    appropriate time steps is crucial to accurately capture dynamic
    processes. Smaller time steps are necessary to capture fast kinetics and
@@ -451,7 +451,7 @@ could only hypothetically yield an infinite set of solutions.
    how these different length scales interact is essential for capturing
    multi-scale effects accurately.
 
-   **Additional Item 3: Depending on the numerical method used for solving the
+   **Depending on the numerical method used for solving the
    equations, you may need 5-10 mesh elements to resolve the interface.** The
    mesh resolution, i.e., the number of mesh elements used to discretize the
    domain, plays a crucial role in capturing interfaces accurately. Higher mesh
@@ -481,7 +481,7 @@ could only hypothetically yield an infinite set of solutions.
    results. It's important to select physically meaningful initial conditions
    that smoothly transition into the desired system state.
 
-   **Additional Item 7: They may also result in numerical artifacts that lead
+   **They may also result in numerical artifacts that lead
    to artificial stabilization of unstable phases.** Inaccurate initial
    conditions can stabilize phases that would otherwise be unstable, leading
    to unrealistic outcomes in your simulation.

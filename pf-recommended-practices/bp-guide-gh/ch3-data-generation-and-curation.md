@@ -179,7 +179,7 @@ process. One main benefit of using binary data (beyond saving disk
 space) is the ability to preserve full precision for floating point
 numbers. See the [Working with Data][working-with-data] section of the
 Python for Scientific Computing document for a comparison of binary
-versus text based formats. The longevity of file formats should be
+versus text based formats {cite}`aalto_python_scicomp`. The longevity of file formats should be
 considered as well. A particularly egregious case of ignoring
 longevity would be using the Pickle file format in Python, which is
 both language dependent and code dependent. It is an example of data
@@ -194,7 +194,7 @@ Eulerian mesh or grid. Common formats for field data are NetCDF
 solver). Within the phase-field community, VTK seems to be the most
 widely used. VTK is actually a visualization library, but supports a
 number of different native file formats based on both XML and HDF5
-(both non-binary and binary). The VTK library works well with FE
+(both non-binary and binary). The VTK library works well with Finite Element
 simulations supporting many different element types as well as
 parallel data storage for domain decomposition.  See the [XML file
 formats documentation][vtk-xml] for VTK for an overview of the many

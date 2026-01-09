@@ -308,17 +308,16 @@ communities, and it is impossible to cover every consideration.
 
 In explicit methods, the solution at a future time step is only a function of
 previous time steps. By comparison, for implicit methods, the solution at a
-future time step is a function of the future and previous time steps. Forward
-Euler, for example, has the form $(u^{n+1} - u^n) / \Delta t = f(u^n)$, and
+future time step is a function of the future and previous time steps. FE, for example, has the form $(u^{n+1} - u^n) / \Delta t = f(u^n)$, and
 Backward Euler has the form $(u^{n+1} - u^n) / \Delta t = f(u^{n+1})$.
-Broadly, we can summarize the strengths (+) and weaknesses (-) as follows:
+Broadly, we can summarize the strengths (✔) and weaknesses (✘) as follows:
 
-|                 | Explicit | Implicit |
-| ---             | :---:    | :---:    |
-| Code complexity | +        | -        |
-| Time step cost  | +        | -        |
-| Time step size  | -        | +        |
-| Memory usage    | +        | -        |
+| | Explicit | Implicit |
+| :--- | :---: | :---: |
+| **Code complexity** | ✔ | ✘ |
+| **Time step cost** | ✔ | ✘ |
+| **Time step size** | ✘ | ✔ |
+| **Memory usage** | ✔ | ✘ |
 
 However, there are notable exceptions for each row.  Additionally, choices that
 influence each row of the above table also affect the overall consistency of a
@@ -383,11 +382,6 @@ implicit scheme. However, low-order implicit schemes may be able to take
 significantly larger time steps than even high-order explicit schemes, which
 can equalize the overall cost.
 
-#### Coupling and Consistency
-
-Comment about how hard it can be to solve multiple equations simultaneously.
-Do you solve multiple small systems or one large system?
-
 #### Semi-Implicit and ImEx Methods
 
 In semi-implicit and implicit-explicit (ImEx) methods, different terms in the
@@ -433,7 +427,7 @@ slower.
 #### General Guidelines
 
 1. For initial development, it is best to start with simpler schemes like
-   Forward Euler. This will allow you to gain an understanding of your model's
+   FE. This will allow you to gain an understanding of your model's
    behavior, check for bugs in the basic mechanics of the code, and start
    estimating the cost of simulations. If the model is inexpensive or you don't
    plan to use the code more than a few times, a basic integrator may be all
@@ -494,7 +488,7 @@ you are solving and your choices of spatiotemporal discretizations.  As a
 simple example, we can consider incremental changes to a 1D Allen-Cahn-type
 model for a driven phase transformation (i.e., a simplified form of BM3).  For
 a spatial discretization with centered finite differences and time integration
-by Forward Euler, the equation at each point of the mesh will be of the form
+by FE, the equation at each point of the mesh will be of the form
 
 $$
 \phi_i^{n+1} = \phi_i^n + \Delta t ( \phi_{i+1}^n - 2 \phi_i^n + \phi_{i-1}^n - g'(\phi_i^n) - Q p'(\phi_i^n) )
@@ -525,7 +519,7 @@ convex split such that the left-hand side is fully linear, e.g., $g_+(\phi) = a
 \phi^2$ for $g(\phi) = \phi^2 (1-\phi)^2$.  As a result, we need a linear
 solver for this scheme (such as a tridiagonal LU decomposition) to obtain
 $\{\phi^{n+1}\}$, but no nonlinear solver.  We can use larger time step sizes
-than with Forward Euler, but we can easily "break" the system so that we don't
+than with FE, but we can easily "break" the system so that we don't
 observe a monotonic decrease in free energy.
 
 Lastly, we may choose to discretize this system by the Backward Euler method:

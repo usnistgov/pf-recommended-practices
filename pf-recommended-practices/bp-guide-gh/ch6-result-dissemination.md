@@ -137,8 +137,7 @@ potentially multiple levels that may impact reproducibility:
 GUI configuration is particularly challenging from a reproducibility
 standpoint, but even command-line arguments that affect the simulation are
 undesirable unless they are captured (and published) in the next highest level
-of configuration/script/driver. **[note: Some of this may better belong in, or
-cross-reference to, [Software-Development](ch4-software-development.md).]**
+of configuration/script/driver. 
 
 ### Clearly state all assumptions
 

@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - debug_deploy
   pull_request:
 
 env:

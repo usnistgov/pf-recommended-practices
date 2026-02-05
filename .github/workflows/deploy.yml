@@ -39,6 +39,12 @@ jobs:
         run: |
           jupyter-book build pf-recommended-practices --html
 
+      # Inspect working directory
+      - name: Inspect working directory
+        run: |
+          ls
+          ls pf-recommended-practices
+
       - name: Disable Jekyll
         shell: bash
         run: touch "pf-recommended-practices/_build/html/.nojekyll"

@@ -63,31 +63,64 @@ parameter = $0$) and one solid phase (order parameter = $1$). The nucleation
 driving force for the solid phase is $\Delta f=\sqrt2/30$. The free energy of
 the diffuse interface is $\gamma = 1/3\sqrt2$.
 
-We consider a seed nucleus of $7.5$ unit radius in 2D and 3D. The 2D simulation
-domain is of size $100\times100$, and the 3D simulation domain is of size $40
-\times 40 \times 40$. The nucleus is centered at $x=y=z=0$. Uniform mesh of
-element size $\Delta x = 0.09765$ is used. Neumann boundary conditions, given
-by the zero normal-derivative of the order parameter, are applied on all domain
-boundaries. The figure below shows the starting geometry of the nucleus in 2D
-(left) and 3D (right).
+We consider a seed nucleus of $7.5$ unit radius in 2D and 3D. The 2D
+simulation domain is of size $100\times100$, and the 3D simulation
+domain is of size $40 \times 40 \times 40$. The nucleus is centered at
+$x=y=z=0$. Uniform mesh of element size $\Delta x = 0.09765$ is
+used. Neumann boundary conditions, given by the zero normal-derivative
+of the order parameter, are applied on all domain
+boundaries. {numref}`seed-2d` and {numref}`seed-3d` below show the
+starting geometry of the nucleus in 2D and 3D.
 
-<img width="285" alt="2D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557138-054247d9-3c68-4eff-9234-3a2e00fa6b42.png">
-<img width="288.5" alt="3D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557199-85fb0c6a-bc75-440d-95c5-a21e467d8a66.png">
+```{figure} https://user-images.githubusercontent.com/74273633/197557138-054247d9-3c68-4eff-9234-3a2e00fa6b42.png
+:name: seed-2d
+:width: 285px
+:align: center
 
-The time evolution of the order parameter, given by the Allen-Cahn equation,
-was solved using the MOOSE framework. Details of the numerical method can be
-found in [Wu _et al._ (2021)](
+The 2D representation.
+```
+
+```{figure} https://user-images.githubusercontent.com/74273633/197557199-85fb0c6a-bc75-440d-95c5-a21e467d8a66.png
+:name: seed-3d
+:width: 288.5px
+:align: center
+
+The 3D representation.
+```
+<!-- <img width="285" alt="2D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557138-054247d9-3c68-4eff-9234-3a2e00fa6b42.png"> -->
+<!-- <img width="288.5" alt="3D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557199-85fb0c6a-bc75-440d-95c5-a21e467d8a66.png"> -->
+
+The time evolution of the order parameter, given by the Allen-Cahn
+equation, was solved using the MOOSE framework. Details of the
+numerical method can be found in [Wu _et al._ (2021)](
 https://www.sciencedirect.com/science/article/abs/pii/S0927025621000963?via%3Dihub).
-The simulations results of nucleus evolution are shown in the figures below:
-(left) order parameter profile measured radially from the center of domain at
-different evolution times; (right) radius as a function of evolution time. We
-see that the seed of same starting radius $r_\circ = 7.5$ units evolves starkly
-differently in 2D and 3D. While the nucleus grows in 2D, it shrinks and
-dissolves in 3D.
+The simulations results of nucleus evolution are shown in the figures
+below: (left) order parameter profile measured radially from the
+center of domain at different evolution times; (right) radius as a
+function of evolution time. In {numref}`order-param` and
+{numref}`radius`, we see that the seed of same starting radius
+$r_\circ = 7.5$ units evolves starkly differently in 2D and 3D. While
+the nucleus grows in 2D, it shrinks and dissolves in 3D.
 
-<img width="430.5" alt="nucleusOP_evol_2D_vs_3D" src="https://user-images.githubusercontent.com/74273633/197558441-1a1c6a0c-f682-45a5-88ca-2ea94c714a7d.png">
-<img width="430.5" alt="radius_evol_2D_vs_3D" src="https://user-images.githubusercontent.com/74273633/197557432-b5a6e8f2-9c8f-4649-9607-b43b687c55a0.png">
-<br/><br/>
+```{figure} https://user-images.githubusercontent.com/74273633/197558441-1a1c6a0c-f682-45a5-88ca-2ea94c714a7d.png
+:name: order-param
+:width: 430.5px
+:align: center
+
+Order Parameter v Radial Disatnce
+```
+
+```{figure} https://user-images.githubusercontent.com/74273633/197557432-b5a6e8f2-9c8f-4649-9607-b43b687c55a0.png
+:name: radius
+:width: 430.5px
+:align: center
+
+Radius v Time
+```
+
+<!-- <img width="430.5" alt="nucleusOP_evol_2D_vs_3D" src="https://user-images.githubusercontent.com/74273633/197558441-1a1c6a0c-f682-45a5-88ca-2ea94c714a7d.png"> -->
+<!-- <img width="430.5" alt="radius_evol_2D_vs_3D" src="https://user-images.githubusercontent.com/74273633/197557432-b5a6e8f2-9c8f-4649-9607-b43b687c55a0.png"> -->
+<!-- <br/><br/> -->
 
 The role of dimensionality in homogeneous nucleation can be understood from the
 classical nucleation theory where the solid-liquid interface is modeled as a
@@ -102,15 +135,32 @@ is favored to grow; otherwise it will shrink and dissolve. By setting $d \Delta
 G / d r = 0$, we obtain the critical radius as $r_c = \gamma/ \Delta f$ in 2D
 and $r_c = 2\gamma/ \Delta f$ in 3D.
 
-We can now apply the above sharp-interface analysis to our diffuse interface
-approximation in the phase-field model. For the given model parameters, we
-obtain $r_c = 5$ units in 2D and $r_c = 10$ units in 3D. In our simulation
-setup of $r_\circ = 7.5$ units, $r_\circ$ $>$ $r_c$ in 2D, but $r_\circ < r_c$
-in 3D. Therefore, the nucleus is favored to grow in 2D but shrinks in 3D as
-observed in the simulations.
+We can now apply the above sharp-interface analysis to our diffuse
+interface approximation in the phase-field model. For the given model
+parameters, we obtain $r_c = 5$ units in 2D and $r_c = 10$ units in
+3D. In our simulation setup of $r_\circ = 7.5$ units, $r_\circ$ $>$
+$r_c$ in 2D, but $r_\circ < r_c$ in 3D. Therefore, the nucleus is
+favored to grow in 2D but shrinks in 3D as observed in the
+simulations, see {numref}`radius-2d` and {numref}`radius-3d`.
 
-<img width="433" alt="radius_2D" src="https://user-images.githubusercontent.com/74273633/197557534-6ef5cf54-658b-43e4-b83a-f74cad29f2cf.png">
-<img width="433" alt="radius_3D" src="https://user-images.githubusercontent.com/74273633/197557613-2f2dfc84-39e3-4b14-a530-fab4238e7b85.png">
+```{figure} https://user-images.githubusercontent.com/74273633/197557534-6ef5cf54-658b-43e4-b83a-f74cad29f2cf.png
+:name: radius-2d
+:width: 433px
+:align: center
+
+2D Radius v Time
+```
+
+```{figure} https://user-images.githubusercontent.com/74273633/197557613-2f2dfc84-39e3-4b14-a530-fab4238e7b85.png
+:name: radius-3d
+:width: 433px
+:align: center
+
+3D Radius v time
+```
+
+<!-- <img width="433" alt="radius_2D" src="https://user-images.githubusercontent.com/74273633/197557534-6ef5cf54-658b-43e4-b83a-f74cad29f2cf.png"> -->
+<!-- <img width="433" alt="radius_3D" src="https://user-images.githubusercontent.com/74273633/197557613-2f2dfc84-39e3-4b14-a530-fab4238e7b85.png"> -->
 
 The dependence on dimensionality is further illustrated by considering cases
 where the initial radius is close to the critical radius: $r_\circ = 0.99 r_c$,
@@ -186,21 +236,31 @@ We used the results from Benchmark [Problem 1a](
 https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(a)-Square-periodic)
 and [Problem 1b](
 https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux)
-to analyze the effect of boundary conditions. In addition, we solved for
-Cahn-Hilliard dynamics under the same initial condition and simulation
-parameters as problem 1 but using mixed boundary conditions, i.e., different
-boundary conditions for each boundary. We compare the results for each case at
-simulation time _t_ = 1000. The simulations were carried out in the PRISMS-PF
-framework using a uniform square mesh with $N_x = N_y = 128$ linear elements
-and a time step, $\Delta t$ = 0.005. The results are shown in the figure below.
+to analyze the effect of boundary conditions. In addition, we solved
+for Cahn-Hilliard dynamics under the same initial condition and
+simulation parameters as problem 1 but using mixed boundary
+conditions, i.e., different boundary conditions for each boundary. We
+compare the results for each case at simulation time _t_ = 1000. The
+simulations were carried out in the PRISMS-PF framework using a
+uniform square mesh with $N_x = N_y = 128$ linear elements and a time
+step, $\Delta t$ = 0.005. The results are shown in
+{numref}`benchmark1`.
 
-![BCs_white](https://user-images.githubusercontent.com/16142451/197867529-25d4ab7e-1a69-45f8-8fee-5b2ff3284db4.png)
+```{figure} https://user-images.githubusercontent.com/16142451/197867529-25d4ab7e-1a69-45f8-8fee-5b2ff3284db4.png
+:align: center
+:name: benchmark1
 
-As can be seen in the figure above, for periodic boundary boundaries the
-$\alpha$ - $\beta$ domains are **continuous** on opposite sides of the
-system. For no-flux boundaries, the $\alpha$ - $\beta$ interfaces are
-**normal** to the boundary. For Dirichlet boundaries (bottom boundary of the
-right panel), the value of _c_ is **fixed** along the boundary.
+Comparison of results for benchmark 1
+```
+
+<!-- ![BCs_white](https://user-images.githubusercontent.com/16142451/197867529-25d4ab7e-1a69-45f8-8fee-5b2ff3284db4.png) -->
+
+As can be seen in {numref}`benchmark1`, for periodic boundary
+boundaries the $\alpha$ - $\beta$ domains are **continuous** on
+opposite sides of the system. For no-flux boundaries, the $\alpha$ -
+$\beta$ interfaces are **normal** to the boundary. For Dirichlet
+boundaries (bottom boundary of the right panel), the value of _c_ is
+**fixed** along the boundary.
 
 ## Interface width
 
@@ -268,11 +328,17 @@ increase the number of elements until the microstructure at a fixed time no
 longer changes with further increases in the number of elements; at this point
 the simulation is converged with respect to the mesh resolution.
 
-The simulation initial conditions and the microstructures at $t = 10,000$ are
-shown in the figure below.
+The simulation initial conditions and the microstructures at $t =
+10,000$ are shown in {numref}`problem1b`.
 
-<img width="711" alt="Screen Shot 2022-10-25 at 3 25 26 PM" src="https://user-images.githubusercontent.com/3810555/197874871-82d8d1c7-75a7-4d73-bd0c-98ec294e41a5.png">
+```{figure} https://user-images.githubusercontent.com/3810555/197874871-82d8d1c7-75a7-4d73-bd0c-98ec294e41a5.png
+:align: center
+:name: problem-1b
+:width: 711px
 
+Problem 1b (no-flux BCs)
+```
+ 
 As the number of elements in each direction is increased from 40 to 80 to 160,
 changes in the microstructure are observed. However, once the number of
 elements increases to 320, no further changes are observed in the
@@ -287,94 +353,145 @@ be tested for the specific physics and parameters at hand.
 
 ### Carry out time step convergence studies. Try higher-order schemes, adaptive time stepping, etc. For explicit time integration, know your stability limit.
 
-For codes that use explicit time integration, there is a maximum value of the
-time step beyond which the solution becomes numerically unstable. This
-stability limit can be determined by the Courant–Friedrichs–Lewy (CFL)
-condition and, in general, it strongly depends on the order of the spatial
-derivatives. Below we show the simulation results of [Benchmark Problem
+For codes that use explicit time integration, there is a maximum value
+of the time step beyond which the solution becomes numerically
+unstable. This stability limit can be determined by the
+Courant–Friedrichs–Lewy (CFL) condition and, in general, it strongly
+depends on the order of the spatial
+derivatives. {numref}`above-stability` shows the simulation results
+for [Benchmark Problem
 1b](https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux)
 using time step values slightly below and slightly above the stability
-limit. We employed a forward Euler time-integration scheme and spatially
-discretized the system using $128 \times 128$ first order elements. The
-simulations were performed in the PRISMS-PF framework. The left panel of the
-figure below shows a snapshot of the concentration at time $t=33$, which was
-obtained using a stable time step of $\Delta t=0.015$. If the time step is
-increased to $\Delta t=0.016$, the time step goes above the stability
-limit. The right panel shows the concentration at time $t \simeq 32.39$ for
-$\Delta t=0.016$ and features a numerical instability that appears near the
+limit. We employed a forward Euler time-integration scheme and
+spatially discretized the system using $128 \times 128$ first order
+elements. The simulations were performed in the PRISMS-PF
+framework. The left panel of the figure below shows a snapshot of the
+concentration at time $t=33$, which was obtained using a stable time
+step of $\Delta t=0.015$. If the time step is increased to $\Delta
+t=0.016$, the time step goes above the stability limit. The right
+panel shows the concentration at time $t \simeq 32.39$ for $\Delta
+t=0.016$ and features a numerical instability that appears near the
 bottom boundary. After only four time steps the amplification of this
 instability caused the simulation to fail.
 
-<img width="650" alt="stability_limit" src="https://user-images.githubusercontent.com/16142451/197867610-c7344bee-90e8-4a35-a989-bab3597bc621.png">
+```{figure} https://user-images.githubusercontent.com/16142451/197867610-c7344bee-90e8-4a35-a989-bab3597bc621.png
+:align: center
+:name: above-stability
+:width: 650px
 
-Codes that use implicit time stepping schemes may have fewer restrictions with
-respect to stability as time step size is increased, depending on the
-problem. However, discretization error still occurs in implicit schemes and
-increases with the size of the time step taken. Therefore, a convergence study
-should be carried out to ensure that the size of the time step does not affect
-the simulation results. As an example, we can again consider [Benchmark Problem
+Simulation results for Benchmark Problem 1b
+```
+
+Codes that use implicit time stepping schemes may have fewer
+restrictions with respect to stability as time step size is increased,
+depending on the problem. However, discretization error still occurs
+in implicit schemes and increases with the size of the time step
+taken. Therefore, a convergence study should be carried out to ensure
+that the size of the time step does not affect the simulation
+results. As an example, we can again consider [Benchmark Problem
 1](https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/) from the
 Phase-Field Community Hub. [Problem
 1b](https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux)
-was solved with the phase-field module from the MOOSE framework using $N_x =
-N_y = 160$. The results are shown below. The microstructure at $t = 1000$
-remains the same for $\Delta t = 0.1$, $\Delta t = 0.25$, and $\Delta t =
-0.5$. Some differences in the microstructure are observed at $\Delta t = 1$,
-and further differences become apparent at $\Delta t = 4$. In practice, it is
-recommended to start with a given time step and gradually decrease it until no
+was solved with the phase-field module from the MOOSE framework using
+$N_x = N_y = 160$. {numref}`varying-time-step` shows the results. The
+microstructure at $t = 1000$ remains the same for $\Delta t = 0.1$,
+$\Delta t = 0.25$, and $\Delta t = 0.5$. Some differences in the
+microstructure are observed at $\Delta t = 1$, and further differences
+become apparent at $\Delta t = 4$. In practice, it is recommended to
+start with a given time step and gradually decrease it until no
 changes are apparent with further decreases in time step size.
 
-![Screen Shot 2022-10-24 at 9 43 26 PM](https://user-images.githubusercontent.com/3810555/197662555-124119a2-0bad-4bd4-a4c9-e5f684adad26.png)
+```{figure} https://user-images.githubusercontent.com/3810555/197662555-124119a2-0bad-4bd4-a4c9-e5f684adad26.png
+:align: center
+:name: varying-time-step
 
-Adaptive time stepping can be useful to increase the time step size during time
-periods in the simulation where there are fewer microstructural changes,
-particularly for codes that use implicit time stepping schemes. However,
-convergence must still be checked for the parameters of the time stepping
-scheme being used. An example is the IterationAdaptiveDt time stepping scheme
-used in the MOOSE framework. This scheme attempts to increase or decrease the
-time step to keep the solver using a certain number of nonlinear iterations
-(controlled by the parameter `optimal_iterations`), within a window or plus or
-minus the parameter `iteration_window`. Higher values of `optimal_iterations`
-parameter result in higher time steps, and with that comes the risk of
-discretization error changing simulation results. As shown in the following,
-for [Problem 1b](
+Problem 1b (no-flux BCs), varying time step
+```
+
+Adaptive time stepping can be useful to increase the time step size
+during time periods in the simulation where there are fewer
+microstructural changes, particularly for codes that use implicit time
+stepping schemes. However, convergence must still be checked for the
+parameters of the time stepping scheme being used. An example is the
+IterationAdaptiveDt time stepping scheme used in the MOOSE
+framework. This scheme attempts to increase or decrease the time step
+to keep the solver using a certain number of nonlinear iterations
+(controlled by the parameter `optimal_iterations`), within a window or
+plus or minus the parameter `iteration_window`. Higher values of
+`optimal_iterations` parameter result in higher time steps, and with
+that comes the risk of discretization error changing simulation
+results. {numref}`adaptive` shows the results for [Problem 1b](
 https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux),
 `optimal_iterations` values of 6 or 8 gave results consistent with the
-converged time step of 0.5, but when `optimal_iterations` was significantly
-increased to 15, changes in the microstructure resulted.
+converged time step of 0.5, but when `optimal_iterations` was
+significantly increased to 15, changes in the microstructure resulted.
 
-![Screen Shot 2022-10-24 at 10 17 37 PM](https://user-images.githubusercontent.com/3810555/197666881-21d25d59-1781-4a52-9505-d02735d4a5b4.png)
+```{figure} https://user-images.githubusercontent.com/3810555/197666881-21d25d59-1781-4a52-9505-d02735d4a5b4.png
+:align: center
+:name: adaptive
+
+Problem 1b (no-flux BCs), adaptive time-stepping
+```
 
 ## Impact of Orientation
 
-Oftentimes, the results of the phase field simulations are sensitive to the
-orientation and alignment of the key microstructural features with the
-mesh/grid points. To demonstrate this we pick a simple solidification problem
-with dendritic structure formation. In this case, we utilize the solidification
+Oftentimes, the results of the phase field simulations are sensitive
+to the orientation and alignment of the key microstructural features
+with the mesh/grid points. To demonstrate this we pick a simple
+solidification problem with dendritic structure formation. In this
+case, we utilize the solidification
 [example](https://github.com/idaholab/moose/blob/next/modules/phase_field/examples/anisotropic_interfaces/snow.i)
-from the MOOSE-based phase field module. This example problem can quickly
-demonstrate dendritic structure formation including the formation of secondary
-dendritic arms in a computationally cost-effective manner. Here, we use 4-fold
-symmetry of the structure and vary the reference angles to misorient the
-dendritic arms with respect to the mesh. Dendritic structures corresponding to
-0 and 45 degree reference angle is presented below:
+from the MOOSE-based phase field module. This example problem can
+quickly demonstrate dendritic structure formation including the
+formation of secondary dendritic arms in a computationally
+cost-effective manner. Here, we use 4-fold symmetry of the structure
+and vary the reference angles to misorient the dendritic arms with
+respect to the mesh. {numref}`dendritic-0` and {numref}`dendritic-45`
+show structures corresponding to 0 and 45 degree reference angle is
+presented below:
 
-<img width="400" alt="Screen Shot 2022-10-24 at 2 45 09 PM" src="https://user-images.githubusercontent.com/9493686/197635776-f71f35cc-fb98-49f8-bdb1-7b42cd32b421.png">
-<img width="400" alt="Screen Shot 2022-10-24 at 2 45 28 PM" src="https://user-images.githubusercontent.com/9493686/197635791-41d1b86d-409d-414a-9d1f-53eb4fc9d71c.png">
+```{figure} https://user-images.githubusercontent.com/9493686/197635776-f71f35cc-fb98-49f8-bdb1-7b42cd32b421.png
+:align: center
+:name: dendritic-0
+:width: 400
 
-It is noteworthy that the shape of the dendrite varies with orientation (as
-observed by the difference in the dendrite center). For better comparison, we
-rotate the $45^{\circ}$ dendrite to align the primary dendrite arms with the
-reference orientation dendrite:
+Dendritic structure oriented with the grid
+```
 
-<img width="500" alt="Screen Shot 2022-10-25 at 1 11 29 PM" src="https://user-images.githubusercontent.com/9493686/197872890-9b0717ab-6140-4f9d-a327-e33ba39acb95.png">
+```{figure} https://user-images.githubusercontent.com/9493686/197635791-41d1b86d-409d-414a-9d1f-53eb4fc9d71c.png
+:align: center
+:name: dendritic-45
+:width: 400
+
+Dendritic structure oriented at $45^{\circ}$ to the grid
+```
+
+It is noteworthy that the shape of the dendrite varies with
+orientation (as observed by the difference in the dendrite
+center). For better comparison, we rotate the $45^{\circ}$ dendrite to
+align the primary dendrite arms with the reference orientation
+dendrite (see {numref}`superimposed`):
+
+```{figure} https://user-images.githubusercontent.com/9493686/197872890-9b0717ab-6140-4f9d-a327-e33ba39acb95.png
+:align: center
+:name: superimposed
+:width: 500
+
+Dendritic structure superimposed
+```
 
 This highlights the slight differences between the dendrite shapes, especially
 the center and the secondary dendritic arms. Additionally, the growth rate of
 the solid also varies with orientation as observed by the change in solid area
-fraction over time:
+fraction over time (see {numref}`growth-rate`):
 
-<img width="500" alt="Screen Shot 2022-10-25 at 1 03 55 PM" src="https://user-images.githubusercontent.com/9493686/197870821-940d7ffa-65dc-4a22-ba4c-cc7ec349c7a1.png">
+```{figure} https://user-images.githubusercontent.com/9493686/197870821-940d7ffa-65dc-4a22-ba4c-cc7ec349c7a1.png
+:align: center
+:name: growth-rate
+:width: 500
+
+Dendritic growth rate
+```
 
 Thus, it is important to evaluate the effect of orientation on the results by
 misaligning the grids. Furthermore, these effects are influenced by the

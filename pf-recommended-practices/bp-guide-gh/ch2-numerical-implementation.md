@@ -1,5 +1,13 @@
 # Numerical Implementation
 
+Authors
+
+- Stephen DeWitt, [@stvdwtt]
+- Alex Chadwick, [@afchadwi]
+- Vishwas Goel, [@vishwasgoel]
+
+## Overview
+
 When writing your own phase-field simulation code or when choosing among
 existing codes, the numerical implementation of the model is an important
 consideration. This section of Phase-Field Recommended Practices Guide is split
@@ -212,7 +220,7 @@ the spatial error is expected to be low (e.g., where fields are changing
 slowly). An example of adaptive mesh refinement for the PFHub Benchmark 3
 problem is shown below:
 
-(Insert BM3 AMR example)
+<!-- (Insert BM3 AMR example) -->
 
 Note that in this example, the mesh is the finest near the solid-liquid
 interface and coarsest far from the interface in the liquid. PFHub Benchmark 3
@@ -300,17 +308,16 @@ communities, and it is impossible to cover every consideration.
 
 In explicit methods, the solution at a future time step is only a function of
 previous time steps. By comparison, for implicit methods, the solution at a
-future time step is a function of the future and previous time steps. Forward
-Euler, for example, has the form $(u^{n+1} - u^n) / \Delta t = f(u^n)$, and
+future time step is a function of the future and previous time steps. FE, for example, has the form $(u^{n+1} - u^n) / \Delta t = f(u^n)$, and
 Backward Euler has the form $(u^{n+1} - u^n) / \Delta t = f(u^{n+1})$.
-Broadly, we can summarize the strengths (+) and weaknesses (-) as follows:
+Broadly, we can summarize the strengths (✔) and weaknesses (✘) as follows:
 
-|                 | Explicit | Implicit |
-| ---             | :---:    | :---:    |
-| Code complexity | +        | -        |
-| Time step cost  | +        | -        |
-| Time step size  | -        | +        |
-| Memory usage    | +        | -        |
+| | Explicit | Implicit |
+| :--- | :---: | :---: |
+| **Code complexity** | ✔ | ✘ |
+| **Time step cost** | ✔ | ✘ |
+| **Time step size** | ✘ | ✔ |
+| **Memory usage** | ✔ | ✘ |
 
 However, there are notable exceptions for each row.  Additionally, choices that
 influence each row of the above table also affect the overall consistency of a
@@ -375,11 +382,6 @@ implicit scheme. However, low-order implicit schemes may be able to take
 significantly larger time steps than even high-order explicit schemes, which
 can equalize the overall cost.
 
-#### Coupling and Consistency
-
-Comment about how hard it can be to solve multiple equations simultaneously.
-Do you solve multiple small systems or one large system?
-
 #### Semi-Implicit and ImEx Methods
 
 In semi-implicit and implicit-explicit (ImEx) methods, different terms in the
@@ -425,7 +427,7 @@ slower.
 #### General Guidelines
 
 1. For initial development, it is best to start with simpler schemes like
-   Forward Euler. This will allow you to gain an understanding of your model's
+   FE. This will allow you to gain an understanding of your model's
    behavior, check for bugs in the basic mechanics of the code, and start
    estimating the cost of simulations. If the model is inexpensive or you don't
    plan to use the code more than a few times, a basic integrator may be all
@@ -486,7 +488,7 @@ you are solving and your choices of spatiotemporal discretizations.  As a
 simple example, we can consider incremental changes to a 1D Allen-Cahn-type
 model for a driven phase transformation (i.e., a simplified form of BM3).  For
 a spatial discretization with centered finite differences and time integration
-by Forward Euler, the equation at each point of the mesh will be of the form
+by FE, the equation at each point of the mesh will be of the form
 
 $$
 \phi_i^{n+1} = \phi_i^n + \Delta t ( \phi_{i+1}^n - 2 \phi_i^n + \phi_{i-1}^n - g'(\phi_i^n) - Q p'(\phi_i^n) )
@@ -517,7 +519,7 @@ convex split such that the left-hand side is fully linear, e.g., $g_+(\phi) = a
 \phi^2$ for $g(\phi) = \phi^2 (1-\phi)^2$.  As a result, we need a linear
 solver for this scheme (such as a tridiagonal LU decomposition) to obtain
 $\{\phi^{n+1}\}$, but no nonlinear solver.  We can use larger time step sizes
-than with Forward Euler, but we can easily "break" the system so that we don't
+than with FE, but we can easily "break" the system so that we don't
 observe a monotonic decrease in free energy.
 
 Lastly, we may choose to discretize this system by the Backward Euler method:
@@ -686,6 +688,8 @@ therefore, be **straightforward to implement, even with intricate linear
 functions**.  However, **convergence is strongly dependent on the condition
 number of the operator matrix.**
 
+<!-- Define $\mathbf{M}, $\mathbf{J}$, $z$ and $r$ below. -->
+
 The performance of Krylov methods can be improved through **preconditioning**.
 Here, we form an approximation to the overall Jacobian matrix, $\mathbf{M}
 \approx \mathbf{J}$.  Depending on the exact method, we will then find
@@ -712,17 +716,17 @@ the preconditioner can have varying difficulties: switching from a Jacobi to a
 Gauss-Seidel preconditioner is trivial, but switching to an ILU preconditioner
 might require much more effort.
 
-### Choosing an appropriate parallelism approach
+<!-- ### Choosing an appropriate parallelism approach -->
 
-(Discuss distributed vs shared, CPU vs GPU)
+<!-- (Discuss distributed vs shared, CPU vs GPU) -->
 
-#### Distributed memory
+<!-- #### Distributed memory -->
 
-(pretty much just MPI, also mention UPC or Legion or Charm++?)
+<!-- (pretty much just MPI, also mention UPC or Legion or Charm++?) -->
 
-#### Shared memory
+<!-- #### Shared memory -->
 
-CPU/GPU, performance portability layers
+<!-- CPU/GPU, performance portability layers -->
 
 ## Choosing appropriate numerical libraries and/or what to write yourself
 

@@ -45,6 +45,10 @@ jobs:
           ls
           echo "-----"
           ls pf-recommended-practices
+          echo "-----"
+          ls _build
+          echo "-----"
+          ls _build/html
 
       - name: Disable Jekyll
         shell: bash

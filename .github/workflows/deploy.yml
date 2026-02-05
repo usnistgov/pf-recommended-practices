@@ -36,7 +36,7 @@ jobs:
       # Build the book
       - name: Build the book
         run: |
-          jupyter-book build pf-recommended-practices
+          jupyter-book build pf-recommended-practices --html
 
       - name: Disable Jekyll
         shell: bash

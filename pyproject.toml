@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pf-recommended-practices"
+version = "0.1.0"
+description = ""
+authors = ["Daniel Wheeler <daniel.wheeler2@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+jupyter-book = "^1.0.3"
+numpy = "^2.2.1"
+matplotlib = "^3.10"
+sphinxcontrib-mermaid = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

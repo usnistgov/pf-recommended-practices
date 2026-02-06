@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - downgrade_jupyter_book_bis
   pull_request:
 
 env:

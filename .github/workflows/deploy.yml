@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - downgrade_jupyter_book_bis
   pull_request:
 
 env:
@@ -36,7 +37,7 @@ jobs:
       # Build the book
       - name: Build the book
         run: |
-          jupyter-book build pf-recommended-practices --html
+          jupyter-book build pf-recommended-practices
 
       - name: Disable Jekyll
         shell: bash

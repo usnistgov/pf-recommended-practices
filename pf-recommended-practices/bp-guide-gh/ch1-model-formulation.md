@@ -236,7 +236,7 @@ incompressible, two-phase, multicomponent system.  Most phase field treatments
 ignore the velocity terms, but for pedagogical purposes we have retained all of
 the terms that arise from flow (for an incompressible system). These terms
 should not just be tossed away without careful consideration of the system of
-interest! Nonetheless, now that we have taken care to show how these terms
+interest. Nonetheless, now that we have taken care to show how these terms
 arise, and also, for careful readers, how to extend this approach to multiple
 phases and additional gradient corrections, we will proceed with some more
 simplifications for a less complex system.  For those who are interested in
@@ -253,13 +253,13 @@ $$\frac{\partial\phi}{\partial t}=M_\phi\left(\frac{\partial s}{\partial\phi}+\e
 
 This system of equations should be adequate to describe a diffusion-controlled
 multicomponent, isothermal, two-phase system. One could, of course, retain
-thermal diffusion, add more phases, retain the velocity terms and more!
+thermal diffusion, add more phases, retain the velocity terms and more.
 
-## Clearly define the equations, parameters, initial conditions, and boundar conditions
+## Clearly define the equations, parameters, initial conditions, and boundary conditions
 
-Now that we have specified that we wish to consider, a diffusion-controlled
-multicomponent, isothermal, two-phase system. We still need to decide on the
-specifics of the system, and, in particular, the thermodynamic state functions
+Now that we have specified that we wish to consider a diffusion-controlled
+multicomponent, isothermal, two-phase system, we still need to decide on the
+specifics of the system. In particular, the thermodynamic state functions
 that detail how the energy or entropy vary.  All of the variables need to be
 clearly defined, and ideally should be either parameters that can be traced to
 thermodynamic variables or other physical constraints.  As noted, we wish to
@@ -280,9 +280,9 @@ independent variable and label it $c$.  As the reader can see, these types of
 exercises are highly non-trivial, require substantial care, and need to be done
 with rigor to understand the host of approximations and assumptions that can be
 made (at a minimum here we have ignored elasticity, different molar volumes for
-the species, and other issues are external fields, and there will be more to
-come!). We move to a concentration picture and _redefine_ the mobilities,
-$\alpha$, and $\epsilon$ in such a way that the following expressions hold:
+the species, external fields, and there will be more to
+come). We move to a concentration picture and _redefine_ the mobilities,
+$\alpha$, and $\epsilon$, in such a way that the following expressions hold:
 
 $$\frac{\partial c}{\partial t}=\nabla\cdot M_i\nabla\left(\frac{\partial f}{\partial c}-\alpha^2\nabla^2c\right)$$
 
@@ -292,7 +292,7 @@ $$\frac{\partial\phi}{\partial t}=M_\phi\left(\epsilon^2\nabla^2\phi-\frac{\part
 
 We now need to specify $f(c,T,\phi)$.  Note that we have retained the $T$
 dependence here, even though we are considering an isothermal
-system. Isothermal does not mean temperature independent! Additionally, in the
+system. Isothermal does not mean temperature independent. Additionally, in the
 expressions just above we "absorbed" $T$ into some of the coefficients.  These
 parameters can depend on $T$, but often the dependencies are unknown or should
 only be included if the phenomena under consideration demand such an
@@ -336,10 +336,10 @@ $$f(\phi,c,T)=(1-c)f^A(\phi)+cf^B(\phi) +RT((1-c)\ln(1-c)+c\ln c)+c(1-c)\left[\O
 where $\Omega_L$ and $\Omega_S$ are the regular solution parameters of the
 liquid and solid that again are combined with the interpolating function
 $p(\phi)$. The gas constant R needs to be chosen with the correct normalization
-so that RT has units of energy per unit volume.
+so that the expression $R T$ has units of energy per unit volume.
 
 With this specific choice of a regular solution free energy we at last have
-fully specified a system and its evolution!
+fully specified a system and its evolution.
 
 ## Clearly define and pose your physical problem before solving
 
@@ -353,7 +353,7 @@ really about practical issues around a specific simulation. What are the
 boundary conditions? What are the relevant length scales?  Here is a list of
 issues:
 
-### Complete dimensional analysis and understanding relevant scales; state the reference frame
+**Complete dimensional analysis and understanding relevant scales; state the reference frame**
 
 There are any number of dimensionless parameters that can be found in these
 models.  Understanding their relative role is beyond the scope of this best
@@ -373,14 +373,14 @@ $$\tau=\frac{1}{M_\phi\bar f}.$$
 Using these units will eliminate two parameters that need to explored when
 seeking solutions.
 
-### Plot your state functions before implementing them in code
+**Plot your state functions before implementing them in code**
 
 While we derived a specific choice of the free energy above, regardless of
-where you got the free energy (or other state function) it is wise to plot the
+where you got the free energy (or other state function), it is wise to plot the
 function, as this will give you a quick check that your state function is well
-posed, has minima where you expect them to be.
+posed and has minima where you expect them to be.
 
-### Consider the impact of interpolation functions, barrier functions, etc.
+**Consider the impact of interpolation functions, barrier functions, etc.**
 
 We chose specific forms for our interpolation function $p$ and the barrier
 function $g$. These were not arbitrary choices, but nonetheless, they are
@@ -388,7 +388,7 @@ hardly the only choices we could have made, just relatively popular. All such
 choices can result in simulation regions where "surprises" can occur, often due
 to insufficient spatiotemporal resolution.
 
-### Consider every boundary term and make sure you aren’t eliminating important terms. Check the fluxes
+**Consider every boundary term and make sure you aren’t eliminating important terms. Check the fluxes**
 
 When implementing the boundary conditions, extreme care must be taken.  One
 cannot just "zero-out" boundary terms, as this may break some requirement about
@@ -414,7 +414,7 @@ two warrant attention since, in the absence of these conditions, the partial
 differential equations that determine the temporal evolution of our problem
 could only hypothetically yield an infinite set of solutions.
 
-* If possible, run a small test problem with and without approximations and to
+* If possible, run a small test problem with and without approximations to
   quantify their impact
 * Consider how approximations change in different dimensions and symmetries
 * If possible, avoid assuming symmetry to reduce the complexity of your problem

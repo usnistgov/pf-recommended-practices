@@ -37,7 +37,7 @@ reduce the computational costs.
 
 It is likely that the physical behavior of a certain phenomenon might scale
 differently in 1D, 2D and 3D. This could be related to the physical processes
-in the bulk regions of the system or at the interfacial, or both.  For
+in the bulk regions of the system or at the interfacial regions, or both.  For
 instance, the amount of interfacial region relative to the bulk phase region
 differs in 1D, 2D and 3D, and also governs many physical aspects of material
 behavior.
@@ -78,7 +78,7 @@ starting geometry of the nucleus in 2D and 3D.
 :width: 285px
 :align: center
 
-The 2D representation of the 2D case of the homogenous nucleation problem.
+The 2D representation of the 2D case of the homogeneous nucleation problem.
 ```
 
 ```{figure} https://user-images.githubusercontent.com/74273633/197557199-85fb0c6a-bc75-440d-95c5-a21e467d8a66.png
@@ -86,7 +86,7 @@ The 2D representation of the 2D case of the homogenous nucleation problem.
 :width: 288.5px
 :align: center
 
-The 3D representation of the 2D case of the homogenous nucleation problem.
+The 3D representation of the 2D case of the homogeneous nucleation problem.
 ```
 <!-- <img width="285" alt="2D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557138-054247d9-3c68-4eff-9234-3a2e00fa6b42.png"> -->
 <!-- <img width="288.5" alt="3D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557199-85fb0c6a-bc75-440d-95c5-a21e467d8a66.png"> -->

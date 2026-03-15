@@ -5,29 +5,30 @@ David Montiel,
 Sourabh Kadambi ([@sourabhkadambi](https://github.com/sourabhkadambi)),
 Sudipta Biswas ([@SudiptaBiswas](https://github.com/SudiptaBiswas))
 
-After the phase-field model formulation is developed, implemented in code, and
+After the phase field model formulation is developed, implemented in code, and
 verified, it can be set up to solve the scientific/engineering problem of
 interest. The purpose of this page is to give guidance on some of the important
 considerations when setting up your code to solve your specific problem,
 organized in the following sections:
 
-[Spatial dimension (1D vs. 2D vs. 3D)](#spatial-dimension)
+[Spatial dimension (1D vs. 2D vs. 3D)](#label-spatial-dimension)
 
-[Initial conditions](#initial-conditions)
+[Initial conditions](#label-initial-conditions)
 
-[Boundary conditions](#boundary-conditions)
+[Boundary conditions](#label-boundary-conditions)
 
-[Interface width](#interface-width)
+[Interface width](#label-interface-width)
 
-[Convergence](#convergence-studies)
+[Convergence](#label-convergence-studies)
 
-[Impact of orientation](#impact-of-orientation)
+[Impact of orientation](#label-impact-of-orientation)
 
-[Kinetics and how long to run](#kinetics-and-how-long-to-run)
+[Kinetics and how long to run](#label-kinetics-and-how-long-to-run)
 
+(label-spatial-dimension)=
 ## Spatial Dimension
 
-In setting up a phase-field simulation, it is important to understand the role
+In setting up a phase field simulation, it is important to understand the role
 of spatial dimensions in the physics governing the problem, and how that might
 impact the simulation results and its interpretation. This is particularly
 important if simulations are being performed in reduced dimensions compared to
@@ -36,7 +37,7 @@ reduce the computational costs.
 
 It is likely that the physical behavior of a certain phenomenon might scale
 differently in 1D, 2D and 3D. This could be related to the physical processes
-in the bulk regions of the system or at the interfacial regions or both.  For
+in the bulk regions of the system or at the interfacial regions, or both.  For
 instance, the amount of interfacial region relative to the bulk phase region
 differs in 1D, 2D and 3D, and also governs many physical aspects of material
 behavior.
@@ -57,7 +58,7 @@ different dimensions, we consider the [single seed
 case](https://pages.nist.gov/pfhub/benchmarks/benchmark8.ipynb/#Part-%28a%29)
 of the [homogeneous
 nucleation](https://www.sciencedirect.com/science/article/abs/pii/S0927025621000963?via%3Dihub)
-benchmark problem. A simple phase-field model with a single non-conserved order
+benchmark problem. A simple phase field model with a single non-conserved order
 parameter describes an isothermal pure substance with one liquid phase (order
 parameter = $0$) and one solid phase (order parameter = $1$). The nucleation
 driving force for the solid phase is $\Delta f=\sqrt2/30$. The free energy of
@@ -77,7 +78,7 @@ starting geometry of the nucleus in 2D and 3D.
 :width: 285px
 :align: center
 
-The 2D representation.
+The 2D representation of the 2D case of the homogeneous nucleation problem.
 ```
 
 ```{figure} https://user-images.githubusercontent.com/74273633/197557199-85fb0c6a-bc75-440d-95c5-a21e467d8a66.png
@@ -85,7 +86,7 @@ The 2D representation.
 :width: 288.5px
 :align: center
 
-The 3D representation.
+The 3D representation of the 2D case of the homogeneous nucleation problem.
 ```
 <!-- <img width="285" alt="2D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557138-054247d9-3c68-4eff-9234-3a2e00fa6b42.png"> -->
 <!-- <img width="288.5" alt="3D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557199-85fb0c6a-bc75-440d-95c5-a21e467d8a66.png"> -->
@@ -107,7 +108,7 @@ the nucleus grows in 2D, it shrinks and dissolves in 3D.
 :width: 430.5px
 :align: center
 
-Order Parameter v Radial Disatnce
+Order Parameter v. Radial Distance
 ```
 
 ```{figure} https://user-images.githubusercontent.com/74273633/197557432-b5a6e8f2-9c8f-4649-9607-b43b687c55a0.png
@@ -115,7 +116,7 @@ Order Parameter v Radial Disatnce
 :width: 430.5px
 :align: center
 
-Radius v Time
+Radius v. Time
 ```
 
 <!-- <img width="430.5" alt="nucleusOP_evol_2D_vs_3D" src="https://user-images.githubusercontent.com/74273633/197558441-1a1c6a0c-f682-45a5-88ca-2ea94c714a7d.png"> -->
@@ -136,7 +137,7 @@ G / d r = 0$, we obtain the critical radius as $r_c = \gamma/ \Delta f$ in 2D
 and $r_c = 2\gamma/ \Delta f$ in 3D.
 
 We can now apply the above sharp-interface analysis to our diffuse
-interface approximation in the phase-field model. For the given model
+interface approximation in the phase field model. For the given model
 parameters, we obtain $r_c = 5$ units in 2D and $r_c = 10$ units in
 3D. In our simulation setup of $r_\circ = 7.5$ units, $r_\circ$ $>$
 $r_c$ in 2D, but $r_\circ < r_c$ in 3D. Therefore, the nucleus is
@@ -148,7 +149,7 @@ simulations, see {numref}`radius-2d` and {numref}`radius-3d`.
 :width: 433px
 :align: center
 
-2D Radius v Time
+2D Radius v. Time
 ```
 
 ```{figure} https://user-images.githubusercontent.com/74273633/197557613-2f2dfc84-39e3-4b14-a530-fab4238e7b85.png
@@ -156,7 +157,7 @@ simulations, see {numref}`radius-2d` and {numref}`radius-3d`.
 :width: 433px
 :align: center
 
-3D Radius v time
+3D Radius v. Time
 ```
 
 <!-- <img width="433" alt="radius_2D" src="https://user-images.githubusercontent.com/74273633/197557534-6ef5cf54-658b-43e4-b83a-f74cad29f2cf.png"> -->
@@ -165,12 +166,12 @@ simulations, see {numref}`radius-2d` and {numref}`radius-3d`.
 The dependence on dimensionality is further illustrated by considering cases
 where the initial radius is close to the critical radius: $r_\circ = 0.99 r_c$,
 $r_\circ = r_c$ and $r_\circ = 1.01 r_c$. The simulation results of radius
-evolution are shown above for 2D (left) and 3D (right). As expected from the
+evolution are in Figs. {numref}`radius-2d` and {numref}`radius-3d` for 2D and 3D, respectively. As expected from the
 the classical homogeneous nucleation theory, the sub-critical nucleus with
 $r_\circ = 0.99 r_c$ shrinks and the super-critical nucleus with $r_\circ =
 1.01 r_c$ grows.
 
-Since the nucleus in the phase-field model is a diffuse-interface approximation
+Since the nucleus in the phase field model is a diffuse-interface approximation
 of the classical sharp interface nucleus, $r_\circ = r_c$ is fairly close to an
 unstable equilibrium. Ideally, the radius would remain constant with
 time. However, since the system is unstable, small numerical errors accumulate
@@ -180,6 +181,7 @@ from the starting profile due to equilibration. While the $tanh$ function is a
 common choice for the initial condition of the interface, it is an exact
 solution only for a planar interface, representative of a 1D scenario.
 
+(label-initial-conditions)=
 ## Initial conditions
 
 For simulations of the evolution of two or more phases, it is important to
@@ -200,12 +202,13 @@ of leads to different dynamics.
 ![c0_0p15](https://github.com/usnistgov/pfhub/assets/16142451/e2d2ddca-9aa9-4c78-a0b1-2148ef2ed577)
 ![c0_0p45](https://github.com/usnistgov/pfhub/assets/16142451/8580071f-e29b-4b2a-8aa4-b0902e1610cf)
 
+(label-boundary-conditions)=
 ## Boundary conditions
 
 Boundary conditions (BC) are required to solve for the governing equations in
 all phase field simulations. In general, every field must have a defined BC at
 every boundary of the system. The three most common types of boundary
-conditions (BC) for phase field simulation are:
+conditions for phase field simulation are:
 
 - Dirichlet BC: The value of a field is specified at the boundary. This type of
   boundary condition is useful whenever we want to impose a value to an order
@@ -214,20 +217,20 @@ conditions (BC) for phase field simulation are:
   setting a constant value for a solid/liquid order parameter to indicate a
   fixed phase beyond the confines of the system.
 - Neumann BC: The value of the spatial derivative of a field is specified at
-  the boundary. This type of boundary conditions is useful to specify fluxes of
-  fields at the boundary. For example, setting natural BC (a special case of
-  Neumann BC) for a field at the boundary enforces that the normal component of
-  gradient of that field is zero along that boundary. Therefore, if a flux for
+  the boundary. This type of boundary condition is useful to specify fluxes of
+  fields at the boundary. For example, setting the natural BC (a special case of
+  Neumann BC) for a field at the boundary enforces the normal component of
+  gradient of that field to be zero along that boundary. Therefore, if a flux for
   that field is proportional to this gradient, natural BC is equivalent to
   imposing zero flux at the boundary. This BC is convenient to ensure that the
   field is conserved. In addition, natural BCs are useful to exploit known
-  symmetries in the morphology of domains: for example a spherical domain can
+  symmetries in the morphology of domains. For example, a spherical domain can
   be simulated using a quarter (in 2D) or eighth of a system (in 3D) by placing
   centering the sphere in a corner of the system and imposing natural BCs along
   the boundaries that define the corner.
-- Periodic BCs: The value of the field in a boundary with periodic BC matches
-  the value from the opposite boundary. These type of BCs are useful to
-  simulate periodic domains, but also to minimize boundary effects. since the
+- Periodic BCs: The value of the field in a boundary with a periodic BC matches
+  the value from the opposite boundary. These types of BCs are useful to
+  simulate periodic domains, but also to minimize boundary effects since the
   system does not interact with borders.
 
 ### Try different boundary conditions and check their impact
@@ -255,21 +258,22 @@ Comparison of results for benchmark 1
 
 <!-- ![BCs_white](https://user-images.githubusercontent.com/16142451/197867529-25d4ab7e-1a69-45f8-8fee-5b2ff3284db4.png) -->
 
-As can be seen in {numref}`benchmark1`, for periodic boundary
+As can be seen in {numref}`benchmark1`, for periodic
 boundaries the $\alpha$ - $\beta$ domains are **continuous** on
 opposite sides of the system. For no-flux boundaries, the $\alpha$ -
 $\beta$ interfaces are **normal** to the boundary. For Dirichlet
 boundaries (bottom boundary of the right panel), the value of _c_ is
 **fixed** along the boundary.
 
+(label-interface-width)=
 ## Interface width
 
-Phase-field modeling is a diffuse interface approach, meaning that interfaces
+Phase field modeling is a diffuse interface approach, meaning that interfaces
 are represented by a smooth variation of one or more order parameters across
 the interface. The width of the interface is a function of the model parameters
 and the interface width is determined by model parameter choices. In some
 cases, an analytical expression is available that relates interface width to
-phase-field model parameters (such as free energy barrier height and gradient
+phase field model parameters (such as free energy barrier height and gradient
 energy coefficient, which also impact the interfacial energy). In other cases,
 no analytical solution is available and the interface width must be
 approximated or determined numerically based on parameter choices. Such details
@@ -278,8 +282,8 @@ are specific to the formulation being used.
 Once the relationship between model parameters and interface width is
 understood, an appropriate selection of interface width needs to be made (while
 maintaining the correct interfacial energy for the system being studied). In
-some cases, the interface width in the phase-field model can be chosen to match
-the actual physical width of the interface being studied (such typically
+some cases, the interface width in the phase field model can be chosen to match
+the actual physical width of the interface being studied (typically
 sub-nanometer). However, resolving a physically realistic interface width
 requires a sub-nanometer grid/mesh (grid/mesh convergence is described further
 in the next section). Using a physically realistic interface width often makes
@@ -297,16 +301,17 @@ widths can be run to ensure that the choice of interface width does not affect
 the simulation results. A small test problem may be useful for testing
 convergence with respect to interface width; for example a shrinking circular
 grain embedded in another grain may be used for testing convergence of a grain
-growth model with respect to interface width, rather starting with large,
-costly simulations of hundreds of grains.
+growth model with respect to interface width rather than starting with large,
+costly simulations with hundreds of grains.
 
+(label-convergence-studies)=
 ## Convergence studies
 
 ### Carry out grid/mesh convergence study AFTER you have finalized your interfacial width.
 
 As an example of a mesh convergence study, we can consider [Benchmark Problem
 1](https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/) from the
-Phase-Field Community Hub. In this problem, which models spinodal decomposition
+Phase Field Community Hub. In this problem, which models spinodal decomposition
 using the Cahn-Hilliard equation, the width of the diffuse interface is 4.47,
 as defined by the Cahn-Hilliard equation and physical parameters in the problem
 statement. Given this interface width, we need to ensure there are a sufficient
@@ -318,7 +323,7 @@ In [Problem 1b](
 https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux),
 a square domain with dimensions $200 \times 200$ and no-flux boundary
 conditions is considered. An example of a mesh convergence study for this
-problem using the MOOSE framework phase-field module (a finite element code) is
+problem using the MOOSE framework phase field module (a finite element code) is
 described. The $200 \times 200$ domain is discretized using increasing numbers
 of elements $N_x$ in the $x$ direction and $N_y$ in the $y$ direction,
 maintaining $N_x = N_y$ for square elements (using linear Lagrange shape
@@ -333,10 +338,10 @@ The simulation initial conditions and the microstructures at $t =
 
 ```{figure} https://user-images.githubusercontent.com/3810555/197874871-82d8d1c7-75a7-4d73-bd0c-98ec294e41a5.png
 :align: center
-:name: problem-1b
+:name: problem1b
 :width: 711px
 
-Problem 1b (no-flux BCs)
+Problem 1b (no-flux BCs).
 ```
  
 As the number of elements in each direction is increased from 40 to 80 to 160,
@@ -346,7 +351,7 @@ microstructure. Therefore, the problem is converged with respect to mesh
 resolution at $N_x = N_y = 160$. For this number of elements, each element has
 size $\Delta x = \Delta y$ = 200 / 160 = 1.25. Therefore, the number of
 elements through the diffuse interface width is 4.47 / 1.25 = 3.6. Practical
-experience in the phase-field community has shown that somewhere between 3 to 5
+experience in the phase field community has shown that somewhere between 3 to 5
 elements through the interface are usually required to obtain mesh convergence;
 however, the appropriate resolution is problem-specific, and convergence should
 be tested for the specific physics and parameters at hand.
@@ -390,9 +395,9 @@ taken. Therefore, a convergence study should be carried out to ensure
 that the size of the time step does not affect the simulation
 results. As an example, we can again consider [Benchmark Problem
 1](https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/) from the
-Phase-Field Community Hub. [Problem
+Phase Field Community Hub. [Problem
 1b](https://pages.nist.gov/pfhub/benchmarks/benchmark1.ipynb/#(b)-Square-no-flux)
-was solved with the phase-field module from the MOOSE framework using
+was solved with the phase field module from the MOOSE framework using
 $N_x = N_y = 160$. {numref}`varying-time-step` shows the results. The
 microstructure at $t = 1000$ remains the same for $\Delta t = 0.1$,
 $\Delta t = 0.25$, and $\Delta t = 0.5$. Some differences in the
@@ -433,6 +438,7 @@ significantly increased to 15, changes in the microstructure resulted.
 Problem 1b (no-flux BCs), adaptive time-stepping
 ```
 
+(label-impact-of-orientation)=
 ## Impact of Orientation
 
 Oftentimes, the results of the phase field simulations are sensitive
@@ -447,7 +453,7 @@ formation of secondary dendritic arms in a computationally
 cost-effective manner. Here, we use 4-fold symmetry of the structure
 and vary the reference angles to misorient the dendritic arms with
 respect to the mesh. {numref}`dendritic-0` and {numref}`dendritic-45`
-show structures corresponding to 0 and 45 degree reference angle is
+show structures corresponding to $0^\circ$ and $45^\circ$ reference angle is
 presented below:
 
 ```{figure} https://user-images.githubusercontent.com/9493686/197635776-f71f35cc-fb98-49f8-bdb1-7b42cd32b421.png
@@ -455,7 +461,7 @@ presented below:
 :name: dendritic-0
 :width: 400
 
-Dendritic structure oriented with the grid
+Dendritic structure oriented with the grid.
 ```
 
 ```{figure} https://user-images.githubusercontent.com/9493686/197635791-41d1b86d-409d-414a-9d1f-53eb4fc9d71c.png
@@ -463,7 +469,7 @@ Dendritic structure oriented with the grid
 :name: dendritic-45
 :width: 400
 
-Dendritic structure oriented at $45^{\circ}$ to the grid
+Dendritic structure oriented at $45^{\circ}$ to the grid.
 ```
 
 It is noteworthy that the shape of the dendrite varies with
@@ -477,7 +483,7 @@ dendrite (see {numref}`superimposed`):
 :name: superimposed
 :width: 500
 
-Dendritic structure superimposed
+Dendritic structure superimposed.
 ```
 
 This highlights the slight differences between the dendrite shapes, especially
@@ -490,7 +496,7 @@ fraction over time (see {numref}`growth-rate`):
 :name: growth-rate
 :width: 500
 
-Dendritic growth rate
+Dendritic growth rate.
 ```
 
 Thus, it is important to evaluate the effect of orientation on the results by
@@ -499,14 +505,15 @@ discretization of the mesh. Hence, it is important to ensure that the mesh is
 refined enough to properly resolve the interfaces (if necessary, run a mesh
 convergence study). For more information about strategies to simulate multiple
 dendrites with varying orientation, please refer to examples by Biswas et
-al. [[1]](#1), Warren et al. [[2]](#2), Dorr et al. [[3]](#3), Ofori-Opoku et
-al. [[4]](#4), and Pusztai et al. [[5]](#5), among others.
+al. {cite}`Biswas2022`, Warren et al. {cite}`Warren2003`, Dorr et al. {cite}`Dorr2010`, Ofori-Opoku et
+al. {cite}`OforiOpoku2010`, and Pusztai et al. {cite}`Pusztai2008`, among others.
 
+(label-kinetics-and-how-long-to-run)=
 ## Kinetics and how long to run
 
 The amount of time the simulation should be run depends on the science or
 engineering question to be answered, and on the system being studied. For many
-classic phase-field problems such as grain growth and coarsening, a
+classic phase field problems such as grain growth and coarsening, a
 characteristic feature size of the system increases with time, and the progress
 of microstructural evolution slows as the characteristic feature size
 increases. For example, in grain growth, at long times the mean grain diameter
@@ -521,39 +528,17 @@ microstructural evolution will occur for increasing simulation time. In the
 grain growth example, if the system evolves to a single grain, stable
 equilbrium has been reached. If the system evolves to a two-grain configuration
 with a flat grain boundary between the grains, it has reached a metastable
-equilibrium; the system could still lower it energy by removing the grain
+equilibrium; the system could still lower its energy by removing the grain
 boundary, but in that configuration, there is no kinetic driving force to
 remove it from the metastable state. To monitor for such possibilities, it is
 useful for the simulation to periodically output the total free energy of the
 system; a stable or metastable equilibrium state is indicated by a constant
 free energy with respect to time.
 
+
 ## References
 
-<a id="1">[1]</a>
-Biswas et al., “Solidification and grain formation in alloys: a 2D application
-of the grand-potential-based phase-field approach”, Modelling and Simulation in
-Materials Science and Engineering, 30 (2022) 025013. DOI:
-[10.1088/1361-651X/ac46dc](https://doi.org/10.1088/1361-651X/ac46dc).
+```{bibliography}
+:filter: docname in docnames
+```
 
-<a id="2">[2]</a>
-Warren et al., “Extending phase field models of solidification to
-polycrystalline materials”, Acta Materialia 51 (2003) 6035–6058. DOI:
-[10.1016/S1359-6454(03)00388-4](https://doi.org/10.1016/S1359-6454(03)00388-4).
-
-<a id="3">[3]</a>
-Dorr et al., “A numerical algorithm for the solution of a phase-field model of
-polycrystalline materials”, Journal of Computational Physics 229 (2010)
-626–641. DOI:
-[10.1016/j.jcp.2009.09.041](https://doi.org/10.1016/j.jcp.2009.09.041).
-
-<a id="4">[4]</a>
-Ofori-Opuku et al., “A quantitative multi-phase field model of polycrystalline
-alloy solidification”, Acta Materialia 58 (2010) 2155-2164. DOI:
-[10.1016/j.actamat.2009.12.001](https://doi.org/10.1016/j.actamat.2009.12.001)
-
-<a id="5">[5]</a>
-Pusztai et al., “Phase-field approach to polycrystalline solidification
-including heterogeneous and homogeneous nucleation”, Journal of Physics:
-Condensed Matter 20 (2008) 404205. DOI:
-[10.1088/0953-8984/20/40/404205](https://doi.org/10.1088/0953-8984/20/40/404205).

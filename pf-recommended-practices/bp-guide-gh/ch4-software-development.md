@@ -3,7 +3,7 @@
 
 Daniel Schwen ([@dschwen](https://github.com/dschwen)), Jon Guyer ([@guyer](https://github.com/guyer)), Trevor Keller ([@tkphd](https://github.com/tkphd))
 
-People don't usually arrive at phase-field methods from a software development
+People don't usually arrive at phase field methods from a software development
 background.  This page recommends some approaches to reduce errors and wasted
 time before reaching a usable state -- including the installation process.
 
@@ -24,11 +24,11 @@ The choice of the programming language requires a multitude of considerations
 ### Commenting code and design
 
 Comment code generously. Whether it is for other developers working on the code
-or for yourself a couple of years (months?) in the future.
+or for yourself a couple months or even years in the future.
 
 > "Code is more often read than written."
 
-Documentation can be roughly split into API documentation and inline code documentation.
+Documentation can be roughly split into an application programming interface (API) documentation and inline code documentation.
 
 * API documentation facilitates reuse of the code.
   - [Doxygen](https://doxygen.nl/) is the _de facto_ standard for C++ API
@@ -47,7 +47,7 @@ Documentation can be roughly split into API documentation and inline code docume
 
 API documentation should be augmented by _design documents_ that offer a high
 level overview over a code, library, or framework. Design documentation
-describes the way different pars of the code fit together and their roles in
+describes the way different parts of the code fit together and their roles in
 the overall project.
 
 ### End-user documentation
@@ -74,7 +74,7 @@ To facilitate contributions to a code, version control is
 indispensable. Version control keeps track of all changes to the code and keeps
 every team member working on the right version. Version control systems enable
 the use of code review workflows (such as the _pull request_ workflow on
-[GitHub](https://github.com). Code review in turn allows for input from
+[GitHub](https://github.com)). Code review in turn allows for input from
 multiple developers and for productive feedback and improvement cycles leading
 to a higher code quality. Open version control platforms also invite outside
 contributions and user engagement, leading to project growth.
@@ -85,15 +85,16 @@ code license. Authorship is tracked through the version control system.
 (label-software-license-considerations)=
 #### License considerations
 
-> [Largely not unique to phase field, or even to scientific computing, so not a lot to say here, but should reference good guidance]
+<!-- 
+> [Largely not unique to phase field, or even to scientific computing, so not a lot to say here, but should reference good guidance] -->
 
 * If you do not spell out your license, potential users must assume you are
   granting _no rights_ to copy or reuse it.
 * If your institution stipulates a license, use it.
 * If choosing your own, understand the implications of the license you apply:
   - Some licenses may be incompatible with institutional requirements
-  - Some licenses, e.g., GPL, may be an obstacle to commercial adoption
-* Don't try to write your own!
+  - Some licenses, e.g., GNU General Public License (GPL), may be an obstacle to commercial adoption
+* Don't try to write your own.
 * http://choosealicense.org
 * https://tldrlegal.com
 
@@ -128,6 +129,7 @@ versions of supported compilers/toolchains, which can be mitigated by declaring
 and testing a minimal version for each compiler in addition to a current
 version.
 
+(label-code-verification)=
 ### Code verification
 
 While regression tests only guarantee to maintain the _status quo_, they do not

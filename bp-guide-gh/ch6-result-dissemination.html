@@ -16,37 +16,40 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -63,6 +66,7 @@
     <link rel="prev" title="Problem Set-Up" href="ch5-problem-setup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,19 +82,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -98,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -106,8 +98,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -123,7 +115,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -153,21 +146,17 @@
     
     
     <img src="../_static/pfhub-logo.jpg" class="logo__image only-light" alt="Phase Field Method Recommended Practices - Home"/>
-    <script>document.write(`<img src="../_static/pfhub-logo.jpg" class="logo__image only-dark" alt="Phase Field Method Recommended Practices - Home"/>`);</script>
+    <img src="../_static/pfhub-logo.jpg" class="logo__image only-dark pst-js-only" alt="Phase Field Method Recommended Practices - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -193,9 +182,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -325,7 +319,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -339,25 +333,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -408,13 +394,13 @@ document.write(`
 <h1>Result Dissemination<a class="headerlink" href="#result-dissemination" title="Link to this heading">#</a></h1>
 <p>Mike Tonks, Damien Tourret, Katsuyo Thornton, Jon Guyer</p>
 <p>How you present and disseminate your results is also a critical aspect of
-applying the phase-field method. Here, we provide recommended practices on
+applying the phase field method. Here, we provide recommended practices on
 disseminating your results.</p>
 <section id="recommended-practices-for-postprocessing-and-plotting">
 <h2>Recommended Practices for Postprocessing and Plotting:<a class="headerlink" href="#recommended-practices-for-postprocessing-and-plotting" title="Link to this heading">#</a></h2>
 <section id="present-dimensional-results-whenever-possible">
 <h3>Present dimensional results whenever possible<a class="headerlink" href="#present-dimensional-results-whenever-possible" title="Link to this heading">#</a></h3>
-<p>The phase-field method is inherently dimensional, meaning that each of its
+<p>The phase field method is inherently dimensional, meaning that each of its
 model parameters have specific dimensions in terms of length, time, energy,
 etc. These values vary for different materials and systems, based on material
 properties such as free energies, diffusivities, interfacial energies, and so
@@ -436,7 +422,7 @@ units, you should use them.</p>
 <section id="make-plots-and-figures-that-clearly-illustrate-your-data">
 <h3>Make plots and figures that clearly illustrate your data<a class="headerlink" href="#make-plots-and-figures-that-clearly-illustrate-your-data" title="Link to this heading">#</a></h3>
 <p>Well-constructed figures can greatly enhance the presentation of your
-data. There many general guidelines and recommendations that should be
+data. There are many general guidelines and recommendations that should be
 followed. Rather that reproduce them all here, we link to several valuable
 resources that provide great recommendations:</p>
 <ul class="simple">
@@ -495,12 +481,12 @@ a typical publication in vizualization tools can often be a time-consuming
 process. Luckily, they often have ways of saving a given configuration that can
 then be reloaded to quickly generate a similar image. In Paraview, this is done
 by saving and loading the state.</p>
-<p>For plots of postprocessed, data is often outputted from research codes and
-then plotted using software. Plots can be generated and then edited manually or
-scripts can be used that define all aspects of the plot. The use of scripts may
-make the time it takes to create the plot the first time slightly longer but
-will reduce the time to regenerate the plots to almost zero. Scripts also
-ensure that your plots have a consistent look when regenerated.</p>
+<p>Data for postprocessing is often generated by research codes and
+then used for plotting. Plots can be generated and then edited manually or
+scripts can be used that define all aspects of the plot.
+The use of scripts may increase the time required for an initial plot, but will
+reduce the time required for subsequent regeneration of the plot. Scripts also
+ensure that your plots have a consistent style when regenerated.</p>
 </section>
 </section>
 <section id="recommended-practices-for-papers">
@@ -508,7 +494,7 @@ ensure that your plots have a consistent look when regenerated.</p>
 <section id="provide-all-of-the-information-needed-for-someone-else-to-reproduce-your-results">
 <h3>Provide all of the information needed for someone else to reproduce your results<a class="headerlink" href="#provide-all-of-the-information-needed-for-someone-else-to-reproduce-your-results" title="Link to this heading">#</a></h3>
 <p>A critical aspect of scientific publication is the reproduction of results by
-other researchers. For papers using the phase-field method, that means you need
+other researchers. For papers using the phase field method, that means you need
 to provide enough information that the reader could reproduce your results. It
 can be helpful to put yourself in the shoes of your readers; if you come back
 to this work in a few years, how readily could you perform these simulations
@@ -518,8 +504,8 @@ information should include:</p>
 <ul class="simple">
 <li><p>The value used for every parameter in the model. Even if the values are given
 in one of your references, you should still provide the values in your paper.</p></li>
-<li><p>The domain dimension and size</p></li>
-<li><p>Initial conditions and boundary conditions</p></li>
+<li><p>The domain dimension and size.</p></li>
+<li><p>Initial conditions and boundary conditions.</p></li>
 <li><p>Other conditions used for each simulation, including temperature and length
 of time.</p></li>
 <li><p>The discretization scheme, including types of spatial and temporal
@@ -554,12 +540,12 @@ approximations.</p>
 <p>It is natural to present large simulation results that capture complex
 behaviors that occur in nature. However, it can often be difficult to assess
 how well a model is performing in such large simulation results because the
-behavior is so complex. Therefore, when presenting phase-field model/simulation
-results, it is important to validate/verify the accuracy of the model and its
+behavior is so complex. Therefore, when presenting phase field model/simulation
+results, it is important to validate and verify the accuracy of the model and its
 implementation by simulating simple problems that more clearly demonstrate the
 accuracy of the model/code. Such simple problems may have known analytical
 solutions, against which the simulated results can be compared for verification
-(see <a class="reference internal" href="ch4-software-development.html#code-verification"><span class="std std-ref">Code Verification</span></a>]). Key
+(see <a class="reference internal" href="ch4-software-development.html#label-code-verification"><span class="std std-ref">Code verification</span></a>). Key
 results from such studies should be shared along with the main simulation
 results in a repository or in a supplementary document of the associated
 publication.</p>
@@ -571,7 +557,7 @@ findable and accessible in a manner that the data is interoperable and reusable
 (FAIR); see
 <a class="reference internal" href="ch3-data-generation-and-curation.html"><span class="std std-doc">Data-Generation-and-Curation</span></a>. For
 projects funded by federal agencies, your data management plan may also require
-you to publish your data associated with your publication. There are several
+you to publish data associated with your publication. There are several
 public repositories to which your data/files can be uploaded and shared, which
 are described in
 <a class="reference internal" href="ch3-data-generation-and-curation.html"><span class="std std-doc">Data-Generation-and-Curation</span></a>. The data
@@ -629,14 +615,16 @@ publicly available, it is also encouraged that they are shared as well.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-practices-for-postprocessing-and-plotting">Recommended Practices for Postprocessing and Plotting:</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#present-dimensional-results-whenever-possible">Present dimensional results whenever possible</a></li>
@@ -699,8 +687,8 @@ By PFHub Workshop Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

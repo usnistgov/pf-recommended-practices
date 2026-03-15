@@ -8,9 +8,9 @@ Authors
 
 ## Overview
 
-When writing your own phase-field simulation code or when choosing among
+When writing your own phase field simulation code or when choosing among
 existing codes, the numerical implementation of the model is an important
-consideration. This section of Phase-Field Recommended Practices Guide is split
+consideration. This section of Phase Field Recommended Practices Guide is split
 into two subsections -- one focused on choosing appropriate numerical methods
 and one focused on choosing whether to code your own solvers or use existing
 libraries (and how to choose between existing libraries). Although these
@@ -21,10 +21,10 @@ the availability of libraries.
 
 ## Choosing an appropriate collection of numerical methods
 
-There is no consensus on what the "best" numerical methods for phase-field
+There is no consensus on what the "best" numerical methods for phase field
 modeling are. In fact, given the diversity of the models and settings under the
 phase field umbrella, it is unlikely that any single collection of methods
-would be optimal for all phase-field modeling. Instead, a wide variety of
+would be optimal for all phase field modeling. Instead, a wide variety of
 numerical methods are used in the literature. For most problems of interest
 there are multiple numerical methods that can be used to obtain a solution to
 the model equations (and perhaps some methods that _cannot_ obtain a
@@ -32,7 +32,7 @@ solution). Several factors to consider when choosing between numerical methods
 are:
 
 - General computational performance
-- Appropriateness for the planned computing hardware (e.g., GPUs)
+- Appropriateness for the planned computing hardware (e.g., Graphics Processing Units (GPUs))
 - Scalability, ease of implementation
 - Availability of libraries
 
@@ -48,10 +48,10 @@ a spectral code to a finite element code might necessitate an entire
 rewrite. Transitioning from one implicit time integration method to another may
 take a few hours.
 
-A phase-field code involves a few different types of numerical
+A phase field code involves a few different types of numerical
 methods. Different choices for each type are possible, but not all combinations
 are possible or advisable. In the end, to determine the numerical
-implementation for your phase-field model you will need to decide on a
+implementation for your phase field model you will need to decide on a
 collection of numerical methods and approaches that are suitable for your
 problem and work well together.
 
@@ -106,10 +106,10 @@ project and may be _simpler to use_.
 Additionally, we also recommend initially implementing a simpler form of your
 model and the building up to the full model, particularly if you are new to the
 toolchain that you're using. There are classes of issues that with your
-numerical implementation that show up in even very simple calculations (MPI
+numerical implementation that show up in even very simple calculations (Message Passing Interface (MPI)
 communication issues, stencil issues, scaling issues, etc.), and it's best to
 deal with those as soon as possible. Note: this approach works best when the
-simplified model is a simplified version of the _PDE_, not simply a simplified
+simplified model is a simplified version of the Partial Differential Equation (_PDE_), not simply a simplified
 version of the _physics_. Sometimes models at different levels of complexity
 have a very different structure. A few examples of simpler starting models are:
 
@@ -121,7 +121,7 @@ have a very different structure. A few examples of simpler starting models are:
 
 ### Choosing a spatial discretization
 
-Four main types of spatial discretizations are used for phase-field modeling:
+Four main types of spatial discretizations are used for phase field modeling:
 finite difference, finite volume, finite element, and Fourier
 pseudospectral. Each of these methods has been used for simulation results
 uploaded to PFHub. Examples for each method are:
@@ -142,12 +142,12 @@ methods.
 #### Finite difference
 
 Finite difference discretizations are one of the most common spatial
-discretizations for phase-field codes. The field data is stored on the vertices
+discretizations for phase field codes. The field data is stored on the vertices
 of the mesh and derivatives are approximated using variable values at the point
 of interest and/or neighboring points. See the [Wikipedia
 page](https://en.wikipedia.org/wiki/Finite_difference_method) for a general
 introduction. While many flavors of finite difference methods exist, most
-finite difference phase-field codes use structured, uniform grids.
+finite difference phase field codes use structured, uniform grids.
 
 #### Finite volume
 
@@ -164,7 +164,7 @@ introduction.
 #### Finite element
 
 Finite element methods are the most complex of the common spatial
-discretization methods for phase-field codes. In a finite element method, field
+discretization methods for phase field codes. In a finite element method, field
 values are stored on pre-defined places of each element (the "nodes"). The
 field variables in the element are continuously represented by a function of
 pre-defined type (e.g., bilinear) that passes through the field values at each
@@ -174,15 +174,15 @@ over the element, where the integrals are calculated using
 [quadrature](https://en.wikipedia.org/wiki/Gaussian_quadrature). Therefore,
 although field variables are stored at the nodes for the element, the evolution
 expressions are calculated on "quadrature points", which often are not in the
-same locations as the nodes. Due to the expressions being integral expressions,
-finite element methods operate on the weak form of a PDE. See the [Wikipedia
+same locations as the nodes. The PDE expressions are integral expressions so
+finite element methods can operate on the weak form of a PDE. See the [Wikipedia
 page](https://en.wikipedia.org/wiki/Finite_element_method) for a general
 introduction.
 
 #### Fourier pseudospectral
 
 Along with finite difference methods, Fourier pseudospectral methods are
-historically a common spatial discretization for phase-field codes. Although
+historically a common spatial discretization for phase field codes. Although
 Fourier pseudospectral methods have similar theoretical underpinnings as finite
 element methods, in practice, implementing a Fourier pseudospectral code is
 very different from the other methods listed here. In comparison to the other
@@ -249,7 +249,7 @@ Three main adaptive meshing schemes are:
 
 #### Methods for Applying Boundary Conditions on Internal Boundaries
 
-Although many phase-field problems of interest can be solved in a rectangular
+Although many phase field problems of interest can be solved in a rectangular
 domain with boundary conditions applied on the boundaries of the computational
 domain, in some cases, you may want to apply boundary conditions along an
 _internal_ boundary. There are two typical circumstances where this occurs. One
@@ -267,7 +267,7 @@ boundary method](https://doi.org/10.1088/0965-0393/20/7/075008) is a diffuse
 interface method for imposing internal boundary conditions. In some
 circumstances, these methods may provide a performant way to side-step the
 restrictions on the meshes for Fourier pseudospectral or finite difference
-phase-field codes.
+phase field codes.
 
 To date, none of the PFHub uploads have used these methods, but Benchmark 6b is
 an example of where it may be appropriate.
@@ -284,24 +284,24 @@ implicit. Classic examples include:
 - Crank-Nicolson (CN) method, a second-order semi-implicit method
 
 These methods often serve as prototypes for other families of general-purpose
-time integrators that have successfully been employed in phase-field codes.
-**Many of the community codes that participate in PFHub already offer
+time integrators that have successfully been employed in phase field codes.
+Many of the community codes that participate in PFHub already offer
 selections of time integrators; the documentation of those packages will often
-include suggestions on what to choose for your model.**
+include suggestions on what to choose for your model.
 
 If you are using a code that does not provide its own time integrators or you
 are writing your own code, there are many factors to consider when picking a
-scheme.  **The "best" time integrator for your model will depend upon your
+scheme.  The "best" time integrator for your model will depend upon your
 governing equations, the spatial discretization, any required linear and
 nonlinear solvers, and even the computational hardware you have available.  You
 may need to experiment with different schemes to find the right balance of
-performance and accuracy for your needs.**  This last step can require
+performance and accuracy for your needs.  This last step can require
 significant amounts of time and coding.
 
 If you need to implement your own time integrator, we provide a brief overview
 of integration schemes and their strengths and weaknesses, but this discussion
 serves as a relatively high-level overview.  Time integration is an active area
-of research across the phase-field, applied math, and computational science
+of research across the phase field, applied math, and computational science
 communities, and it is impossible to cover every consideration.
 
 #### Explicit vs. Implicit Methods
@@ -337,7 +337,7 @@ methods, or Predictor-Corrector (e.g., Milne) methods.
 
 By comparison, fully implicit methods will usually require the implementation
 of nonlinear and linear solvers.  Some methods might allow for one of these
-eliminated: for example, the linearly implicit Rosenbrock Methods do not
+to be eliminated: for example, the linearly implicit Rosenbrock Methods do not
 require a nonlinear solver.  However, most codes will adopt a modified Newton
 method where a linear solver is required at each nonlinear iteration.  The BE
 method can be a prototype for various flavors of implicit Runge-Kutta methods
@@ -354,12 +354,12 @@ step will also vary with the overall conditioning of the system from one time
 step to the next.
 
 However, it is well-known that explicit solvers often have strict requirements
-for the stable time step size (e.g., $\Delta t \propto \Delta x^2$ for FE
-discretization of heat equation).  By comparison, most implicit methods are
-either unconditionally stable or have much wider stability regions For a given
-time interval and similar order of accuracy, an explicit method will usually
+for the stable time step size (e.g., $\Delta t \propto \Delta x^2$ for an FE
+discretization of the heat equation).  By comparison, most implicit methods are
+either unconditionally stable or have much wider stability regions for a given
+time interval and similar order of accuracy. An explicit method will usually
 take many more time steps than an implicit method, which can increase the
-accumulated roundoff error (this will depend on the particular schemes).  Also,
+accumulated roundoff error (depending on the particular schemes).  Also,
 if the increase in stable step size is large enough, the implicit method may
 end up requiring less walltime to solve the entire model.
 
@@ -386,7 +386,7 @@ can equalize the overall cost.
 
 In semi-implicit and implicit-explicit (ImEx) methods, different terms in the
 governing equations are approximated by different implicit or explicit schemes.
-These methods have a long history in the phase-field community and, as
+These methods have a long history in the phase field community and, as
 suggested by their name, behave "in between" explicit and implicit schemes.
 For example, convex splitting methods for the Cahn-Hilliard equation naturally
 result in implicit and explicit terms.  Semi-implicit methods are also the
@@ -410,7 +410,7 @@ reduce the computational cost, we can also employ adaptive methods when
 choosing a time step.  In many Runge-Kutta and Rosenbrock methods, the scheme
 provides an embedded estimate of the error in the solution.  A weighted norm of
 this error can be compared to a specified tolerance, which decides if the time
-step is accepted or rejected, and then the step size can be adjusted by a PID
+step is accepted or rejected, and then the step size can be adjusted by a Proportional Integral Derivative (PID)
 controller or some other filter.  In multistep methods, we can derive estimates
 of the leading truncation error, which then allows us to check the accuracy of
 a step.  However, different methods will have different rules about how to
@@ -435,7 +435,7 @@ slower.
 1. If you are forced to use small time steps on the scale of time you want to
    simulate, you might consider an implicit integrator (again, start with
    simpler schemes like BE or CN).
-1. If your model contains varying time scales (e.g. from coupled physics,
+1. If your model contains varying time scales (e.g., from coupled physics,
    concentration-dependent mobility) and you have difficulty maintaining a
    stable time step or find that the convergence is unpredictable, adaptive
    time stepping will likely be helpful. If you are using explicit schemes,
@@ -503,7 +503,7 @@ known: we can evaluate each $\phi_i^{n+1}$ directly without needing to perform
 any linear or nonlinear solvers.  This is sometimes referred to as
 "linearization through explicit time stepping."
 
-A common approach to improve time step stability of a PFM is to employ a convex
+A common approach to improve time step stability of a phase field method is to employ a convex
 split of the governing equations where we decompose the nonlinear terms as
 $g(\phi) = g_+ (\phi) + g_- (\phi)$ and $p(\phi) = p_+ (\phi) + p_- (\phi)$,
 where $+$ indicates the purely convex portion of the function and $-$ is the
@@ -517,7 +517,7 @@ $$
 This system of equations is now semi-implicit in nature, but we can form the
 convex split such that the left-hand side is fully linear, e.g., $g_+(\phi) = a
 \phi^2$ for $g(\phi) = \phi^2 (1-\phi)^2$.  As a result, we need a linear
-solver for this scheme (such as a tridiagonal LU decomposition) to obtain
+solver for this scheme (such as a tridiagonal lower-upper (LU) decomposition) to obtain
 $\{\phi^{n+1}\}$, but no nonlinear solver.  We can use larger time step sizes
 than with FE, but we can easily "break" the system so that we don't
 observe a monotonic decrease in free energy.
@@ -647,7 +647,7 @@ In the above discussion, we've observed that linear solvers are necessary as a
 result of the discretization of the governing equations or because we need to
 solve a nonlinear system of equations. **The choice of solver will depend on
 the size of your simulation and whether you can easily evaluate a Jacobian
-matrix of your system.**  Up to a few thousand unknowns, direct linear solvers
+matrix for your system.**  Up to a few thousand unknowns, direct linear solvers
 (e.g. LAPACK, UMFPACK, cuSolver, SuperLU) that offer dense or sparse variants
 of typical methods like LU decomposition and QR factorization will often be
 efficient, provided it is easy to evaluate the entries of the Jacobian matrix.
@@ -700,7 +700,7 @@ preconditioner, therefore, needs to (1) be easy to form and assemble, (2) be
 easy to solve and apply, and (3) should capture the essential physics of the
 system.  **Designing preconditioners is problem-dependent and can have a huge
 impact on the overall model performance**.  Many possible options have been
-applied by the phase-field community, including relaxation methods (e.g.,
+applied by the phase field community, including relaxation methods (e.g.,
 Jacobi, Gauss-Seidel), multigrid methods (both geometric and algebraic),
 incomplete LU and Cholesky factorizations, sparse approximate inverses, and
 multiplicative or additive Schwarz methods.  **You will likely need to
@@ -713,7 +713,7 @@ the former methods can be used as preconditioners for the latter.  Changing
 from one Krylov method to another can be relatively straightforward, but **some
 Krylov methods only apply to symmetric positive definite matrices**.  Modifying
 the preconditioner can have varying difficulties: switching from a Jacobi to a
-Gauss-Seidel preconditioner is trivial, but switching to an ILU preconditioner
+Gauss-Seidel preconditioner is trivial, but switching to an Incomplete LU (ILU) preconditioner
 might require much more effort.
 
 <!-- ### Choosing an appropriate parallelism approach -->
@@ -730,8 +730,8 @@ might require much more effort.
 
 ## Choosing appropriate numerical libraries and/or what to write yourself
 
-The phase-field and broader scientific computing community have developed many
-libraries that you may choose to use as you implement your phase-field
+The phase field and broader scientific computing community have developed many
+libraries that you may choose to use as you implement your phase field
 model. As you decide which methods you want to use, an important consideration
 is whether you intend to write code for certain functionality yourself or
 whether you want to use an existing library/framework for that functionality.
@@ -748,9 +748,9 @@ even if you decide that your best course is to write your own functionality,
 learning about other solutions may inform your approach and/or help you frame
 to potential users what distinguishes your implementation.
 
-#### Existing phase-field codes and frameworks
+#### Existing phase field codes and frameworks
 
-PFHub maintains a [list of open source phase-field codes and
+PFHub maintains a [list of open source phase field codes and
 frameworks](https://pages.nist.gov/pfhub/codes/), one or more of which may fit
 your needs.
 
@@ -802,6 +802,7 @@ to offer advice.
 1. D.A. Knoll, D.E. Keyes. "Jacobian-free Newton-Krylov methods: a survey of
    approaches and applications." *J. Comput. Phys.* 193 (2004) 357-397.
 
+<!--
 ***
 
 Topics we want to move to other sections:
@@ -812,6 +813,7 @@ Topics we want to move to other sections:
 - Ensure physical expectations are respected (Software Development)
 
 ***
+-->
 
 <!--
 OLD TEXT

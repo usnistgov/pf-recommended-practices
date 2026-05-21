@@ -116,12 +116,12 @@ The law of conservation of momentum (Newton's second Law) for a system without
 body forces (like gravity) can be written
 
 $$\frac{\partial\rho {\bf v}}{\partial t}+\nabla\cdot\left( \rho {\bf
-v}\otimes{\bf v}-\sigma\right)=0,$$
+v}\otimes{\bf v}-\boldsymbol{\sigma}\right)=0,$$
 
-where $\sigma$ is the stress tensor.  Using continuity and incompressibility as
+where $\boldsymbol{\sigma}$ is the stress tensor.  Using continuity and incompressibility as
 assumptions we get
 
-$$\rho\frac{D{\bf v}}{Dt}=\nabla\cdot\sigma.$$
+$$\rho\frac{D{\bf v}}{Dt}=\nabla\cdot\boldsymbol{\sigma}.$$
 
 ### Energy
 
@@ -136,7 +136,7 @@ $$\frac{\partial e_T}{\partial t}+\nabla\cdot\left(e_T{\bf v}+{\bf J}_e\right)=0
 We can then use the momentum equation as well as the mass continuity equation
 (along with incompressibility) to arrive at
 
-$$\frac{D e}{D t}+\nabla\cdot{\bf J}_e=\nabla{\bf v}:\sigma.$$
+$$\frac{D e}{D t}+\nabla\cdot{\bf J}_e=\nabla{\bf v}:\boldsymbol{\sigma}.$$
 
 ### First Law of Thermodynamics
 
@@ -146,7 +146,7 @@ $$e=Ts-p+\sum_i\rho_i\mu_i,$$
 
 where $p$ is the hydrostatic pressure,
 
-$$p=-\frac{1}{3}{\mathrm{Tr}}\sigma,$$
+$$p=-\frac{1}{3}{\mathrm{Tr}}\boldsymbol{\sigma},$$
 
 and $\mu_i$ and $T$ are defined as derivatives of $e$ through the expression
 
@@ -193,7 +193,7 @@ which is rather a complicated beast (it came from all those --> <!--
 integrations by parts which we have skipped in this presentation), -->
 and has the form
 
-$$\frac{{\bf Y}}{T}=\frac{\sigma}{T}+\sum \alpha_i^2\nabla\rho_i\otimes\nabla\rho_i+\epsilon^2\nabla\phi\otimes\nabla\phi+\left(\frac{p}{T}-\sum_i \alpha_i^2\rho_i\nabla^2\rho_i-\sum_i\frac{\alpha_i^2}{2}|\nabla\rho_i|^2-\frac{\epsilon^2}{2}|\nabla\phi|^2\right){\bf I},$$
+$$\frac{{\bf Y}}{T}=\frac{\boldsymbol{\sigma}}{T}+\sum \alpha_i^2\nabla\rho_i\otimes\nabla\rho_i+\epsilon^2\nabla\phi\otimes\nabla\phi+\left(\frac{p}{T}-\sum_i \alpha_i^2\rho_i\nabla^2\rho_i-\sum_i\frac{\alpha_i^2}{2}|\nabla\rho_i|^2-\frac{\epsilon^2}{2}|\nabla\phi|^2\right){\bf I},$$
 
 where $\bf I$ is the identity tensor.
 
@@ -217,17 +217,17 @@ the various fluxes here, but instead we have made the simplest
 assumptions. Inserting these into our equations of motion, we (at last!) arrive
 at general evolution equations
 
-$$\frac{D e}{D t}=-M_T\nabla^2\frac{1}{T}+\nabla{\bf v}:\sigma,$$
+$$\frac{D e}{D t}=-M_T\nabla^2\frac{1}{T}+\nabla{\bf v}:\boldsymbol{\sigma},$$
 
 $$\frac{D \rho_i}{D t}=\nabla\cdot M_i\nabla\left(-\frac{\partial s}{\partial \rho_i}-\alpha_i^2 \nabla^2\rho_i\right)$$
 
 $$\frac{D\phi}{Dt}=M_\phi\left(\frac{\partial s}{\partial\phi}+\epsilon^2\nabla^2\phi\right).$$
 
-$$\frac{\sigma}{T}=\frac{\eta}{T}\left(\nabla{\bf v}+(\nabla{\bf v})^T\right)-\sum_i \alpha_i^2\nabla\rho_i\otimes\nabla\rho_i+\epsilon^2\nabla\phi\otimes\nabla\phi-\left(\frac{p}{T}-\sum \alpha_i^2\rho_i\nabla^2\rho_i-\sum\frac{\alpha_i^2}{2}|\nabla\rho_i|^2-\frac{\epsilon^2}{2}|\nabla\phi|^2\right){\bf I},$$
+$$\frac{\boldsymbol{\sigma}}{T}=\frac{\eta}{T}\left(\nabla{\bf v}+(\nabla{\bf v})^T\right)-\sum_i \alpha_i^2\nabla\rho_i\otimes\nabla\rho_i+\epsilon^2\nabla\phi\otimes\nabla\phi-\left(\frac{p}{T}-\sum \alpha_i^2\rho_i\nabla^2\rho_i-\sum\frac{\alpha_i^2}{2}|\nabla\rho_i|^2-\frac{\epsilon^2}{2}|\nabla\phi|^2\right){\bf I},$$
 
 with
 
-$$\rho\frac{D{\bf v}}{Dt}=\nabla\cdot\sigma.$$
+$$\rho\frac{D{\bf v}}{Dt}=\nabla\cdot\boldsymbol{\sigma}.$$
 
 ### Further reduction of the problem
 

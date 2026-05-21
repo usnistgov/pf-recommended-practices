@@ -183,9 +183,7 @@ $${\bf J}_s=s^{NC}{\bf v} + \frac{1}{T}{\bf J}_e-\sum_i \left(\frac{\mu_i}{T}\
 
 It is worth noting that this form for ${\bf J}_s$ eliminates the
 explicit surface terms from the entropy production. We have also
-introduced the tensor ${\bf Y}$ which is a complicated beast <!--
-which is rather a complicated beast (it came from all those --> <!--
-integrations by parts which we have skipped in this presentation), -->
+introduced the tensor ${\bf Y}$ which is a complicated beast
 and has the form
 
 $$\frac{{\bf Y}}{T}=\frac{\sigma}{T}+\sum \alpha_i^2\nabla\rho_i\otimes\nabla\rho_i+\epsilon^2\nabla\phi\otimes\nabla\phi+\left(\frac{p}{T}-\sum_i \alpha_i^2\rho_i\nabla^2\rho_i-\sum_i\frac{\alpha_i^2}{2}|\nabla\rho_i|^2-\frac{\epsilon^2}{2}|\nabla\phi|^2\right){\bf I},$$

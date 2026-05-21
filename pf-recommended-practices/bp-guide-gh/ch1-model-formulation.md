@@ -387,9 +387,6 @@ When implementing the boundary conditions, extreme care must be taken.  One
 cannot just "zero-out" boundary terms, as this may break some requirement about
 mass conservation or other physical constraint.
 
-<!-- * (Show examples on PFHub, possibly benchmark problems?) -->
-<!-- * Be mindful of your assumptions and approximations -->
-
 Having clearly defined the mathematical framework underlying the problem, it
 becomes important, prior to progressing further, to contemplate and thoroughly
 grasp the various assumptions and approximations inherent within the

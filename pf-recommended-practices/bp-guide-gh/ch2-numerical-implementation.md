@@ -688,8 +688,6 @@ therefore, be **straightforward to implement, even with intricate linear
 functions**.  However, **convergence is strongly dependent on the condition
 number of the operator matrix.**
 
-<!-- Define $\mathbf{M}, $\mathbf{J}$, $z$ and $r$ below. -->
-
 The performance of Krylov methods can be improved through **preconditioning**.
 Here, we form an approximation to the overall Jacobian matrix, $\mathbf{M}
 \approx \mathbf{J}$.  Depending on the exact method, we will then find

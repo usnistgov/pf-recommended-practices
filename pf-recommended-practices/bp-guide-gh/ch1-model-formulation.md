@@ -2,11 +2,6 @@
 
 Nana Ofori-Opuku, Jim Warren, Pierre-Clement Simon
 
-<!-- * Review the literature -->
-<!--   * Start with a careful lit review and see what others have done. -->
-<!--   * Take the time to understand the derivations from the literature. -->
-<!--   * Consider good examples from the literature (Can we list these on PFHub?) -->
-
 ## General Considerations on the formulation of phase field models
 
 Phase field models are, quite generally, extensions of classical

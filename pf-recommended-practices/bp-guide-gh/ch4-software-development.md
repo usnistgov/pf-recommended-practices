@@ -132,8 +132,8 @@ version.
 (label-code-verification)=
 ### Code verification
 
-While regression tests only guarantee to maintain the _status quo_, they do not
-guarantee the correctness of the simulation results. _Code verification_ is
+Regression tests only guarantee to maintain the _status quo_, they do not
+inherently guarantee the correctness of the simulation results. _Code verification_ is
 required to ensure the code does what it is designed to do. Several
 verification approaches exist.
 

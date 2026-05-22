@@ -688,8 +688,6 @@ therefore, be **straightforward to implement, even with intricate linear
 functions**.  However, **convergence is strongly dependent on the condition
 number of the operator matrix.**
 
-<!-- Define $\mathbf{M}, $\mathbf{J}$, $z$ and $r$ below. -->
-
 The performance of Krylov methods can be improved through **preconditioning**.
 Here, we form an approximation to the overall Jacobian matrix, $\mathbf{M}
 \approx \mathbf{J}$.  Depending on the exact method, we will then find
@@ -715,18 +713,6 @@ Krylov methods only apply to symmetric positive definite matrices**.  Modifying
 the preconditioner can have varying difficulties: switching from a Jacobi to a
 Gauss-Seidel preconditioner is trivial, but switching to an Incomplete LU (ILU) preconditioner
 might require much more effort.
-
-<!-- ### Choosing an appropriate parallelism approach -->
-
-<!-- (Discuss distributed vs shared, CPU vs GPU) -->
-
-<!-- #### Distributed memory -->
-
-<!-- (pretty much just MPI, also mention UPC or Legion or Charm++?) -->
-
-<!-- #### Shared memory -->
-
-<!-- CPU/GPU, performance portability layers -->
 
 ## Choosing appropriate numerical libraries and/or what to write yourself
 
@@ -801,35 +787,3 @@ to offer advice.
    Edition.* Society for Industrial and Applied Mechanics, 2000.
 1. D.A. Knoll, D.E. Keyes. "Jacobian-free Newton-Krylov methods: a survey of
    approaches and applications." *J. Comput. Phys.* 193 (2004) 357-397.
-
-<!--
-***
-
-Topics we want to move to other sections:
-
-- Conservation laws and symmetries (Model Formulation)
-- Have an expectation going in (Model Formulation)
-- Add pieces of the model one part at a time during debugging (Software Development)
-- Ensure physical expectations are respected (Software Development)
-
-***
--->
-
-<!--
-OLD TEXT
-
-Contributors: Stephen DeWitt, Alex Chadwick
-
-Alex Chadwick, Steve Dewitt
-
-* Carefully consider your spatial discretization scheme (FFT, FD, FV, FEM)
-* Consider your temporal discretization scheme and use temporal error
-  estimation when possible (implicit, explicit, etc.)
-* Identify relevant conservation laws and symmetries for your model and
-  carefully ensure they are respected even after long times
-* Start small and add complexity. Add pieces to the model one part at a time
-  during debugging. Check to see if it is working, then add more, then test
-  again.
-* Have an expectation going in (back of the envelope, consider basic physics),
-  and if it doesn’t do that, figure out why.
--->

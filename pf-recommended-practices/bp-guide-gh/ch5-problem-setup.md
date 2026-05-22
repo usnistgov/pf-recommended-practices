@@ -88,8 +88,6 @@ The 2D representation of the 2D case of the homogeneous nucleation problem.
 
 The 3D representation of the 2D case of the homogeneous nucleation problem.
 ```
-<!-- <img width="285" alt="2D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557138-054247d9-3c68-4eff-9234-3a2e00fa6b42.png"> -->
-<!-- <img width="288.5" alt="3D_7-5radius" src="https://user-images.githubusercontent.com/74273633/197557199-85fb0c6a-bc75-440d-95c5-a21e467d8a66.png"> -->
 
 The time evolution of the order parameter, given by the Allen-Cahn
 equation, was solved using the MOOSE framework. Details of the
@@ -118,10 +116,6 @@ Order Parameter v. Radial Distance
 
 Radius v. Time
 ```
-
-<!-- <img width="430.5" alt="nucleusOP_evol_2D_vs_3D" src="https://user-images.githubusercontent.com/74273633/197558441-1a1c6a0c-f682-45a5-88ca-2ea94c714a7d.png"> -->
-<!-- <img width="430.5" alt="radius_evol_2D_vs_3D" src="https://user-images.githubusercontent.com/74273633/197557432-b5a6e8f2-9c8f-4649-9607-b43b687c55a0.png"> -->
-<!-- <br/><br/> -->
 
 The role of dimensionality in homogeneous nucleation can be understood from the
 classical nucleation theory where the solid-liquid interface is modeled as a
@@ -159,9 +153,6 @@ simulations, see {numref}`radius-2d` and {numref}`radius-3d`.
 
 3D Radius v. Time
 ```
-
-<!-- <img width="433" alt="radius_2D" src="https://user-images.githubusercontent.com/74273633/197557534-6ef5cf54-658b-43e4-b83a-f74cad29f2cf.png"> -->
-<!-- <img width="433" alt="radius_3D" src="https://user-images.githubusercontent.com/74273633/197557613-2f2dfc84-39e3-4b14-a530-fab4238e7b85.png"> -->
 
 The dependence on dimensionality is further illustrated by considering cases
 where the initial radius is close to the critical radius: $r_\circ = 0.99 r_c$,
@@ -255,8 +246,6 @@ step, $\Delta t$ = 0.005. The results are shown in
 
 Comparison of results for benchmark 1
 ```
-
-<!-- ![BCs_white](https://user-images.githubusercontent.com/16142451/197867529-25d4ab7e-1a69-45f8-8fee-5b2ff3284db4.png) -->
 
 As can be seen in {numref}`benchmark1`, for periodic
 boundaries the $\alpha$ - $\beta$ domains are **continuous** on

@@ -787,23 +787,3 @@ to offer advice.
    Edition.* Society for Industrial and Applied Mechanics, 2000.
 1. D.A. Knoll, D.E. Keyes. "Jacobian-free Newton-Krylov methods: a survey of
    approaches and applications." *J. Comput. Phys.* 193 (2004) 357-397.
-
-
-<!--
-OLD TEXT
-
-Contributors: Stephen DeWitt, Alex Chadwick
-
-Alex Chadwick, Steve Dewitt
-
-* Carefully consider your spatial discretization scheme (FFT, FD, FV, FEM)
-* Consider your temporal discretization scheme and use temporal error
-  estimation when possible (implicit, explicit, etc.)
-* Identify relevant conservation laws and symmetries for your model and
-  carefully ensure they are respected even after long times
-* Start small and add complexity. Add pieces to the model one part at a time
-  during debugging. Check to see if it is working, then add more, then test
-  again.
-* Have an expectation going in (back of the envelope, consider basic physics),
-  and if it doesn’t do that, figure out why.
--->

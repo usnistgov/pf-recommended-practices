@@ -346,6 +346,8 @@ workstation execution and make porting between systems easier.
 See {cite}`Moelder2021` for a more detailed overview of Snakemake and a list of
 other good workflow tools.
 
+<!-- ### HPC Environments and parallel writes -->
+
 ## Data Curation
 
 Data curation involves manipulating an assortment of unstructured data files,

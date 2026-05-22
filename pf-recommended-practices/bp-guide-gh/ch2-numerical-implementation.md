@@ -714,18 +714,6 @@ the preconditioner can have varying difficulties: switching from a Jacobi to a
 Gauss-Seidel preconditioner is trivial, but switching to an Incomplete LU (ILU) preconditioner
 might require much more effort.
 
-<!-- ### Choosing an appropriate parallelism approach -->
-
-<!-- (Discuss distributed vs shared, CPU vs GPU) -->
-
-<!-- #### Distributed memory -->
-
-<!-- (pretty much just MPI, also mention UPC or Legion or Charm++?) -->
-
-<!-- #### Shared memory -->
-
-<!-- CPU/GPU, performance portability layers -->
-
 ## Choosing appropriate numerical libraries and/or what to write yourself
 
 The phase field and broader scientific computing community have developed many

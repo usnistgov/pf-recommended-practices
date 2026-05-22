@@ -85,9 +85,6 @@ code license. Authorship is tracked through the version control system.
 (label-software-license-considerations)=
 #### License considerations
 
-<!-- 
-> [Largely not unique to phase field, or even to scientific computing, so not a lot to say here, but should reference good guidance] -->
-
 * If you do not spell out your license, potential users must assume you are
   granting _no rights_ to copy or reuse it.
 * If your institution stipulates a license, use it.
@@ -148,7 +145,3 @@ verification approaches exist.
 3. Scaling laws. Known scaling laws, such as coarsening rate over time or
    convergence rate as a function of domain discretization, can be tested to
    discover implementation errors.
-
-<!-- ## TODO -->
-
-<!-- - Am I disseminating this software? -->

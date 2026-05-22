@@ -145,7 +145,3 @@ verification approaches exist.
 3. Scaling laws. Known scaling laws, such as coarsening rate over time or
    convergence rate as a function of domain discretization, can be tested to
    discover implementation errors.
-
-<!-- ## TODO -->
-
-<!-- - Am I disseminating this software? -->

@@ -788,18 +788,6 @@ to offer advice.
 1. D.A. Knoll, D.E. Keyes. "Jacobian-free Newton-Krylov methods: a survey of
    approaches and applications." *J. Comput. Phys.* 193 (2004) 357-397.
 
-<!--
-***
-
-Topics we want to move to other sections:
-
-- Conservation laws and symmetries (Model Formulation)
-- Have an expectation going in (Model Formulation)
-- Add pieces of the model one part at a time during debugging (Software Development)
-- Ensure physical expectations are respected (Software Development)
-
-***
--->
 
 <!--
 OLD TEXT

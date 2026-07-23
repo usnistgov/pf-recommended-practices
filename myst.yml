@@ -1,0 +1,17 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  title: Phase-Field Recommended Practices Guide
+  description: A set of recommended practices that help to ensure the best outcomes from your use of the phase-field method
+  authors: [PFHub Community]
+  github: https://github.com/pfhub/pf-recommended-practices
+  toc:
+    - file: intro.md
+    - pattern: recommended-practices-guide/*
+    
+site:
+  template: book-theme
+  options:
+    logo_text: PFHub
+    logo: logo2.jpg
+    favicon: logo2.jpg

@@ -2,9 +2,9 @@
 
 Authors
 
-- Stephen DeWitt, [@stvdwtt]
-- Alex Chadwick, [@afchadwi]
-- Vishwas Goel, [@vishwasgoel]
+- [Stephen DeWitt](https://github.com/stvdwtt)
+- [Alex Chadwick](https://github.com/afchadwi)
+- [Vishwas Goel](https://github.com/vishwasgoel)
 
 ## Overview
 

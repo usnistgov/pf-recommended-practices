@@ -1,9 +1,9 @@
 # Problem Set-Up
 
-Larry Aagesen ([@laagesen](https://github.com/laagesen)),
+Larry Aagesen ([Larry Aagesen](https://github.com/laagesen)),
 David Montiel,
-Sourabh Kadambi ([@sourabhkadambi](https://github.com/sourabhkadambi)),
-Sudipta Biswas ([@SudiptaBiswas](https://github.com/SudiptaBiswas))
+Sourabh Kadambi ([Sourabh Kadambi](https://github.com/sourabhkadambi)),
+Sudipta Biswas ([Sudipta Biswas](https://github.com/SudiptaBiswas))
 
 After the phase field model formulation is developed, implemented in code, and
 verified, it can be set up to solve the scientific/engineering problem of

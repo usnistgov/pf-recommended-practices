@@ -2,9 +2,9 @@
 
 Authors:
 
-- [Trevor Keller](https://www.nist.gov/people/trevor-keller), NIST, [@tkphd]
-- [Daniel Wheeler](https://www.nist.gov/people/daniel-wheeler), NIST, [@wd15]
-- [Jonathan Guyer](https://www.nist.gov/people/jonathan-e-guyer), NIST, [@guyer]
+- [Trevor Keller](https://www.nist.gov/people/trevor-keller), NIST, [Trevor Keller](https://github.com/tkphd)
+- [Daniel Wheeler](https://www.nist.gov/people/daniel-wheeler), NIST, [Daniel Wheeler](https://github.com/wd15)
+- [Jonathan Guyer](https://www.nist.gov/people/jonathan-e-guyer), NIST, [Jonathan Guyer](https://github.com/guyer)
 
 ## Overview
 
@@ -66,17 +66,14 @@ modified by the researcher and might include **input files** to the
 **software application**. Although the code can be considered as data
 in the larger sense, in this work, the data curation process excludes
 consideration of code curation, which involves its own distinct
-practices. See the [Software Development](label-software-development)
+practices. See the [Software Development](#label-software-development)
 section of the best practices guide for a more detailed discussion of
 software and code curation.
 
-```{mermaid}
-:caption: A detailed representation of a Phase Field Workflow
+:::{figure}
 :name: fig-pf-workflow
 
----
-title: 
----
+```{mermaid}
 flowchart TD
 
     INPUT@{ shape: doc,      label: "Input Files", fill: #f96 }
@@ -109,6 +106,9 @@ flowchart TD
 
     METAD & FDATA & POSDT --> CURAT --> CRATE
 ```
+
+A detailed representation of a Phase Field Workflow
+:::
 
 ## Data Generation
 
@@ -366,8 +366,8 @@ publish are as follows.
   such as images and data tables.
 - **Public Development:** Submit the code and workflows appropriately during
   development. This step will not be described here, but is discussed in the
-  [Version control and metadata section](label-version-control-and-metadata) of
-  the [Software Development Guide](label-software-development).
+  [Version control and metadata section](#label-version-control-and-metadata) of
+  the [Software Development Guide](#label-software-development).
 - **Metadata Standards:** Employ a suitable metadata standard where possible to
   describe different aspects of the research project such as the raw data files,
   derived data assets, software environments, numerical algorithms and problem
@@ -416,7 +416,7 @@ and it describes the conditions for use of the data by others.
 Data released without an accompanying license cannot be used by anybody but the author.
 Publicly available is not the same thing as "public domain". Data repositories like [Zenodo] require declaration of a license in order to deposit data.
 
-Licensing of data is distinct from [licensing software](label-software-license-considerations).
+Licensing of data is distinct from [licensing software](#label-software-license-considerations).
 This is, in part, because, software and data may be released in different places,
 e.g., GitHub vs. Zenodo, requiring a license statement in each location.
 They may also have different release cycles;

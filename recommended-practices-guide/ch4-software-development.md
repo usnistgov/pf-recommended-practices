@@ -1,7 +1,7 @@
 (label-software-development)=
 # Software Development
 
-Daniel Schwen ([@dschwen](https://github.com/dschwen)), Jon Guyer ([@guyer](https://github.com/guyer)), Trevor Keller ([@tkphd](https://github.com/tkphd))
+Daniel Schwen ([Daniel Schwen](https://github.com/dschwen)), Jon Guyer ([Jonathan Guyer](https://github.com/guyer)), Trevor Keller ([Trevor Keller](https://github.com/tkphd))
 
 People don't usually arrive at phase field methods from a software development
 background.  This page recommends some approaches to reduce errors and wasted

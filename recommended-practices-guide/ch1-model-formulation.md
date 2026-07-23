@@ -184,7 +184,7 @@ $$S^{\mathrm{prod}}=\int \left[-\sum_i\nabla\left(\frac{\mu_i}{T}\right)^{NC}\cd
 
 and
 
-$${\bf J}_s=s^{NC}{\bf v} + \frac{1}{T}{\bf J}_e-\sum_i \left(\frac{\mu_i}{T}\right)^{NC}{\bf J}_i+\sum_i \alpha_i^2\frac{D\rho_i}{Dt}\nabla\rho_i+\epsilon^2\frac{D\phi}{Dt}\nabla\phi.$$
+$${\bf J}_s=s^{NC}{\bf v} + \frac{1}{T}{\bf J}_e-\sum_i \left(\frac{\mu_i}{T}\right)^{NC}{\bf J}_i+\sum_i \alpha_i^2\frac{D\rho_i}{Dt}\nabla\rho_i+\epsilon^2\frac{D\phi}{Dt}\nabla\phi.$$
 
 It is worth noting that this form for ${\bf J}_s$ eliminates the
 explicit surface terms from the entropy production. We have also
